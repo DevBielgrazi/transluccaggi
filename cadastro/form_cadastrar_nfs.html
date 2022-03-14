@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<link href="../estilo/cores.css" rel="stylesheet">
+		<title>Matriz Principal</title>
+	</head> 
+	<body>
+		<h1>CADASTRAR NOTAS FISCAIS</h1><p>
+		<img src="../imagem/transluccaggi.png" width=256 height=256>
+		<img align="left" src="../imagem/DPC.png" width=256 height=128>
+		<img align="right" src="../imagem/VL.png" width=256 height=128>
+			<table align="center" border=1>
+				<tr>
+					<td>
+						<form method="post" action="cadastrar_nfs.php">
+							<h2>NÚMERO: <input name="num_nf" type=int size=16 maxlength=16 required><br>
+							SÉRIE: <input name="ser_nf" type=int size=8 maxlength=8 required><br>
+							EMISSÃO: <input name="emi_nf" type=date required><br>
+							ENTRADA: <input name="ent_nf" type=date required><br>
+							VALOR: <input name="val_nf" type=float size=16 maxlength=16 required><br>
+							PESO: <input name="pes_nf" type=float size=16 maxlength=16 required><br>
+							CÓDIGO CLIENTE: <input name="cod_cli" type=int size=16 maxlength=16 required></h2><br>
+							<input type=submit value=CADASTRAR>
+							<input type=reset value=VOLTAR>
+						</form>
+					</td>	
+				</tr>
+			</table>	
+	</body>
+</html>
