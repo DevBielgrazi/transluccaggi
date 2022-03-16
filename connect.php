@@ -7,4 +7,5 @@
 
 	//Tabelas
 	$tab_nfs = "notas_fiscais";
+	$tab_clientes = "clientes";
  ?>

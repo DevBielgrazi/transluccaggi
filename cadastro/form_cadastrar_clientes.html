@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<link href="../estilo/cores.css" rel="stylesheet">
+		<title>Matriz Principal</title>
+	</head> 
+	<body>
+		<h1>CADASTRAR CLIENTES</h1><p>
+			<img src="../imagem/DPC.png" width=10%>
+			<img src="../imagem/transluccaggi.png" width=12%>
+			<img src="../imagem/VL.png" width=10%>
+			<table align="center" border=1>
+				<tr>
+					<td>
+						<form method="post" action="cadastrar_clientes.php">
+							<table>
+								<tr>
+									<td><h4>CÓDIGO:</h4></td>
+									<td><input name="cod_cli" type=text size=16 maxlength=16 required></td>
+								</tr>
+								<tr>
+									<td><h4>NOME:</h4></td>
+									<td><input name="nom_cli" type=int size=32 maxlength=64 required></td>
+								</tr>
+								<tr>
+									<td><h4>CADASTRO:</h4></td>
+									<td><input name="cad_cli" type=date required></td>
+								</tr>
+								<tr>
+									<td><h4>ROTA:</h4></td>
+									<td><input name="rot_cli" type=int required></td>
+								</tr>
+								<tr>
+									<td><h4>CIDADE:</h4></td>
+									<td><input name="cid_cli" type=text size=32 maxlength=32 required></td>
+								</tr>
+								<tr>
+									<td><h4>BAIRRO:</h4></td>
+									<td><input name="bai_cli" type=text size=32 maxlength=32 required></td>
+								</tr>
+								<tr>
+									<td><h4>ENDEREÇO:</h4></td>
+									<td><input name="end_cli" type=text size=32 maxlength=64 required></td>
+								</tr>
+								<tr>
+									<td><h4>CÓDIGO DISTRIBUIDORA:</h4></td>
+									<td><input name="cod_dis" type=int size=16 maxlength=16 required></td>
+								</tr>																 
+								<tr>
+									<td><input type=submit value=CADASTRAR></td>
+									<td><input type=reset value=VOLTAR></td>
+								</tr>
+							</table>
+						</form>
+					</td>	
+				</tr>
+			</table>	
+	</body>
+</html>

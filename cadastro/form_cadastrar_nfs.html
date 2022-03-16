@@ -6,22 +6,47 @@
 	</head> 
 	<body>
 		<h1>CADASTRAR NOTAS FISCAIS</h1><p>
-		<img src="../imagem/transluccaggi.png" width=256 height=256>
-		<img align="left" src="../imagem/DPC.png" width=256 height=128>
-		<img align="right" src="../imagem/VL.png" width=256 height=128>
-			<table align="center" border=1>
+		<img src="../imagem/DPC.png" width=10%>
+		<img src="../imagem/transluccaggi.png" width=12%>
+		<img src="../imagem/VL.png" width=10%>
+			<table align="center" border=2>
 				<tr>
 					<td>
 						<form method="post" action="cadastrar_nfs.php">
-							<h2>NÚMERO: <input name="num_nf" type=int size=16 maxlength=16 required><br>
-							SÉRIE: <input name="ser_nf" type=int size=8 maxlength=8 required><br>
-							EMISSÃO: <input name="emi_nf" type=date required><br>
-							ENTRADA: <input name="ent_nf" type=date required><br>
-							VALOR: <input name="val_nf" type=float size=16 maxlength=16 required><br>
-							PESO: <input name="pes_nf" type=float size=16 maxlength=16 required><br>
-							CÓDIGO CLIENTE: <input name="cod_cli" type=int size=16 maxlength=16 required></h2><br>
-							<input type=submit value=CADASTRAR>
-							<input type=reset value=VOLTAR>
+							<table>
+								<tr>
+									<td><h4>NÚMERO:</h4></td>
+									<td><input name="num_nf" type=int size=16 maxlength=16 required></td>
+								</tr>
+								<tr>
+									<td><h4>SÉRIE:</h4></td>
+									<td><input name="ser_nf" type=int size=8 maxlength=8 required></td>
+								</tr>
+								<tr>
+									<td><h4>EMISSÃO:</h4></td>
+									<td><input name="emi_nf" type=date required></td>
+								</tr>
+								<tr>
+									<td><h4>ENTRADA:</h4></td>
+									<td><input name="ent_nf" type=date required></td>
+								</tr>
+								<tr>
+									<td><h4>VALOR:</h4></td>
+									<td><input name="val_nf" type=float size=16 maxlength=16 required></td>
+								</tr>
+								<tr>
+									<td><h4>PESO:</h4></td>
+									<td><input name="pes_nf" type=float size=16 maxlength=16 required></td>
+								</tr>
+								<tr>
+									<td><h4>CÓDIGO CLIENTE:</h4></td>
+									<td><input name="cod_cli" type=int size=16 maxlength=16 required></td>
+								</tr>																 
+								<tr>
+									<td><input type=submit value=CADASTRAR></td>
+									<td><input type=reset value=VOLTAR></td>
+								</tr>
+							</table>
 						</form>
 					</td>	
 				</tr>
