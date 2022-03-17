@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16-Mar-2022 às 04:21
+-- Tempo de geração: 17-Mar-2022 às 02:05
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -48,6 +48,24 @@ INSERT INTO `clientes` (`codigo`, `nome`, `cadastro`, `rota`, `cidade`, `bairro`
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `distribuidoras`
+--
+
+CREATE TABLE `distribuidoras` (
+  `codigo` int(11) NOT NULL,
+  `nome` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `distribuidoras`
+--
+
+INSERT INTO `distribuidoras` (`codigo`, `nome`) VALUES
+(7, 'Servimed');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `notas_fiscais`
 --
 
@@ -67,6 +85,26 @@ CREATE TABLE `notas_fiscais` (
 
 INSERT INTO `notas_fiscais` (`numero`, `serie`, `emissao`, `entrada`, `valor`, `peso`, `cod_cliente`) VALUES
 (1353449, 55, '2022-03-14', '2022-03-15', 17169.7, 677.57, '174486');
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices para tabela `distribuidoras`
+--
+ALTER TABLE `distribuidoras`
+  ADD PRIMARY KEY (`codigo`);
+
+--
+-- AUTO_INCREMENT de tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `distribuidoras`
+--
+ALTER TABLE `distribuidoras`
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

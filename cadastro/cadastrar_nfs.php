@@ -10,7 +10,7 @@
     $pes_nf = trim($_POST['pes_nf']);
     $cod_cli = trim($_POST['cod_cli']);
 		
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_clientes WHERE `codigo` = $cod_cli");
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `codigo` = $cod_cli");
 	$sql2 = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = $num_nf");
 	
 	$n = mysqli_num_rows($sql);
@@ -36,16 +36,13 @@
 						<table align="center" border=2>
 							<tr>
 								<td>
-									<form method="post" action="cadastrar_nfs.php">
-										<table>
-											<tr>
-												<td><h4>NOTA JÁ CADASTARDA</h4></td>
-											</tr>
-												<td><input type=submit value=CADASTRAR></td>
-												<td><input type=reset value=VOLTAR></td>
-											</tr>
-										</table>
-									</form>
+									<table>
+										<tr>
+											<td><h4>NOTA JÁ CADASTARDA</h4></td>
+										</tr>
+											<td><a href="form_cadastrar_nfs.html"><button>VOLTAR</button></a></td>
+										</tr>
+									</table>								
 								</td>	
 							</tr>
 						</table>	
@@ -77,34 +74,34 @@
 											</tr>
 											<tr>
 												<td><h4>NÚMERO:</h4></td>
-												<td><h4><?php		?></h4></td>
+												<td><h4><?php echo	$num_nf;	?></h4></td>
 											</tr>
 											<tr>
 												<td><h4>SÉRIE:</h4></td>
-												<td><h4><?php		?></h4></td>
+												<td><h4><?php echo	$ser_nf	?></h4></td>
 											</tr>
 											<tr>
 												<td><h4>EMISSÃO:</h4></td>
-												<td><h4><?php		?></h4></td>
+												<td><h4><?php	echo	$emi_nf	?></h4></td>
 											</tr>
 											<tr>
 												<td><h4>ENTRADA:</h4></td>
-												<td><h4><?php		?></h4></td>
+												<td><h4><?php	echo	$ent_nf	?></h4></td>
 											</tr>
 											<tr>
 												<td><h4>VALOR:</h4></td>
-												<td><h4><?php		?></h4></td>
+												<td><h4><?php	echo	$val_nf	?></h4></td>
 											</tr>
 											<tr>
 												<td><h4>PESO:</h4></td>
-												<td><h4><?php		?></h4></td>
+												<td><h4><?php	echo	$pes_nf	?></h4></td>
 											</tr>
 											<tr>
 												<td><h4>CÓDIGO CLIENTE:</h4></td>
-												<td><h4><?php		?></h4></td>
+												<td><h4><?php	echo	$cod_cli	?></h4></td>
 											</tr>
-												<td><input type=submit value=ALTERAR></td>
-												<td><input type=submit value=PRÓXIMA></td>
+												<td><a href="form_alterar_nfs.html"><button>ALTERAR</button></a></td>
+												<td><a href="form_cadastrar_nfs.html"><button>PRÓXIMO</button></a></td>
 											</tr>
 										</table>	
 									</td>	
@@ -136,8 +133,8 @@
 										<tr>
 											<td><h4>CLIENTE NÃO CADASTARDO</h4></td>
 										</tr>
-											<td><button href="form_cadastrar_clientes.html">CADASTRAR</button></td>
-											<td><button href="form_cadastrar_nfs.html">VOLTAR</button></td>
+											<td><a href="form_cadastrar_clientes.html"><button>CADASTRAR CLIENTE</button></a></td>
+											<td><a href="form_cadastrar_nfs.html"><button>VOLTAR</button></a></td>
 										</tr>
 									</table>	
 								</td>	
