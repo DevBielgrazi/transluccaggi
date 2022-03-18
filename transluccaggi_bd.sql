@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17-Mar-2022 às 02:05
+-- Tempo de geração: 18-Mar-2022 às 20:54
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -38,13 +38,6 @@ CREATE TABLE `clientes` (
   `cod_distribuidora` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Extraindo dados da tabela `clientes`
---
-
-INSERT INTO `clientes` (`codigo`, `nome`, `cadastro`, `rota`, `cidade`, `bairro`, `endereco`, `cod_distribuidora`) VALUES
-('174486', 'Odyney Edson Dos Santos', '2022-03-15', 4808, 'Cunha', 'Falcão', 'Al Francisco da Cunha Menezes', 45);
-
 -- --------------------------------------------------------
 
 --
@@ -56,13 +49,6 @@ CREATE TABLE `distribuidoras` (
   `nome` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Extraindo dados da tabela `distribuidoras`
---
-
-INSERT INTO `distribuidoras` (`codigo`, `nome`) VALUES
-(7, 'Servimed');
-
 -- --------------------------------------------------------
 
 --
@@ -70,8 +56,8 @@ INSERT INTO `distribuidoras` (`codigo`, `nome`) VALUES
 --
 
 CREATE TABLE `notas_fiscais` (
-  `numero` int(11) NOT NULL,
-  `serie` int(11) NOT NULL,
+  `numero` varchar(16) NOT NULL,
+  `serie` varchar(16) NOT NULL,
   `emissao` date NOT NULL,
   `entrada` date NOT NULL,
   `valor` float NOT NULL,
@@ -80,21 +66,26 @@ CREATE TABLE `notas_fiscais` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `notas_fiscais`
---
-
-INSERT INTO `notas_fiscais` (`numero`, `serie`, `emissao`, `entrada`, `valor`, `peso`, `cod_cliente`) VALUES
-(1353449, 55, '2022-03-14', '2022-03-15', 17169.7, 677.57, '174486');
-
---
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices para tabela `clientes`
+--
+ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`codigo`);
 
 --
 -- Índices para tabela `distribuidoras`
 --
 ALTER TABLE `distribuidoras`
   ADD PRIMARY KEY (`codigo`);
+
+--
+-- Índices para tabela `notas_fiscais`
+--
+ALTER TABLE `notas_fiscais`
+  ADD PRIMARY KEY (`numero`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
@@ -104,7 +95,7 @@ ALTER TABLE `distribuidoras`
 -- AUTO_INCREMENT de tabela `distribuidoras`
 --
 ALTER TABLE `distribuidoras`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
