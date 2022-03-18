@@ -1,11 +1,9 @@
 <?php
-	//Importando a Conexão
 	require('../connect.php');
-	
-	$cod_dis = trim($_POST['cod_dis']);
+
     $nom_dis = trim($_POST['nom_dis']);
 		
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `codigo` = $cod_dis");
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `nome` = '$nom_dis'");
 	
 	$n = mysqli_num_rows($sql);
 
@@ -26,15 +24,14 @@
 						<table align="center" border=2>
 							<tr>
 								<td>
-									<form method="post" action="cadastrar_distribuidoras.php">
-										<table>
-											<tr>
-												<td><h4>DISTRIBUIDORA JÁ CADASTARDA</h4></td>
-											</tr>
-												<td><a href="form_cadastrar_distribuidoras.html"><button>VOLTAR</button></a></td>
-											</tr>
-										</table>
-									</form>
+									<table>
+										<tr>
+											<td><h4>DISTRIBUIDORA JÁ CADASTARDA</h4></td>
+										</tr>
+											<td><a href="form_cadastrar_distribuidoras.html"><button>VOLTAR</button></a></td>
+											<td><a href="../index.html"><button>MENU PRINCIPAL</button></a></td>
+										</tr>
+									</table>
 								</td>	
 							</tr>
 						</table>	
@@ -44,7 +41,9 @@
 	}
 	else
 	{
-		$sql = mysqli_query($conn,"INSERT INTO $tab_dis VALUES ('$cod_dis', '$nom_dis')");	
+		$sql = mysqli_query($conn,"INSERT INTO $tab_dis (`nome`) VALUES ('$nom_dis')");
+		$cod_dis = mysqli_fetch_array(mysqli_query($conn,"SELECT `codigo` FROM $tab_dis WHERE `nome` = '$nom_dis'"));
+		
 		?>
 			<html>
 				<head>
@@ -66,7 +65,7 @@
 										</tr>
 										<tr>
 											<td><h4>CÓDIGO:</h4></td>
-											<td><h4><?php echo	$cod_dis;	?></h4></td>
+											<td><h4><?php echo $cod_dis['codigo'];	?></h4></td>
 										</tr>
 										<tr>
 											<td><h4>NOME:</h4></td>
@@ -74,6 +73,7 @@
 										</tr>										
 											<td><a href="form_alterar_distribuidoras.html"><button>ALTERAR</button></a></td>
 											<td><a href="form_cadastrar_distribuidoras.html"><button>PRÓXIMO</button></a></td>
+											<td><a href="../index.html"><button>MENU PRINCIPAL</button></a></td>
 										</tr>
 									</table>	
 								</td>	
