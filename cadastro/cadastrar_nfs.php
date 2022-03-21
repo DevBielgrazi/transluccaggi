@@ -9,8 +9,7 @@
     $pes_nf = trim($_POST['pes_nf']);
     $cod_cli = trim($_POST['cod_cli']);
 		
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' and `cod_cli` = '$cod_cli' and `serie` = '$ser_nf'");
-	$sql2 = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `codigo` = '$cod_cli'");
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' and `cod_cliente` = '$cod_cli' and `serie` = '$ser_nf'");
 	
 	$n = mysqli_num_rows($sql);
 
@@ -20,52 +19,69 @@
 			<html>
 				<head>
 					<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-					<link href="../estilo/cores.css" rel="stylesheet">
+					<link href="..\estilo.css" rel="stylesheet">
 					<title>Matriz Principal</title>
 				</head> 
 				<body>
-					<h1>CADASTRAR NOTAS FISCAIS</h1><p>
-					<img src="../imagem/DPC.png" width=10%>
-					<img src="../imagem/transluccaggi.png" width=12%>
-					<img src="../imagem/VL.png" width=10%>
-						<table align="center" border=2>
+					<menu>
+						<a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
+						<h1>MATRIZ PRINCIPAL</h1><p>
+						<table border=1>
+							<tr><td><h2>CADASTROS</h2></td></tr>
+							<tr><td><a href="../cadastro/form_cadastrar_nfs.html"><button>CADASTRAR NOTAS</button></a></td></tr>
+							<tr><td><a href="../cadastro/form_cadastrar_clientes.html"><button>CADASTRAR CLIENTES</button></a></td></tr>
+							<tr><td><a href="../cadastro/form_cadastrar_distribuidoras.html"><button>CADASTRAR DISTRIBUIDORAS</button></a></td></tr>
+						</table>
+					</menu>
+					<pag>	
+						<h2>CADASTRAR NOTAS FISCAIS</h2><p>
+						<table border=2>
 							<tr>
 								<td>
 									<table>
 										<tr>
-											<td><h4>NOTA JÁ CADASTARDA</h4></td>
-										</tr>
-											<td><a href="form_cadastrar_nfs.html"><button>VOLTAR</button></a></td>
-											<td><a href="../index.html"><button>MENU PRINCIPAL</button></a></td>
-										</tr>
+											<td><h4>NOTA JÁ CADASTRADA</h4></td>
+										</tr>	
 									</table>								
 								</td>	
 							</tr>
-						</table>	
+						</table>
+					</pag>	
 				</body>
 			</html>
 			<?php
 		}
 		else
 		{		
+			$sql2 = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `codigo` = '$cod_cli'");
 			$n2 = mysqli_num_rows($sql2);
 		
 			if($n2 != 0)
 			{
-				$sql2 = mysqli_query($conn,"INSERT INTO $tab_nfs VALUES ('$num_nf', '$ser_nf', '$emi_nf', '$ent_nf', '$val_nf', '$pes_nf', '$cod_cli')");	
+				$sql2 = mysqli_query($conn,"INSERT INTO $tab_nfs VALUES ('$num_nf', '$ser_nf', '$emi_nf', '$ent_nf', '$val_nf', '$pes_nf', '$cod_cli', 'DISPONÍVEL', '')");	
+				$sql = mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf'"));
+				
 				?>
 					<html>
 						<head>
 							<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-							<link href="../estilo/cores.css" rel="stylesheet">
+							<link href="..\estilo.css" rel="stylesheet">
 							<title>Matriz Principal</title>
 						</head> 
 						<body>
-							<h1>CADASTRAR NOTAS FISCAIS</h1><p>
-							<img src="../imagem/DPC.png" width=10%>
-							<img src="../imagem/transluccaggi.png" width=12%>
-							<img src="../imagem/VL.png" width=10%>
-								<table align="center" border=2>
+						<menu>
+							<a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
+							<h1>MATRIZ PRINCIPAL</h1><p>
+							<table border=1>
+								<tr><td><h2>CADASTROS</h2></td></tr>
+								<tr><td><a href="../cadastro/form_cadastrar_nfs.html"><button>CADASTRAR NOTAS</button></a></td></tr>
+								<tr><td><a href="../cadastro/form_cadastrar_clientes.html"><button>CADASTRAR CLIENTES</button></a></td></tr>
+								<tr><td><a href="../cadastro/form_cadastrar_distribuidoras.html"><button>CADASTRAR DISTRIBUIDORAS</button></a></td></tr>
+							</table>
+						</menu>
+							<pag>
+								<h2>CADASTRAR NOTAS FISCAIS</h2><p>
+								<table border=2>
 									<tr>
 										<td>
 											<table>
@@ -74,40 +90,41 @@
 												</tr>
 												<tr>
 													<td><h4>NÚMERO:</h4></td>
-													<td><h4><?php echo	$num_nf;	?></h4></td>
+													<td><h4><?php echo	$sql['numero'];	?></h4></td>
 												</tr>
 												<tr>
 													<td><h4>SÉRIE:</h4></td>
-													<td><h4><?php echo	$ser_nf	?></h4></td>
+													<td><h4><?php echo	$sql['serie']	?></h4></td>
 												</tr>
 												<tr>
 													<td><h4>EMISSÃO:</h4></td>
-													<td><h4><?php	echo	$emi_nf	?></h4></td>
+													<td><h4><?php	echo	$sql['emissao']	?></h4></td>
 												</tr>
 												<tr>
 													<td><h4>ENTRADA:</h4></td>
-													<td><h4><?php	echo	$ent_nf	?></h4></td>
+													<td><h4><?php	echo	$sql['entrada']	?></h4></td>
 												</tr>
 												<tr>
 													<td><h4>VALOR:</h4></td>
-													<td><h4><?php	echo	$val_nf	?></h4></td>
+													<td><h4><?php	echo	$sql['valor']	?></h4></td>
 												</tr>
 												<tr>
 													<td><h4>PESO:</h4></td>
-													<td><h4><?php	echo	$pes_nf	?></h4></td>
+													<td><h4><?php	echo	$sql['peso']	?></h4></td>
 												</tr>
 												<tr>
 													<td><h4>CÓDIGO CLIENTE:</h4></td>
-													<td><h4><?php	echo	$cod_cli	?></h4></td>
+													<td><h4><?php	echo	$sql['cod_cliente']	?></h4></td>
 												</tr>
-													<td><a href="form_alterar_nfs.html"><button>ALTERAR</button></a></td>
-													<td><a href="form_cadastrar_nfs.html"><button>PRÓXIMO</button></a></td>
-													<td><a href="../index.html"><button>MENU PRINCIPAL</button></a></td>
+												<tr>
+													<td><h4>STATUS:</h4></td>
+													<td><h4><?php	echo	$sql['status']	?></h4></td>
 												</tr>
 											</table>	
 										</td>	
 									</tr>
-								</table>	
+								</table>
+							</pag>	
 						</body>
 					</html>
 				<?php
@@ -118,29 +135,34 @@
 				<html>
 					<head>
 						<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-						<link href="../estilo/cores.css" rel="stylesheet">
+						<link href="..\estilo.css" rel="stylesheet">
 						<title>Matriz Principal</title>
 					</head> 
 					<body>
-						<h1>CADASTRAR NOTAS FISCAIS</h1><p>
-						<img src="../imagem/DPC.png" width=10%>
-						<img src="../imagem/transluccaggi.png" width=12%>
-						<img src="../imagem/VL.png" width=10%>
+						<menu>
+							<a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
+							<h1>MATRIZ PRINCIPAL</h1><p>
+							<table border=1>
+								<tr><td><h2>CADASTROS</h2></td></tr>
+								<tr><td><a href="../cadastro/form_cadastrar_nfs.html"><button>CADASTRAR NOTAS</button></a></td></tr>
+								<tr><td><a href="../cadastro/form_cadastrar_clientes.html"><button>CADASTRAR CLIENTES</button></a></td></tr>
+								<tr><td><a href="../cadastro/form_cadastrar_distribuidoras.html"><button>CADASTRAR DISTRIBUIDORAS</button></a></td></tr>
+							</table>
+						</menu>
+						<pag>
+							<h2>CADASTRAR NOTAS FISCAIS</h2><p>
 							<table align="center" border=2>
 								<tr>
 									<td>
 										<table>
 											<tr>
 												<td><h4>CLIENTE NÃO CADASTRADO</h4></td>
-											</tr>
-												<td><a href="form_cadastrar_clientes.html"><button>CADASTRAR CLIENTES</button></a></td>
-												<td><a href="form_cadastrar_nfs.html"><button>VOLTAR</button></a></td>
-												<td><a href="../index.html"><button>MENU PRINCIPAL</button></a></td>
-											</tr>
+											</tr>												
 										</table>	
 									</td>	
 								</tr>
-							</table>	
+							</table>
+						</pag>	
 					</body>
 				</html>
 				<?php

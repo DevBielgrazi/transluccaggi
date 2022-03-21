@@ -1,0 +1,27 @@
+body{
+    background-color: black;
+}
+h1, h2{
+    color: gray;
+    font-family: OCR A Std, monospace;
+}
+h4{
+    color:dodgerblue;
+    font-family:OCR A Std, monospace;
+}
+button{
+    background-color: blue;
+    font-family: OCR A Std, monospace;
+    font-size: 20px;
+    border-radius: 10px;
+}
+menu{
+    position:absolute;
+    top:10px;
+    left:0px;
+}
+pag{
+    position:absolute;
+    top:50px;
+    left:400px;
+}
