@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22-Mar-2022 às 17:03
+-- Tempo de geração: 22-Mar-2022 às 19:52
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -32,7 +32,7 @@ CREATE TABLE `clientes` (
   `codigo` varchar(16) NOT NULL,
   `nome` varchar(64) NOT NULL,
   `cadastro` date NOT NULL,
-  `rota` int(11) NOT NULL,
+  `rota` varchar(8) NOT NULL,
   `cidade` varchar(32) NOT NULL,
   `bairro` varchar(32) NOT NULL,
   `endereco` varchar(64) NOT NULL,

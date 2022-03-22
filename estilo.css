@@ -32,7 +32,7 @@ h7{
 button{
     background-color: blue;
     font-family: OCR A Std, monospace;
-    font-size: 20px;
+    font-size: 15px;
     border-radius: 10px;
 }
 menu{
@@ -48,7 +48,7 @@ pag{
 urn{
     position:absolute;
     top:50px;
-    left:350px;
+    left:380px;
 }
 urc{
     position:absolute;
@@ -58,5 +58,25 @@ urc{
 urd{
     position:absolute;
     top:5px;
-    left:400px;
+    left:550px;
+}
+input, select{
+    background-color: gray;
+    color:black;
+    font-size: 20px;
+}
+.inputb{
+    background-color:black;
+    color:green;
+    font-size: 20px;
+    border-radius: 20px;
+    border-color: dodgerblue;
+}
+table{
+    align-items: center;
+    text-align: center;
+}
+.tableb{
+    align-items: left;
+    text-align: left;
 }

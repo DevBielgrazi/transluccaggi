@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<link rel="icon" href="..\imagem/favicone.png"/>
 		<link href="..\estilo.css" rel="stylesheet">
 		<title>Matriz Principal</title>
 	</head> 
@@ -8,11 +9,11 @@
 		<menu>
 			<a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
 			<h1>MATRIZ PRINCIPAL</h1><p>
-				<table border=1>
+				<table class="tableb" border=1>
 						<tr><td><h2>CADASTROS</h2></td></tr>
-						<tr><td><a href="../cadastro/form_cadastrar_nfs.php"><button>CADASTRAR NOTAS</button></a></td></tr>
-						<tr><td><a href="../cadastro/form_cadastrar_clientes.php"><button>CADASTRAR CLIENTES</button></a></td></tr>
-						<tr><td><a href="../cadastro/form_cadastrar_distribuidoras.php"><button>CADASTRAR DISTRIBUIDORAS</button></a></td></tr>
+						<tr><td><a href="../cadastro/form_cadastrar_nfs.php"><button>NOTAS</button></a></td></tr>
+						<tr><td><a href="../cadastro/form_cadastrar_clientes.php"><button>CLIENTES</button></a></td></tr>
+						<tr><td><a href="../cadastro/form_cadastrar_distribuidoras.php"><button>DISTRIBUIDORAS</button></a></td></tr>
 				</table>
 		</menu>
 		<pag>
@@ -51,7 +52,7 @@
 									<td><input name="cod_cli" type=int size=16 maxlength=16 required></td>
 								</tr>																 
 								<tr>
-									<td><input type=submit value=CADASTRAR></td>
+									<td><input class="inputb" type=submit value=CADASTRAR></td>
 								</tr>
 							</table>
 						</form>
