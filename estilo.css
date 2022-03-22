@@ -5,9 +5,29 @@ h1, h2{
     color: gray;
     font-family: OCR A Std, monospace;
 }
+h3{
+    color:gray;
+    font-family: OCR A Std, monospace;
+    font-size: 15px;
+}
 h4{
     color:dodgerblue;
     font-family:OCR A Std, monospace;
+}
+h5{
+    color:yellow;
+    font-family:OCR A Std, monospace;
+    font-size: 20px;
+}
+h6{
+    color:red;
+    font-family:OCR A Std, monospace;
+    font-size: 20px;
+}
+h7{
+    color:green;
+    font-family:OCR A Std, monospace;
+    font-size: 20px;
 }
 button{
     background-color: blue;
@@ -23,5 +43,20 @@ menu{
 pag{
     position:absolute;
     top:50px;
+    left:400px;
+}
+urn{
+    position:absolute;
+    top:50px;
+    left:350px;
+}
+urc{
+    position:absolute;
+    top:480px;
+    left:0px;
+}
+urd{
+    position:absolute;
+    top:5px;
     left:400px;
 }

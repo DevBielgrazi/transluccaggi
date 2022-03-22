@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22-Mar-2022 às 00:54
+-- Tempo de geração: 22-Mar-2022 às 17:03
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `clientes` (
+  `id` int(11) NOT NULL,
   `codigo` varchar(16) NOT NULL,
   `nome` varchar(64) NOT NULL,
   `cadastro` date NOT NULL,
@@ -47,7 +48,8 @@ CREATE TABLE `clientes` (
 CREATE TABLE `distribuidoras` (
   `codigo` int(11) NOT NULL,
   `nome` varchar(64) NOT NULL,
-  `porcentagem` float NOT NULL
+  `porcentagem` float NOT NULL,
+  `cadastro` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -57,6 +59,7 @@ CREATE TABLE `distribuidoras` (
 --
 
 CREATE TABLE `notas_fiscais` (
+  `id` int(11) NOT NULL,
   `numero` varchar(16) NOT NULL,
   `serie` varchar(16) NOT NULL,
   `emissao` date NOT NULL,
@@ -76,7 +79,7 @@ CREATE TABLE `notas_fiscais` (
 -- Índices para tabela `clientes`
 --
 ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`codigo`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `distribuidoras`
@@ -88,17 +91,29 @@ ALTER TABLE `distribuidoras`
 -- Índices para tabela `notas_fiscais`
 --
 ALTER TABLE `notas_fiscais`
-  ADD PRIMARY KEY (`numero`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
+-- AUTO_INCREMENT de tabela `clientes`
+--
+ALTER TABLE `clientes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `distribuidoras`
 --
 ALTER TABLE `distribuidoras`
   MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `notas_fiscais`
+--
+ALTER TABLE `notas_fiscais`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

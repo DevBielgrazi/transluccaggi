@@ -1,3 +1,20 @@
+<html>
+				<head>
+					<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+					<link href="..\estilo.css" rel="stylesheet">
+					<title>Matriz Principal</title>
+				</head> 
+				<body>
+					<menu>
+						<a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
+						<h1>MATRIZ PRINCIPAL</h1><p>
+						<table border=1>
+							<tr><td><h2>CADASTROS</h2></td></tr>
+							<tr><td><a href="../cadastro/form_cadastrar_nfs.php"><button>CADASTRAR NOTAS</button></a></td></tr>
+							<tr><td><a href="../cadastro/form_cadastrar_clientes.php"><button>CADASTRAR CLIENTES</button></a></td></tr>
+							<tr><td><a href="../cadastro/form_cadastrar_distribuidoras.php"><button>CADASTRAR DISTRIBUIDORAS</button></a></td></tr>
+						</table>
+					</menu>
 <?php
 	require('../connect.php');
 	
@@ -17,23 +34,6 @@
 	if($n != 0)
 	{
 		?>
-			<html>
-				<head>
-					<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-					<link href="..\estilo.css" rel="stylesheet">
-					<title>Matriz Principal</title>
-				</head> 
-				<body>
-					<menu>
-						<a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
-						<h1>MATRIZ PRINCIPAL</h1><p>
-						<table border=1>
-							<tr><td><h2>CADASTROS</h2></td></tr>
-							<tr><td><a href="../cadastro/form_cadastrar_nfs.html"><button>CADASTRAR NOTAS</button></a></td></tr>
-							<tr><td><a href="../cadastro/form_cadastrar_clientes.html"><button>CADASTRAR CLIENTES</button></a></td></tr>
-							<tr><td><a href="../cadastro/form_cadastrar_distribuidoras.html"><button>CADASTRAR DISTRIBUIDORAS</button></a></td></tr>
-						</table>
-					</menu>
 					<pag>
 						<h2>CADASTRAR CLIENTES</h2><p>
 						<table border=2>
@@ -41,15 +41,13 @@
 								<td>
 									<table>
 										<tr>
-											<td><h4>CLIENTE JÁ CADASTRADO</h4></td>
+											<td><h5>CLIENTE JÁ CADASTRADO</h5></td>
 										</tr>
 									</table>
 								</td>	
 							</tr>
 						</table>
 					</pag>
-				</body>
-			</html>
 			<?php
 		
 	}
@@ -61,27 +59,9 @@
 		
 		if($n2 != 0)
 		{
-			$sql = mysqli_query($conn,"INSERT INTO $tab_cli VALUES ('$cod_cli', '$nom_cli', '$cad_cli', '$rot_cli', '$cid_cli', '$bai_cli', '$end_cli', '$cod_dis')");
-			$sql = mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `codigo` = '$cod_cli'"));	
+			$sql = mysqli_query($conn,"INSERT INTO $tab_cli(`codigo`, `nome`, `cadastro`, `rota`, `cidade`, `bairro`, `endereco`, `cod_distribuidora`) VALUES ('$cod_cli', '$nom_cli', '$cad_cli', '$rot_cli', '$cid_cli', '$bai_cli', '$end_cli', '$cod_dis')");	
 			
 			?>
-				<html>
-					<head>
-						<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-						<link href="..\estilo.css" rel="stylesheet">
-						<title>Matriz Principal</title>
-					</head> 
-					<body>
-						<menu>
-							<a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
-							<h1>MATRIZ PRINCIPAL</h1><p>
-							<table border=1>
-								<tr><td><h2>CADASTROS</h2></td></tr>
-								<tr><td><a href="../cadastro/form_cadastrar_nfs.html"><button>CADASTRAR NOTAS</button></a></td></tr>
-								<tr><td><a href="../cadastro/form_cadastrar_clientes.html"><button>CADASTRAR CLIENTES</button></a></td></tr>
-								<tr><td><a href="../cadastro/form_cadastrar_distribuidoras.html"><button>CADASTRAR DISTRIBUIDORAS</button></a></td></tr>
-							</table>
-						</menu>
 						<pag>
 							<h2>CADASTRAR CLIENTES</h2><p>
 							<table border=2>
@@ -89,69 +69,18 @@
 									<td>
 										<table>
 											<tr>
-												<td><h2>CLIENTE CADASTRADO:</h2></td>
-											</tr>
-											<tr>
-												<td><h4>CÓDIGO:</h4></td>
-												<td><h4><?php echo	$sql['codigo'];	?></h4></td>
-											</tr>
-											<tr>
-												<td><h4>NOME:</h4></td>
-												<td><h4><?php echo	$sql['nome'];	?></h4></td>
-											</tr>
-											<tr>
-												<td><h4>CADASTRO:</h4></td>
-												<td><h4><?php	echo	$sql['cadastro'];	?></h4></td>
-											</tr>
-											<tr>
-												<td><h4>ROTA:</h4></td>
-												<td><h4><?php	echo	$sql['rota'];	?></h4></td>
-											</tr>
-											<tr>
-												<td><h4>CIDADE:</h4></td>
-												<td><h4><?php	echo	$sql['cidade'];	?></h4></td>
-											</tr>
-											<tr>
-												<td><h4>BAIRRO:</h4></td>
-												<td><h4><?php	echo	$sql['bairro'];	?></h4></td>
-											</tr>
-											<tr>
-												<td><h4>ENDEREÇO:</h4></td>
-												<td><h4><?php	echo	$sql['endereco'];	?></h4></td>
-											</tr>
-											<tr>
-												<td><h4>CÓDIGO DISTRIBUIDORA:</h4></td>
-												<td><h4><?php	echo	$sql['cod_distribuidora'];	?></h4></td>
+												<td><h7>CLIENTE CADASTRADO</h7></td>
 											</tr>
 										</table>	
 									</td>	
 								</tr>
 							</table>
-						</pag>		
-					</body>
-				</html>
+						</pag>
 			<?php						
 		}
 		else
 		{		
 			?>
-			<html>
-				<head>
-					<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-					<link href="..\estilo.css" rel="stylesheet">
-					<title>Matriz Principal</title>
-				</head> 
-				<body>
-					<menu>
-						<a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
-						<h1>MATRIZ PRINCIPAL</h1><p>
-						<table border=1>
-							<tr><td><h2>CADASTROS</h2></td></tr>
-							<tr><td><a href="../cadastro/form_cadastrar_nfs.html"><button>CADASTRAR NOTAS</button></a></td></tr>
-							<tr><td><a href="../cadastro/form_cadastrar_clientes.html"><button>CADASTRAR CLIENTES</button></a></td></tr>
-							<tr><td><a href="../cadastro/form_cadastrar_distribuidoras.html"><button>CADASTRAR DISTRIBUIDORAS</button></a></td></tr>
-						</table>
-					</menu>
 					<pag>
 						<h2>CADASTRAR CLIENTES</h2><p>
 						<table border=2>
@@ -159,16 +88,50 @@
 								<td>
 									<table>
 										<tr>
-											<td><h4>DISTRIBUIDORA NÃO CADASTARDA</h4></td>
+											<td><h6>DISTRIBUIDORA NÃO CADASTARDA</h6></td>
 										</tr>
 									</table>	
 								</td>	
 							</tr>
 						</table>
-					</pag>	
-				</body>
-			</html>
+					</pag>
 			<?php			
 		}		
 	}
 ?>
+		<urc>
+            <table border=2>
+                <h3>CLIENTES CADASTRADOS</h3>
+                <tr>
+					<td><h3>CÓDIGO</h3></td>
+					<td><h3>NOME</h3></td>
+                    <td><h3>CADASTRO</h3></td>
+                    <td><h3>ROTA</h3></td>
+                    <td><h3>CIDADE</h3></td>
+                    <td><h3>BAIRRO</h3></td>
+                    <td><h3>ENDEREÇO</h3></td>
+                    <td><h3>COD_DISTRIBUIDORA</h3></td>						
+				</tr>		
+                <?php   require('..\connect.php');
+				$sql = mysqli_query($conn,"SELECT * FROM $tab_cli ORDER BY `id` DESC LIMIT 5");
+				$n = mysqli_num_rows($sql);
+                $i=0;
+                    while($i!=$n)
+                    {
+                        $vn = mysqli_fetch_array($sql);	?>                        
+                                <tr>
+                                    <td><h4><?php echo $vn['codigo'];   ?></h4></td>
+                                    <td><h4><?php echo $vn['nome'];    ?></h4></td>
+                                    <td><h4><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></h4></td>
+                                    <td><h4><?php echo $vn['rota'];    ?></h4></td>
+                                    <td><h4><?php echo $vn['cidade'];    ?></h4></td>
+                                    <td><h4><?php echo $vn['bairro'];    ?></h4></td>
+                                    <td><h4><?php echo $vn['endereco'];    ?></h4></td>
+                                    <td><h4><?php echo $vn['cod_distribuidora'];    ?></h4></td>					
+                                </tr>                                            
+                        <?php   $i = $i + 1;
+                    }   ?>
+            </table>
+        </urc>	
+	</body>
+</html>
