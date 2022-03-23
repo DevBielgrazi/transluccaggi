@@ -9,11 +9,13 @@
 		<menu>
 			<a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
 			<h1>MATRIZ PRINCIPAL</h1><p>
-			<table class="tableb" border=1>
+			<table class="tableb">
 				<tr><td><h2>CADASTROS</h2></td></tr>
 				<tr><td><a href="../cadastro/form_cadastrar_nfs.php"><button>NOTAS</button></a></td></tr>
 				<tr><td><a href="../cadastro/form_cadastrar_clientes.php"><button>CLIENTES</button></a></td></tr>
 				<tr><td><a href="../cadastro/form_cadastrar_distribuidoras.php"><button>DISTRIBUIDORAS</button></a></td></tr>
+				<tr><td><h2>PESQUISAS</h2></td></tr>
+				<tr><td><a href="../pesquisa/form_pesquisar_nfs.html"><button>NOTAS</button></a></td></tr>
 			</table>
 		</menu>
 <?php
@@ -30,20 +32,14 @@
 	if($n != 0)
 	{
 		?>
-					<pag>
-						<h2>CADASTRAR DISTRIBUIDORA</h2><p>
-						<table border=2>
-							<tr>
-								<td>
-									<table>
-										<tr>
-											<td><h5>DISTRIBUIDORA JÁ CADASTARDA</h5></td>
-										</tr>
-									</table>
-								</td>	
-							</tr>
-						</table>
-					</pag>
+			<pag>
+				<h2>CADASTRAR DISTRIBUIDORA</h2><p>
+				<table>
+					<tr>
+						<td><h5>DISTRIBUIDORA JÁ CADASTARDA</h5></td>
+					</tr>
+				</table>
+			</pag>
 		<?php
 	}
 	else
@@ -51,25 +47,19 @@
 		$sql = mysqli_query($conn,"INSERT INTO $tab_dis(`nome`, `porcentagem`, `cadastro`) VALUES ('$nom_dis', '$por_dis', '$cad_dis')");
 		
 		?>
-					<pag>
-						<h2>CADASTRAR DISTRIBUIDORAS</h2><p>
-						<table border=2>
-							<tr>
-								<td>
-									<table>
-										<tr>
-											<td><h7>DISTRIBUIDORA CADASTRADA</h7></td>
-										</tr>
-									</table>	
-								</td>	
-							</tr>
-						</table>
-					</pag>
+			<pag>
+				<h2>CADASTRAR DISTRIBUIDORAS</h2><p>
+				<table>
+					<tr>
+						<td><h7>DISTRIBUIDORA CADASTRADA</h7></td>
+					</tr>
+				</table>
+			</pag>
 		<?php
 	}		
 ?>
 		<urd>
-			<table border=2>
+			<table border=1>
 				<h3>DISTRIBUIDORAS CADASTRADAS</h3>
 				<tr>
 					<td><h3>CÓDIGO</h3></td>
@@ -84,9 +74,9 @@
 					{
 						$vn = mysqli_fetch_array($sql);	?>                        
 								<tr>
-									<td><h4><?php echo $vn['codigo'];   ?></h4></td>
-									<td><h4><?php echo $vn['nome'];    ?></h4></td>
-									<td><h4><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></h4></td>					
+									<td><h4><nobr><?php echo $vn['codigo'];   ?><nobr></h4></td>
+									<td><h4><nobr><?php echo $vn['nome'];    ?><nobr></h4></td>
+									<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?><nobr></h4></td>					
 								</tr>                                            
 						<?php   $i = $i + 1;
 					}   ?>

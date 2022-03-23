@@ -2,23 +2,25 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<link rel="icon" href="..\imagem/favicone.png"/>
-		<link href="..\estilo.css" rel="stylesheet">
+		<link href="../estilo.css" rel="stylesheet">
 		<title>Matriz Principal</title>
 	</head> 
 	<body>
 		<menu>
 			<a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
 			<h1>MATRIZ PRINCIPAL</h1><p>
-				<table class="tableb" border=1>
+				<table class="tableb">
 						<tr><td><h2>CADASTROS</h2></td></tr>
 						<tr><td><a href="../cadastro/form_cadastrar_nfs.php"><button>NOTAS</button></a></td></tr>
 						<tr><td><a href="../cadastro/form_cadastrar_clientes.php"><button>CLIENTES</button></a></td></tr>
 						<tr><td><a href="../cadastro/form_cadastrar_distribuidoras.php"><button>DISTRIBUIDORAS</button></a></td></tr>
+						<tr><td><h2>PESQUISAS</h2></td></tr>
+                        <tr><td><a href="../pesquisa/form_pesquisar_nfs.html"><button>NOTAS</button></a></td></tr>
 				</table>
 		</menu>
 		<pag>
 			<h2>CADASTRAR DISTRIBUIDORAS</h2><p>
-			<table border=2>
+			<table>
 					<tr>
 						<td>
 							<form method="post" action="cadastrar_distribuidoras.php">
@@ -34,18 +36,18 @@
 									<tr>
 										<td><h4>CADASTRO:</h4></td>
 										<td><input name="cad_dis" type=date required></td>
-									</tr>																 
-									<tr>
-										<td><input class="inputb" type=submit value=CADASTRAR></td>									
-									</tr>
+									</tr>																									 
 								</table>
+								<tr>
+									<td><input class="inputb" type=submit value=CADASTRAR></td>									
+								</tr>
 							</form>
 						</td>	
 					</tr>
 				</table>
 		</pag>
 		<urd>
-			<table border=2>
+			<table border=1>
 				<h3>DISTRIBUIDORAS CADASTRADAS</h3>
 				<tr>
 					<td><h3>CÓDIGO</h3></td>
@@ -60,9 +62,9 @@
 					{
 						$vn = mysqli_fetch_array($sql);	?>                        
 								<tr>
-									<td><h4><?php echo $vn['codigo'];   ?></h4></td>
-									<td><h4><?php echo $vn['nome'];    ?></h4></td>
-									<td><h4><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></h4></td>					
+									<td><h4><nobr><?php echo $vn['codigo'];   ?></nobr></h4></td>
+									<td><h4><nobr><?php echo $vn['nome'];    ?></nobr></h4></td>
+									<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>					
 								</tr>                                            
 						<?php   $i = $i + 1;
 					}   ?>

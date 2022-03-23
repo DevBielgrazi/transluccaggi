@@ -9,11 +9,13 @@
 		<menu>
 			<a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
 			<h1>MATRIZ PRINCIPAL</h1><p>
-			<table class="tableb" border=1>
+			<table class="tableb">
 				<tr><td><h2>CADASTROS</h2></td></tr>
 				<tr><td><a href="../cadastro/form_cadastrar_nfs.php"><button>NOTAS</button></a></td></tr>
 				<tr><td><a href="../cadastro/form_cadastrar_clientes.php"><button>CLIENTES</button></a></td></tr>
 				<tr><td><a href="../cadastro/form_cadastrar_distribuidoras.php"><button>DISTRIBUIDORAS</button></a></td></tr>
+				<tr><td><h2>PESQUISAS</h2></td></tr>
+                <tr><td><a href="../pesquisa/form_pesquisar_nfs.html"><button>NOTAS</button></a></td></tr>
 			</table>
 		</menu>
 <?php
@@ -34,21 +36,15 @@
 	if($n != 0)
 	{
 		?>
-					<pag>	
-						<h2>CADASTRAR NOTAS FISCAIS</h2><p>
-						<table border=2>
-							<tr>
-								<td>
-									<table>
-										<tr>
-											<td><h5>NOTA JÁ CADASTRADA</h5></td>
-										</tr>	
-									</table>								
-								</td>	
-							</tr>
-						</table>
-					</pag>
-			<?php
+			<pag>	
+				<h2>CADASTRAR NOTAS FISCAIS</h2><p>
+				<table>
+					<tr>
+						<td><h5>NOTA JÁ CADASTRADA</h5></td>
+					</tr>	
+				</table>
+			</pag>
+		<?php
 		}
 		else
 		{		
@@ -60,45 +56,33 @@
 				$sql = mysqli_query($conn,"INSERT INTO $tab_nfs(`numero`, `serie`, `emissao`, `entrada`, `valor`, `peso`, `cod_cliente`, `status`, `observacao`) VALUES ('$num_nf', '$ser_nf', '$emi_nf', '$ent_nf', '$val_nf', '$pes_nf', '$cod_cli', 'DISPONÍVEL', '')");	
 				
 				?>
-							<pag>
-								<h2>CADASTRAR NOTAS FISCAIS</h2><p>
-								<table border=2>
-									<tr>
-										<td>
-											<table>
-												<tr>
-													<td><h7>NOTA CADASTRADA</h7></td>
-												</tr>
-											</table>	
-										</td>	
-									</tr>
-								</table>
-							</pag>
+					<pag>
+						<h2>CADASTRAR NOTAS FISCAIS</h2><p>
+						<table>
+							<tr>
+								<td><h7>NOTA CADASTRADA</h7></td>
+							</tr>
+						</table>
+					</pag>
 				<?php
 			}
 		else
 		{
 			?>
-						<pag>
-							<h2>CADASTRAR NOTAS FISCAIS</h2><p>
-							<table align="center" border=2>
-								<tr>
-									<td>
-										<table>
-											<tr>
-												<td><h6>CLIENTE NÃO CADASTRADO</h6></td>
-											</tr>												
-										</table>	
-									</td>	
-								</tr>
-							</table>
-						</pag>
-				<?php
+				<pag>
+					<h2>CADASTRAR NOTAS FISCAIS</h2><p>
+					<table>
+						<tr>
+							<td><h6>CLIENTE NÃO CADASTRADO</h6></td>
+						</tr>												
+					</table>
+				</pag>
+			<?php
 		}
 	}		
 ?>
 		<urn>
-            <table border=2>
+            <table border=1>
                 <h3>NOTAS CADASTRADAS</h3>
                 <tr>
 					<td><h3>NÚMERO</h3></td>
@@ -107,7 +91,7 @@
                     <td><h3>ENTRADA</h3></td>
                     <td><h3>VALOR</h3></td>
                     <td><h3>PESO</h3></td>
-                    <td><h3>COD_CLIENTE</h3></td>
+                    <td><h3>COD_<br>CLIENTE</h3></td>
                     <td><h3>STATUS</h3></td>						
 				</tr>		
                 <?php   require('..\connect.php');
@@ -118,14 +102,14 @@
                     {
                         $vn = mysqli_fetch_array($sql); ?>                        
                                 <tr>
-                                    <td><h4><?php echo $vn['numero'];   ?></h4></td>
-                                    <td><h4><?php echo $vn['serie'];    ?></h4></td>
-                                    <td><h4><?php echo date( 'd/m/Y' , strtotime( $vn['emissao']));    ?></h4></td>
-                                    <td><h4><?php echo date( 'd/m/Y' , strtotime( $vn['entrada']));    ?></h4></td>
-                                    <td><h4><?php echo $vn['valor'];    ?></h4></td>
-                                    <td><h4><?php echo $vn['peso'];    ?></h4></td>
-                                    <td><h4><?php echo $vn['cod_cliente'];    ?></h4></td>
-                                    <td><h4><?php echo $vn['status'];    ?></h4></td>					
+                                    <td><h4><nobr><?php echo $vn['numero'];   ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['serie'];    ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['emissao']));    ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['entrada']));    ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['peso'];    ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['cod_cliente'];    ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['status'];    ?></nobr></h4></td>					
                                 </tr>                                            
                         <?php   $i = $i + 1;
                     }   ?>

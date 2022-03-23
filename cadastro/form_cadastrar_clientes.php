@@ -9,16 +9,18 @@
 		<menu>
 			<a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
 			<h1>MATRIZ PRINCIPAL</h1><p>
-				<table class="tableb" border=1>
+				<table class="tableb">
 						<tr><td><h2>CADASTROS</h2></td></tr>
 						<tr><td><a href="../cadastro/form_cadastrar_nfs.php"><button>NOTAS</button></a></td></tr>
 						<tr><td><a href="../cadastro/form_cadastrar_clientes.php"><button>CLIENTES</button></a></td></tr>
 						<tr><td><a href="../cadastro/form_cadastrar_distribuidoras.php"><button>DISTRIBUIDORAS</button></a></td></tr>
+						<tr><td><h2>PESQUISAS</h2></td></tr>
+                        <tr><td><a href="../pesquisa/form_pesquisar_nfs.html"><button>NOTAS</button></a></td></tr>
 				</table>
 		</menu>
 		<pag>
 			<h2>CADASTRAR CLIENTES</h2><p>
-			<table border=1>
+			<table>
 				<tr>
 					<td>
 						<form method="post" action="cadastrar_clientes.php">
@@ -69,17 +71,17 @@
 									<td><h4>CÓDIGO DISTRIBUIDORA:</h4></td>
 									<td><input name="cod_dis" type=int size=16 maxlength=16 required></td>
 								</tr>																 
-								<tr>
-									<td><input class="inputb" type=submit value=CADASTRAR></td>
-								</tr>
-							</table>
+							</table>							
+							<tr>
+								<td><input class="inputb" type=submit value=CADASTRAR></td>
+							</tr>
 						</form>						
 					</td>	
 				</tr>
 			</table>
 		</pag>
 		<urc>
-            <table border=2>
+            <table border=1>
                 <h3>CLIENTES CADASTRADOS</h3>
                 <tr>
 					<td><h3>CÓDIGO</h3></td>
@@ -88,8 +90,8 @@
                     <td><h3>ROTA</h3></td>
                     <td><h3>CIDADE</h3></td>
                     <td><h3>BAIRRO</h3></td>
-                    <td><h3>ENDEREÇO</h3></td>
-                    <td><h3>COD_DISTRIBUIDORA</h3></td>						
+                    <td><h3>ENDEREÇO</h3></td>						
+                    <td><h3>COD_<br>DISTRIBUIDORA</h3></td>						
 				</tr>		
                 <?php   require('..\connect.php');
 				$sql = mysqli_query($conn,"SELECT * FROM $tab_cli ORDER BY `id` DESC LIMIT 5");
@@ -99,18 +101,18 @@
                     {
                         $vn = mysqli_fetch_array($sql);	?>                        
                                 <tr>
-                                    <td><h4><?php echo $vn['codigo'];   ?></h4></td>
-                                    <td><h4><?php echo $vn['nome'];    ?></h4></td>
-                                    <td><h4><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></h4></td>
-                                    <td><h4><?php echo $vn['rota'];    ?></h4></td>
-                                    <td><h4><?php echo $vn['cidade'];    ?></h4></td>
-                                    <td><h4><?php echo $vn['bairro'];    ?></h4></td>
-                                    <td><h4><?php echo $vn['endereco'];    ?></h4></td>
-                                    <td><h4><?php echo $vn['cod_distribuidora'];    ?></h4></td>					
+                                    <td><h4><nobr><?php echo $vn['codigo'];   ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['nome'];    ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['rota'];    ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['cidade'];    ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['bairro'];    ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['endereco'];    ?></nobr></h4></td>					
+                                    <td><h4><nobr><?php echo $vn['cod_distribuidora'];    ?></nobr></h4></td>					
                                 </tr>                                            
                         <?php   $i = $i + 1;
                     }   ?>
             </table>
-        </urc>
+				</urc>
 	</body>
 </html>

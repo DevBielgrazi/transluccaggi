@@ -43,7 +43,7 @@ menu{
 pag{
     position:absolute;
     top:50px;
-    left:400px;
+    left:330px;
 }
 urn{
     position:absolute;
@@ -53,7 +53,7 @@ urn{
 urc{
     position:absolute;
     top:480px;
-    left:0px;
+    left:-100px;
 }
 urd{
     position:absolute;
@@ -75,8 +75,15 @@ input, select{
 table{
     align-items: center;
     text-align: center;
+    border-style: outset;
+    border-radius: 10px;
+    border-color:gray;
+    padding: 0%;
 }
 .tableb{
     align-items: left;
     text-align: left;
+    border-style: inset;
+    border-radius: 10px;
+    border-color:gray;
 }
