@@ -29,8 +29,14 @@
     $bai_cli = trim($_POST['bai_cli']);
 	$end_cli = trim($_POST['end_cli']);
     $cod_dis = trim($_POST['cod_dis']);
+    
+	if(!isset($_POST['age'])) {
+        $age = "NÂO";
+    } else {
+        $age = $_POST['age'];
+    }
 		
-	$sql = mysqli_query($conn, "SELECT * FROM $tab_cli WHERE `codigo` = '$cod_cli' and `cod_distribuidora` = '$cod_dis'");
+	$sql = mysqli_query($conn, "SELECT * FROM $tab_cli WHERE `codigo` = '$cod_cli'");
 
 	$n = mysqli_num_rows($sql);
 	
@@ -56,7 +62,7 @@
 		
 		if($n2 != 0)
 		{
-			$sql = mysqli_query($conn,"INSERT INTO $tab_cli(`codigo`, `nome`, `cadastro`, `rota`, `cidade`, `bairro`, `endereco`, `cod_distribuidora`) VALUES ('$cod_cli', '$nom_cli', '$cad_cli', '$rot_cli', '$cid_cli', '$bai_cli', '$end_cli', '$cod_dis')");	
+			$sql = mysqli_query($conn,"INSERT INTO $tab_cli(`codigo`, `nome`, `agendar`, `cadastro`, `rota`, `cidade`, `bairro`, `endereco`, `cod_distribuidora`) VALUES ('$cod_cli', '$nom_cli', '$age', '$cad_cli', '$rot_cli', '$cid_cli', '$bai_cli', '$end_cli', '$cod_dis')");	
 			
 			?>
 				<pag>

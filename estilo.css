@@ -52,13 +52,18 @@ urn{
 }
 urc{
     position:absolute;
-    top:480px;
+    top:520px;
     left:-100px;
 }
 urd{
     position:absolute;
     top:5px;
     left:550px;
+}
+rn{
+    position:absolute;
+    top:50px;
+    left:325px;
 }
 input, select{
     background-color: gray;

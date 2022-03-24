@@ -29,7 +29,7 @@
     $pes_nf = trim($_POST['pes_nf']);
     $cod_cli = trim($_POST['cod_cli']);
 		
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' and `cod_cliente` = '$cod_cli' and `serie` = '$ser_nf'");
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' and `cod_distribuidora` = '$cod_dis' and `serie` = '$ser_nf'");
 	
 	$n = mysqli_num_rows($sql);
 
@@ -46,26 +46,45 @@
 			</pag>
 		<?php
 		}
-		else
-		{		
-			$sql2 = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `codigo` = '$cod_cli'");
-			$n2 = mysqli_num_rows($sql2);
+	else
+	{			
 		
-			if($n2 != 0)
+		$sql2 = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `codigo` = '$cod_cli'");
+		
+		$n2 = mysqli_num_rows($sql2);
+	
+		if($n2 != 0)
+		{
+			$sql3 = mysqli_fetch_array($sql2);
+			$cod_dis = $sql3['cod_distribuidora'];
+			$rot_nf = $sql3['rota'];
+			$nom_cli = $sql3['nome'];
+			$cid_cli = $sql3['cidade'];
+			$bai_cli = $sql3['bairro'];
+			$end_cli = $sql3['endereco'];
+			$age = $sql3['agendar'];
+
+			if($age!="SIM")
 			{
-				$sql = mysqli_query($conn,"INSERT INTO $tab_nfs(`numero`, `serie`, `emissao`, `entrada`, `valor`, `peso`, `cod_cliente`, `status`, `observacao`) VALUES ('$num_nf', '$ser_nf', '$emi_nf', '$ent_nf', '$val_nf', '$pes_nf', '$cod_cli', 'DISPONÍVEL', '')");	
-				
-				?>
-					<pag>
-						<h2>CADASTRAR NOTAS FISCAIS</h2><p>
-						<table>
-							<tr>
-								<td><h7>NOTA CADASTRADA</h7></td>
-							</tr>
-						</table>
-					</pag>
-				<?php
+				$status = "DISPONÍVEL";
 			}
+			else{
+				$status = "AGENDAR";
+			}
+
+			$sql = mysqli_query($conn,"INSERT INTO $tab_nfs (`numero`, `serie`, `emissao`, `entrada`, `valor`, `peso`, `rota`, `cod_cliente`, `nome_cliente`, `cidade_cliente`, `bairro_cliente`, `endereco_cliente`, `cod_distribuidora`, `status`, `observacao`)  VALUES ('$num_nf', '$ser_nf', '$emi_nf', '$ent_nf', '$val_nf', '$pes_nf', '$rot_nf', '$cod_cli', '$nom_cli', '$cid_cli', '$bai_cli', '$end_cli', '$cod_dis', '$status', '')");	
+			
+			?>
+				<pag>
+					<h2>CADASTRAR NOTAS FISCAIS</h2><p>
+					<table>
+						<tr>
+							<td><h7>NOTA CADASTRADA</h7></td>
+						</tr>
+					</table>
+				</pag>
+			<?php
+		}
 		else
 		{
 			?>

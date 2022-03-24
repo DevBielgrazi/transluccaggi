@@ -26,36 +26,75 @@
 						<form method="post" action="pesquisar_nfs.php">
 							<table>
                                 <tr>
-									<td><h4>TODAS:<input type="checkbox" name="tod" value=1></h4></td>
+									<td><h4>TODAS<input type="radio" name="opc" value="tod"></h4></td>
 								</tr>
 								<tr>
-									<td><h4>NÚMERO:<input type="checkbox" name="num" value=1></h4></td>
-									<td><input name="num_nf" type=int size=16 maxlength=16 ></td>
+									<td><h4>STATUS:<input type="radio" name="opc" value="sta"></h4></td>
+									<td><select name="sta_nf">
+										<option value="DISPONÍVEL" selected>DISPONÍVEL</option>
+										<option value="AGENDAR">AGENDAR</option>
+										<option value="AGENDADA">AGENDADA</option>
+										<option value="ENTREGUE">ENTREGUE</option>
+										<option value="PENDENTE">PENDENTE</option>
+										<option value="REENTREGUE">REENTREGUE</option>
+									</select></td>
 								</tr>
 								<tr>
-									<td><h4>SÉRIE:<input type="checkbox" name="ser" value=1></h4></td>
-									<td><input name="ser_nf" type=int size=8 maxlength=8 ></td>
+									<td><h4>DATA DE EMISSÃO: CIDADE<input type="radio" name="opc" value="cide"></h4></td>
+									<td><h4>CLIENTE<input type="radio" name="opc" value="clie"></h4></td>
+									<td><h4>DISTRIBUIDORA<input type="radio" name="opc" value="dise"></h4></td>
 								</tr>
 								<tr>
-									<td><h4>EMISSÃO:<input type="checkbox" name="emi" value=1></h4></td>
+									<td><h4>DATA DE ENTRADA: CIDADE<input type="radio" name="opc" value="cidd"></h4></td>
+									<td><h4>CLIENTE<input type="radio" name="opc" value="clid"></h4></td>
+									<td><h4>DISTRIBUIDORA<input type="radio" name="opc" value="disd"></h4></td>
+								</tr>
+								<tr>
+									<td><h4>NÚMERO:<input type="radio" name="opc" value="num"></h4></td>
+									<td><input name="num_nf" type=text size=16 maxlength=16 ></td>
+								</tr>
+								<tr>
+									<td><h4>EMISSÃO:<input type="radio" name="opc" value="emi"></h4></td>
 									<td><input name="emi_nf" type=date ></td>
+									<td><h4>ATÉ</h4>></td>
+									<td><input name="emi_nf2" type=date ></td>
 								</tr>
 								<tr>
-									<td><h4>ENTRADA:<input type="checkbox" name="ent" value=1></h4></td>
+									<td><h4>ENTRADA:<input type="radio" name="opc" value="ent"></h4></td>
 									<td><input name="ent_nf" type=date ></td>
+									<td><h4>ATÉ</h4>></td>
+									<td><input name="ent_nf2" type=date ></td>
 								</tr>
 								<tr>
-									<td><h4>VALOR:<input type="checkbox" name="val" value=1></h4></td>
-									<td><input name="val_nf" type=float size=16 maxlength=16 ></td>
+									<td><h4>ROTA:<input type="radio" name="opc" value="rot"></h4></td>
+									<td><select name="rot_nf">
+										<option value="VP0" selected>VP0</option>
+										<option value="VP1">VP1</option>
+										<option value="VP2">VP2</option>
+										<option value="VP3">VP3</option>
+										<option value="VP4">VP4</option>
+										<option value="VP5">VP5</option>
+										<option value="VP6">VP6</option>
+										<option value="VP7">VP7</option>
+										<option value="VP8">VP8</option>
+										<option value="VP9">VP9</option>
+										<option value="VP10">VP10</option>
+										<option value="VP11">VP11</option>
+										<option value="VP12">VP12</option>
+									</select></td>
 								</tr>
 								<tr>
-									<td><h4>PESO:<input type="checkbox" name="pes" value=1></h4></td>
-									<td><input name="pes_nf" type=float size=16 maxlength=16 ></td>
+									<td><h4>CIDADE:<input type="radio" name="opc" value="cid"></h4></td>
+									<td><input name="cid_cli" type=text size=32 maxlength=32></td>
 								</tr>
 								<tr>
-									<td><h4>CÓDIGO CLIENTE:<input type="checkbox" name="cli" value="1"></h4></td>
-									<td><input name="cod_cli" type=int size=16 maxlength=16 ></td>
-								</tr>																 
+									<td><h4>NOME CLIENTE:<input type="radio" name="opc" value="cli"></h4></td>
+									<td><input name="nom_cli" type=text size=32 maxlength=64 ></td>
+								</tr>
+								<tr>
+									<td><h4>CÓDIGO DISTRIBUIDORA:<input type="radio" name="opc" value="dis"></h4></td>
+									<td><input name="cod_dis" type=int size=32 maxlength=16 ></td>
+								</tr>																	 
 							</table>                            
                             <tr>
                                 <td><input class="inputb" type=submit value=PESQUISAR></td>

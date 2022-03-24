@@ -27,7 +27,7 @@
 							<table>
 								<tr>
 									<td><h4>CÓDIGO:</h4></td>
-									<td><input name="cod_cli" type=text size=16 maxlength=16 required></td>
+									<td><input name="cod_cli" type=text size=32 maxlength=16 required></td>
 								</tr>
 								<tr>
 									<td><h4>NOME:</h4></td>
@@ -69,7 +69,11 @@
 								</tr>
 								<tr>
 									<td><h4>CÓDIGO DISTRIBUIDORA:</h4></td>
-									<td><input name="cod_dis" type=int size=16 maxlength=16 required></td>
+									<td><input name="cod_dis" type=int size=32 maxlength=16 required></td>
+								</tr>
+								
+								<tr>
+									<td><h4>AGERNDAR:<input type=checkbox name="age" value="SIM"></h4></td>
 								</tr>																 
 							</table>							
 							<tr>
@@ -113,6 +117,6 @@
                         <?php   $i = $i + 1;
                     }   ?>
             </table>
-				</urc>
+		</urc>
 	</body>
 </html>

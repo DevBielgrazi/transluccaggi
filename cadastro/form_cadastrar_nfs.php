@@ -31,7 +31,7 @@
 								</tr>
 								<tr>
 									<td><h4>SÉRIE:</h4></td>
-									<td><input name="ser_nf" type=int size=8 maxlength=8 required></td>
+									<td><input name="ser_nf" type=int size=16 maxlength=8 required></td>
 								</tr>
 								<tr>
 									<td><h4>EMISSÃO:</h4></td>

@@ -18,7 +18,7 @@
                 <tr><td><a href="../pesquisa/form_pesquisar_nfs.html"><button>NOTAS</button></a></td></tr>
             </table>
 		</menu>
-        <urn>
+        <rn>
             <table border=1>
                 <tr><h3>NOTAS FISCAIS</h3></tr>
                 <tr>
@@ -28,97 +28,81 @@
                     <td><h3>ENTRADA</h3></td>
                     <td><h3>VALOR</h3></td>
                     <td><h3>PESO</h3></td>
-                    <td><h3>COD_<br>CLIENTE</h3></td>
+                    <td><h3>ROTA</h3></td>
+                    <td><h3>CIDADE</h3></td>
+                    <td><h3>NOME_<br>CLIENTE</h3></td>
+                    <td><h3>COD_<br>DISTRIBUIDORA</h3></td>
                     <td><h3>STATUS</h3></td>						
 				</tr>
 <?php
 	require('../connect.php');
 	
 	$num_nf = trim($_POST['num_nf']);
-    $ser_nf = trim($_POST['ser_nf']);
     $emi_nf = trim($_POST['emi_nf']);
+    $emi_nf2 = trim($_POST['emi_nf2']);
     $ent_nf = trim($_POST['ent_nf']);
-    $val_nf = trim($_POST['val_nf']);
-    $pes_nf = trim($_POST['pes_nf']);
-    $cod_cli = trim($_POST['cod_cli']);
+    $ent_nf2 = trim($_POST['ent_nf2']);
+    $rot_nf = trim($_POST['rot_nf']);
+    $cid_cli = trim($_POST['cid_cli']);
+    $nom_cli = trim($_POST['nom_cli']);
+    $cod_dis = trim($_POST['cod_dis']);
+    $sta_nf = trim($_POST['sta_nf']);
 
-    //Verificando Checkboxes
-
-    if (!isset($_POST['tod'])) {
-        $fil_tod = 0;
+    if(!isset($_POST['opc'])) {
+        $fil_nf = "nul";
     } else {
-        $fil_tod = 1;
-    }
-    if (!isset($_POST['num'])) {
-        $fil_num = 0;
-    } else {
-        $fil_num = 1;
-    }
-    if (!isset($_POST['ser'])) {
-        $fil_ser = 0;
-    } else {
-        $fil_ser = 1;
-    }
-    if (!isset($_POST['emi'])) {
-        $fil_emi = 0;
-    } else {
-        $fil_emi = 1;
-    }
-    if (!isset($_POST['ent'])) {
-        $fil_ent = 0;
-    } else {
-        $fil_ent = 1;
-    }
-    if (!isset($_POST['val'])) {
-        $fil_val = 0;
-    } else {
-        $fil_val = 1;
-    }
-    if (!isset($_POST['pes'])) {
-        $fil_pes = 0;
-    } else {
-        $fil_pes = 1;
-    }
-    if (!isset($_POST['cli'])) {
-        $fil_cli = 0;
-    } else {
-        $fil_cli = 1;
+        $fil_nf = $_POST['opc'];
     }
 
-    //Filtrando através das Checkboxes
-
-    if($fil_tod==0 && $fil_num==0 && $fil_ser==0 && $fil_emi==0 && $fil_ent==0 && $fil_val==0 && $fil_pes==0 && $fil_cli==0){
-        $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `id` = '0' ORDER BY `id`");
-    }
-    elseif($fil_tod==1){
-        $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs  ORDER BY `id`");
-    }
-    elseif($fil_num==1 && $fil_ser==0 && $fil_emi==0 && $fil_ent==0 && $fil_val==0 && $fil_pes==0 && $fil_cli==0){
-        $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' ORDER BY `id`");
-    }
-    elseif($fil_num==0 && $fil_ser==1 && $fil_emi==0 && $fil_ent==0 && $fil_val==0 && $fil_pes==0 && $fil_cli==0){
-        $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `serie` = '$ser_nf'  ORDER BY `id`");
-    }
-    elseif($fil_num==0 && $fil_ser==0 && $fil_emi==1 && $fil_ent==0 && $fil_val==0 && $fil_pes==0 && $fil_cli==0){
-        $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `emissao` = '$emi_nf'  ORDER BY `id`");
-    }
-    elseif($fil_num==0 && $fil_ser==0 && $fil_emi==0 && $fil_ent==1 && $fil_val==0 && $fil_pes==0 && $fil_cli==0){
-        $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `entrada` = '$ent_nf'  ORDER BY `id`");
-    }
-    elseif($fil_num==0 && $fil_ser==0 && $fil_emi==0 && $fil_ent==0 && $fil_val==1 && $fil_pes==0 && $fil_cli==0){
-        $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `valor` = '$val_nf'  ORDER BY `id`");
-    }
-    elseif($fil_num==0 && $fil_ser==0 && $fil_emi==0 && $fil_ent==0 && $fil_val==0 && $fil_pes==1 && $fil_cli==0){
-        $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `peso` = '$pes_nf'  ORDER BY `id`");
-    }
-    elseif($fil_num==0 && $fil_ser==0 && $fil_emi==0 && $fil_ent==0 && $fil_val==0 && $fil_pes==0 && $fil_cli==1){
-        $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `cod_cliente` = '$cod_cli'  ORDER BY `id`");
-    }
-    elseif($fil_num==1 && $fil_ser==1 && $fil_emi==0 && $fil_ent==0 && $fil_val==0 && $fil_pes==0 && $fil_cli==0){
-        $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' and `serie` = '$ser_nf'  ORDER BY `id`");
-    }
-    else{
-        $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `id` = '0' ORDER BY `id`");
+    switch ($fil_nf) {
+        case 'tod':
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs  ORDER BY `id` DESC");
+            break;
+        case 'num':
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' ORDER BY `id` DESC");
+            break;
+        case 'emi':
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `emissao` >= '$emi_nf' and `emissao` <= '$emi_nf2'  ORDER BY `id` DESC");
+            break;  
+        case 'ent':
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `entrada` >= '$ent_nf' and `entrada` <= '$ent_nf2'  ORDER BY `id` DESC");
+            break;
+        case 'rot':
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `rota` = '$rot_nf'  ORDER BY `id` DESC");
+            break;
+        case 'cid':
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `cidade_cliente` = '$cid_cli'  ORDER BY `id` DESC");
+            break;
+        case 'cli':
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `nome_cliente` = '$nom_cli'  ORDER BY `id` DESC");
+            break;
+        case 'dis':
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `cod_distribuidora` = '$cod_dis'  ORDER BY `id` DESC");
+            break;
+        case 'cidd':
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `cidade_cliente` = '$cid_cli' and `entrada` >= '$ent_nf' and `entrada` <= '$ent_nf2'  ORDER BY `id` DESC");
+            break;
+        case 'clid':
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `nome_cliente` = '$nom_cli' `entrada` >= '$ent_nf' and `entrada` <= '$ent_nf2'  ORDER BY `id` DESC");
+            break;
+        case 'disd':
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `cod_distribuidora` = '$cod_dis' `entrada` >= '$ent_nf' and `entrada` <= '$ent_nf2'  ORDER BY `id` DESC");
+            break;
+        case 'cide':
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `cidade_cliente` = '$cid_cli' and `emissao` >= '$emi_nf' and `emissao` <= '$emi_nf2'  ORDER BY `id` DESC");
+            break;
+        case 'clie':
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `nome_cliente` = '$nom_cli' `emissao` >= '$emi_nf' and `emissao` <= '$emi_nf2'  ORDER BY `id` DESC");
+            break;
+        case 'dise':
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `cod_distribuidora` = '$cod_dis' `emissao` >= '$emi_nf' and `emissao` <= '$emi_nf2'  ORDER BY `id` DESC");
+            break;
+        case 'sta':
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `status` = '$sta_nf'  ORDER BY `id` DESC");
+            break;
+        default:
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `id` = '0'");
+            break;
     }
 
     $n = mysqli_num_rows($sql);
@@ -133,13 +117,16 @@
                                     <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['entrada']));    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['peso'];    ?></nobr></h4></td>
-                                    <td><h4><nobr><?php echo $vn['cod_cliente'];    ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['rota'];    ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['cidade_cliente'];    ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['nome_cliente'];    ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['cod_distribuidora'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['status'];    ?></nobr></h4></td>					
                                 </tr>                                            
                         <?php   $i = $i + 1;
                     }
 ?>
             </table>
-        </urn>	
+        </rn>	
 	</body>
 </html>
