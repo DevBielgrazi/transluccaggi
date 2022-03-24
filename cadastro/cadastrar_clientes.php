@@ -98,6 +98,7 @@
                 <tr>
 					<td><h3>CÓDIGO</h3></td>
 					<td><h3>NOME</h3></td>
+					<td><h3>AGENDAR</h3></td>
                     <td><h3>CADASTRO</h3></td>
                     <td><h3>ROTA</h3></td>
                     <td><h3>CIDADE</h3></td>
@@ -115,6 +116,7 @@
                                 <tr>
                                     <td><h4><nobr><?php echo $vn['codigo'];   ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['nome'];    ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['agendar'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['rota'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['cidade'];    ?></nobr></h4></td>
