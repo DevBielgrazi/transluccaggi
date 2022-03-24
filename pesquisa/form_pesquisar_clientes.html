@@ -16,60 +16,44 @@
 						<tr><td><a href="../cadastro/form_cadastrar_distribuidoras.php"><button>DISTRIBUIDORAS</button></a></td></tr>
 						<tr><td><h2>PESQUISAS</h2></td></tr>
                         <tr><td><a href="../pesquisa/form_pesquisar_nfs.html"><button>NOTAS</button></a></td></tr>
-						<tr><td><a href="../pesquisa/form_pesquisar_clientes.html"><button>CLIENTES</button></a></td></tr>
+                        <tr><td><a href="../pesquisa/form_pesquisar_clientes.html"><button>CLIENTES</button></a></td></tr>
 						<tr><td><a href="../pesquisa/form_pesquisar_distribuidoras.html"><button>DISTRIBUIDORAS</button></a></td></tr>
                 </table>
 		</menu>
 		<pag>
-			<h2>PESQUISAR NOTAS FISCAIS</h2><p>
+			<h2>PESQUISAR CLIENTES</h2><p>
 			<table>
 				<tr>
 					<td>
-						<form method="post" action="pesquisar_nfs.php">
+						<form method="post" action="pesquisar_clientes.php">
 							<table>
                                 <tr>
-									<td><h4>TODAS<input type="radio" name="opc" value="tod"></h4></td>
+									<td><h4>TODOS<input type="radio" name="opc" value="tod"></h4></td>
 								</tr>
 								<tr>
-									<td><h4>STATUS:<input type="radio" name="opc" value="sta"></h4></td>
-									<td><select name="sta_nf">
-										<option value="DISPONÍVEL" selected>DISPONÍVEL</option>
-										<option value="AGENDAR">AGENDAR</option>
-										<option value="AGENDADA">AGENDADA</option>
-										<option value="ENTREGUE">ENTREGUE</option>
-										<option value="PENDENTE">PENDENTE</option>
-										<option value="REENTREGUE">REENTREGUE</option>
-									</select></td>
+									<td><h4>DATA DE CADASTRO: DISTRIBUIDORA<input type="radio" name="opc" value="disc"></h4></td>
 								</tr>
 								<tr>
-									<td><h4>DATA DE EMISSÃO: CIDADE<input type="radio" name="opc" value="cide"></h4></td>
-									<td><h4>CLIENTE<input type="radio" name="opc" value="clie"></h4></td>
-									<td><h4>DISTRIBUIDORA<input type="radio" name="opc" value="dise"></h4></td>
+									<td><h4>CÓDIGO:<input type="radio" name="opc" value="cod"></h4></td>
+									<td><input name="cod_cli" type=text size=16 maxlength=16 ></td>
+								</tr>
+                                <tr>
+									<td><h4>NOME:<input type="radio" name="opc" value="nom"></h4></td>
+									<td><input name="nom_cli" type=text size=16 maxlength=32 ></td>
+								</tr>
+                                <tr>
+									<td><h4>AGENDAMENTO: SIM<input type="radio" name="opc" value="ages"></h4></td>
+									<td><h4>NÃO<input type="radio" name="opc" value="agen"></h4></td>
 								</tr>
 								<tr>
-									<td><h4>DATA DE ENTRADA: CIDADE<input type="radio" name="opc" value="cidd"></h4></td>
-									<td><h4>CLIENTE<input type="radio" name="opc" value="clid"></h4></td>
-									<td><h4>DISTRIBUIDORA<input type="radio" name="opc" value="disd"></h4></td>
-								</tr>
-								<tr>
-									<td><h4>NÚMERO:<input type="radio" name="opc" value="num"></h4></td>
-									<td><input name="num_nf" type=text size=16 maxlength=16 ></td>
-								</tr>
-								<tr>
-									<td><h4>EMISSÃO:<input type="radio" name="opc" value="emi"></h4></td>
-									<td><input name="emi_nf" type=date ></td>
+									<td><h4>CADASTRO:<input type="radio" name="opc" value="cad"></h4></td>
+									<td><input name="cad_cli" type=date ></td>
 									<td><h4>ATÉ</h4>></td>
-									<td><input name="emi_nf2" type=date ></td>
-								</tr>
-								<tr>
-									<td><h4>ENTRADA:<input type="radio" name="opc" value="ent"></h4></td>
-									<td><input name="ent_nf" type=date ></td>
-									<td><h4>ATÉ</h4>></td>
-									<td><input name="ent_nf2" type=date ></td>
+									<td><input name="cad_cli2" type=date ></td>
 								</tr>
 								<tr>
 									<td><h4>ROTA:<input type="radio" name="opc" value="rot"></h4></td>
-									<td><select name="rot_nf">
+									<td><select name="rot_cli">
 										<option value="VP0" selected>VP0</option>
 										<option value="VP1">VP1</option>
 										<option value="VP2">VP2</option>
@@ -85,17 +69,13 @@
 										<option value="VP12">VP12</option>
 									</select></td>
 								</tr>
-								<tr>
+                                <tr>
 									<td><h4>CIDADE:<input type="radio" name="opc" value="cid"></h4></td>
-									<td><input name="cid_cli" type=text size=32 maxlength=32></td>
+									<td><input name="cid_cli" type=text size=16 maxlength=32 ></td>
 								</tr>
-								<tr>
-									<td><h4>NOME CLIENTE:<input type="radio" name="opc" value="cli"></h4></td>
-									<td><input name="nom_cli" type=text size=32 maxlength=64 ></td>
-								</tr>
-								<tr>
-									<td><h4>CÓDIGO DISTRIBUIDORA:<input type="radio" name="opc" value="dis"></h4></td>
-									<td><input name="cod_dis" type=int size=32 maxlength=16 ></td>
+                                <tr>
+									<td><h4>CÓDIGO DISTRIBUIDORA:<input type="radio" name="opc" value="codd"></h4></td>
+									<td><input name="cod_dis" type=text size=16 maxlength=16 ></td>
 								</tr>																	 
 							</table>                            
                             <tr>
