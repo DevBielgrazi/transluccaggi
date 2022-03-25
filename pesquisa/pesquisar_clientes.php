@@ -24,6 +24,7 @@
             <table border=1>
                 <tr><h3>CLIENTES</h3></tr>
                 <tr>
+					<td></td>
 					<td><h3>CÓDIGO</h3></td>
 					<td><h3>NOME</h3></td>
                     <td><h3>AGENDAR</h3></td>
@@ -91,8 +92,11 @@
                 $i=0;
                     while($i!=$n)
                     {
-                        $vn = mysqli_fetch_array($sql); ?>                        
+                        $vn = mysqli_fetch_array($sql); ?>
+                            <form method="post" action="..\alterar/resultado_alterar_clientes.php">                        
                                 <tr>
+                                <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
+                                    <td><input width="40" type="image" src="..\imagem/alter.png" alt="submit"></td>
                                     <td><h4><nobr><?php echo $vn['codigo'];   ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['nome'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['agendar'];    ?></nobr></h4></td>
@@ -102,7 +106,8 @@
                                     <td><h4><nobr><?php echo $vn['bairro'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['endereco'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['cod_distribuidora'];    ?></nobr></h4></td>
-                                </tr>                                            
+                                </tr>
+                            </form>                                            
                         <?php   $i = $i + 1;
                     }
 ?>

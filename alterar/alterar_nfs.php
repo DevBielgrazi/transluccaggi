@@ -43,10 +43,6 @@
     $sql2 = mysqli_fetch_array($sql);
     $num_nfa = $sql2['numero'];
     $ser_nfa = $sql2['serie'];
-    $emi_nfa = $sql2['emissao'];
-    $ent_nfa = $sql2['entrada'];
-    $val_nfa = $sql2['valor'];
-    $pes_nfa = $sql2['peso'];
     $cod_clia = $sql2['cod_cliente'];
     $cod_disa = $sql2['cod_distribuidora'];
     
