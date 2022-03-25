@@ -1,7 +1,7 @@
 body{
     background-color: black;
 }
-h1, h2{
+h1{
     color: gray;
     font-family: OCR A Std, monospace;
 }
@@ -29,6 +29,10 @@ h7{
     font-family:OCR A Std, monospace;
     font-size: 20px;
 }
+h2{
+    color: dodgerblue;
+    font-family: OCR A Std, monospace;
+}
 button{
     background-color: blue;
     font-family: OCR A Std, monospace;
@@ -52,7 +56,7 @@ urn{
 }
 urc{
     position:absolute;
-    top:520px;
+    top:550px;
     left:-100px;
 }
 urd{

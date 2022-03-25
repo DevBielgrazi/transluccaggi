@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24-Mar-2022 às 19:00
+-- Tempo de geração: 25-Mar-2022 às 19:59
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -40,14 +40,6 @@ CREATE TABLE `clientes` (
   `cod_distribuidora` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Extraindo dados da tabela `clientes`
---
-
-INSERT INTO `clientes` (`id`, `codigo`, `nome`, `agendar`, `cadastro`, `rota`, `cidade`, `bairro`, `endereco`, `cod_distribuidora`) VALUES
-(1, '1', 'Gabriel da Silva Vieira', 'SIM', '2022-03-24', 'VP3', 'São José dos Campos', 'Jardim Satélite', 'Rua Cruzália, 273', 1),
-(2, '2', 'Odyney Edson Dos Santos', 'NÂO', '2022-03-24', 'VP3', 'São José dos Campos', 'Jardim Satélite', 'Rua Cruzália, 273', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -60,13 +52,6 @@ CREATE TABLE `distribuidoras` (
   `porcentagem` float NOT NULL,
   `cadastro` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `distribuidoras`
---
-
-INSERT INTO `distribuidoras` (`codigo`, `nome`, `porcentagem`, `cadastro`) VALUES
-(1, 'DPC', 2.5, '2022-03-24');
 
 -- --------------------------------------------------------
 
@@ -92,14 +77,6 @@ CREATE TABLE `notas_fiscais` (
   `status` varchar(16) NOT NULL,
   `observacao` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `notas_fiscais`
---
-
-INSERT INTO `notas_fiscais` (`id`, `numero`, `serie`, `emissao`, `entrada`, `valor`, `peso`, `rota`, `cod_cliente`, `nome_cliente`, `bairro_cliente`, `cidade_cliente`, `endereco_cliente`, `cod_distribuidora`, `status`, `observacao`) VALUES
-(1, '1', '1', '2022-03-23', '2022-03-24', 17169.7, 145.879, 'VP3', '1', 'Gabriel da Silva Vieira', 'Jardim Satélite', 'São José dos Campos', 'Rua Cruzália, 273', 1, 'AGENDAR', ''),
-(2, '2', '1', '2022-03-23', '2022-03-24', 17169.7, 145.879, 'VP3', '2', 'Odyney Edson Dos Santos', 'Jardim Satélite', 'São José dos Campos', 'Rua Cruzália, 273', 1, 'DISPONÍVEL', '');
 
 --
 -- Índices para tabelas despejadas
@@ -131,19 +108,19 @@ ALTER TABLE `notas_fiscais`
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `distribuidoras`
 --
 ALTER TABLE `distribuidoras`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `notas_fiscais`
 --
 ALTER TABLE `notas_fiscais`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
