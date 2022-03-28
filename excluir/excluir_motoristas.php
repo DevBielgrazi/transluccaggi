@@ -26,16 +26,16 @@
 <?php
 	require('../connect.php');
 
-	$cod_dis = trim($_POST['cod_dis']);
+	$id = trim($_POST['id']);
     
-    $sql = mysqli_query($conn,"DELETE FROM $tab_dis WHERE `codigo` = '$cod_dis'");
+    $sql = mysqli_query($conn,"DELETE FROM $tab_mot WHERE `id` = '$id'");
         
 ?>
         <pag>	
-				<h1>EXCLUIR DISTRIBUIDORAS</h1><p>
+				<h1>EXCLUIR MOTORISTAS</h1><p>
 				<table>
 					<tr>
-						<td><h7>DISTRIBUIDORA EXCLUÌDA</h7></td>
+						<td><h7>MOTORISTA EXCLUÌDO</h7></td>
 					</tr>	
 				</table>
 			</pag>	

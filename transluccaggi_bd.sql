@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Mar-2022 às 15:08
+-- Tempo de geração: 28-Mar-2022 às 17:38
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -56,6 +56,22 @@ CREATE TABLE `distribuidoras` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `motoristas`
+--
+
+CREATE TABLE `motoristas` (
+  `id` int(11) NOT NULL,
+  `cadastro` date NOT NULL,
+  `nome` varchar(32) NOT NULL,
+  `veiculo` varchar(16) NOT NULL,
+  `placa` varchar(8) NOT NULL,
+  `telefone` varchar(16) NOT NULL,
+  `endereco` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `notas_fiscais`
 --
 
@@ -95,6 +111,12 @@ ALTER TABLE `distribuidoras`
   ADD PRIMARY KEY (`codigo`);
 
 --
+-- Índices para tabela `motoristas`
+--
+ALTER TABLE `motoristas`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `notas_fiscais`
 --
 ALTER TABLE `notas_fiscais`
@@ -115,6 +137,12 @@ ALTER TABLE `clientes`
 --
 ALTER TABLE `distribuidoras`
   MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de tabela `motoristas`
+--
+ALTER TABLE `motoristas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `notas_fiscais`

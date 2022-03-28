@@ -24,61 +24,40 @@
 				</table>
 			</menu>
 		<pag>
-			<h1>PESQUISAR CLIENTES</h1><p>
+			<h1>PESQUISAR MOTORISTAS</h1><p>
 			<table>
 				<tr>
 					<td>
-						<form method="post" action="pesquisar_clientes.php">
+						<form method="post" action="pesquisar_motoristas.php">
 							<table>
                                 <tr>
 									<td><h4>TODOS<input type="radio" name="opc" value="tod"></h4></td>
 								</tr>
 								<tr>
-									<td><h4>DATA DE CADASTRO: DISTRIBUIDORA<input type="radio" name="opc" value="disc"></h4></td>
-								</tr>
-								<tr>
-									<td><h4>CÓDIGO:<input type="radio" name="opc" value="cod"></h4></td>
-									<td><input name="cod_cli" type=text size=16 maxlength=16 ></td>
+									<td><h4>CADASTRO:<input type="radio" name="opc" value="cad"></h4></td>
+									<td><input name="cad_mot" type=date ></td>
+									<td><h4>ATÉ</h4></td>
+									<td><input name="cad_mot2" type=date ></td>
 								</tr>
                                 <tr>
 									<td><h4>NOME:<input type="radio" name="opc" value="nom"></h4></td>
-									<td><input name="nom_cli" type=text size=16 maxlength=32 ></td>
+									<td><input name="nom_mot" type= size=16 maxlength= ></td>
 								</tr>
                                 <tr>
-									<td><h4>AGENDAMENTO: SIM<input type="radio" name="opc" value="ages"></h4></td>
-									<td><h4>NÃO<input type="radio" name="opc" value="agen"></h4></td>
-								</tr>
-								<tr>
-									<td><h4>CADASTRO:<input type="radio" name="opc" value="cad"></h4></td>
-									<td><input name="cad_cli" type=date ></td>
-									<td><h4>ATÉ</h4></td>
-									<td><input name="cad_cli2" type=date ></td>
-								</tr>
-								<tr>
-									<td><h4>ROTA:<input type="radio" name="opc" value="rot"></h4></td>
-									<td><select name="rot_cli">
-										<option value="VP0" selected>VP0</option>
-										<option value="VP1">VP1</option>
-										<option value="VP2">VP2</option>
-										<option value="VP3">VP3</option>
-										<option value="VP4">VP4</option>
-										<option value="VP5">VP5</option>
-										<option value="VP6">VP6</option>
-										<option value="VP7">VP7</option>
-										<option value="VP8">VP8</option>
-										<option value="VP9">VP9</option>
-										<option value="VP10">VP10</option>
-										<option value="VP11">VP11</option>
-										<option value="VP12">VP12</option>
-									</select></td>
+									<td><h4>VEÍCULO:<input type="radio" name="opc" value="vei"></h4></td>
+									<td><input name="vei_mot" type= size=16 maxlength= ></td>
 								</tr>
                                 <tr>
-									<td><h4>CIDADE:<input type="radio" name="opc" value="cid"></h4></td>
-									<td><input name="cid_cli" type=text size=16 maxlength=32 ></td>
+									<td><h4>PLACA:<input type="radio" name="opc" value="pla"></h4></td>
+									<td><input name="pla_mot" type= size=16 maxlength= ></td>
 								</tr>
                                 <tr>
-									<td><h4>CÓDIGO DISTRIBUIDORA:<input type="radio" name="opc" value="codd"></h4></td>
-									<td><input name="cod_dis" type=text size=16 maxlength=16 ></td>
+									<td><h4>TELEFONE:<input type="radio" name="opc" value="tel"></h4></td>
+									<td><input name="tel_mot" type= size=16 maxlength= ></td>
+								</tr>
+                                <tr>
+									<td><h4>ENDEREÇO:<input type="radio" name="opc" value="end"></h4></td>
+									<td><input name="end_mot" type= size=16 maxlength= ></td>
 								</tr>																	 
 							</table>                            
                             <tr>

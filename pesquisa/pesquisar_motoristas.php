@@ -25,43 +25,58 @@
         </menu>
         <rn>
             <table border=1>
-                <tr><h3>DISTRIBUIDORAS</h3></tr>
+                <h3>MOTORISTAS CADASTRADOS</h3>
                 <tr>
-					<td><h3></h3></td>
-					<td><h3></h3></td>
-					<td><h3>CÓDIGO</h3></td>
-					<td><h3>NOME</h3></td>
-                    <td><h3>CADASTRO</h3></td>						
+					<td><h3></h3></td>						
+					<td><h3></h3></td>						
+					<td><h3>CADASTRO</h3></td>						
+					<td><h3>NOME</h3></td>						
+					<td><h3>VEÍCULO</h3></td>						
+					<td><h3>PLACA</h3></td>						
+					<td><h3>TELEFONE</h3></td>						
+					<td><h3>ENDERECO</h3></td>						
 				</tr>
 <?php
 	require('../connect.php');
 	
-	$cod_dis = trim($_POST['cod_dis']);
-	$nom_dis = trim($_POST['nom_dis']);
-	$cad_dis = trim($_POST['cad_dis']);
-	$cad_dis2 = trim($_POST['cad_dis2']);
+	$cad_mot = trim($_POST['cad_mot']);
+	$cad_mot2 = trim($_POST['cad_mot2']);
+	$nom_mot = trim($_POST['nom_mot']);
+	$vei_mot = trim($_POST['vei_mot']);
+	$pla_mot = trim($_POST['pla_mot']);
+	$tel_mot = trim($_POST['tel_mot']);
+	$end_mot = trim($_POST['end_mot']);
 
     if(!isset($_POST['opc'])) {
-        $fil_dis = "nul";
+        $fil_mot = "nul";
     } else {
-        $fil_dis = $_POST['opc'];
+        $fil_mot = $_POST['opc'];
     }
 
-    switch ($fil_dis) {
+    switch ($fil_mot) {
         case 'tod':
-            $sql = mysqli_query($conn,"SELECT * FROM $tab_dis  ORDER BY `codigo` DESC");
-            break;
-        case 'cod':
-            $sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `codigo` = '$cod_dis' ORDER BY `codigo` DESC");
-            break;
-        case 'nom':
-            $sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `nome` = '$nom_dis' ORDER BY `codigo` DESC");
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_mot  ORDER BY `id` DESC");
             break;
         case 'cad':
-            $sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `cadastro` >= '$cad_dis' and `cadastro` <= '$cad_dis2' ORDER BY `codigo` DESC");
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `cadastro` >= '$cad_mot' and `cadastro` <= '$cad_mot2' ORDER BY `id` DESC");
+            break;
+        case 'nom':
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `nome` = '$nom_mot' ORDER BY `id` DESC");
+            break;
+        case 'vei':
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `veiculo` = '$vei_mot' ORDER BY `id` DESC");
+            break;
+        case 'pla':
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `placa` = '$pla_mot' ORDER BY `id` DESC");
+            break;
+        case 'tel':
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `telefone` = '$tel_mot' ORDER BY `id` DESC");
+            break;
+        case 'end':
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `endereco` = '$end_mot' ORDER BY `id` DESC");
             break;
         default:
-            $sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `codigo` = '0'");
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `id` = '0'");
             break;
     }
 
@@ -71,16 +86,19 @@
                     {
                         $vn = mysqli_fetch_array($sql); ?>
                                 <tr>
-                            <form method="post" action="..\excluir/resultado_excluir_distribuidoras.php">
-                                <input type="hidden" name="cod_dis" value="<?php echo $vn['codigo'];?>">
+                            <form method="post" action="..\excluir/resultado_excluir_motoristas.php">
+                                <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
                                     <td><nobr><input width="40" type="image" src="..\imagem/delete.png" alt="submit"></td>
                             </form>    
-                            <form method="post" action="..\alterar/resultado_alterar_distribuidoras.php">                        
-                                <input type="hidden" name="cod_dis" value="<?php echo $vn['codigo'];?>">
+                            <form method="post" action="..\alterar/resultado_alterar_motoristas.php">                        
+                                <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
                                     <td><input width="40" type="image" src="..\imagem/alter.png" alt="submit"></nobr></td>
-                                    <td><h4><nobr><?php echo $vn['codigo'];   ?></nobr></h4></td>
-                                    <td><h4><nobr><?php echo $vn['nome'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['nome'];   ?></nobr></h4></td>					
+                                    <td><h4><nobr><?php echo $vn['veiculo'];   ?></nobr></h4></td>					
+                                    <td><h4><nobr><?php echo $vn['placa'];   ?></nobr></h4></td>					
+                                    <td><h4><nobr><?php echo $vn['telefone'];   ?></nobr></h4></td>					
+                                    <td><h4><nobr><?php echo $vn['endereco'];   ?></nobr></h4></td>
                                 </tr>
                             </form>                                            
                         <?php   $i = $i + 1;

@@ -9,4 +9,5 @@
 	$tab_nfs = "notas_fiscais";
 	$tab_cli = "clientes";
 	$tab_dis = "distribuidoras";
+	$tab_mot = "motoristas";
  ?>

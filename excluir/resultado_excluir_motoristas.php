@@ -26,34 +26,40 @@
 <?php
 	require('..\connect.php');
 
-	$cod_dis = $_POST['cod_dis'];	
+	$id = $_POST['id'];	
 	
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `codigo` = '$cod_dis'");
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `id` = '$id'");
 	
 	$vn = mysqli_fetch_array($sql);
 ?>
             <pag>
-			<h1>EXCLUIR DISTRIBUIDORAS</h1><p>
+			<h1>EXCLUIR MOTORISTAS</h1><p>
 			<table>
 				<tr>
 					<td>
-						<form method="post" action="excluir_distribuidoras.php">
+						<form method="post" action="excluir_motoristas.php">
 							<table border=1>
                                 <tr>
-                                    <td><h3>CÓDIGO</h3></td>
-                                    <td><h3>NOME</h3></td>
                                     <td><h3>CADASTRO</h3></td>						
+                                    <td><h3>NOME</h3></td>						
+                                    <td><h3>VEÍCULO</h3></td>						
+                                    <td><h3>PLACA</h3></td>						
+                                    <td><h3>TELEFONE</h3></td>						
+                                    <td><h3>ENDERECO</h3></td>						
                                 </tr>
-                                <input type="hidden" name="cod_dis" value="<?php echo $vn['codigo'];?>">
-								<h6>DESEJA MESMO EXCLUIR ESSA DISTRIBUIDORA?</h6>
-                                <td><h4><nobr><?php echo $vn['codigo'];   ?></nobr></h4></td>
-                                <td><h4><nobr><?php echo $vn['nome'];    ?></nobr></h4></td>
-                                <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>																	 
+                                <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
+								<h6>DESEJA MESMO EXCLUIR ESSE MOTORISTA?</h6>
+                                    <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['nome'];   ?></nobr></h4></td>					
+                                    <td><h4><nobr><?php echo $vn['veiculo'];   ?></nobr></h4></td>					
+                                    <td><h4><nobr><?php echo $vn['placa'];   ?></nobr></h4></td>					
+                                    <td><h4><nobr><?php echo $vn['telefone'];   ?></nobr></h4></td>					
+                                    <td><h4><nobr><?php echo $vn['endereco'];   ?></nobr></h4></td>																	 
 							</table>                            
                             <tr>
                                 <td><input class="inputc" type=submit value=SIM>
 						</form>
-                        <form method="post" action="..\pesquisa\form_pesquisar_distribuidoras.html">
+                        <form method="post" action="..\pesquisa\form_pesquisar_motoristas.html">
                                 <input class="inputb" type=submit value=NÃO></td>
                             </tr>
                         </form>

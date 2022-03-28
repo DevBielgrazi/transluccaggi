@@ -28,45 +28,41 @@
 
 	$id = $_POST['id'];	
 	
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `id` = '$id'");
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `id` = '$id'");
 	
 	$vn = mysqli_fetch_array($sql);
 ?>
             <pag>
-			<h1>ALTERAR NOTAS FISCAIS</h1><p>
+			<h1>ALTERAR MOTORISTAS</h1><p>
 			<table>
 				<tr>
 					<td>
-						<form method="post" action="alterar_nfs.php">
+						<form method="post" action="alterar_motoristas.php">
 							<table>
                                 <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
-								<tr>
-                                    <td><h2><nobr><input type="radio" name="opc" value="num">NÚMERO:<?php echo $vn['numero'];   ?></nobr></h2></td>
-                                    <td><input name="num_nf" type=int size=16 maxlength=16 ></td>
+                                <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="cad">CADASTRO:<?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));;   ?></nobr></h2></td>
+                                    <td><input name="cad_mot" type=date></td>
 								</tr>
                                 <tr>
-                                    <td><h2><nobr><input type="radio" name="opc" value="ser">SÉRIE:<?php echo $vn['serie'];   ?></nobr></h2></td>
-                                    <td><input name="ser_nf" type=int size=16 maxlength=8 ></td>
+                                    <td><h2><nobr><input type="radio" name="opc" value="nom">NOME:<?php echo $vn['nome'];   ?></nobr></h2></td>
+                                    <td><input name="nom_mot" type=tex size=16 maxlength=32></td>
 								</tr>
                                 <tr>
-                                    <td><h2><nobr><input type="radio" name="opc" value="emi">EMISSÃO:<?php echo $vn['emissao'];   ?></nobr></h2></td>
-                                    <td><input name="emi_nf" type=date></td>
+                                    <td><h2><nobr><input type="radio" name="opc" value="vei">VEÍCULO:<?php echo $vn['veiculo'];   ?></nobr></h2></td>
+                                    <td><input name="vei_mot" type=text size=16 maxlength=16></td>
 								</tr>
                                 <tr>
-                                    <td><h2><nobr><input type="radio" name="opc" value="ent">ENTRADA:<?php echo $vn['entrada'];   ?></nobr></h2></td>
-                                    <td><input name="ent_nf" type=date></td>
+                                    <td><h2><nobr><input type="radio" name="opc" value="pla">PLACA:<?php echo $vn['placa'];   ?></nobr></h2></td>
+                                    <td><input name="pla_mot" type=text size=16 maxlength=8></td>
 								</tr>
                                 <tr>
-                                    <td><h2><nobr><input type="radio" name="opc" value="val">VALOR:<?php echo $vn['valor'];   ?></nobr></h2></td>
-                                    <td><input name="val_nf" type=float size=16 maxlength=16></td>
+                                    <td><h2><nobr><input type="radio" name="opc" value="tel">TELEFONE:<?php echo $vn['telefone'];   ?></nobr></h2></td>
+                                    <td><input name="tel_mot" type=int size=16 maxlength=16></td>
 								</tr>
                                 <tr>
-                                    <td><h2><nobr><input type="radio" name="opc" value="pes">PESO:<?php echo $vn['peso'];   ?></nobr></h2></td>
-                                    <td><input name="pes_nf" type=float size=16 maxlength=16></td>
-								</tr>
-                                <tr>
-                                    <td><h2><nobr><input type="radio" name="opc" value="cli">COD_CLIENTE:<?php echo $vn['cod_cliente'];   ?></nobr></h2></td>
-                                    <td><input name="cod_cli" type=text size=16 maxlength=16></td>
+                                    <td><h2><nobr><input type="radio" name="opc" value="end">ENDEREÇO:<?php echo $vn['endereco'];   ?></nobr></h2></td>
+                                    <td><input name="end_mot" type=text size=16 maxlength=64></td>
 								</tr>																	 
 							</table>                            
                             <tr>
