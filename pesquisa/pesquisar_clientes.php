@@ -25,6 +25,7 @@
                 <tr><h3>CLIENTES</h3></tr>
                 <tr>
 					<td></td>
+					<td></td>
 					<td><h3>CÓDIGO</h3></td>
 					<td><h3>NOME</h3></td>
                     <td><h3>AGENDAR</h3></td>
@@ -93,8 +94,12 @@
                     while($i!=$n)
                     {
                         $vn = mysqli_fetch_array($sql); ?>
-                            <form method="post" action="..\alterar/resultado_alterar_clientes.php">                        
                                 <tr>
+                            <form method="post" action="..\excluir/resultado_excluir_clientes.php">
+                                <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
+                                <td><nobr><input width="40" type="image" src="..\imagem/delete.png" alt="submit"></td>
+                            </form>
+                            <form method="post" action="..\alterar/resultado_alterar_clientes.php">
                                 <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
                                     <td><input width="40" type="image" src="..\imagem/alter.png" alt="submit"></td>
                                     <td><h4><nobr><?php echo $vn['codigo'];   ?></nobr></h4></td>

@@ -25,6 +25,7 @@
                 <tr><h3>NOTAS FISCAIS</h3></tr>
                 <tr>
 					<td><h3></h3></td>
+					<td><h3></h3></td>
 					<td><h3>NÚMERO</h3></td>
 					<td><h3>SÉRIE</h3></td>
                     <td><h3>EMISSÃO</h3></td>
@@ -112,9 +113,13 @@
                 $i=0;
                     while($i!=$n)
                     {
-                        $vn = mysqli_fetch_array($sql); ?>                        
-                                <form method="post" action="..\alterar/resultado_alterar_nfs.php">
+                        $vn = mysqli_fetch_array($sql); ?>
                                     <tr>
+                                <form method="post" action="..\excluir/resultado_excluir_nfs.php">
+                                    <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
+                                    <td><nobr><input width="40" type="image" src="..\imagem/delete.png" alt="submit"></td>
+                                </form>                        
+                                <form method="post" action="..\alterar/resultado_alterar_nfs.php">
                                     <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
                                         <td><input width="40" type="image" src="..\imagem/alter.png" alt="submit"></td>
                                         <td><h4><nobr><?php echo $vn['numero'];   ?></nobr></h4></td>

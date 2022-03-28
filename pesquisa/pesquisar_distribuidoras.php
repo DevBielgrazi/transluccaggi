@@ -25,6 +25,7 @@
                 <tr><h3>DISTRIBUIDORAS</h3></tr>
                 <tr>
 					<td><h3></h3></td>
+					<td><h3></h3></td>
 					<td><h3>CÓDIGO</h3></td>
 					<td><h3>NOME</h3></td>
                     <td><h3>CADASTRO</h3></td>						
@@ -66,10 +67,14 @@
                     while($i!=$n)
                     {
                         $vn = mysqli_fetch_array($sql); ?>
-                            <form method="post" action="..\alterar/resultado_alterar_distribuidoras.php">                        
                                 <tr>
+                            <form method="post" action="..\excluir/resultado_excluir_distribuidoras.php">
                                 <input type="hidden" name="cod_dis" value="<?php echo $vn['codigo'];?>">
-                                    <td><input width="40" type="image" src="..\imagem/alter.png" alt="submit"></td>
+                                    <td><nobr><input width="40" type="image" src="..\imagem/delete.png" alt="submit"></td>
+                            </form>    
+                            <form method="post" action="..\alterar/resultado_alterar_distribuidoras.php">                        
+                                <input type="hidden" name="cod_dis" value="<?php echo $vn['codigo'];?>">
+                                    <td><input width="40" type="image" src="..\imagem/alter.png" alt="submit"></nobr></td>
                                     <td><h4><nobr><?php echo $vn['codigo'];   ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['nome'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>
