@@ -24,6 +24,7 @@
             <table border=1>
                 <tr><h3>DISTRIBUIDORAS</h3></tr>
                 <tr>
+					<td><h3></h3></td>
 					<td><h3>CÓDIGO</h3></td>
 					<td><h3>NOME</h3></td>
                     <td><h3>CADASTRO</h3></td>						
@@ -56,7 +57,7 @@
             $sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `cadastro` >= '$cad_dis' and `cadastro` <= '$cad_dis2' ORDER BY `codigo` DESC");
             break;
         default:
-            $sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `id` = '0'");
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `codigo` = '0'");
             break;
     }
 
@@ -64,12 +65,16 @@
                 $i=0;
                     while($i!=$n)
                     {
-                        $vn = mysqli_fetch_array($sql); ?>                        
+                        $vn = mysqli_fetch_array($sql); ?>
+                            <form method="post" action="..\alterar/resultado_alterar_distribuidoras.php">                        
                                 <tr>
+                                <input type="hidden" name="cod_dis" value="<?php echo $vn['codigo'];?>">
+                                    <td><input width="40" type="image" src="..\imagem/alter.png" alt="submit"></td>
                                     <td><h4><nobr><?php echo $vn['codigo'];   ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['nome'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>
-                                </tr>                                            
+                                </tr>
+                            </form>                                            
                         <?php   $i = $i + 1;
                     }
 ?>
