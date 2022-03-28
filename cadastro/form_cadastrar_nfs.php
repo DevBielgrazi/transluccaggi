@@ -47,6 +47,10 @@
 									<td><input name="ent_nf" type=date required></td>
 								</tr>
 								<tr>
+									<td><h4>VOLUMES:</h4></td>
+									<td><input name="vol_nf" type=int size=16 maxlength=16 required></td>
+								</tr>
+								<tr>
 									<td><h4>VALOR:</h4></td>
 									<td><input name="val_nf" type=float size=16 maxlength=16 required></td>
 								</tr>

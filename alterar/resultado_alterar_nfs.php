@@ -57,6 +57,10 @@
                                     <td><input name="ent_nf" type=date></td>
 								</tr>
                                 <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="sai">SAÍDA:<?php echo $vn['saida'];   ?></nobr></h2></td>
+                                    <td><input name="sai_nf" type=date></td>
+								</tr>
+                                <tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="val">VALOR:<?php echo $vn['valor'];   ?></nobr></h2></td>
                                     <td><input name="val_nf" type=float size=16 maxlength=16></td>
 								</tr>
@@ -67,6 +71,10 @@
                                 <tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="cli">COD_CLIENTE:<?php echo $vn['cod_cliente'];   ?></nobr></h2></td>
                                     <td><input name="cod_cli" type=text size=16 maxlength=16></td>
+								</tr>
+                                <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="mot">MOTORISTA:<?php echo $vn['motorista'];   ?></nobr></h2></td>
+                                    <td><input name="sai_nf" type=text size=16 maxlength=16></td>
 								</tr>																	 
 							</table>                            
                             <tr>

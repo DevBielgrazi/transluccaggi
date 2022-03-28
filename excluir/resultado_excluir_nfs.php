@@ -50,6 +50,7 @@
                                 <td><h3>CIDADE</h3></td>
                                 <td><h3>NOME_<br>CLIENTE</h3></td>
                                 <td><h3>COD_<br>DISTRIBUIDORA</h3></td>
+                                <td><h3>MOTORISTA</h3></td>
                                 <td><h3>STATUS</h3></td>						
                                 </tr>
                                 <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
@@ -64,6 +65,7 @@
                                     <td><h4><nobr><?php echo $vn['cidade_cliente'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['nome_cliente'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['cod_distribuidora'];    ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['motorista'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['status'];    ?></nobr></h4></td>																	 
 							</table>                            
                             <tr>

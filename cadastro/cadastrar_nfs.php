@@ -30,6 +30,7 @@
     $ser_nf = trim($_POST['ser_nf']);
     $emi_nf = trim($_POST['emi_nf']);
     $ent_nf = trim($_POST['ent_nf']);
+    $vol_nf = trim($_POST['vol_nf']);
     $val_nf = trim($_POST['val_nf']);
     $pes_nf = trim($_POST['pes_nf']);
     $cod_cli = trim($_POST['cod_cli']);
@@ -78,7 +79,7 @@
 				$status = "AGENDAR";
 			}
 
-			$sql = mysqli_query($conn,"INSERT INTO $tab_nfs (`numero`, `serie`, `emissao`, `entrada`, `valor`, `peso`, `rota`, `cod_cliente`, `nome_cliente`, `cidade_cliente`, `bairro_cliente`, `endereco_cliente`, `cod_distribuidora`, `status`, `observacao`)  VALUES ('$num_nf', '$ser_nf', '$emi_nf', '$ent_nf', '$val_nf', '$pes_nf', '$rot_nf', '$cod_cli', '$nom_cli', '$cid_cli', '$bai_cli', '$end_cli', '$cod_dis', '$status', '')");	
+			$sql = mysqli_query($conn,"INSERT INTO $tab_nfs (`numero`, `serie`, `emissao`, `entrada`, `volumes`, `valor`, `peso`, `rota`, `cod_cliente`, `nome_cliente`, `cidade_cliente`, `bairro_cliente`, `endereco_cliente`, `cod_distribuidora`, `status`, `observacao`)  VALUES ('$num_nf', '$ser_nf', '$emi_nf', '$ent_nf', '$vol_nf', '$val_nf', '$pes_nf', '$rot_nf', '$cod_cli', '$nom_cli', '$cid_cli', '$bai_cli', '$end_cli', '$cod_dis', '$status', '')");	
 			
 			?>
 				<pag>
@@ -114,6 +115,7 @@
 					<td><h3>SÉRIE</h3></td>
                     <td><h3>EMISSÃO</h3></td>
                     <td><h3>ENTRADA</h3></td>
+                    <td><h3>VOLUMES</h3></td>
                     <td><h3>VALOR</h3></td>
                     <td><h3>PESO</h3></td>
                     <td><h3>COD_<br>CLIENTE</h3></td>
@@ -131,6 +133,7 @@
                                     <td><h4><nobr><?php echo $vn['serie'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['emissao']));    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['entrada']));    ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['volumes'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['peso'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['cod_cliente'];    ?></nobr></h4></td>

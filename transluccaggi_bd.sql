@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Mar-2022 às 17:38
+-- Tempo de geração: 28-Mar-2022 às 21:46
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -81,6 +81,8 @@ CREATE TABLE `notas_fiscais` (
   `serie` varchar(16) NOT NULL,
   `emissao` date NOT NULL,
   `entrada` date NOT NULL,
+  `saida` date NOT NULL,
+  `volumes` int(11) NOT NULL,
   `valor` float NOT NULL,
   `peso` float NOT NULL,
   `rota` varchar(8) NOT NULL,
@@ -90,6 +92,7 @@ CREATE TABLE `notas_fiscais` (
   `cidade_cliente` varchar(32) NOT NULL,
   `endereco_cliente` varchar(64) NOT NULL,
   `cod_distribuidora` int(11) NOT NULL,
+  `motorista` varchar(16) NOT NULL,
   `status` varchar(16) NOT NULL,
   `observacao` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -130,13 +133,13 @@ ALTER TABLE `notas_fiscais`
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `distribuidoras`
 --
 ALTER TABLE `distribuidoras`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `motoristas`
@@ -148,7 +151,7 @@ ALTER TABLE `motoristas`
 -- AUTO_INCREMENT de tabela `notas_fiscais`
 --
 ALTER TABLE `notas_fiscais`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

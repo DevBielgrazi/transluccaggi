@@ -30,9 +30,11 @@
     $ser_nf = trim($_POST['ser_nf']);
     $emi_nf = trim($_POST['emi_nf']);
     $ent_nf = trim($_POST['ent_nf']);
+    $sai_nf = trim($_POST['sai_nf']);
     $val_nf = trim($_POST['val_nf']);
     $pes_nf = trim($_POST['pes_nf']);
     $cod_cli = trim($_POST['cod_cli']);
+    $mot_nf = trim($_POST['mot_nf']);
     $id = $_POST['id'];
 		
     if(!isset($_POST['opc'])){
@@ -95,6 +97,9 @@
         case "ent":
             $sql2 = mysqli_query($conn,"UPDATE $tab_nfs SET `entrada` = '$ent_nf' WHERE `id` = '$id'");
             break;
+        case "sai":
+            $sql2 = mysqli_query($conn,"UPDATE $tab_nfs SET `saida` = '$sai_nf' WHERE `id` = '$id'");
+            break;
         case "val":
             $sql2 = mysqli_query($conn,"UPDATE $tab_nfs SET `valor` = '$val_nf' WHERE `id` = '$id'");
             break;
@@ -141,6 +146,9 @@
 <?php    
             }
             break;
+        case "mot":
+            $sql2 = mysqli_query($conn,"UPDATE $tab_nfs SET `motorista` = '$mot_nf' WHERE `id` = '$id'");
+            break;
         default:
             $sql2 = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `id` = '$id'");
             break;
@@ -154,9 +162,11 @@
                     <td><h3>SÉRIE</h3></td>
                     <td><h3>EMISSÃO</h3></td>
                     <td><h3>ENTRADA</h3></td>
+                    <td><h3>SAÍDA</h3></td>
                     <td><h3>VALOR</h3></td>
                     <td><h3>PESO</h3></td>
                     <td><h3>COD_<br>CLIENTE</h3></td>
+                    <td><h3>MOTORISTA</h3></td>
                     <td><h3>STATUS</h3></td>						
                 </tr>		
 <?php
@@ -172,9 +182,11 @@
                         <td><h4><nobr><?php echo $vn['serie'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['emissao']));    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['entrada']));    ?></nobr></h4></td>
+                        <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['saida']));    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['peso'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['cod_cliente'];    ?></nobr></h4></td>
+                        <td><h4><nobr><?php echo $vn['motorista'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['status'];    ?></nobr></h4></td>					
                     </tr>                                            
 <?php   
