@@ -2,7 +2,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link rel="icon" href="..\imagem/favicone.png"/>
-        <link href="..\estilo.css" rel="stylesheet">
+        <link href="..\estilo.css" rel="stylesheet"/>
         <title>Matriz Principal</title>
     </head> 
     <body>	

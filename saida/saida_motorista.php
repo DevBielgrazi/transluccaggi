@@ -1,15 +1,16 @@
 <html>
 	<head>
+		<link rel="stylesheet" href="print.css" media="print"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<link rel="icon" href="..\imagem/favicone.png"/>
-		<link href="..\estilo.css" rel="stylesheet">
+		<link href="..\estilo.css" rel="stylesheet"/>
 		<title>Matriz Principal</title>
 	</head> 
 	<body>	
 		<menu>
         	<a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
         	<h1>MATRIZ PRINCIPAL</h1><p>
-            <table class="tableb">
+            <table id="00001" class="tableb">
 				<tr><td><a href="../saida/form_saida_motorista.html"><button>SAÍDA DE MOTORISTAS</button></a></td></tr>
 				<tr><td><a href="../saida/form_baixa_canhotos.html"><button>BAIXA DE CANHOTOS</button></a></td></tr>
 				<tr><td><h2>CADASTROS</h2></td></tr>
@@ -39,26 +40,8 @@
 		$nom_mot = $sql2['nome'];
 		$vei_mot = $sql2['veiculo'];
 		$pla_mot = $sql2['placa'];
-	}
-	else
-	{
-		$nom_mot = null;
-		$vei_mot = null;
-		$pla_mot = null;
-		?>
-			<rn>
-				<h1>SAÍDA DE MOTORISTA</h1><p>
-				<table>
-					<tr>
-						<td><h5>MOTORISTA NÃO CADASTRADO</h5></td>
-					</tr>
-				</table>
-            </rn>
-		<?php
-	}
-
 ?>
-<rn>
+		<rn>
 	<table border=1>
 		<tr><h3>SAÍDA MOTORISTA</h3></tr>
 		<tr>
@@ -143,6 +126,31 @@
 					</td>	
 				</tr>																				 
 			</table>
-		</pag>	
+		</pag>
+		<form method="post" action="imprimir_saida.php">
+			<input type="hidden" name="mot_sai" value="<?php echo $mot_sai;  ?>">
+			<input type="hidden" name="dat_sai" value="<?php echo $dat_sai;  ?>">
+			<input class="inputd" type=submit value=IMPRIMIR>
+		</form>
+<?php
+	}
+	else
+	{
+		$nom_mot = null;
+		$vei_mot = null;
+		$pla_mot = null;
+		?>
+			<rn>
+				<h1>SAÍDA DE MOTORISTA</h1><p>
+				<table>
+					<tr>
+						<td><h5>MOTORISTA NÃO CADASTRADO</h5></td>
+					</tr>
+				</table>
+            </rn>
+		<?php
+	}
+
+?>	
 	</body>
 </html>
