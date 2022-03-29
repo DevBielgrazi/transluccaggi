@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Mar-2022 às 14:49
+-- Tempo de geração: 29-Mar-2022 às 16:46
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -94,7 +94,8 @@ CREATE TABLE `notas_fiscais` (
   `cod_distribuidora` int(11) NOT NULL,
   `motorista` varchar(16) NOT NULL,
   `status` varchar(16) NOT NULL,
-  `observacao` varchar(128) NOT NULL
+  `observacao` varchar(128) NOT NULL,
+  `tentativas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

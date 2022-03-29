@@ -30,63 +30,112 @@
 
     $num_nf = trim($_POST['num_nf']);
     $obs_nf = trim($_POST['obs_nf']);
+
+	if(!isset($_POST['opc'])) {
+        $ver_ent = "nul";
+    } else {
+        $ver_ent = $_POST['opc'];
+    }
 		
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf'");
 	
 	$n = mysqli_num_rows($sql);
 
-	if($n != 0)
-	{
-		$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'ENTREGUE', `observacao` = '$obs_nf' WHERE `numero` = '$num_nf'");
-		
-		?>
-			<rn>
-				<h1>BAIXA DE CANHOTOS</h1><p>
-				<table>
-					<tr>
-						<td><h7>CANHOTO CONFERIDO</h7></td>
-					</tr>
-				</table>
-            </rn>
-		<?php
+	switch($ver_ent){
+		case "ent":	
+			if($n != 0)
+			{
+				$v = mysqli_fetch_array($sql);
+				$t = $v['tentativas'];
+				if($t>1){
+					$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'REENTREGUE', `observacao` = '$obs_nf' WHERE `numero` = '$num_nf'");
+				}
+				else
+				{
+					$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'ENTREGUE', `observacao` = '$obs_nf' WHERE `numero` = '$num_nf'");
+				}
+				?>
+					<rn>
+						<h1>BAIXA DE CANHOTOS</h1><p>
+						<table>
+							<tr>
+								<td><h7>CANHOTO CONFERIDO</h7></td>
+							</tr>
+						</table>
+					</rn>
+				<?php
+			}
+			else
+			{
+				?>
+					<rn>
+						<h1>BAIXA DE CANHOTOS</h1><p>
+						<table>
+							<tr>
+								<td><h5>NOTA NÃO CADASTRADA</h5></td>
+							</tr>
+						</table>
+					</rn>
+				<?php
+			}
+			break;
+		case "pen":
+			if($n != 0)
+			{
+				$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'PENDENTE', `observacao` = '$obs_nf' WHERE `numero` = '$num_nf'");
+				?>
+					<rn>
+						<h1>BAIXA DE CANHOTOS</h1><p>
+						<table>
+							<tr>
+								<td><h7>NOTA DEVOLVIDA</h7></td>
+							</tr>
+						</table>
+					</rn>
+				<?php
+			}
+			else
+			{
+				?>
+					<rn>
+						<h1>BAIXA DE CANHOTOS</h1><p>
+						<table>
+							<tr>
+								<td><h5>NOTA NÃO CADASTRADA</h5></td>
+							</tr>
+						</table>
+					</rn>
+				<?php
+			}
 	}
-	else
-	{
-		?>
-			<rn>
-				<h1>BAIXA DE CANHOTOS</h1><p>
-				<table>
-					<tr>
-						<td><h5>NOTA NÃO CADASTRADA</h5></td>
-					</tr>
-				</table>
-            </rn>
-		<?php
-	}		
 ?>
 		<pag>
 			<h1>BAIXA DE CANHOTOS</h1><p>
 			<table>
-					<tr>
-						<td>
-							<form method="post" action="baixa_canhotos.php">
-								<table>
-									<tr>
-										<td><h4>NOTA FISCAL:</h4></td>
-										<td><input name="num_nf" type=text size=16 maxlength=16 required></td>
-									</tr>
-									<tr>
-										<td><h4>OBSERVAÇÃO:</h4></td>
-										<td><input name="obs_nf" type=text size=64 maxlength=128></td>
-									</tr>																								 
-								</table>
+				<tr>
+					<td>
+						<form method="post" action="baixa_canhotos.php">
+							<table>
 								<tr>
-									<td><input class="inputb" type=submit value=PRÓXIMA></td>									
+									<td><h4>ENTREGUE<input type="radio" name="opc" value="ent"></h4></td>
+									<td><h4>PENDENTE<input type="radio" name="opc" value="pen"></h4></td>
 								</tr>
-							</form>
-						</td>	
-					</tr>
-				</table>
+								<tr>
+									<td><h4>NOTA FISCAL:</h4></td>
+									<td><input name="num_nf" type=text size=16 maxlength=16 required></td>
+								</tr>
+								<tr>
+									<td><h4>OBSERVAÇÃO:</h4></td>
+									<td><input name="obs_nf" type=text size=64 maxlength=128></td>
+								</tr>																								 
+							</table>
+							<tr>
+								<td><input class="inputb" type=submit value=PRÓXIMA></td>									
+							</tr>
+						</form>
+					</td>	
+				</tr>
+			</table>
 		</pag>	
 	</body>
 </html>

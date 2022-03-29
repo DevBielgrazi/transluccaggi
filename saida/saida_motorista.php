@@ -45,6 +45,16 @@
 		$nom_mot = null;
 		$vei_mot = null;
 		$pla_mot = null;
+		?>
+			<rn>
+				<h1>SAÍDA DE MOTORISTA</h1><p>
+				<table>
+					<tr>
+						<td><h5>MOTORISTA NÃO CADASTRADO</h5></td>
+					</tr>
+				</table>
+            </rn>
+		<?php
 	}
 
 ?>
@@ -73,7 +83,17 @@
         $not_sai = trim($_POST['not_sai']);
     }
 
-	$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `motorista` = '$nom_mot', `saida` = '$dat_sai', `status` = 'ROTA' WHERE `numero` = '$not_sai'");
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$not_sai'");
+	$v = mysqli_fetch_array($sql);
+
+	if(!isset($v['tentativas'])) {
+        $t = 0;
+    } else 
+	{
+        $t = $v['tentativas'] + 1;
+    }
+	
+	$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `motorista` = '$nom_mot',`saida` = '$dat_sai',`status` = 'ROTA',`tentativas` = '$t' WHERE `numero` = '$not_sai'");
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `motorista` = '$nom_mot' and `saida` = '$dat_sai'");
 	$n = mysqli_num_rows($sql);
 	if($n!=0){
