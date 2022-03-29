@@ -32,6 +32,8 @@
 	
 	$mot_sai = trim($_POST['mot_sai']);
 	$dat_sai = trim($_POST['dat_sai']);
+	$ser_nf = trim($_POST['ser_nf']);
+	$cod_dis = trim($_POST['cod_dis']);
 		
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `nome` = '$mot_sai'");
 	$n1 = mysqli_num_rows($sql);
@@ -76,7 +78,7 @@
         $t = $v['tentativas'] + 1;
     }
 	
-	$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `motorista` = '$nom_mot',`saida` = '$dat_sai',`status` = 'ROTA',`tentativas` = '$t' WHERE `numero` = '$not_sai'");
+	$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `motorista` = '$nom_mot',`saida` = '$dat_sai',`status` = 'ROTA',`tentativas` = '$t' WHERE `numero` = '$not_sai'  and `serie` = '$ser_nf' and `cod_distribuidora` = '$cod_dis'");
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `motorista` = '$nom_mot' and `saida` = '$dat_sai'");
 	$n = mysqli_num_rows($sql);
 	if($n!=0){
@@ -116,7 +118,15 @@
 								<input type="hidden" name="dat_sai" value="<?php echo $dat_sai;  ?>">
 								<tr>
 									<td><h4>NOTA FISCAL:</h4></td>
-									<td><input name="not_sai" type=int size=16 maxlength=16 required></td>
+									<td><input name="not_sai" type=text size=16 maxlength=16 required></td>
+								</tr>
+								<tr>
+									<td><h4>SÉRIE:</h4></td>
+									<td><input name="ser_nf" type=text size=16 maxlength=16 required></td>
+								</tr>
+								<tr>
+									<td><h4>DISTRIBUIDORA:</h4></td>
+									<td><input name="cod_dis" type=int size=16 maxlength=16 required></td>
 								</tr>
 							</table>
 							<tr>

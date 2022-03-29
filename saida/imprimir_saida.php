@@ -21,16 +21,16 @@
 ?>
 	<table border=2>
 		<tr>
-			<td><h3>DATA:<?php  echo date( 'd/m/Y' , strtotime($dat_sai)); ?></h3></td>
-			<td><h3>MOTORISTA:<?php  echo $nom_mot; ?></h3></td>
-			<td><h3>VEÍCULO:<?php echo $vei_mot  ?></h3></td>
-			<td><h3>PLACA:<?php echo $pla_mot  ?></h3></td>
+			<td>DATA:<?php  echo date( 'd/m/Y' , strtotime($dat_sai)) ?></td>
+			<td>MOTORISTA:<?php  echo $nom_mot ?></td>
+			<td>VEÍCULO:<?php echo $vei_mot  ?></td>
+			<td>PLACA:<?php echo $pla_mot  ?></td>
 		</tr>
 		<tr>
-			<td><h3>NF</h3></td>
-			<td><h3>VALOR</h3></td>
-			<td><h3>VOLUMES</h3></td>
-			<td><h3>CLIENTE</h3></td>						
+			<td>NF</td>
+			<td>VALOR</td>
+			<td>VOLUMES</td>
+			<td>CLIENTE</td>						
 		</tr>
 <?php
     $i=0;	
@@ -54,14 +54,25 @@
         $vn = mysqli_fetch_array($sql);
 ?>
         <tr>
-            <td><h4><nobr><?php echo $vn['numero'];   ?></nobr></h4></td>
-            <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
-            <td><h4><nobr><?php echo $vn['volumes'];    ?></nobr></h4></td>
-            <td><h4><nobr><?php echo $vn['nome_cliente'];    ?></nobr></h4></td>
+            <td><nobr><?php echo $vn['numero'];   ?></nobr></td>
+            <td><nobr><?php echo $vn['valor'];    ?></nobr></td>
+            <td><nobr><?php echo $vn['volumes'];    ?></nobr></td>
+            <td><nobr><?php echo $vn['nome_cliente'];    ?></nobr></td>
+		</tr>
 <?php
     $i = $i + 1;
-    }        		
+    }
+	$sql = mysqli_query($conn,"SELECT SUM(`volumes`) as 'vol' FROM $tab_nfs WHERE `motorista` = '$nom_mot' and `saida` = '$dat_sai'");
+	$sql = mysqli_fetch_array($sql);
+	$tot_vol = $sql['vol'];
+	$sql = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `motorista` = '$nom_mot' and `saida` = '$dat_sai'");
+	$sql = mysqli_fetch_array($sql);
+	$val_tot = number_format(($sql['val']), 2, '.', '');
 ?>
+		<tr>
+			<td>TOTAL VOLUMES:<?php  echo $tot_vol ?></td>
+			<td>VALOR TOTAL:<?php  echo $val_tot ?></td>
+		</tr>
         <script>window.print();</script>
     </body>
 </htmml>
