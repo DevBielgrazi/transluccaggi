@@ -12,7 +12,7 @@
             <table class="tableb">
 				<tr><td><a href="../saida/form_saida_motorista.html"><button>SAÍDA DE MOTORISTAS</button></a></td></tr>
 				<tr><td><a href="../saida/form_baixa_canhotos.html"><button>BAIXA DE CANHOTOS</button></a></td></tr>
-				<tr><td><h2>CADASTROS</h2></td></tr>
+                <tr><td><h2>CADASTROS</h2></td></tr>
 				<tr><td><a href="..\cadastro/form_cadastrar_nfs.php"><button>NOTAS</button></a></td></tr>
 				<tr><td><a href="..\cadastro/form_cadastrar_clientes.php"><button>CLIENTES</button></a></td></tr>
 				<tr><td><a href="..\cadastro/form_cadastrar_distribuidoras.php"><button>DISTRIBUIDORAS</button></a></td></tr>
@@ -28,66 +28,65 @@
 <?php
 	require('../connect.php');
 
-    $nom_dis = trim($_POST['nom_dis']);
-    $por_dis = trim($_POST['por_dis']);
-    $cad_dis = trim($_POST['cad_dis']);
+    $num_nf = trim($_POST['num_nf']);
+    $obs_nf = trim($_POST['obs_nf']);
 		
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `nome` = '$nom_dis'");
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf'");
 	
 	$n = mysqli_num_rows($sql);
 
 	if($n != 0)
 	{
+		$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'ENTREGUE', `observacao` = '$obs_nf' WHERE `numero` = '$num_nf'");
+		
 		?>
-			<pag>
-				<h1>CADASTRAR DISTRIBUIDORA</h1><p>
+			<rn>
+				<h1>BAIXA DE CANHOTOS</h1><p>
 				<table>
 					<tr>
-						<td><h5>DISTRIBUIDORA JÁ CADASTARDA</h5></td>
+						<td><h7>CANHOTO CONFERIDO</h7></td>
 					</tr>
 				</table>
-			</pag>
+            </rn>
 		<?php
 	}
 	else
 	{
-		$sql = mysqli_query($conn,"INSERT INTO $tab_dis(`nome`, `porcentagem`, `cadastro`) VALUES ('$nom_dis', '$por_dis', '$cad_dis')");
-		
 		?>
-			<pag>
-				<h1>CADASTRAR DISTRIBUIDORAS</h1><p>
+			<rn>
+				<h1>BAIXA DE CANHOTOS</h1><p>
 				<table>
 					<tr>
-						<td><h7>DISTRIBUIDORA CADASTRADA</h7></td>
+						<td><h5>NOTA NÃO CADASTRADA</h5></td>
 					</tr>
 				</table>
-			</pag>
+            </rn>
 		<?php
 	}		
 ?>
-		<urd>
-			<table border=1>
-				<h3>DISTRIBUIDORAS CADASTRADAS</h3>
-				<tr>
-					<td><h3>CÓDIGO</h3></td>
-					<td><h3>NOME</h3></td>						
-					<td><h3>CADASTRO</h3></td>						
-				</tr>		
-				<?php   require('..\connect.php');
-				$sql = mysqli_query($conn,"SELECT * FROM $tab_dis ORDER BY `codigo` DESC LIMIT 5");
-				$n = mysqli_num_rows($sql);
-				$i=0;
-					while($i!=$n)
-					{
-						$vn = mysqli_fetch_array($sql);	?>                        
+		<pag>
+			<h1>BAIXA DE CANHOTOS</h1><p>
+			<table>
+					<tr>
+						<td>
+							<form method="post" action="baixa_canhotos.php">
+								<table>
+									<tr>
+										<td><h4>NOTA FISCAL:</h4></td>
+										<td><input name="num_nf" type=text size=16 maxlength=16 required></td>
+									</tr>
+									<tr>
+										<td><h4>OBSERVAÇÃO:</h4></td>
+										<td><input name="obs_nf" type=text size=64 maxlength=128></td>
+									</tr>																								 
+								</table>
 								<tr>
-									<td><h4><nobr><?php echo $vn['codigo'];   ?><nobr></h4></td>
-									<td><h4><nobr><?php echo $vn['nome'];    ?><nobr></h4></td>
-									<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?><nobr></h4></td>					
-								</tr>                                            
-						<?php   $i = $i + 1;
-					}   ?>
-			</table>
-		</urd>	
+									<td><input class="inputb" type=submit value=PRÓXIMA></td>									
+								</tr>
+							</form>
+						</td>	
+					</tr>
+				</table>
+		</pag>	
 	</body>
 </html>
