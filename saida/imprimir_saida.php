@@ -33,24 +33,10 @@
 			<td>CLIENTE</td>						
 		</tr>
 <?php
-    $i=0;	
-	if(!isset($_POST['not_sai'])) {
-        $not_sai = null;
-    } else {
-        $not_sai = trim($_POST['not_sai']);
-    }
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$not_sai'");
-	$v = mysqli_fetch_array($sql);
-	if(!isset($v['tentativas'])) {
-        $t = 0;
-    } else 
-	{
-        $t = $v['tentativas'] + 1;
-    }	
-	$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `motorista` = '$nom_mot',`saida` = '$dat_sai',`status` = 'ROTA',`tentativas` = '$t' WHERE `numero` = '$not_sai'");
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `motorista` = '$nom_mot' and `saida` = '$dat_sai'");
 	$n = mysqli_num_rows($sql);
-    while($i!=$n){
+    $i=0;
+	while($i!=$n){
         $vn = mysqli_fetch_array($sql);
 ?>
         <tr>

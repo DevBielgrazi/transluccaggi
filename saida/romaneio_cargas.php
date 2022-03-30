@@ -27,58 +27,51 @@
                     <tr><td><a href="..\pesquisa/form_pesquisar_motoristas.html"><button>PESQUISAR</button></a></td></tr>
             </table>
         </menu>
+        <rn>
+            <table border=1>
+                <tr><h3>NOTAS FISCAIS</h3></tr>
+                <tr>
+					<td><h3>NÚMERO</h3></td>
+					<td><h3>SÉRIE</h3></td>
+                    <td><h3>EMISSÃO</h3></td>
+                    <td><h3>ENTRADA</h3></td>
+                    <td><h3>VOLUMES</h3></td>
+                    <td><h3>VALOR</h3></td>
+                    <td><h3>PESO</h3></td>
+                    <td><h3>CLIENTE</h3></td>						
+				</tr>
 <?php
 	require('../connect.php');
+    $dat = trim($_POST['dat']);
+    $dat2 = trim($_POST['dat2']);
+    $dis = trim($_POST['dis']);
 
-	$nom_dis = trim($_POST['nom_dis']);
-    $cod_dis = $_POST['cod_dis'];
-    
-    $sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `codigo` = '$cod_dis' and `nome` = '$nom_dis'");
-    $n = mysqli_num_rows($sql);    
-    if($n!=0){
-        ?>
-        <pag>
-            <h1>ALTERAR DISTRIBUIDORA</h1><p>
-            <table>
-                <tr>
-                    <td><h6>DISTRIBUIDORA JÁ CADASTRADA</h6></td>
-                </tr>
-            </table>
-        </pag>
-    <?php
-    }
-    else
-    {
-        $sql2 = mysqli_query($conn,"UPDATE $tab_dis SET `nome` = '$nom_dis' WHERE `codigo` = '$cod_dis'");
-    }
-    
-?>
-        <urn>
-            <table border=1>
-                <h3>DISTRIBUIDORA CADASTRADA</h3>
-                <tr>
-					<td><h3>CÓDIGO</h3></td>
-					<td><h3>NOME</h3></td>
-                    <td><h3>CADASTRO</h3></td>						
-                </tr>		
-<?php
-    $sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `codigo` = '$cod_dis'");
+    $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `cod_distribuidora` = '$dis' and `entrada` >= '$dat' and `entrada` <= '$dat2'");
     $n = mysqli_num_rows($sql);
     $i=0;
         while($i!=$n)
         {
-            $vn = mysqli_fetch_array($sql); 
-?>                        
-                    <tr>
-                        <td><h4><nobr><?php echo $vn['codigo'];   ?></nobr></h4></td>
-                        <td><h4><nobr><?php echo $vn['nome'];    ?></nobr></h4></td>
-                        <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>					
-                    </tr>                                            
-<?php   
-            $i = $i + 1;
-        }   
+            $vn = mysqli_fetch_array($sql); ?>
+                        <tr>
+                            <td><h4><nobr><?php echo $vn['numero'];   ?></nobr></h4></td>
+                            <td><h4><nobr><?php echo $vn['serie'];    ?></nobr></h4></td>
+                            <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['emissao']));    ?></nobr></h4></td>
+                            <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['entrada']));    ?></nobr></h4></td>
+                            <td><h4><nobr><?php echo $vn['volumes'];    ?></nobr></h4></td>
+                            <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
+                            <td><h4><nobr><?php echo $vn['peso'];    ?></nobr></h4></td>
+                           <td><h4><nobr><?php echo $vn['nome_cliente'];    ?></nobr></h4></td>
+                       </tr>                                            
+            <?php   $i=$i+1;
+        }
 ?>
             </table>
-        </urn>	
-	</body>
+            <form method="post" action="imprimir_romaneio.php">
+			<input type="hidden" name="dat" value="<?php echo $sat;  ?>">
+			<input type="hidden" name="dat2" value="<?php echo $dat2;  ?>">
+			<input type="hidden" name="dis" value="<?php echo $dis;  ?>">
+			<input class="inputd" type=submit value=IMPRIMIR>
+		</form>
+        </rn>
+    </body>
 </html>

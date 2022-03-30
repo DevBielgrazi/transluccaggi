@@ -28,20 +28,39 @@
             </table>
         </menu>
 		<pag>
-			<h1>SAÍDA DE MOTORISTAS</h1><p>
+			<h1>RELATÓRIO DE DEVOLUÇÕES</h1><p>
 			<table>
 				<tr>
 					<td>
-						<form method="post" action="saida_motorista.php">
+						<form method="post" action="relatorio_devolucao.php">
 							<table>
-								<input type="hidden" name="n" value=0>
+                                <tr>
+                                    <td><h4>INTEGRAL<input type="radio" name="opc" value="int" checked></h4></td>
+                                    <td><h4>PARCIAL<input type="radio" name="opc" value="par"></h4></td>
+                                </tr>
 								<tr>
-									<td><h4>MOTORISTA:</h4></td>
-									<td><input name="mot_sai" type=text size=16 maxlength=32 required></td>
+									<td><h4>NOTA:</h4></td>
+									<td><input name="not_dev" type=text size=16 maxlength=32 required></td>
 								</tr>
-								<tr>
-									<td><h4>DATA:</h4></td>
-									<td><input name="dat_sai" type=date required></td>
+                                <tr>
+									<td><h4>SÉRIE:</h4></td>
+									<td><input name="ser_dev" type=text size=16 maxlength=32 required></td>
+								</tr>
+                                <tr>
+									<td><h4>DISTRIBUIDORA:</h4></td>
+									<td><select name="dis_dev">
+<?php
+require('../connect.php');
+$sql = mysqli_query($conn,"SELECT * FROM $tab_dis");
+$n = mysqli_num_rows($sql);
+$i=0;
+while($i!=$n){
+	$v = mysqli_fetch_array($sql);
+		?><option value="<?php	echo $v['nome']	?>"><?php	echo	$v['nome']	?></option><?php
+		$i=$i+1;
+}
+?>									
+									</select></td>
 								</tr>
 							</table>
 							<tr>

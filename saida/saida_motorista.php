@@ -13,6 +13,8 @@
             <table id="00001" class="tableb">
 				<tr><td><a href="../saida/form_saida_motorista.html"><button>SAÍDA DE MOTORISTAS</button></a></td></tr>
 				<tr><td><a href="../saida/form_baixa_canhotos.html"><button>BAIXA DE CANHOTOS</button></a></td></tr>
+				<tr><td><a href="../saida/form_romaneio_cargas.php"><button>ROMANEIO DE CARGAS</button></a></td></tr>
+				<tr><td><a href="../saida/form_relatorio_devolucao.php"><button>RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
 				<tr><td><h2>CADASTROS</h2></td></tr>
 				<tr><td><a href="..\cadastro/form_cadastrar_nfs.php"><button>NOTAS</button></a></td></tr>
 				<tr><td><a href="..\cadastro/form_cadastrar_clientes.php"><button>CLIENTES</button></a></td></tr>
@@ -32,8 +34,6 @@
 	
 	$mot_sai = trim($_POST['mot_sai']);
 	$dat_sai = trim($_POST['dat_sai']);
-	$ser_nf = trim($_POST['ser_nf']);
-	$cod_dis = trim($_POST['cod_dis']);
 		
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `nome` = '$mot_sai'");
 	$n1 = mysqli_num_rows($sql);
@@ -66,6 +66,16 @@
         $not_sai = null;
     } else {
         $not_sai = trim($_POST['not_sai']);
+    }
+	if(!isset($_POST[''])) {
+        $ser_nf = null;
+    } else {
+		$ser_nf = trim($_POST['ser_nf']);
+    }
+	if(!isset($_POST[''])) {
+        $cod_dis = null;
+    } else {
+        $cod_dis = trim($_POST['cod_dis']);
     }
 
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$not_sai'");
