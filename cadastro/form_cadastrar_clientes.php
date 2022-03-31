@@ -4,16 +4,16 @@
 		<link rel="icon" href="..\imagem/favicone.png"/>
 		<link href="..\estilo.css" rel="stylesheet"/>
 		<title>Matriz Principal</title>
-	</head> 
+	</head>
 	<body>
 		<menu>
-			<a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
+			<a href="http://localhost/transluccaggi/menu.html"><img src="..\imagem/logo.png" width=20%></a>
 			<h1>MATRIZ PRINCIPAL</h1><p>
 				<table class="tableb">
-					<tr><td><a href="../saida/form_saida_motorista.html"><button>SAÍDA DE MOTORISTAS</button></a></td></tr>
-                    <tr><td><a href="../saida/form_baixa_canhotos.html"><button>BAIXA DE CANHOTOS</button></a></td></tr>
-					<tr><td><a href="../saida/form_romaneio_cargas.php"><button>ROMANEIO DE CARGAS</button></a></td></tr>
-					<tr><td><a href="../saida/form_relatorio_devolucao.php"><button>RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
+					<tr><td><a href="../saida/form_saida_motorista.html"><button class="buttonb">SAÍDA DE MOTORISTAS</button></a></td></tr>
+                    <tr><td><a href="../saida/form_baixa_canhotos.html"><button class="buttonb">BAIXA DE CANHOTOS</button></a></td></tr>
+					<tr><td><a href="../saida/form_romaneio_cargas.php"><button class="buttonb">ROMANEIO DE CARGAS</button></a></td></tr>
+					<tr><td><a href="../saida/form_relatorio_devolucao.php"><button class="buttonb">RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
 					<tr><td><h2>CADASTROS</h2></td></tr>
                     <tr><td><a href="..\cadastro/form_cadastrar_nfs.php"><button>NOTAS</button></a></td></tr>
                     <tr><td><a href="..\cadastro/form_cadastrar_clientes.php"><button>CLIENTES</button></a></td></tr>
@@ -80,16 +80,15 @@
 									<td><h4>CÓDIGO DISTRIBUIDORA:</h4></td>
 									<td><input name="cod_dis" type=int size=32 maxlength=16 required></td>
 								</tr>
-								
 								<tr>
-									<td><h4>AGERNDAR:<input type=checkbox name="age" value="SIM"></h4></td>
-								</tr>																 
-							</table>							
+									<td><h4>AGENDAR:<input type=checkbox name="age" value="SIM"></h4></td>
+								</tr>
+							</table>
 							<tr>
 								<td><input class="inputb" type=submit value=CADASTRAR></td>
 							</tr>
-						</form>						
-					</td>	
+						</form>
+					</td>
 				</tr>
 			</table>
 		</pag>
@@ -104,29 +103,33 @@
                     <td><h3>ROTA</h3></td>
                     <td><h3>CIDADE</h3></td>
                     <td><h3>BAIRRO</h3></td>
-                    <td><h3>ENDEREÇO</h3></td>						
-                    <td><h3>COD_<br>DISTRIBUIDORA</h3></td>						
-				</tr>		
-                <?php   require('..\connect.php');
+                    <td><h3>ENDEREÇO</h3></td>
+                    <td><h3>COD_<br>DISTRIBUIDORA</h3></td>
+				</tr>
+                <?php
+				require('..\connect.php');
 				$sql = mysqli_query($conn,"SELECT * FROM $tab_cli ORDER BY `id` DESC LIMIT 5");
 				$n = mysqli_num_rows($sql);
                 $i=0;
-                    while($i!=$n)
-                    {
-                        $vn = mysqli_fetch_array($sql);	?>                        
-                                <tr>
-                                    <td><h4><nobr><?php echo $vn['codigo'];   ?></nobr></h4></td>
-                                    <td><h4><nobr><?php echo $vn['nome'];    ?></nobr></h4></td>
-                                    <td><h4><nobr><?php echo $vn['agendar'];    ?></nobr></h4></td>
-                                    <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>
-                                    <td><h4><nobr><?php echo $vn['rota'];    ?></nobr></h4></td>
-                                    <td><h4><nobr><?php echo $vn['cidade'];    ?></nobr></h4></td>
-                                    <td><h4><nobr><?php echo $vn['bairro'];    ?></nobr></h4></td>
-                                    <td><h4><nobr><?php echo $vn['endereco'];    ?></nobr></h4></td>					
-                                    <td><h4><nobr><?php echo $vn['cod_distribuidora'];    ?></nobr></h4></td>					
-                                </tr>                                            
-                        <?php   $i = $i + 1;
-                    }   ?>
+				while($i!=$n)
+				{
+					$vn = mysqli_fetch_array($sql);
+?>
+					<tr>
+						<td><h4><nobr><?php echo $vn['codigo'];   ?></nobr></h4></td>
+						<td><h4><nobr><?php echo $vn['nome'];    ?></nobr></h4></td>
+						<td><h4><nobr><?php echo $vn['agendar'];    ?></nobr></h4></td>
+						<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>
+						<td><h4><nobr><?php echo $vn['rota'];    ?></nobr></h4></td>
+						<td><h4><nobr><?php echo $vn['cidade'];    ?></nobr></h4></td>
+						<td><h4><nobr><?php echo $vn['bairro'];    ?></nobr></h4></td>
+						<td><h4><nobr><?php echo $vn['endereco'];    ?></nobr></h4></td>
+						<td><h4><nobr><?php echo $vn['cod_distribuidora'];    ?></nobr></h4></td>
+					</tr>
+					<?php
+					$i = $i + 1;
+				}
+?>
             </table>
 		</urc>
 	</body>

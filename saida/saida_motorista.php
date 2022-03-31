@@ -5,16 +5,16 @@
 		<link rel="icon" href="..\imagem/favicone.png"/>
 		<link href="..\estilo.css" rel="stylesheet"/>
 		<title>Matriz Principal</title>
-	</head> 
-	<body>	
+	</head>
+	<body>
 		<menu>
-        	<a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
+        	<a href="http://localhost/transluccaggi/menu.html"><img src="..\imagem/logo.png" width=20%></a>
         	<h1>MATRIZ PRINCIPAL</h1><p>
             <table id="00001" class="tableb">
-				<tr><td><a href="../saida/form_saida_motorista.html"><button>SAÍDA DE MOTORISTAS</button></a></td></tr>
-				<tr><td><a href="../saida/form_baixa_canhotos.html"><button>BAIXA DE CANHOTOS</button></a></td></tr>
-				<tr><td><a href="../saida/form_romaneio_cargas.php"><button>ROMANEIO DE CARGAS</button></a></td></tr>
-				<tr><td><a href="../saida/form_relatorio_devolucao.php"><button>RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
+				<tr><td><a href="../saida/form_saida_motorista.html"><button class="buttonb">SAÍDA DE MOTORISTAS</button></a></td></tr>
+				<tr><td><a href="../saida/form_baixa_canhotos.html"><button class="buttonb">BAIXA DE CANHOTOS</button></a></td></tr>
+				<tr><td><a href="../saida/form_romaneio_cargas.php"><button class="buttonb">ROMANEIO DE CARGAS</button></a></td></tr>
+				<tr><td><a href="../saida/form_relatorio_devolucao.php"><button class="buttonb">RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
 				<tr><td><h2>CADASTROS</h2></td></tr>
 				<tr><td><a href="..\cadastro/form_cadastrar_nfs.php"><button>NOTAS</button></a></td></tr>
 				<tr><td><a href="..\cadastro/form_cadastrar_clientes.php"><button>CLIENTES</button></a></td></tr>
@@ -28,13 +28,11 @@
 				<tr><td><a href="..\pesquisa/form_pesquisar_motoristas.html"><button>PESQUISAR</button></a></td></tr>
             </table>
         </menu>
-
 <?php
 	require('../connect.php');
-	
+
 	$mot_sai = trim($_POST['mot_sai']);
 	$dat_sai = trim($_POST['dat_sai']);
-		
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `nome` = '$mot_sai'");
 	$n1 = mysqli_num_rows($sql);
 	if($n1!=0){
@@ -43,51 +41,53 @@
 		$vei_mot = $sql2['veiculo'];
 		$pla_mot = $sql2['placa'];
 ?>
-		<rn>
-	<table border=1>
-		<tr><h3>SAÍDA MOTORISTA</h3></tr>
-		<tr>
-			<td><h3>DATA:<?php  echo date( 'd/m/Y' , strtotime($dat_sai)); ?></h3></td>
-			<td><h3>MOTORISTA:<?php  echo $nom_mot; ?></h3></td>
-			<td><h3>VEÍCULO:<?php echo $vei_mot  ?></h3></td>
-			<td><h3>PLACA:<?php echo $pla_mot  ?></h3></td>
-		</tr>
-		<tr>
-			<td><h3>NF</h3></td>
-			<td><h3>VALOR</h3></td>
-			<td><h3>VOLUMES</h3></td>
-			<td><h3>CLIENTE</h3></td>						
+	<rn>
+		<table border=1>
+			<tr><h3>SAÍDA MOTORISTA</h3></tr>
+			<tr>
+				<td><h3>DATA:<?php  echo date( 'd/m/Y' , strtotime($dat_sai)); ?></h3></td>
+				<td><h3>MOTORISTA:<?php  echo $nom_mot; ?></h3></td>
+				<td><h3>VEÍCULO:<?php echo $vei_mot  ?></h3></td>
+				<td><h3>PLACA:<?php echo $pla_mot  ?></h3></td>
+			</tr>
+			<tr>
+				<td><h3>NF</h3></td>
+				<td><h3>VALOR</h3></td>
+				<td><h3>VOLUMES</h3></td>
+				<td><h3>CLIENTE</h3></td>
 		</tr>
 <?php
-
-    $i=0;
-	
+    $i=0;	
 	if(!isset($_POST['not_sai'])) {
         $not_sai = null;
-    } else {
+    }
+	else
+	{
         $not_sai = trim($_POST['not_sai']);
     }
-	if(!isset($_POST[''])) {
+	if(!isset($_POST[''])){
         $ser_nf = null;
-    } else {
+    }
+	else
+	{
 		$ser_nf = trim($_POST['ser_nf']);
     }
 	if(!isset($_POST[''])) {
         $cod_dis = null;
-    } else {
+    }
+	else
+	{
         $cod_dis = trim($_POST['cod_dis']);
     }
-
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$not_sai'");
 	$v = mysqli_fetch_array($sql);
-
-	if(!isset($v['tentativas'])) {
+	if(!isset($v['tentativas'])){
         $t = 0;
-    } else 
+    }
+	else
 	{
         $t = $v['tentativas'] + 1;
     }
-	
 	$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `motorista` = '$nom_mot',`saida` = '$dat_sai',`status` = 'ROTA',`tentativas` = '$t' WHERE `numero` = '$not_sai'  and `serie` = '$ser_nf' and `cod_distribuidora` = '$cod_dis'");
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `motorista` = '$nom_mot' and `saida` = '$dat_sai'");
 	$n = mysqli_num_rows($sql);
@@ -104,7 +104,8 @@
 		$i = $i + 1;
 		}
 	}
-	else{
+	else
+	{
 		?>
 			<tr>
 			<input type="hidden" name="n" value="<?php $nn = ($_POST['n']+1)?>">
@@ -114,8 +115,7 @@
 				<td><h4><nobr></nobr></h4></td>
 <?php
         $i = $i + 1;
-		}	
-        		
+		}
 ?>
 		<pag>
 			<table>
@@ -143,8 +143,8 @@
 								<td><input class="inputb" type=submit value=PRÓXIMA></td>
 							</tr>
 						</form>
-					</td>	
-				</tr>																				 
+					</td>
+				</tr>
 			</table>
 		</pag>
 		<form method="post" action="imprimir_saida.php">
@@ -170,7 +170,6 @@
             </rn>
 		<?php
 	}
-
-?>	
+?>
 	</body>
 </html>

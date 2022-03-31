@@ -4,16 +4,16 @@
 		<link rel="icon" href="..\imagem/favicone.png"/>
 		<link href="..\estilo.css" rel="stylesheet"/>
 		<title>Matriz Principal</title>
-	</head> 
-	<body>	
+	</head>
+	<body>
         <menu>
-            <a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
+            <a href="http://localhost/transluccaggi/menu.html"><img src="..\imagem/logo.png" width=20%></a>
             <h1>MATRIZ PRINCIPAL</h1><p>
                 <table class="tableb">
-                    <tr><td><a href="../saida/form_saida_motorista.html"><button>SAÍDA DE MOTORISTAS</button></a></td></tr>
-                    <tr><td><a href="../saida/form_baixa_canhotos.html"><button>BAIXA DE CANHOTOS</button></a></td></tr>
-                    <tr><td><a href="../saida/form_romaneio_cargas.php"><button>ROMANEIO DE CARGAS</button></a></td></tr>
-                    <tr><td><a href="../saida/form_relatorio_devolucao.php"><button>RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
+                    <tr><td><a href="../saida/form_saida_motorista.html"><button class="buttonb">SAÍDA DE MOTORISTAS</button></a></td></tr>
+                    <tr><td><a href="../saida/form_baixa_canhotos.html"><button class="buttonb">BAIXA DE CANHOTOS</button></a></td></tr>
+                    <tr><td><a href="../saida/form_romaneio_cargas.php"><button class="buttonb">ROMANEIO DE CARGAS</button></a></td></tr>
+                    <tr><td><a href="../saida/form_relatorio_devolucao.php"><button class="buttonb">RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
                     <tr><td><h2>CADASTROS</h2></td></tr>
                     <tr><td><a href="..\cadastro/form_cadastrar_nfs.php"><button>NOTAS</button></a></td></tr>
                     <tr><td><a href="..\cadastro/form_cadastrar_clientes.php"><button>CLIENTES</button></a></td></tr>
@@ -37,14 +37,14 @@
 	$tel_mot = trim($_POST['tel_mot']);
 	$end_mot = trim($_POST['end_mot']);
 	$id = trim($_POST['id']);
-    
+
     if(!isset($_POST['opc'])){
         $fil_mot = "nul";
     }else
     {
         $fil_mot = $_POST['opc'];
     }
-    
+
     $sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `id` = '$id'");
     $nom_mota = trim($_POST['nom_mot']);
 	$pla_mota = trim($_POST['pla_mot']);
@@ -55,7 +55,7 @@
             break;
         case "nom":
             $sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `nome` = '$nom_mot' and `placa` = '$pla_mota'");
-            $n = mysqli_num_rows($sql);    
+            $n = mysqli_num_rows($sql);
             if($n!=0){
                 ?>
                 <pag>
@@ -78,7 +78,7 @@
             break;
         case "pla":
             $sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `nome` = '$nom_mota' and `placa` = '$pla_mot'");
-            $n = mysqli_num_rows($sql);    
+            $n = mysqli_num_rows($sql);
             if($n!=0){
                 ?>
                 <pag>
@@ -105,40 +105,39 @@
         default:
             $sql = mysqli_query($conn, "SELECT * FROM $tab_mot WHERE `id` = '0'");
     }
-    
 ?>
         <urn>
             <table border=1>
                 <h3>MOTORISTAS CADASTRADOS</h3>
-                <tr>						
-					<td><h3>CADASTRO</h3></td>						
-					<td><h3>NOME</h3></td>						
-					<td><h3>VEÍCULO</h3></td>						
-					<td><h3>PLACA</h3></td>						
-					<td><h3>TELEFONE</h3></td>						
-					<td><h3>ENDERECO</h3></td>						
-				</tr>		
+                <tr>
+					<td><h3>CADASTRO</h3></td>
+					<td><h3>NOME</h3></td>
+					<td><h3>VEÍCULO</h3></td>
+					<td><h3>PLACA</h3></td>
+					<td><h3>TELEFONE</h3></td>
+					<td><h3>ENDERECO</h3></td>
+				</tr>
 <?php
     $sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `id` = '$id'");
     $n = mysqli_num_rows($sql);
     $i=0;
         while($i!=$n)
         {
-            $vn = mysqli_fetch_array($sql); 
-?>                        
+            $vn = mysqli_fetch_array($sql);
+?>
                     <tr>
                         <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>
-                        <td><h4><nobr><?php echo $vn['nome'];   ?></nobr></h4></td>					
-                        <td><h4><nobr><?php echo $vn['veiculo'];   ?></nobr></h4></td>					
-                        <td><h4><nobr><?php echo $vn['placa'];   ?></nobr></h4></td>					
-                        <td><h4><nobr><?php echo $vn['telefone'];   ?></nobr></h4></td>					
-                        <td><h4><nobr><?php echo $vn['endereco'];   ?></nobr></h4></td>					
-                    </tr>                                            
-<?php   
+                        <td><h4><nobr><?php echo $vn['nome'];   ?></nobr></h4></td>
+                        <td><h4><nobr><?php echo $vn['veiculo'];   ?></nobr></h4></td>
+                        <td><h4><nobr><?php echo $vn['placa'];   ?></nobr></h4></td>
+                        <td><h4><nobr><?php echo $vn['telefone'];   ?></nobr></h4></td>
+                        <td><h4><nobr><?php echo $vn['endereco'];   ?></nobr></h4></td>
+                    </tr>
+<?php
             $i = $i + 1;
-        }   
+        }
 ?>
             </table>
-        </urn>	
+        </urn>
 	</body>
 </html>

@@ -4,10 +4,10 @@
         <link rel="icon" href="..\imagem/favicone.png"/>
         <link href="..\estilo.css" rel="stylesheet"/>
         <title>Matriz Principal</title>
-    </head> 
-    <body>	
+    </head>
+    <body>
         <menu>
-            <a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
+            <a href="http://localhost/transluccaggi/menu.html"><img src="..\imagem/logo.png" width=20%></a>
             <h1>MATRIZ PRINCIPAL</h1><p>
                 <table class="tableb">
                     <tr><td><a href="../saida/form_saida_motorista.html"><button>SAÍDA DE MOTORISTAS</button></a></td></tr>
@@ -30,10 +30,8 @@
 <?php
 	require('..\connect.php');
 
-	$id = $_POST['id'];	
-	
+	$id = $_POST['id'];
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `id` = '$id'");
-	
 	$vn = mysqli_fetch_array($sql);
 ?>
             <pag>
@@ -52,7 +50,7 @@
                                 <td><h3>CIDADE</h3></td>
                                 <td><h3>BAIRRO</h3></td>
                                 <td><h3>ENDEREÇO</h3></td>
-                                <td><h3>COD_<br>DISTRIBUIDORA</h3></td>							
+                                <td><h3>COD_<br>DISTRIBUIDORA</h3></td>
                                 </tr>
                                 <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
 								<h6>DESEJA MESMO EXCLUIR ESSE CLIENTE?</h6>
@@ -64,8 +62,8 @@
                                     <td><h4><nobr><?php echo $vn['cidade'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['bairro'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['endereco'];    ?></nobr></h4></td>
-                                    <td><h4><nobr><?php echo $vn['cod_distribuidora'];    ?></nobr></h4></td>																	 
-							</table>                            
+                                    <td><h4><nobr><?php echo $vn['cod_distribuidora'];    ?></nobr></h4></td>
+							</table>
                             <tr>
                                 <td><input class="inputc" type=submit value=SIM>
 						</form>
@@ -73,7 +71,7 @@
                                 <input class="inputb" type=submit value=NÃO></td>
                             </tr>
                         </form>
-					</td>	
+					</td>
 				</tr>
 			</table>
 		</pag>

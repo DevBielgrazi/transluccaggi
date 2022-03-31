@@ -4,10 +4,10 @@
 		<link rel="icon" href="..\imagem/favicone.png"/>
 		<link href="..\estilo.css" rel="stylesheet"/>
 		<title>Matriz Principal</title>
-	</head> 
-	<body>	
+	</head>
+	<body>
 		<menu>
-			<a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
+			<a href="http://localhost/transluccaggi/menu.html"><img src="..\imagem/logo.png" width=20%></a>
 			<h1>MATRIZ PRINCIPAL</h1><p>
 				<table class="tableb">
 					<tr><td><a href="../saida/form_saida_motorista.html"><button>SAÍDA DE MOTORISTAS</button></a></td></tr>
@@ -31,17 +31,15 @@
 	require('../connect.php');
 
 	$cod_dis = trim($_POST['cod_dis']);
-    
     $sql = mysqli_query($conn,"DELETE FROM $tab_dis WHERE `codigo` = '$cod_dis'");
-        
 ?>
-        <pag>	
+        <pag>
 				<h1>EXCLUIR DISTRIBUIDORAS</h1><p>
 				<table>
 					<tr>
 						<td><h7>DISTRIBUIDORA EXCLUÌDA</h7></td>
-					</tr>	
+					</tr>
 				</table>
-			</pag>	
+			</pag>
 	</body>
 </html>

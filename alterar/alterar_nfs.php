@@ -4,16 +4,16 @@
 		<link rel="icon" href="..\imagem/favicone.png"/>
 		<link href="..\estilo.css" rel="stylesheet"/>
 		<title>Matriz Principal</title>
-	</head> 
-	<body>	
+	</head>
+	<body>
         <menu>
-            <a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
+            <a href="http://localhost/transluccaggi/menu.html"><img src="..\imagem/logo.png" width=20%></a>
             <h1>MATRIZ PRINCIPAL</h1><p>
                 <table class="tableb">
-                    <tr><td><a href="../saida/form_saida_motorista.html"><button>SAÍDA DE MOTORISTAS</button></a></td></tr>
-                    <tr><td><a href="../saida/form_baixa_canhotos.html"><button>BAIXA DE CANHOTOS</button></a></td></tr>
-                    <tr><td><a href="../saida/form_romaneio_cargas.php"><button>ROMANEIO DE CARGAS</button></a></td></tr>
-                    <tr><td><a href="../saida/form_relatorio_devolucao.php"><button>RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
+                    <tr><td><a href="../saida/form_saida_motorista.html"><button class="buttonb">SAÍDA DE MOTORISTAS</button></a></td></tr>
+                    <tr><td><a href="../saida/form_baixa_canhotos.html"><button class="buttonb">BAIXA DE CANHOTOS</button></a></td></tr>
+                    <tr><td><a href="../saida/form_romaneio_cargas.php"><button class="buttonb">ROMANEIO DE CARGAS</button></a></td></tr>
+                    <tr><td><a href="../saida/form_relatorio_devolucao.php"><button class="buttonb">RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
                     <tr><td><h2>CADASTROS</h2></td></tr>
                     <tr><td><a href="..\cadastro/form_cadastrar_nfs.php"><button>NOTAS</button></a></td></tr>
                     <tr><td><a href="..\cadastro/form_cadastrar_clientes.php"><button>CLIENTES</button></a></td></tr>
@@ -29,7 +29,7 @@
         </menu>
 <?php
 	require('../connect.php');
-	
+
 	$num_nf = trim($_POST['num_nf']);
     $ser_nf = trim($_POST['ser_nf']);
     $emi_nf = trim($_POST['emi_nf']);
@@ -40,10 +40,11 @@
     $cod_cli = trim($_POST['cod_cli']);
     $mot_nf = trim($_POST['mot_nf']);
     $id = $_POST['id'];
-		
+
     if(!isset($_POST['opc'])){
         $fil_nf = "nul";
-    }else
+    }
+    else
     {
         $fil_nf = $_POST['opc'];
     }
@@ -54,11 +55,11 @@
     $ser_nfa = $sql2['serie'];
     $cod_clia = $sql2['cod_cliente'];
     $cod_disa = $sql2['cod_distribuidora'];
-    
+
     switch($fil_nf){
         case "num":
             $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' and `serie` = '$ser_nfa' and `cod_distribuidora` = '$cod_disa'");
-            $n = mysqli_num_rows($sql);    
+            $n = mysqli_num_rows($sql);
             if($n!=0){
                 ?>
 				<pag>
@@ -78,7 +79,7 @@
             break;
         case "ser":
             $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nfa' and `serie` = '$ser_nf' and `cod_distribuidora` = '$cod_disa'");
-            $n = mysqli_num_rows($sql);    
+            $n = mysqli_num_rows($sql);
             if($n!=0){
                 ?>
 				<pag>
@@ -111,10 +112,8 @@
             $sql2 = mysqli_query($conn,"UPDATE $tab_nfs SET `peso` = '$pes_nf' WHERE `id` = '$id'");
             break;
         case "cli":
-            $sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `codigo` = '$cod_cli'");
-		
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `codigo` = '$cod_cli'");		
 		    $n2 = mysqli_num_rows($sql);
-	
             if($n2!=0)
             {
                 $sql3 = mysqli_fetch_array($sql);
@@ -133,7 +132,6 @@
                 else{
                     $status = "AGENDAR";
                 }
-
                 $sql2 = mysqli_query($conn,"UPDATE $tab_nfs SET `cod_cliente` = '$cod_cli', `rota` = '$rot_nf', `nome_cliente` = '$nom_cli', `bairro_cliente` = '$bai_cli', `cidade_cliente` = '$cid_cli', `endereco_cliente` = '$end_cli', `cod_distribuidora` = '$cod_dis', `status` = '$status' WHERE `id` = '$id'");
             }
             else
@@ -147,7 +145,7 @@
 						</tr>
 					</table>
 				</pag>
-<?php    
+<?php
             }
             break;
         case "mot":
@@ -171,33 +169,33 @@
                     <td><h3>PESO</h3></td>
                     <td><h3>COD_<br>CLIENTE</h3></td>
                     <td><h3>MOTORISTA</h3></td>
-                    <td><h3>STATUS</h3></td>						
-                </tr>		
+                    <td><h3>STATUS</h3></td>
+                </tr>
 <?php
     $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `id` = '$id'");
     $n = mysqli_num_rows($sql);
     $i=0;
-        while($i!=$n)
-        {
-            $vn = mysqli_fetch_array($sql); 
+    while($i!=$n)
+    {
+        $vn = mysqli_fetch_array($sql);
 ?>                        
-                    <tr>
-                        <td><h4><nobr><?php echo $vn['numero'];   ?></nobr></h4></td>
-                        <td><h4><nobr><?php echo $vn['serie'];    ?></nobr></h4></td>
-                        <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['emissao']));    ?></nobr></h4></td>
-                        <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['entrada']));    ?></nobr></h4></td>
-                        <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['saida']));    ?></nobr></h4></td>
-                        <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
-                        <td><h4><nobr><?php echo $vn['peso'];    ?></nobr></h4></td>
-                        <td><h4><nobr><?php echo $vn['cod_cliente'];    ?></nobr></h4></td>
-                        <td><h4><nobr><?php echo $vn['motorista'];    ?></nobr></h4></td>
-                        <td><h4><nobr><?php echo $vn['status'];    ?></nobr></h4></td>					
-                    </tr>                                            
-<?php   
+                <tr>
+                    <td><h4><nobr><?php echo $vn['numero'];   ?></nobr></h4></td>
+                    <td><h4><nobr><?php echo $vn['serie'];    ?></nobr></h4></td>
+                    <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['emissao']));    ?></nobr></h4></td>
+                    <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['entrada']));    ?></nobr></h4></td>
+                    <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['saida']));    ?></nobr></h4></td>
+                    <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
+                    <td><h4><nobr><?php echo $vn['peso'];    ?></nobr></h4></td>
+                    <td><h4><nobr><?php echo $vn['cod_cliente'];    ?></nobr></h4></td>
+                    <td><h4><nobr><?php echo $vn['motorista'];    ?></nobr></h4></td>
+                    <td><h4><nobr><?php echo $vn['status'];    ?></nobr></h4></td>
+                </tr>
+<?php
             $i = $i + 1;
-        }   
+        }
 ?>
             </table>
-        </urn>	
+        </urn>
 	</body>
 </html>

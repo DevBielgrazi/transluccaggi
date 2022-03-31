@@ -4,16 +4,16 @@
         <link rel="icon" href="..\imagem/favicone.png"/>
         <link href="..\estilo.css" rel="stylesheet"/>
         <title>Matriz Principal</title>
-    </head> 
-    <body>	
+    </head>
+    <body>
         <menu>
-            <a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
+            <a href="http://localhost/transluccaggi/menu.html"><img src="..\imagem/logo.png" width=20%></a>
             <h1>MATRIZ PRINCIPAL</h1><p>
                 <table class="tableb">
-                    <tr><td><a href="../saida/form_saida_motorista.html"><button>SAÍDA DE MOTORISTAS</button></a></td></tr>
-                    <tr><td><a href="../saida/form_baixa_canhotos.html"><button>BAIXA DE CANHOTOS</button></a></td></tr>
-                    <tr><td><a href="../saida/form_romaneio_cargas.php"><button>ROMANEIO DE CARGAS</button></a></td></tr>
-                    <tr><td><a href="../saida/form_relatorio_devolucao.php"><button>RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
+                    <tr><td><a href="../saida/form_saida_motorista.html"><button class="buttonb">SAÍDA DE MOTORISTAS</button></a></td></tr>
+                    <tr><td><a href="../saida/form_baixa_canhotos.html"><button class="buttonb">BAIXA DE CANHOTOS</button></a></td></tr>
+                    <tr><td><a href="../saida/form_romaneio_cargas.php"><button class="buttonb">ROMANEIO DE CARGAS</button></a></td></tr>
+                    <tr><td><a href="../saida/form_relatorio_devolucao.php"><button class="buttonb">RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
                     <tr><td><h2>CADASTROS</h2></td></tr>
                     <tr><td><a href="..\cadastro/form_cadastrar_nfs.php"><button>NOTAS</button></a></td></tr>
                     <tr><td><a href="..\cadastro/form_cadastrar_clientes.php"><button>CLIENTES</button></a></td></tr>
@@ -30,10 +30,10 @@
 <?php
 	require('..\connect.php');
 
-	$cod_dis = $_POST['cod_dis'];	
-	
+	$cod_dis = $_POST['cod_dis'];
+
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `codigo` = '$cod_dis'");
-	
+
 	$vn = mysqli_fetch_array($sql);
 ?>
             <pag>
@@ -47,13 +47,13 @@
                                 <tr>
                                     <td><h2><nobr>NOME:<?php echo $vn['nome'];   ?></nobr></h2></td>
                                     <td><input name="nom_dis" type=int size=16 maxlength=64 ></td>
-								</tr>																	 
-							</table>                            
+								</tr>
+							</table>
                             <tr>
                                 <td><input class="inputb" type=submit value=ALTERAR></td>
                             </tr>
 						</form>
-					</td>	
+					</td>
 				</tr>
 			</table>
 		</pag>

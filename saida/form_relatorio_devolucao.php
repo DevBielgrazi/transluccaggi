@@ -4,16 +4,16 @@
 		<link rel="icon" href="..\imagem/favicone.png"/>
 		<link href="..\estilo.css" rel="stylesheet"/>
 		<title>Matriz Principal</title>
-	</head> 
+	</head>
 	<body>
 		<menu>
-			<a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
+			<a href="http://localhost/transluccaggi/menu.html"><img src="..\imagem/logo.png" width=20%></a>
 			<h1>MATRIZ PRINCIPAL</h1><p>
 				<table class="tableb">
-					<tr><td><a href="../saida/form_saida_motorista.html"><button>SAÍDA DE MOTORISTAS</button></a></td></tr>
-					<tr><td><a href="../saida/form_baixa_canhotos.html"><button>BAIXA DE CANHOTOS</button></a></td></tr>
-					<tr><td><a href="../saida/form_romaneio_cargas.php"><button>ROMANEIO DE CARGAS</button></a></td></tr>
-					<tr><td><a href="../saida/form_relatorio_devolucao.php"><button>RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
+					<tr><td><a href="../saida/form_saida_motorista.html"><button class="buttonb">SAÍDA DE MOTORISTAS</button></a></td></tr>
+					<tr><td><a href="../saida/form_baixa_canhotos.html"><button class="buttonb">BAIXA DE CANHOTOS</button></a></td></tr>
+					<tr><td><a href="../saida/form_romaneio_cargas.php"><button class="buttonb">ROMANEIO DE CARGAS</button></a></td></tr>
+					<tr><td><a href="../saida/form_relatorio_devolucao.php"><button class="buttonb">RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
 					<tr><td><h2>CADASTROS</h2></td></tr>
                     <tr><td><a href="..\cadastro/form_cadastrar_nfs.php"><button>NOTAS</button></a></td></tr>
                     <tr><td><a href="..\cadastro/form_cadastrar_clientes.php"><button>CLIENTES</button></a></td></tr>
@@ -50,16 +50,16 @@
 									<td><h4>DISTRIBUIDORA:</h4></td>
 									<td><select name="dis_dev">
 <?php
-require('../connect.php');
-$sql = mysqli_query($conn,"SELECT * FROM $tab_dis");
-$n = mysqli_num_rows($sql);
-$i=0;
-while($i!=$n){
-	$v = mysqli_fetch_array($sql);
+	require('../connect.php');
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis");
+	$n = mysqli_num_rows($sql);
+	$i=0;
+	while($i!=$n){
+		$v = mysqli_fetch_array($sql);
 		?><option value="<?php	echo $v['nome']	?>"><?php	echo	$v['nome']	?></option><?php
 		$i=$i+1;
-}
-?>									
+	}
+?>
 									</select></td>
 								</tr>
 							</table>
@@ -67,9 +67,9 @@ while($i!=$n){
 								<td><input class="inputb" type=submit value=PRÓXIMA></td>
 							</tr>
 						</form>
-					</td>	
-				</tr>																				 
+					</td>
+				</tr>
 			</table>
-		</pag>	
+		</pag>
 	</body>
 </html>

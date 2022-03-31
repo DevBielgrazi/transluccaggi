@@ -4,10 +4,10 @@
         <link rel="icon" href="..\imagem/favicone.png"/>
         <link href="..\estilo.css" rel="stylesheet"/>
         <title>Matriz Principal</title>
-    </head> 
-    <body>	
+    </head>
+    <body>
         <menu>
-            <a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
+            <a href="http://localhost/transluccaggi/menu.html"><img src="..\imagem/logo.png" width=20%></a>
             <h1>MATRIZ PRINCIPAL</h1><p>
                 <table class="tableb">
                     <tr><td><a href="../saida/form_saida_motorista.html"><button>SAÍDA DE MOTORISTAS</button></a></td></tr>
@@ -30,10 +30,8 @@
 <?php
 	require('..\connect.php');
 
-	$id = $_POST['id'];	
-	
+	$id = $_POST['id'];
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `id` = '$id'");
-	
 	$vn = mysqli_fetch_array($sql);
 ?>
             <pag>
@@ -44,22 +42,22 @@
 						<form method="post" action="excluir_motoristas.php">
 							<table border=1>
                                 <tr>
-                                    <td><h3>CADASTRO</h3></td>						
-                                    <td><h3>NOME</h3></td>						
-                                    <td><h3>VEÍCULO</h3></td>						
-                                    <td><h3>PLACA</h3></td>						
-                                    <td><h3>TELEFONE</h3></td>						
-                                    <td><h3>ENDERECO</h3></td>						
+                                    <td><h3>CADASTRO</h3></td>
+                                    <td><h3>NOME</h3></td>
+                                    <td><h3>VEÍCULO</h3></td>
+                                    <td><h3>PLACA</h3></td>
+                                    <td><h3>TELEFONE</h3></td>
+                                    <td><h3>ENDERECO</h3></td>
                                 </tr>
                                 <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
 								<h6>DESEJA MESMO EXCLUIR ESSE MOTORISTA?</h6>
                                     <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>
-                                    <td><h4><nobr><?php echo $vn['nome'];   ?></nobr></h4></td>					
-                                    <td><h4><nobr><?php echo $vn['veiculo'];   ?></nobr></h4></td>					
-                                    <td><h4><nobr><?php echo $vn['placa'];   ?></nobr></h4></td>					
-                                    <td><h4><nobr><?php echo $vn['telefone'];   ?></nobr></h4></td>					
-                                    <td><h4><nobr><?php echo $vn['endereco'];   ?></nobr></h4></td>																	 
-							</table>                            
+                                    <td><h4><nobr><?php echo $vn['nome'];   ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['veiculo'];   ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['placa'];   ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['telefone'];   ?></nobr></h4></td>
+                                    <td><h4><nobr><?php echo $vn['endereco'];   ?></nobr></h4></td>
+							</table>
                             <tr>
                                 <td><input class="inputc" type=submit value=SIM>
 						</form>
@@ -67,7 +65,7 @@
                                 <input class="inputb" type=submit value=NÃO></td>
                             </tr>
                         </form>
-					</td>	
+					</td>
 				</tr>
 			</table>
 		</pag>

@@ -4,16 +4,16 @@
 		<link rel="icon" href="..\imagem/favicone.png"/>
 		<link href="..\estilo.css" rel="stylesheet"/>
 		<title>Matriz Principal</title>
-	</head> 
-	<body>	
+	</head>
+	<body>
     <menu>
-        <a href="http://localhost/transluccaggi"><img src="..\imagem/logo.png" width=20%></a>
+        <a href="http://localhost/transluccaggi/menu.html"><img src="..\imagem/logo.png" width=20%></a>
         <h1>MATRIZ PRINCIPAL</h1><p>
             <table class="tableb">
-                    <tr><td><a href="../saida/form_saida_motorista.html"><button>SAÍDA DE MOTORISTAS</button></a></td></tr>
-                    <tr><td><a href="../saida/form_baixa_canhotos.html"><button>BAIXA DE CANHOTOS</button></a></td></tr>
-                    <tr><td><a href="../saida/form_romaneio_cargas.php"><button>ROMANEIO DE CARGAS</button></a></td></tr>
-                    <tr><td><a href="../saida/form_relatorio_devolucao.php"><button>RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
+                    <tr><td><a href="../saida/form_saida_motorista.html"><button class="buttonb">SAÍDA DE MOTORISTAS</button></a></td></tr>
+                    <tr><td><a href="../saida/form_baixa_canhotos.html"><button class="buttonb">BAIXA DE CANHOTOS</button></a></td></tr>
+                    <tr><td><a href="../saida/form_romaneio_cargas.php"><button class="buttonb">ROMANEIO DE CARGAS</button></a></td></tr>
+                    <tr><td><a href="../saida/form_relatorio_devolucao.php"><button class="buttonb">RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
                     <tr><td><h2>CADASTROS</h2></td></tr>
                     <tr><td><a href="..\cadastro/form_cadastrar_nfs.php"><button>NOTAS</button></a></td></tr>
                     <tr><td><a href="..\cadastro/form_cadastrar_clientes.php"><button>CLIENTES</button></a></td></tr>
@@ -29,7 +29,7 @@
         </menu>
 <?php
 	require('../connect.php');
-	
+
 	$cod_cli = trim($_POST['cod_cli']);
 	$nom_cli = trim($_POST['nom_cli']);
 	$age_cli = trim($_POST['age_cli']);
@@ -40,10 +40,11 @@
 	$end_cli = trim($_POST['end_cli']);
 	$cod_dis = trim($_POST['cod_dis']);
     $id = $_POST['id'];
-		
+
     if(!isset($_POST['opc'])){
         $fil_cli = "nul";
-    }else
+    }
+    else
     {
         $fil_cli = $_POST['opc'];
     }
@@ -52,11 +53,11 @@
     $sql2 = mysqli_fetch_array($sql);
     $cod_clia = $sql2['codigo'];
     $cod_disa = $sql2['cod_distribuidora'];
-    
+
     switch($fil_nf){
         case "cod":
             $sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `codigo` = '$cod_cli' and `cod_distribuidora` = '$cod_disa'");
-            $n = mysqli_num_rows($sql);    
+            $n = mysqli_num_rows($sql);
             if($n!=0){
                 ?>
 				<pag>
@@ -97,7 +98,7 @@
             break;
         case "dis":
             $sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `codigo` = '$cod_clia' and `cod_distribuidora` = '$cod_dis'");
-            $n = mysqli_num_rows($sql);    
+            $n = mysqli_num_rows($sql);
             if($n!=0){
                 ?>
 				<pag>
@@ -132,16 +133,16 @@
                     <td><h3>CIDADE</h3></td>
                     <td><h3>BAIRRO</h3></td>
                     <td><h3>ENDEREÇO</h3></td>
-                    <td><h3>COD_<br>DISTRIBUIDORA</h3></td>							
-                </tr>		
+                    <td><h3>COD_<br>DISTRIBUIDORA</h3></td>
+                </tr>
 <?php
     $sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `id` = '$id'");
     $n = mysqli_num_rows($sql);
     $i=0;
         while($i!=$n)
         {
-            $vn = mysqli_fetch_array($sql); 
-?>                        
+            $vn = mysqli_fetch_array($sql);
+?>
                     <tr>
                         <td><h4><nobr><?php echo $vn['codigo'];   ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['nome'];    ?></nobr></h4></td>
@@ -151,13 +152,13 @@
                         <td><h4><nobr><?php echo $vn['cidade'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['bairro'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['endereco'];    ?></nobr></h4></td>
-                        <td><h4><nobr><?php echo $vn['cod_distribuidora'];    ?></nobr></h4></td>					
-                    </tr>                                            
-<?php   
+                        <td><h4><nobr><?php echo $vn['cod_distribuidora'];    ?></nobr></h4></td>
+                    </tr>
+<?php
             $i = $i + 1;
-        }   
+        }
 ?>
             </table>
-        </urn>	
+        </urn>
 	</body>
 </html>

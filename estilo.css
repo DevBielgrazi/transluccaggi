@@ -1,5 +1,5 @@
 body{
-    background-color: black;
+    background-image:linear-gradient(to right,darkblue 60%,dodgerblue);
 }
 h1{
     color: gray;
@@ -11,7 +11,7 @@ h3{
     font-size: 15px;
 }
 h4{
-    color:dodgerblue;
+    color:black;
     font-family:OCR A Std, monospace;
 }
 h5{
@@ -34,15 +34,34 @@ h2{
     font-family: OCR A Std, monospace;
 }
 button{
-    background-color: blue;
+    background-color: gray;
     font-family: OCR A Std, monospace;
+    color:black;
     font-size: 15px;
-    border-radius: 10px;
+    border-radius: 8px;
+}
+.buttonb{
+    background-color: gray;
+    font-family: OCR A Std, monospace;
+    font-size: 20px;
+    border-radius: 8px;
+}
+.buttonc{
+    background-color:gray;
+    color:black;
+    font-size: 20px;
+    border-radius: 20px;
+    border-color: black;
 }
 menu{
     position:absolute;
     top:10px;
     left:0px;
+}
+login{
+    position:absolute;
+    top:10px;
+    left:500px;
 }
 pag{
     position:absolute;
@@ -57,7 +76,7 @@ urn{
 urc{
     position:absolute;
     top:550px;
-    left:-100px;
+    left:0px;
 }
 urd{
     position:absolute;
@@ -70,23 +89,24 @@ rn{
     left:325px;
 }
 input, select{
+    border-radius: 8px;
     background-color: gray;
     color:black;
     font-size: 20px;
 }
 .inputb{
-    background-color:black;
-    color:green;
+    background-color:gray;
+    color:black;
     font-size: 20px;
     border-radius: 20px;
-    border-color: dodgerblue;
+    border-color: black;
 }
 .inputc{
-    background-color:black;
+    background-color:gray;
     color:red;
     font-size: 20px;
     border-radius: 20px;
-    border-color: dodgerblue;
+    border-color: black;
 }
 .inputd{
     background-color:gray;
