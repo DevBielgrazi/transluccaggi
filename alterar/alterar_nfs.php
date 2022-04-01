@@ -28,8 +28,9 @@
             </table>
         </menu>
 <?php
+#IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
-
+#VARIÁVEIS DO FORMULÁRIO
 	$num_nf = trim($_POST['num_nf']);
     $ser_nf = trim($_POST['ser_nf']);
     $emi_nf = trim($_POST['emi_nf']);
@@ -40,26 +41,27 @@
     $cod_cli = trim($_POST['cod_cli']);
     $mot_nf = trim($_POST['mot_nf']);
     $id = $_POST['id'];
-
+#VERIFICANDO EXISTÊNCIA DO INPUT
     if(!isset($_POST['opc'])){
         $fil_nf = "nul";
-    }
-    else
-    {
+    }else{
         $fil_nf = $_POST['opc'];
     }
-
+#ADQUIRINDO INFORMAÇÕES DO BANCO
     $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `id` = '$id'");
+#CADASTROS POR COLUNA
     $sql2 = mysqli_fetch_array($sql);
     $num_nfa = $sql2['numero'];
     $ser_nfa = $sql2['serie'];
     $cod_clia = $sql2['cod_cliente'];
     $cod_disa = $sql2['cod_distribuidora'];
-
+#VERIFICANDO INPUT SELECIONADO
     switch($fil_nf){
         case "num":
             $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' and `serie` = '$ser_nfa' and `cod_distribuidora` = '$cod_disa'");
+#TRANSFORMANDO RESULTADO EM NÚMEROS
             $n = mysqli_num_rows($sql);
+#VERIFICANDO O NÚMERO DE CADASTROS
             if($n!=0){
                 ?>
 				<pag>
@@ -74,6 +76,7 @@
             }
             else
             {
+#ALTERANDO DADOS DO CAMPO SELECIONADO
                 $sql2 = mysqli_query($conn,"UPDATE $tab_nfs SET `numero` = '$num_nf' WHERE `id` = '$id'");
             }
             break;
@@ -124,12 +127,11 @@
                 $bai_cli = $sql3['bairro'];
                 $end_cli = $sql3['endereco'];
                 $age = $sql3['agendar'];
-
+#VERIFICANDO COLUNA DA TABELA
                 if($age!="SIM")
                 {
                     $status = "DISPONÍVEL";
-                }
-                else{
+                }else{
                     $status = "AGENDAR";
                 }
                 $sql2 = mysqli_query($conn,"UPDATE $tab_nfs SET `cod_cliente` = '$cod_cli', `rota` = '$rot_nf', `nome_cliente` = '$nom_cli', `bairro_cliente` = '$bai_cli', `cidade_cliente` = '$cid_cli', `endereco_cliente` = '$end_cli', `cod_distribuidora` = '$cod_dis', `status` = '$status' WHERE `id` = '$id'");
@@ -174,7 +176,9 @@
 <?php
     $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `id` = '$id'");
     $n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
     $i=0;
+#APRESENTANDO DADOS DA TABELA
     while($i!=$n)
     {
         $vn = mysqli_fetch_array($sql);
@@ -192,6 +196,7 @@
                     <td><h4><nobr><?php echo $vn['status'];    ?></nobr></h4></td>
                 </tr>
 <?php
+#SOMANDO AO CONTADOR
             $i = $i + 1;
         }
 ?>

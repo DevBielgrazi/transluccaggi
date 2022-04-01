@@ -28,20 +28,22 @@
             </table>
         </menu>
 <?php
+#IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
-
+#VARIÁVEIS DO FORMULÁRIO
 	$cad_mot = trim($_POST['cad_mot']);
 	$nom_mot = trim($_POST['nom_mot']);
 	$vei_mot = trim($_POST['vei_mot']);
 	$pla_mot = trim($_POST['pla_mot']);
 	$tel_mot = trim($_POST['tel_mot']);
 	$end_mot = trim($_POST['end_mot']);
+#ADQUIRINDO INFORMAÇÕES DO BANCO
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `nome` = '$nom_mot' and `placa` = '$pla_mot'");
-
+#TRANSFORMANDO RESULTADO EM NÚMEROS
 	$n = mysqli_num_rows($sql);
-	if($n != 0)
-	{
-		?>
+#VERIFICANDO O NÚMERO DE CADASTROS
+	if($n != 0){
+?>
 			<pag>
 				<h1>CADASTRAR MOTORISTAS</h1><p>
 				<table>
@@ -50,12 +52,13 @@
 					</tr>
 				</table>
 			</pag>
-		<?php
+<?php
 	}
 	else
 	{
+#INSERINDO DADOS NA TABELA
         $sql = mysqli_query($conn,"INSERT INTO $tab_mot (`cadastro`, `nome`, `veiculo`, `placa`, `telefone`, `endereco`)  VALUES ('$cad_mot', '$nom_mot', '$vei_mot', '$pla_mot', '$tel_mot', '$end_mot')");
-        ?>
+?>
             <pag>
                 <h1>CADASTRAR MOTORISTAS</h1><p>
                 <table>
@@ -78,23 +81,26 @@
 					<td><h3>TELEFONE</h3></td>
 					<td><h3>ENDERECO</h3></td>
 				</tr>
-                <?php   require('..\connect.php');
-				$sql = mysqli_query($conn,"SELECT * FROM $tab_mot ORDER BY `id` DESC LIMIT 5");
-				$n = mysqli_num_rows($sql);
-                $i=0;
-				while($i!=$n)
-				{
-					$vn = mysqli_fetch_array($sql);	?>
-							<tr>
-								<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>
-								<td><h4><nobr><?php echo $vn['nome'];   ?></nobr></h4></td>
-								<td><h4><nobr><?php echo $vn['veiculo'];   ?></nobr></h4></td>
-								<td><h4><nobr><?php echo $vn['placa'];   ?></nobr></h4></td>
-								<td><h4><nobr><?php echo $vn['telefone'];   ?></nobr></h4></td>
-								<td><h4><nobr><?php echo $vn['endereco'];   ?></nobr></h4></td>
-							</tr>
-					<?php   $i = $i + 1;
-				}
+<?php
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_mot ORDER BY `id` DESC");
+#INICIANDO CONTADOR
+	$i=0;
+#APRESENTANDO DADOS DA TABELA
+	while($i!=$n){
+#CADASTROS POR COLUNA
+		$vn = mysqli_fetch_array($sql);	?>
+				<tr>
+					<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>
+					<td><h4><nobr><?php echo $vn['nome'];   ?></nobr></h4></td>
+					<td><h4><nobr><?php echo $vn['veiculo'];   ?></nobr></h4></td>
+					<td><h4><nobr><?php echo $vn['placa'];   ?></nobr></h4></td>
+					<td><h4><nobr><?php echo $vn['telefone'];   ?></nobr></h4></td>
+					<td><h4><nobr><?php echo $vn['endereco'];   ?></nobr></h4></td>
+				</tr>
+<?php
+#SOMANDO AO CONTADOR
+		$i = $i + 1;
+	}
 ?>
             </table>
         </urn>

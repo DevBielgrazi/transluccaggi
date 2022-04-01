@@ -29,13 +29,18 @@
             </table>
         </menu>
 <?php
+#IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
-
+#VARIÁVEIS DO FORMULÁRIO
 	$mot_sai = trim($_POST['mot_sai']);
 	$dat_sai = trim($_POST['dat_sai']);
+#ADQUIRINDO INFORMAÇÕES DO BANCO
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `nome` = '$mot_sai'");
+#TRANSFORMANDO RESULTADO EM NÚMEROS
 	$n1 = mysqli_num_rows($sql);
+#VERIFICANDO NÚMERO DE REGISTROS
 	if($n1!=0){
+#CADASTROS POR COLUNAS
 		$sql2 = mysqli_fetch_array($sql);
 		$nom_mot = $sql2['nome'];
 		$vei_mot = $sql2['veiculo'];
@@ -57,41 +62,41 @@
 				<td><h3>CLIENTE</h3></td>
 		</tr>
 <?php
-    $i=0;	
+#INICIANDO CONTADOR
+    $i=0;
+#VERIFICANDO EXISTÊNCIA NO FORMULÁRIO
 	if(!isset($_POST['not_sai'])) {
         $not_sai = null;
-    }
-	else
-	{
+    }else{
         $not_sai = trim($_POST['not_sai']);
     }
-	if(!isset($_POST[''])){
+
+	if(!isset($_POST['ser_nf'])){
         $ser_nf = null;
-    }
-	else
-	{
+    }else{
 		$ser_nf = trim($_POST['ser_nf']);
     }
-	if(!isset($_POST[''])) {
+
+	if(!isset($_POST['cod_dis'])) {
         $cod_dis = null;
-    }
-	else
-	{
+    }else{
         $cod_dis = trim($_POST['cod_dis']);
     }
+
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$not_sai'");
 	$v = mysqli_fetch_array($sql);
+#VERIFICANDO COLUNA NO BANCO
 	if(!isset($v['tentativas'])){
         $t = 0;
-    }
-	else
-	{
+    }else{
         $t = $v['tentativas'] + 1;
     }
+#ATUALIZANDO REGISTRO NO BANCO
 	$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `motorista` = '$nom_mot',`saida` = '$dat_sai',`status` = 'ROTA',`tentativas` = '$t' WHERE `numero` = '$not_sai'  and `serie` = '$ser_nf' and `cod_distribuidora` = '$cod_dis'");
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `motorista` = '$nom_mot' and `saida` = '$dat_sai'");
 	$n = mysqli_num_rows($sql);
 	if($n!=0){
+#APRESENTANDO REGISTROS NO BANCO
 		while($i!=$n){
 			$vn = mysqli_fetch_array($sql);
 ?>
@@ -101,11 +106,10 @@
 					<td><h4><nobr><?php echo $vn['volumes'];    ?></nobr></h4></td>
 					<td><h4><nobr><?php echo $vn['nome_cliente'];    ?></nobr></h4></td>
 <?php
+#SOMANDO AO CONTADOR
 		$i = $i + 1;
 		}
-	}
-	else
-	{
+	}else{
 		?>
 			<tr>
 			<input type="hidden" name="n" value="<?php $nn = ($_POST['n']+1)?>">
@@ -153,9 +157,7 @@
 			<input class="inputd" type=submit value=IMPRIMIR>
 		</form>
 <?php
-	}
-	else
-	{
+	}else{
 		$nom_mot = null;
 		$vei_mot = null;
 		$pla_mot = null;

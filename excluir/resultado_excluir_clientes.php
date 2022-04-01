@@ -28,10 +28,13 @@
             </table>
         </menu>
 <?php
+#IMPORTANDO CONEXÃO DO BANCO
 	require('..\connect.php');
-
+#VARIÁVEL HIDDEN DO BANCO
 	$id = $_POST['id'];
+#ADQUIRINDO DADOS DO BANCO
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `id` = '$id'");
+#CADASTROS POR COLUNA
 	$vn = mysqli_fetch_array($sql);
 ?>
             <pag>

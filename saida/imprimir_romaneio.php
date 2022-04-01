@@ -17,16 +17,22 @@
                 <td><h3>CLIENTE</h3></td>						
             </tr>
 <?php
+#IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
+#VARIÁVEIS DO FORMULÁRIO
     $dat = trim($_POST['dat']);
     $dat2 = trim($_POST['dat2']);
     $dis = trim($_POST['dis']);
-
+#ADQUIRINDO INFORMAÇÕES DO BANCO
     $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `cod_distribuidora` = '$dis' and `entrada` >= '$dat' and `entrada` <= '$dat2'");
+#TRANSFORMANDO RESULTADO EM NÚMEROS
     $n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
     $i=0;
+#APRESENTANDO DADOS DO BANCO
         while($i!=$n)
         {
+#CADASTROS POR COLUNA
             $vn = mysqli_fetch_array($sql); ?>
                 <tr>
                     <td><h4><nobr><?php echo $vn['numero'];   ?></nobr></h4></td>
@@ -38,7 +44,9 @@
                     <td><h4><nobr><?php echo $vn['peso'];    ?></nobr></h4></td>
                     <td><h4><nobr><?php echo $vn['nome_cliente'];    ?></nobr></h4></td>
                 </tr>                                            
-            <?php   $i=$i+1;
+<?php
+#SOMANDO AO CONTADOR
+            $i=$i+1;
         }
 ?>
             </table>

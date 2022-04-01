@@ -88,25 +88,37 @@
                     <td><h3>COD_<br>CLIENTE</h3></td>
                     <td><h3>STATUS</h3></td>
 				</tr>
-                <?php   require('..\connect.php');
-				$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs ORDER BY `id` DESC LIMIT 5");
-				$n = mysqli_num_rows($sql);
-                $i=0;
-				while($i!=$n)
-				{
-					$vn = mysqli_fetch_array($sql);	?>
-							<tr>
-								<td><h4><nobr><?php echo $vn['numero'];   ?></nobr></h4></td>
-								<td><h4><nobr><?php echo $vn['serie'];    ?></nobr></h4></td>
-								<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['emissao']));    ?></nobr></h4></td>
-								<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['entrada']));    ?></nobr></h4></td>
-								<td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
-								<td><h4><nobr><?php echo $vn['peso'];    ?></nobr></h4></td>
-								<td><h4><nobr><?php echo $vn['cod_cliente'];    ?></nobr></h4></td>
-								<td><h4><nobr><?php echo $vn['status'];    ?></nobr></h4></td>
-							</tr>
-					<?php   $i = $i + 1;
-				}
+<?php
+#IMPORTANDO CONEXÃO COM O BANCO
+	require('..\connect.php');
+#ADQUIRINDO CADASTROS DO BANCO
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs ORDER BY `id` DESC");
+#TRANSFORMANDO O RESULTADO EM NÚMEROS
+	$n = mysqli_num_rows($sql);
+#VERIFICANDO A EXISTÊNCIA DE REGISTROS
+	if($n!=0){
+#INICIANDO CONTADOR
+		$i=0;
+#APRESENTANDO DADOS DA TABELA
+		while($i<5){
+#CADASTROS POR COLUNA
+			$vn = mysqli_fetch_array($sql);
+?>
+				<tr>
+					<td><h4><nobr><?php echo $vn['numero'];   ?></nobr></h4></td>
+					<td><h4><nobr><?php echo $vn['serie'];    ?></nobr></h4></td>
+					<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['emissao']));    ?></nobr></h4></td>
+					<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['entrada']));    ?></nobr></h4></td>
+					<td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
+					<td><h4><nobr><?php echo $vn['peso'];    ?></nobr></h4></td>
+					<td><h4><nobr><?php echo $vn['cod_cliente'];    ?></nobr></h4></td>
+					<td><h4><nobr><?php echo $vn['status'];    ?></nobr></h4></td>
+				</tr>
+<?php
+#SOMANDO AO CONTADOR
+		$i = $i + 1;
+		}
+	}
 ?>
             </table>
         </urn>

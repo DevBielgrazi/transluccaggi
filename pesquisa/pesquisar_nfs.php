@@ -48,8 +48,9 @@
                     <td><h3>STATUS</h3></td>
 				</tr>
 <?php
+#IMPORTANDO CONEXÃO DO BANCO
 	require('../connect.php');
-
+#VARIÁVEIS DO FORMULÁRIO
 	$num_nf = trim($_POST['num_nf']);
     $emi_nf = trim($_POST['emi_nf']);
     $emi_nf2 = trim($_POST['emi_nf2']);
@@ -63,15 +64,13 @@
     $cod_dis = trim($_POST['cod_dis']);
     $mot_nf = trim($_POST['mot_nf']);
     $sta_nf = trim($_POST['sta_nf']);
-
+#VERIFICANDO EXISTÊNCIA DO INPUT
     if(!isset($_POST['opc'])){
         $fil_nf = "nul";
-    }
-    else
-    {
+    }else{
         $fil_nf = $_POST['opc'];
     }
-
+#VERIFICANDO  INPUT SELECIONADO
     switch ($fil_nf){
         case 'tod':
             $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs  ORDER BY `id` DESC");
@@ -146,11 +145,15 @@
             $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `id` = '0'");
             break;
     }
+#TRANSFORMANDO RESULTADO EM NÚMEROS
     $n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
     $i=0;
-    while($i!=$n)
-    {
-        $vn = mysqli_fetch_array($sql); ?>
+#APRESENTANDO DADOS DA TABELA
+    while($i!=$n){
+#CADASTROS POR COLUNA
+        $vn = mysqli_fetch_array($sql);
+?>
                     <tr>
                 <form method="post" action="..\excluir/resultado_excluir_nfs.php">
                     <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
@@ -174,7 +177,9 @@
                         <td><h4><nobr><?php echo $vn['status'];    ?></nobr></h4></td>
                     </tr>
                 </form>
-        <?php   $i = $i + 1;
+<?php
+#SOMANDO AO CONTADOR
+        $i = $i + 1;
     }
 ?>
             </table>

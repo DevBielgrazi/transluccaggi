@@ -28,8 +28,9 @@
             </table>
         </menu>
 <?php
+#IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
-
+#VARIÁVEIS DO FORMULÁRIO
 	$num_nf = trim($_POST['num_nf']);
     $ser_nf = trim($_POST['ser_nf']);
     $emi_nf = trim($_POST['emi_nf']);
@@ -38,14 +39,17 @@
     $val_nf = trim($_POST['val_nf']);
     $pes_nf = trim($_POST['pes_nf']);
     $cod_cli = trim($_POST['cod_cli']);
+#ADQUIRINDO INFORMAÇÕES DA TABELA
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `codigo` = '$cod_cli'");
+#CADASTROS POR COLUNA
 	$sql2 = mysqli_fetch_array($sql);
 	$cod_dis = $sql2['cod_distribuidora'];
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' and `serie` = '$ser_nf' and `cod_distribuidora` = '$cod_dis'");
+#TRANSFORMANDO RESULTADOS EM NÚMEROS
 	$n = mysqli_num_rows($sql);
-	if($n != 0)
-	{
-		?>
+#VERIFICANDO CADASTROS NA TABELA
+	if($n != 0){
+?>
 			<pag>
 				<h1>CADASTRAR NOTAS FISCAIS</h1><p>
 				<table>
@@ -54,14 +58,11 @@
 					</tr>
 				</table>
 			</pag>
-		<?php
-	}
-	else
-	{
+<?php
+	}else{
 		$sql2 = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `codigo` = '$cod_cli'");
 		$n2 = mysqli_num_rows($sql2);
-		if($n2 != 0)
-		{
+		if($n2 != 0){
 			$sql3 = mysqli_fetch_array($sql2);
 			$cod_dis = $sql3['cod_distribuidora'];
 			$rot_nf = $sql3['rota'];
@@ -70,18 +71,15 @@
 			$bai_cli = $sql3['bairro'];
 			$end_cli = $sql3['endereco'];
 			$age = $sql3['agendar'];
-			if($age!="SIM")
-			{
+#VERIFICANDO COLUNA DA TABELA
+			if($age!="SIM"){
 				$status = "DISPONÍVEL";
-			}
-			else
-			{
+			}else{
 				$status = "AGENDAR";
 			}
-
+#INSERINDO CADASTROS NA TABELA
 			$sql = mysqli_query($conn,"INSERT INTO $tab_nfs (`numero`, `serie`, `emissao`, `entrada`, `volumes`, `valor`, `peso`, `rota`, `cod_cliente`, `nome_cliente`, `cidade_cliente`, `bairro_cliente`, `endereco_cliente`, `cod_distribuidora`, `status`, `observacao`, `tentativas`)  VALUES ('$num_nf', '$ser_nf', '$emi_nf', '$ent_nf', '$vol_nf', '$val_nf', '$pes_nf', '$rot_nf', '$cod_cli', '$nom_cli', '$cid_cli', '$bai_cli', '$end_cli', '$cod_dis', '$status', '', '0')");
-			
-			?>
+?>
 				<pag>
 					<h1>CADASTRAR NOTAS FISCAIS</h1><p>
 					<table>
@@ -90,11 +88,9 @@
 						</tr>
 					</table>
 				</pag>
-			<?php
-		}
-		else
-		{
-			?>
+<?php
+		}else{
+?>
 				<pag>
 					<h1>CADASTRAR NOTAS FISCAIS</h1><p>
 					<table>
@@ -103,7 +99,7 @@
 						</tr>
 					</table>
 				</pag>
-			<?php
+<?php
 		}
 	}
 ?>
@@ -121,12 +117,12 @@
                     <td><h3>COD_<br>CLIENTE</h3></td>
                     <td><h3>STATUS</h3></td>
 				</tr>
-                <?php   require('..\connect.php');
-				$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs ORDER BY `id` DESC LIMIT 5");
-				$n = mysqli_num_rows($sql);
+<?php
+				$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs ORDER BY `id` DESC");
+#INICIANDO CONTADOR
                 $i=0;
-				while($i!=$n)
-				{
+#APRESENTANDO DADOS DA TABELA
+				while($i<5){
 					$vn = mysqli_fetch_array($sql);
 ?>
 					<tr>
@@ -140,7 +136,9 @@
 						<td><h4><nobr><?php echo $vn['cod_cliente'];    ?></nobr></h4></td>
 						<td><h4><nobr><?php echo $vn['status'];    ?></nobr></h4></td>
 					</tr>
-					<?php   $i = $i + 1;
+<?php
+#SOMANDO AO CONTADOR
+					$i = $i + 1;
 				}
 ?>
             </table>

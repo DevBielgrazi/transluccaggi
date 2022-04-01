@@ -6,13 +6,16 @@
 	</head> 
 	<body>
 <?php
+#IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
-	
+#VARIÁVEIS DO FOMRULÁRIO
     $mot_sai = trim($_POST['mot_sai']);
 	$dat_sai = trim($_POST['dat_sai']);
-		
+#ADQUIRINDO DADOS DO BANCO
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `nome` = '$mot_sai'");
+#TRANSFORMANDO O RESULTADO EM NÚMEROS
 	$n1 = mysqli_num_rows($sql);
+#CADASTROS POR COLUNA
     $sql2 = mysqli_fetch_array($sql);
     $nom_mot = $sql2['nome'];
     $vei_mot = $sql2['veiculo'];
@@ -35,7 +38,9 @@
 <?php
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `motorista` = '$nom_mot' and `saida` = '$dat_sai'");
 	$n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
     $i=0;
+#APRESENTANDO DADOS DO BANCO
 	while($i!=$n){
         $vn = mysqli_fetch_array($sql);
 ?>
@@ -50,9 +55,11 @@
     }
 	$sql = mysqli_query($conn,"SELECT SUM(`volumes`) as 'vol' FROM $tab_nfs WHERE `motorista` = '$nom_mot' and `saida` = '$dat_sai'");
 	$sql = mysqli_fetch_array($sql);
+#VARIÁVEL DO BANCO
 	$tot_vol = $sql['vol'];
 	$sql = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `motorista` = '$nom_mot' and `saida` = '$dat_sai'");
 	$sql = mysqli_fetch_array($sql);
+#VARIÁVEL DO BANCO
 	$val_tot = number_format(($sql['val']), 2, '.', '');
 ?>
 		<tr>

@@ -28,9 +28,11 @@
             </table>
         </menu>
 <?php
+#IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
-
+#VARIÁVEL HIDDEN DO BANCO
 	$id = trim($_POST['id']);
+#EXCLUINDO REGISTRO DO BANCO
     $sql = mysqli_query($conn,"DELETE FROM $tab_nfs WHERE `id` = '$id'");
 ?>
         <pag>

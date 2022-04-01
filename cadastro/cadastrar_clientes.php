@@ -28,8 +28,9 @@
 			</table>
 		</menu>
 <?php
+#IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
-
+#VARIÁVEIS DO FORMULÁRIO
 	$cod_cli = trim($_POST['cod_cli']);
     $nom_cli = trim($_POST['nom_cli']);
     $cad_cli = trim($_POST['cad_cli']);
@@ -38,18 +39,19 @@
     $bai_cli = trim($_POST['bai_cli']);
 	$end_cli = trim($_POST['end_cli']);
     $cod_dis = trim($_POST['cod_dis']);
-
-	if(!isset($_POST['age'])) {
+#VERIFICANDO INPUT
+	if(!isset($_POST['age'])){
         $age = "NÂO";
-    } else {
+    }else{
         $age = $_POST['age'];
     }
-
+#ADQUIRINDO INFORMAÇÕES DO BANCO
 	$sql = mysqli_query($conn, "SELECT * FROM $tab_cli WHERE `codigo` = '$cod_cli'");
+#TRANSFORMANDO RESULTADO
 	$n = mysqli_num_rows($sql);
-	if($n != 0)
-	{
-		?>
+#VERIFICANDO CADASTROS DA TABELA
+	if($n!=0){
+?>
 			<pag>
 				<h1>CADASTRAR CLIENTES</h1><p>
 				<table>
@@ -64,8 +66,8 @@
 	{
 		$sql2 = mysqli_query($conn, "SELECT * FROM $tab_dis WHERE `codigo` = '$cod_dis'");
 		$n2 = mysqli_num_rows($sql2);
-		if($n2 != 0)
-		{
+		if($n2 != 0){
+#INSERINDO DADOS NA TABELA
 			$sql = mysqli_query($conn,"INSERT INTO $tab_cli(`codigo`, `nome`, `agendar`, `cadastro`, `rota`, `cidade`, `bairro`, `endereco`, `cod_distribuidora`) VALUES ('$cod_cli', '$nom_cli', '$age', '$cad_cli', '$rot_cli', '$cid_cli', '$bai_cli', '$end_cli', '$cod_dis')");
 			?>
 				<pag>
@@ -107,26 +109,28 @@
                     <td><h3>ENDEREÇO</h3></td>
                     <td><h3>COD_<br>DISTRIBUIDORA</h3></td>
 				</tr>
-                <?php   require('..\connect.php');
-				$sql = mysqli_query($conn,"SELECT * FROM $tab_cli ORDER BY `id` DESC LIMIT 5");
-				$n = mysqli_num_rows($sql);
+<?php
+				$sql = mysqli_query($conn,"SELECT * FROM $tab_cli ORDER BY `id` DESC");
+#INICIANDO CONTADOR
                 $i=0;
-                    while($i!=$n)
-                    {
-                        $vn = mysqli_fetch_array($sql);	?>
-                                <tr>
-                                    <td><h4><nobr><?php echo $vn['codigo'];   ?></nobr></h4></td>
-                                    <td><h4><nobr><?php echo $vn['nome'];    ?></nobr></h4></td>
-                                    <td><h4><nobr><?php echo $vn['agendar'];    ?></nobr></h4></td>
-                                    <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>
-                                    <td><h4><nobr><?php echo $vn['rota'];    ?></nobr></h4></td>
-                                    <td><h4><nobr><?php echo $vn['cidade'];    ?></nobr></h4></td>
-                                    <td><h4><nobr><?php echo $vn['bairro'];    ?></nobr></h4></td>
-                                    <td><h4><nobr><?php echo $vn['endereco'];    ?></nobr></h4></td>
-                                    <td><h4><nobr><?php echo $vn['cod_distribuidora'];    ?></nobr></h4></td>
-                                </tr>
-                        <?php   $i = $i + 1;
-                    }   ?>
+#APRESENTANDO DADOS DA TABELA
+				while($i<5){
+#CADASTROS POR COLUNA
+					$vn = mysqli_fetch_array($sql);
+?>
+							<tr>
+								<td><h4><nobr><?php echo $vn['codigo'];   ?></nobr></h4></td>
+								<td><h4><nobr><?php echo $vn['nome'];    ?></nobr></h4></td>
+								<td><h4><nobr><?php echo $vn['agendar'];    ?></nobr></h4></td>
+								<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>
+								<td><h4><nobr><?php echo $vn['rota'];    ?></nobr></h4></td>
+								<td><h4><nobr><?php echo $vn['cidade'];    ?></nobr></h4></td>
+								<td><h4><nobr><?php echo $vn['bairro'];    ?></nobr></h4></td>
+								<td><h4><nobr><?php echo $vn['endereco'];    ?></nobr></h4></td>
+								<td><h4><nobr><?php echo $vn['cod_distribuidora'];    ?></nobr></h4></td>
+							</tr>
+					<?php   $i = $i + 1;
+				}   ?>
             </table>
         </urc>
 	</body>

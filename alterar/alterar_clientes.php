@@ -28,8 +28,9 @@
             </table>
         </menu>
 <?php
+#IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
-
+#VARIÁVEIS DO FORMULÁRIO
 	$cod_cli = trim($_POST['cod_cli']);
 	$nom_cli = trim($_POST['nom_cli']);
 	$age_cli = trim($_POST['age_cli']);
@@ -40,24 +41,25 @@
 	$end_cli = trim($_POST['end_cli']);
 	$cod_dis = trim($_POST['cod_dis']);
     $id = $_POST['id'];
-
+#VERIFICANDO EXISTÊNCIA DO INPUT
     if(!isset($_POST['opc'])){
         $fil_cli = "nul";
-    }
-    else
-    {
+    }else{
         $fil_cli = $_POST['opc'];
     }
-
+#ADQUIRINDO INFORMAÇÕES DO BANCO
     $sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `id` = '$id'");
+#CADASTRADOS POR COLUNA
     $sql2 = mysqli_fetch_array($sql);
     $cod_clia = $sql2['codigo'];
     $cod_disa = $sql2['cod_distribuidora'];
-
+#VERIFICANDO INPUT SELECIONADO
     switch($fil_nf){
         case "cod":
             $sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `codigo` = '$cod_cli' and `cod_distribuidora` = '$cod_disa'");
+#TRANSFORMANDO O RESULTADO EM NÚMEROS
             $n = mysqli_num_rows($sql);
+#VERIFICANDO O NÚMERO DE CADASTROS
             if($n!=0){
                 ?>
 				<pag>
@@ -69,9 +71,8 @@
 					</table>
 				</pag>
 			<?php
-            }
-            else
-            {
+            }else{
+#ALTERANDO DADOS DO CAMPO SELECIONADO
                 $sql2 = mysqli_query($conn,"UPDATE $tab_cli SET `codigo` = '$cod_cli' WHERE `id` = '$id'");
             }
             break;
@@ -110,9 +111,7 @@
 					</table>
 				</pag>
 			<?php
-            }
-            else
-            {
+            }else{
                 $sql2 = mysqli_query($conn,"UPDATE $tab_cli SET `cod_distribuidora` = '$cod_dis' WHERE `id` = '$id'");
             }
         default:
@@ -138,7 +137,9 @@
 <?php
     $sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `id` = '$id'");
     $n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
     $i=0;
+#APRESENTANDO DADOS DA TABELA
         while($i!=$n)
         {
             $vn = mysqli_fetch_array($sql);
@@ -155,6 +156,7 @@
                         <td><h4><nobr><?php echo $vn['cod_distribuidora'];    ?></nobr></h4></td>
                     </tr>
 <?php
+#SOMANDO AO CONTADOR
             $i = $i + 1;
         }
 ?>

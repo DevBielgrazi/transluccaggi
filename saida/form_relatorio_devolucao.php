@@ -50,13 +50,20 @@
 									<td><h4>DISTRIBUIDORA:</h4></td>
 									<td><select name="dis_dev">
 <?php
+#IMPORTANDO CONEXÃO DO BANCO
 	require('../connect.php');
+#ADQUIRINDO INFORMAÇÕES DO BANCO
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis");
+#TRANSFORMANDO RESULTADO EM NÚMEROS
 	$n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
 	$i=0;
+#APRESENTANDO REGISTROS DO BANCO
 	while($i!=$n){
+#CADASTROS POR COLUNA
 		$v = mysqli_fetch_array($sql);
 		?><option value="<?php	echo $v['nome']	?>"><?php	echo	$v['nome']	?></option><?php
+#SOMANDO AO CONTADOR
 		$i=$i+1;
 	}
 ?>

@@ -41,8 +41,9 @@
 					<td><h3>ENDERECO</h3></td>
 				</tr>
 <?php
+#IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
-
+#VARIÁVEIS DO FORMULÁRIO
 	$cad_mot = trim($_POST['cad_mot']);
 	$cad_mot2 = trim($_POST['cad_mot2']);
 	$nom_mot = trim($_POST['nom_mot']);
@@ -50,7 +51,7 @@
 	$pla_mot = trim($_POST['pla_mot']);
 	$tel_mot = trim($_POST['tel_mot']);
 	$end_mot = trim($_POST['end_mot']);
-
+#VERIFICANDO EXISTÊNCIA DO INPUT
     if(!isset($_POST['opc'])){
         $fil_mot = "nul";
     }
@@ -58,6 +59,7 @@
     {
         $fil_mot = $_POST['opc'];
     }
+#VERIFICANDO INPUT SELECIONADO
     switch ($fil_mot){
         case 'tod':
             $sql = mysqli_query($conn,"SELECT * FROM $tab_mot  ORDER BY `id` DESC");
@@ -84,11 +86,14 @@
             $sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `id` = '0'");
             break;
     }
-
+#TRANSFORMANDO RESULTADO EM NÚMEROS
     $n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
     $i=0;
+#APRESENTANDO DADOS DA TABELA
     while($i!=$n)
     {
+#CADASTROS POR COLUNA
         $vn = mysqli_fetch_array($sql); ?>
                 <tr>
             <form method="post" action="..\excluir/resultado_excluir_motoristas.php">
@@ -106,7 +111,8 @@
                     <td><h4><nobr><?php echo $vn['endereco'];   ?></nobr></h4></td>
                 </tr>
             </form>
-        <?php
+<?php
+#SOMANDO AO CONTADOR
         $i = $i + 1;
     }
 ?>

@@ -28,17 +28,19 @@
             </table>
         </menu>
 <?php
+#IMPORTANDO CONEXÃO DO BANCO
 	require('../connect.php');
-
+#VARIÁVEIS DO FORMULÁRIO
     $nom_dis = trim($_POST['nom_dis']);
     $por_dis = trim($_POST['por_dis']);
     $cad_dis = trim($_POST['cad_dis']);
+#ADQUIRINDO INFORMAÇÕES DO BANCO
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `nome` = '$nom_dis'");
-
+#TRANSFORMANDO RESULTADO EM NUMEROS
 	$n = mysqli_num_rows($sql);
-	if($n != 0)
-	{
-		?>
+#VERIFICANDO O NÚMERO DE CADASTROS
+	if($n != 0){
+?>
 			<pag>
 				<h1>CADASTRAR DISTRIBUIDORA</h1><p>
 				<table>
@@ -47,12 +49,13 @@
 					</tr>
 				</table>
 			</pag>
-		<?php
+<?php
 	}
 	else
 	{
+#INSERINDO DADOS NA TABELA
 		$sql = mysqli_query($conn,"INSERT INTO $tab_dis(`nome`, `porcentagem`, `cadastro`) VALUES ('$nom_dis', '$por_dis', '$cad_dis')");
-		?>
+?>
 			<pag>
 				<h1>CADASTRAR DISTRIBUIDORAS</h1><p>
 				<table>
@@ -61,7 +64,7 @@
 					</tr>
 				</table>
 			</pag>
-		<?php
+<?php
 	}
 ?>
 		<urd>
@@ -72,21 +75,23 @@
 					<td><h3>NOME</h3></td>
 					<td><h3>CADASTRO</h3></td>
 				</tr>
-				<?php   require('..\connect.php');
-				$sql = mysqli_query($conn,"SELECT * FROM $tab_dis ORDER BY `codigo` DESC LIMIT 5");
-				$n = mysqli_num_rows($sql);
-				$i=0;
-				while($i!=$n)
-				{
-					$vn = mysqli_fetch_array($sql);	?>
-							<tr>
-								<td><h4><nobr><?php echo $vn['codigo'];   ?><nobr></h4></td>
-								<td><h4><nobr><?php echo $vn['nome'];    ?><nobr></h4></td>
-								<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?><nobr></h4></td>
-							</tr>
 <?php
-					$i = $i + 1;
-				}
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis ORDER BY `codigo` DESC");
+#INICIANDO CONTADOR
+	$i=0;
+#APRESENTANDO DADOS DA TABELA
+	while($i<5){
+#CADASTROS POR COLUNA
+		$vn = mysqli_fetch_array($sql);	?>
+				<tr>
+					<td><h4><nobr><?php echo $vn['codigo'];   ?><nobr></h4></td>
+					<td><h4><nobr><?php echo $vn['nome'];    ?><nobr></h4></td>
+					<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?><nobr></h4></td>
+				</tr>
+<?php
+#SOMANDO AO CONTADOR
+		$i = $i + 1;
+	}
 ?>
 			</table>
 		</urd>

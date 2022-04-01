@@ -36,21 +36,28 @@
 							<table>
 								<tr>
 									<td><h4>DATA:</h4></td>
-									<td><input name="dat" type=date ></td>
+									<td><input name="dat" type=date></td>
 									<td><h4>ATÉ</h4></td>
-									<td><input name="dat2" type=date ></td>
+									<td><input name="dat2" type=date required></td>
 								</tr>
 								<tr>
 									<td><h4>DISTRIBUIDORA:</h4></td>
 									<td><select name="dis">
 <?php
+#IMPORTANDO CONEXÃO DO BANCO
 	require('../connect.php');
+#ADQUIRINDO INFORMAÇÕES DO BANCO
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis");
+#TRANSFORMANDO RESULTADOS NÚMEROS
 	$n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
 	$i=0;
+#APRESENTANDO DADOS DO BANCO
 	while($i!=$n){
+#CADASTROS POR COLUNA
 		$v = mysqli_fetch_array($sql);
 		?><option value="<?php	echo $v['codigo']	?>"><?php	echo	$v['nome']	?></option><?php
+#SOMANDO AO CONTADOR
 		$i=$i+1;
 }
 ?>

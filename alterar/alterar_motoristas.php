@@ -28,8 +28,9 @@
             </table>
         </menu>
 <?php
+#IMPORTANDO CONEXÃO DO BANCO
 	require('../connect.php');
-
+#VARIÁVEIS DO FORMULÁRIO
 	$cad_mot = trim($_POST['cad_mot']);
 	$nom_mot = trim($_POST['nom_mot']);
 	$vei_mot = trim($_POST['vei_mot']);
@@ -37,25 +38,26 @@
 	$tel_mot = trim($_POST['tel_mot']);
 	$end_mot = trim($_POST['end_mot']);
 	$id = trim($_POST['id']);
-
+#VERIFICANDO EXISTÊNCIA DO INPUT
     if(!isset($_POST['opc'])){
         $fil_mot = "nul";
-    }else
-    {
+    }else{
         $fil_mot = $_POST['opc'];
     }
-
+#ADQUIRINDO INFORMAÇÕES DO  BANCO
     $sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `id` = '$id'");
     $nom_mota = trim($_POST['nom_mot']);
 	$pla_mota = trim($_POST['pla_mot']);
-
+#VERIFICANDO INPUT SELECIONADO
     switch($fil_mot){
         case "cad":
             $sql = mysqli_query($conn,"UPDATE $tab_mot SET `cadastro` = '$cad_mot' WHERE `id` = '$id'");
             break;
         case "nom":
             $sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `nome` = '$nom_mot' and `placa` = '$pla_mota'");
+#TRANSFORMANDO O RESULTADO EM NÚMEROS
             $n = mysqli_num_rows($sql);
+#VERIFICANDO O NÚMERO DE RESULTADOS
             if($n!=0){
                 ?>
                 <pag>
@@ -67,9 +69,8 @@
                     </table>
                 </pag>
             <?php
-            }
-            else
-            {
+            }else{
+#ALTERANDO DADOS DO CAMPO SELECIONADO
                 $sql = mysqli_query($conn,"UPDATE $tab_mot SET `nome` = '$nom_mot' WHERE `id` = '$id'");
             }
             break;
@@ -119,10 +120,14 @@
 				</tr>
 <?php
     $sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `id` = '$id'");
+#TRANSFORMANDO O RESULTADO EM NÚMEROS
     $n = mysqli_num_rows($sql);
+#INICIANDO O CONTADOR
     $i=0;
+#APRESENTANDO OS DADOS DA TABELA
         while($i!=$n)
         {
+#CADASTROS POR COLUNA
             $vn = mysqli_fetch_array($sql);
 ?>
                     <tr>
@@ -134,6 +139,7 @@
                         <td><h4><nobr><?php echo $vn['endereco'];   ?></nobr></h4></td>
                     </tr>
 <?php
+#SOMANDO AO CONTADOR
             $i = $i + 1;
         }
 ?>

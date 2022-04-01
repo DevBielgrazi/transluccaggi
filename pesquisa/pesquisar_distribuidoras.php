@@ -38,22 +38,21 @@
                     <td><h3>CADASTRO</h3></td>
 				</tr>
 <?php
+#IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
-
+#VARIÁVEIS DO FORMULÁRIO
 	$cod_dis = trim($_POST['cod_dis']);
 	$nom_dis = trim($_POST['nom_dis']);
 	$cad_dis = trim($_POST['cad_dis']);
 	$cad_dis2 = trim($_POST['cad_dis2']);
-
+#VERIFICANDO EXISTÊNCIA DO INPUT
     if(!isset($_POST['opc'])){
         $fil_dis = "nul";
-    }
-    else
-    {
+    }else{
         $fil_dis = $_POST['opc'];
     }
-
-    switch ($fil_dis) {
+#VERIFICANDO INPUT SELECIONADO
+    switch ($fil_dis){
         case 'tod':
             $sql = mysqli_query($conn,"SELECT * FROM $tab_dis  ORDER BY `codigo` DESC");
             break;
@@ -70,11 +69,16 @@
             $sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `codigo` = '0'");
             break;
     }
+#TRANSFORMANDO RESULTADO EM NÚMEROS
     $n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
     $i=0;
+#APRESENTANDO DADOS DA TABELA
     while($i!=$n)
     {
-        $vn = mysqli_fetch_array($sql); ?>
+#CADASTROS POR COLUNA
+        $vn = mysqli_fetch_array($sql);
+?>
                 <tr>
             <form method="post" action="..\excluir/resultado_excluir_distribuidoras.php">
                 <input type="hidden" name="cod_dis" value="<?php echo $vn['codigo'];?>">
@@ -88,7 +92,8 @@
                     <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>
                 </tr>
             </form>
-        <?php
+<?php
+#SOMANDO AO CONTADOR
         $i = $i + 1;
     }
 ?>

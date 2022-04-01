@@ -28,32 +28,35 @@
             </table>
         </menu>
 <?php
+#IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
-
+#VARIÁVEIS DO FORMULÁRIO
     $num_nf = trim($_POST['num_nf']);
     $obs_nf = trim($_POST['obs_nf']);
-
+#VERIFICANDO EXISTÊNCIA DO INPUT
 	if(!isset($_POST['opc'])) {
         $ver_ent = "nul";
-    }
-	else
-	{
+    }else{
         $ver_ent = $_POST['opc'];
     }
+#ADQUIRINDO DADOS DO BANCO
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf'");
+#TRANSFORMANDO RESULTADO EM NÚMEROS
 	$n = mysqli_num_rows($sql);
-
+#VERICANDO INPUT SELECIONADO
 	switch($ver_ent){
 		case "ent":
+#VERIFICANDO O NÚMERO DE CADASTROS
 			if($n != 0)
 			{
+#CADASTROS POR COLUNAS
 				$v = mysqli_fetch_array($sql);
 				$t = $v['tentativas'];
+#VERIFICANDO RESULTADO DA COLUNA
 				if($t>1){
+#ATUALIZANDO REGISTRO NO BANCO
 					$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'REENTREGUE', `observacao` = '$obs_nf' WHERE `numero` = '$num_nf'");
-				}
-				else
-				{
+				}else{
 					$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'ENTREGUE', `observacao` = '$obs_nf' WHERE `numero` = '$num_nf'");
 				}
 				?>
@@ -66,9 +69,7 @@
 						</table>
 					</rn>
 				<?php
-			}
-			else
-			{
+			}else{
 				?>
 					<rn>
 						<h1>BAIXA DE CANHOTOS</h1><p>
@@ -95,9 +96,7 @@
 						</table>
 					</rn>
 				<?php
-			}
-			else
-			{
+			}else{
 				?>
 					<rn>
 						<h1>BAIXA DE CANHOTOS</h1><p>

@@ -29,8 +29,9 @@
             </table>
         </menu>
 <?php
+#IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
-
+#VARIÁVEIS DO FORMULÁRIO
 	$not_dev = trim($_POST['not_dev']);
 	$ser_dev = trim($_POST['ser_dev']);
 	$dis_dev = trim($_POST['dis_dev']);
@@ -52,11 +53,16 @@
 				<td><h3>DEVOLUÇÃO</h3></td>
 			</tr>
 <?php
+#ADQUIRINDO INFORMAÇÕES DO BANCO
     $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$not_dev' and `serie` = '$ser_dev' and `cod_distribuidora` = '$dis_dev'");
+#TRANSFORMANDO RESULTADO EM NÚMEROS
     $n = mysqli_num_rows($sql);
+#VERIFICANDO NÚMEROS DE REGISTROS
     if($n!=0){
+#VERIFICANDO INPUT SELECIONADO
         switch($dev){
             case "int":
+#ALTERANDO REGISTROS NO BANCO
                 $sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'DEVOLUÇÃO INTEGRAL' WHERE `numero` = '$not_dev' and `serie` = '$ser_dev' and `cod_distribuidora` = '$dis_dev'");
                 break;
             case "par":
@@ -65,8 +71,11 @@
         }
         $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `status` LIKE  'DEVOLUÇÃO%' and `cod_distribuidora` = '$dis_dev' ORDER BY `id` DESC");
         $n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
         $i=0;
+#APRESENTANDO CADASTROS DO BANCO
         while($i!=$n){
+#CADASTROS POR COLUNA
             $vn = mysqli_fetch_array($sql);
     ?>
                 <tr>
@@ -78,6 +87,7 @@
                     <td><h4><nobr><?php echo $vn['cod_distribuidora'];    ?></nobr></h4></td>
                     <td><h4><nobr><?php echo $vn['status'];    ?></nobr></h4></td>
     <?php
+#SOMANDO AO CONTADOR
 	        $i = $i + 1;
         }
 	}

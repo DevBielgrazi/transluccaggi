@@ -28,9 +28,11 @@
             </table>
         </menu>
 <?php
+#IMPORTANDO CONEXÃO DO BANCO
 	require('../connect.php');
-
+#VARIÁVEL HIDDEN DO FORMULÁRIO
 	$cod_dis = trim($_POST['cod_dis']);
+#EXCLUINDO REGISTRO DO BANCO
     $sql = mysqli_query($conn,"DELETE FROM $tab_dis WHERE `codigo` = '$cod_dis'");
 ?>
         <pag>

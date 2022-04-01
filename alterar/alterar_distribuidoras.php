@@ -28,13 +28,16 @@
             </table>
         </menu>
 <?php
+#IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
-
+#VARIÁVEIS DO FORMULÁRIO
 	$nom_dis = trim($_POST['nom_dis']);
     $cod_dis = $_POST['cod_dis'];
-
+#ADQUIRINDO INFORMAÇÕES DO BANCO
     $sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `codigo` = '$cod_dis' and `nome` = '$nom_dis'");
+#TRANSFORMANDO O RESULTADO EM NÚMEROS
     $n = mysqli_num_rows($sql);
+#VERIFICNAOD O NÚMERO DE CADASTROS
     if($n!=0){
         ?>
         <pag>
@@ -46,9 +49,8 @@
             </table>
         </pag>
     <?php
-    }
-    else
-    {
+    }else{
+#ALTERANDO DADOS DO CAMPO SELECIONADO
         $sql2 = mysqli_query($conn,"UPDATE $tab_dis SET `nome` = '$nom_dis' WHERE `codigo` = '$cod_dis'");
     }
 
@@ -64,7 +66,9 @@
 <?php
     $sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `codigo` = '$cod_dis'");
     $n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
     $i=0;
+#APRESENTAR DADOS DA TABELA
         while($i!=$n)
         {
             $vn = mysqli_fetch_array($sql);
@@ -75,6 +79,7 @@
                         <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>
                     </tr>
 <?php
+#SOMAR CONTADOR
             $i = $i + 1;
         }
 ?>

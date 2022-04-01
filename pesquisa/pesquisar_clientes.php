@@ -44,8 +44,9 @@
                     <td><h3>COD_<br>DISTRIBUIDORA</h3></td>
 				</tr>
 <?php
+#IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
-
+#VARIÁVEIS DO FORMULÁRIO
 	$cod_cli = trim($_POST['cod_cli']);
 	$nom_cli = trim($_POST['nom_cli']);
 	$cad_cli = trim($_POST['cad_cli']);
@@ -53,16 +54,14 @@
 	$rot_cli = trim($_POST['rot_cli']);
 	$cid_cli = trim($_POST['cid_cli']);
 	$cod_dis = trim($_POST['cod_dis']);
-
+#VERIFICANDO EXISTÊNCIA DO INPUT
     if(!isset($_POST['opc'])) {
         $fil_cli = "nul";
-    }
-    else
-    {
+    }else{
         $fil_cli = $_POST['opc'];
     }
-
-    switch ($fil_cli) {
+#VERIFICANDO INPUT SELECIONADO
+    switch ($fil_cli){
         case 'tod':
             $sql = mysqli_query($conn,"SELECT * FROM $tab_cli  ORDER BY `id` DESC");
             break;
@@ -97,11 +96,16 @@
             $sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `id` = '0'");
             break;
     }
+#TRANSFORMANDO RESULTADOS EM NÚMEROS
     $n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
     $i=0;
+#APRESENTANDO DADOS DA TABELA
     while($i!=$n)
     {
-        $vn = mysqli_fetch_array($sql); ?>
+#CADASTROS POR COLUNA
+        $vn = mysqli_fetch_array($sql);
+?>
                 <tr>
             <form method="post" action="..\excluir/resultado_excluir_clientes.php">
                 <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
@@ -122,6 +126,7 @@
                 </tr>
             </form>
 <?php
+#SOMANDO AO CONTADOR
         $i = $i + 1;
     }
 ?>
