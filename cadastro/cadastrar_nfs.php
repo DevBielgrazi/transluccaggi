@@ -21,6 +21,7 @@ if(!isset($_SESSION["system_control"])){
 		<menu>
         	<a href="http://localhost/transluccaggi/menu.php"><img src="..\imagem/logo.png" width=20%></a>
         	<h1>MATRIZ PRINCIPAL</h1><p>
+            <a href="http://localhost/transluccaggi/logout.php"><img src="..\imagem/exit.png" width=3%></a>
             <table class="tableb">
 				<tr><td><a href="../saida/form_saida_motorista.php"><button>SAÍDA DE MOTORISTAS</button class="buttonb"></a></td></tr>
 				<tr><td><a href="../saida/form_baixa_canhotos.php"><button>BAIXA DE CANHOTOS</button class="buttonb"></a></td></tr>
@@ -68,6 +69,9 @@ if(!isset($_SESSION["system_control"])){
 					<tr>
 						<td><h5>NOTA JÁ CADASTRADA</h5></td>
 					</tr>
+					<tr>
+                            <td><a href="form_cadastrar_nfs.php"><button class="buttonc">VOLTAR</button></a></td>
+                    </tr>
 				</table>
 			</pag>
 <?php
@@ -98,6 +102,9 @@ if(!isset($_SESSION["system_control"])){
 						<tr>
 							<td><h7>NOTA CADASTRADA</h7></td>
 						</tr>
+						<tr>
+                            <td><a href="form_cadastrar_nfs.php"><button class="buttonc">PRÓXIMA</button></a></td>
+                    	</tr>
 					</table>
 				</pag>
 <?php
@@ -109,6 +116,9 @@ if(!isset($_SESSION["system_control"])){
 						<tr>
 							<td><h6>CLIENTE NÃO CADASTRADO</h6></td>
 						</tr>
+						<tr>
+                            <td><a href="form_cadastrar_clientes.php"><button class="buttonc">CADASTRAR</button></a></td>
+                    	</tr>
 					</table>
 				</pag>
 <?php

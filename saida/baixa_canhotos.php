@@ -21,6 +21,7 @@ if(!isset($_SESSION["system_control"])){
 		<menu>
         	<a href="http://localhost/transluccaggi/menu.php"><img src="..\imagem/logo.png" width=20%></a>
         	<h1>MATRIZ PRINCIPAL</h1><p>
+            <a href="http://localhost/transluccaggi/logout.php"><img src="..\imagem/exit.png" width=3%></a>
             <table class="tableb">
 				<tr><td><a href="../saida/form_saida_motorista.php"><button class="buttonb">SAÍDA DE MOTORISTAS</button></a></td></tr>
 				<tr><td><a href="../saida/form_baixa_canhotos.php"><button class="buttonb">BAIXA DE CANHOTOS</button></a></td></tr>
@@ -57,12 +58,16 @@ if(!isset($_SESSION["system_control"])){
 #ADQUIRINDO DADOS DO BANCO
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `nome` = '$dis_nf'");
 #CADASTROS POR COLUNAS
-	$c = mysqli_fetch_array($sql);
-	$cod_dis = $c['codigo'];
+	$cod = mysqli_fetch_array($sql);
+	$cod_dis = $cod['codigo'];
 
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' and `serie` = '$ser_nf' and `cod_distribuidora` = '$cod_dis'");
-	$x = mysqli_fetch_array($sql);
-	$id = $x['id'];
+	$con = mysqli_fetch_array($sql);
+	if(!isset($con['id'])) {
+		$t = null;
+	}else{
+		$id = $con['id'];
+	}
 #TRANSFORMANDO RESULTADO EM NÚMEROS
 	$n = mysqli_num_rows($sql);
 #VERICANDO INPUT SELECIONADO

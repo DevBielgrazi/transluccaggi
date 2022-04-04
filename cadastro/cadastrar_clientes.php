@@ -21,6 +21,7 @@ if(!isset($_SESSION["system_control"])){
 		<menu>
 			<a href="http://localhost/transluccaggi/menu.php"><img src="..\imagem/logo.png" width=20%></a>
 			<h1>MATRIZ PRINCIPAL</h1><p>
+            <a href="http://localhost/transluccaggi/logout.php"><img src="..\imagem/exit.png" width=3%></a>
 				<table class="tableb">
 					<tr><td><a href="../saida/form_saida_motorista.php"><button class="buttonb">SAÍDA DE MOTORISTAS</button></a></td></tr>
 					<tr><td><a href="../saida/form_baixa_canhotos.php"><button class="buttonb">BAIXA DE CANHOTOS</button></a></td></tr>
@@ -70,6 +71,9 @@ if(!isset($_SESSION["system_control"])){
 					<tr>
 						<td><h5>CLIENTE JÁ CADASTRADO</h5></td>
 					</tr>
+					<tr>
+						<td><a href="form_cadastrar_clientes.php"><button class="buttonc">VOLTAR</button></a></td>
+                    </tr>
 				</table>
 			</pag>
 		<?php
@@ -88,6 +92,9 @@ if(!isset($_SESSION["system_control"])){
 						<tr>
 							<td><h7>CLIENTE CADASTRADO</h7></td>
 						</tr>
+						<tr>
+                            <td><a href="form_cadastrar_clientes.php"><button class="buttonc">PRÓXIMO</button></a></td>
+                    	</tr>
 					</table>
 				</pag>
 			<?php
@@ -101,6 +108,9 @@ if(!isset($_SESSION["system_control"])){
 						<tr>
 							<td><h6>DISTRIBUIDORA NÃO CADASTRADA</h6></td>
 						</tr>
+						<tr>
+                            <td><a href="form_cadastrar_distribuidoras.php"><button class="buttonc">CADASTRAR</button></a></td>
+                    	</tr>
 					</table>
 				</pag>
 			<?php
