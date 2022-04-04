@@ -11,7 +11,7 @@
         	<h1>MATRIZ PRINCIPAL</h1><p>
             <table class="tableb">
 				<tr><td><a href="../saida/form_saida_motorista.html"><button>SAÍDA DE MOTORISTAS</button class="buttonb"></a></td></tr>
-				<tr><td><a href="../saida/form_baixa_canhotos.html"><button>BAIXA DE CANHOTOS</button class="buttonb"></a></td></tr>
+				<tr><td><a href="../saida/form_baixa_canhotos.php"><button>BAIXA DE CANHOTOS</button class="buttonb"></a></td></tr>
 				<tr><td><a href="../saida/form_romaneio_cargas.php"><button>ROMANEIO DE CARGAS</button class="buttonb"></a></td></tr>
 				<tr><td><a href="../saida/form_relatorio_devolucao.php"><button>RELATÓRIO DE DEVOLUÇÕES</button class="buttonb"></a></td></tr>
 				<tr><td><h2>CADASTROS</h2></td></tr>
@@ -40,7 +40,7 @@
     $pes_nf = trim($_POST['pes_nf']);
     $cod_cli = trim($_POST['cod_cli']);
 #ADQUIRINDO INFORMAÇÕES DA TABELA
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `codigo` = '$cod_cli'");
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `codigo` = '$cod_cli'");
 #CADASTROS POR COLUNA
 	$sql2 = mysqli_fetch_array($sql);
 	$cod_dis = $sql2['cod_distribuidora'];
@@ -118,11 +118,13 @@
                     <td><h3>STATUS</h3></td>
 				</tr>
 <?php
-				$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs ORDER BY `id` DESC");
+				$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs ORDER BY `id` DESC LIMIT 5");
+#TRANSFORMANDO RESULTADO EM NÚMEROS
+				$n = mysqli_num_rows($sql);
 #INICIANDO CONTADOR
                 $i=0;
 #APRESENTANDO DADOS DA TABELA
-				while($i<5){
+				while($i<$n){
 					$vn = mysqli_fetch_array($sql);
 ?>
 					<tr>

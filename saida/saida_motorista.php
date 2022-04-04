@@ -12,7 +12,7 @@
         	<h1>MATRIZ PRINCIPAL</h1><p>
             <table id="00001" class="tableb">
 				<tr><td><a href="../saida/form_saida_motorista.html"><button class="buttonb">SAÍDA DE MOTORISTAS</button></a></td></tr>
-				<tr><td><a href="../saida/form_baixa_canhotos.html"><button class="buttonb">BAIXA DE CANHOTOS</button></a></td></tr>
+				<tr><td><a href="../saida/form_baixa_canhotos.php"><button class="buttonb">BAIXA DE CANHOTOS</button></a></td></tr>
 				<tr><td><a href="../saida/form_romaneio_cargas.php"><button class="buttonb">ROMANEIO DE CARGAS</button></a></td></tr>
 				<tr><td><a href="../saida/form_relatorio_devolucao.php"><button class="buttonb">RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
 				<tr><td><h2>CADASTROS</h2></td></tr>
@@ -83,8 +83,13 @@
         $cod_dis = trim($_POST['cod_dis']);
     }
 
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$not_sai'");
-	$v = mysqli_fetch_array($sql);
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$not_sai' and `serie` = '$ser_nf' and `cod_distribuidora` = '$cod_dis'");
+	$x = mysqli_fetch_array($sql);
+	if(!isset($x['id'])) {
+        $id = null;
+    }else{
+        $id = $x['id'];
+    }
 #VERIFICANDO COLUNA NO BANCO
 	if(!isset($v['tentativas'])){
         $t = 0;
@@ -92,7 +97,7 @@
         $t = $v['tentativas'] + 1;
     }
 #ATUALIZANDO REGISTRO NO BANCO
-	$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `motorista` = '$nom_mot',`saida` = '$dat_sai',`status` = 'ROTA',`tentativas` = '$t' WHERE `numero` = '$not_sai'  and `serie` = '$ser_nf' and `cod_distribuidora` = '$cod_dis'");
+	$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `motorista` = '$nom_mot',`saida` = '$dat_sai',`status` = 'ROTA',`tentativas` = '$t' WHERE `id` = '$id'");
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `motorista` = '$nom_mot' and `saida` = '$dat_sai'");
 	$n = mysqli_num_rows($sql);
 	if($n!=0){

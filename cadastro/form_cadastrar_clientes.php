@@ -11,7 +11,7 @@
 			<h1>MATRIZ PRINCIPAL</h1><p>
 				<table class="tableb">
 					<tr><td><a href="../saida/form_saida_motorista.html"><button class="buttonb">SAÍDA DE MOTORISTAS</button></a></td></tr>
-                    <tr><td><a href="../saida/form_baixa_canhotos.html"><button class="buttonb">BAIXA DE CANHOTOS</button></a></td></tr>
+                    <tr><td><a href="../saida/form_baixa_canhotos.php"><button class="buttonb">BAIXA DE CANHOTOS</button></a></td></tr>
 					<tr><td><a href="../saida/form_romaneio_cargas.php"><button class="buttonb">ROMANEIO DE CARGAS</button></a></td></tr>
 					<tr><td><a href="../saida/form_relatorio_devolucao.php"><button class="buttonb">RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
 					<tr><td><h2>CADASTROS</h2></td></tr>
@@ -110,11 +110,13 @@
 #IMPORTANDO CONEXÃO COM O BANCO
 	require('..\connect.php');
 #ADQUIRINDO CADASTROS DO BANCO
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_cli ORDER BY `id` DESC");
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_cli");
 #TRANSFORMANDO O RESULTADO EM NÚMEROS
 	$n = mysqli_num_rows($sql);
 #VERIFICANDO A EXISTÊNCIA DE REGISTROS
 	if($n!=0){
+		$sql = mysqli_query($conn,"SELECT * FROM $tab_cli ORDER BY `id` DESC LIMIT 5");
+		$n = mysqli_num_rows($sql);
 #INICIANDO CONTADOR
 		$i=0;
 #APRESENTANDO DADOS DA TABELA

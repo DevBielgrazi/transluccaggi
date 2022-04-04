@@ -11,7 +11,7 @@
         	<h1>MATRIZ PRINCIPAL</h1><p>
             <table class="tableb">
 				<tr><td><a href="../saida/form_saida_motorista.html"><button class="buttonb">SAÍDA DE MOTORISTAS</button></a></td></tr>
-				<tr><td><a href="../saida/form_baixa_canhotos.html"><button class="buttonb">BAIXA DE CANHOTOS</button></a></td></tr>
+				<tr><td><a href="../saida/form_baixa_canhotos.php"><button class="buttonb">BAIXA DE CANHOTOS</button></a></td></tr>
 				<tr><td><a href="../saida/form_romaneio_cargas.php"><button class="buttonb">ROMANEIO DE CARGAS</button></a></td></tr>
 				<tr><td><a href="../saida/form_relatorio_devolucao.php"><button class="buttonb">RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
 				<tr><td><h2>CADASTROS</h2></td></tr>
@@ -32,7 +32,10 @@
 	require('../connect.php');
 #VARIÁVEIS DO FORMULÁRIO
     $num_nf = trim($_POST['num_nf']);
+    $ser_nf = trim($_POST['ser_nf']);
+    $dis_nf = trim($_POST['dis_nf']);
     $obs_nf = trim($_POST['obs_nf']);
+
 #VERIFICANDO EXISTÊNCIA DO INPUT
 	if(!isset($_POST['opc'])) {
         $ver_ent = "nul";
@@ -40,7 +43,14 @@
         $ver_ent = $_POST['opc'];
     }
 #ADQUIRINDO DADOS DO BANCO
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf'");
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `nome` = '$dis_nf'");
+#CADASTROS POR COLUNAS
+	$c = mysqli_fetch_array($sql);
+	$cod_dis = $c['codigo'];
+
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' and `serie` = '$ser_nf' and `cod_distribuidora` = '$cod_dis'");
+	$x = mysqli_fetch_array($sql);
+	$id = $x['id'];
 #TRANSFORMANDO RESULTADO EM NÚMEROS
 	$n = mysqli_num_rows($sql);
 #VERICANDO INPUT SELECIONADO
@@ -49,15 +59,19 @@
 #VERIFICANDO O NÚMERO DE CADASTROS
 			if($n != 0)
 			{
-#CADASTROS POR COLUNAS
 				$v = mysqli_fetch_array($sql);
-				$t = $v['tentativas'];
+#VERIFICANDO EXISTÊNCIA NO FORMULÁRIO
+				if(!isset($v['tentativas'])) {
+					$t = null;
+				}else{
+					$t = $v['tentativas'];
+}
 #VERIFICANDO RESULTADO DA COLUNA
 				if($t>1){
 #ATUALIZANDO REGISTRO NO BANCO
-					$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'REENTREGUE', `observacao` = '$obs_nf' WHERE `numero` = '$num_nf'");
+					$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'REENTREGUE', `observacao` = '$obs_nf' WHERE `id` = '$id'");
 				}else{
-					$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'ENTREGUE', `observacao` = '$obs_nf' WHERE `numero` = '$num_nf'");
+					$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'ENTREGUE', `observacao` = '$obs_nf' WHERE `id` = '$id'");
 				}
 				?>
 					<rn>
@@ -85,7 +99,7 @@
 		case "pen":
 			if($n != 0)
 			{
-				$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'PENDENTE', `observacao` = '$obs_nf' WHERE `numero` = '$num_nf'");
+				$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'PENDENTE', `observacao` = '$obs_nf' WHERE `id` = '$id'");
 				?>
 					<rn>
 						<h1>BAIXA DE CANHOTOS</h1><p>

@@ -11,7 +11,7 @@
             <h1>MATRIZ PRINCIPAL</h1><p>
                 <table class="tableb">
                     <tr><td><a href="../saida/form_saida_motorista.html"><button>SAÍDA DE MOTORISTAS</button></a></td></tr>
-                    <tr><td><a href="../saida/form_baixa_canhotos.html"><button>BAIXA DE CANHOTOS</button></a></td></tr>
+                    <tr><td><a href="../saida/form_baixa_canhotos.php"><button>BAIXA DE CANHOTOS</button></a></td></tr>
                     <tr><td><a href="../saida/form_romaneio_cargas.php"><button>ROMANEIO DE CARGAS</button></a></td></tr>
                     <tr><td><a href="../saida/form_relatorio_devolucao.php"><button>RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
                     <tr><td><h2>CADASTROS</h2></td></tr>

@@ -11,7 +11,7 @@
         	<h1>MATRIZ PRINCIPAL</h1><p>
             <table class="tableb">
 				<tr><td><a href="../saida/form_saida_motorista.html"><button>SAÍDA DE MOTORISTAS</button class="buttonb"></a></td></tr>
-				<tr><td><a href="../saida/form_baixa_canhotos.html"><button>BAIXA DE CANHOTOS</button class="buttonb"></a></td></tr>
+				<tr><td><a href="../saida/form_baixa_canhotos.php"><button>BAIXA DE CANHOTOS</button class="buttonb"></a></td></tr>
 				<tr><td><a href="../saida/form_romaneio_cargas.php"><button>ROMANEIO DE CARGAS</button class="buttonb"></a></td></tr>
 				<tr><td><a href="../saida/form_relatorio_devolucao.php"><button>RELATÓRIO DE DEVOLUÇÕES</button class="buttonb"></a></td></tr>
 				<tr><td><h2>CADASTROS</h2></td></tr>
@@ -82,7 +82,9 @@
 					<td><h3>ENDERECO</h3></td>
 				</tr>
 <?php
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_mot ORDER BY `id` DESC");
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_mot ORDER BY `id` DESC LIMIT 5");
+#TRANSFORMANDO RESULTADO EM NÚMEROS
+	$n = mysqli_num_rows($sql);
 #INICIANDO CONTADOR
 	$i=0;
 #APRESENTANDO DADOS DA TABELA

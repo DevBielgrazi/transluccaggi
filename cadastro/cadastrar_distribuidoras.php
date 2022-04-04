@@ -11,7 +11,7 @@
         	<h1>MATRIZ PRINCIPAL</h1><p>
             <table class="tableb">
 				<tr><td><a href="../saida/form_saida_motorista.html"><button class="buttonb">SAÍDA DE MOTORISTAS</button></a></td></tr>
-				<tr><td><a href="../saida/form_baixa_canhotos.html"><button class="buttonb">BAIXA DE CANHOTOS</button></a></td></tr>
+				<tr><td><a href="../saida/form_baixa_canhotos.php"><button class="buttonb">BAIXA DE CANHOTOS</button></a></td></tr>
 				<tr><td><a href="../saida/form_romaneio_cargas.php"><button class="buttonb">ROMANEIO DE CARGAS</button></a></td></tr>
 				<tr><td><a href="../saida/form_relatorio_devolucao.php"><button class="buttonb">RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
 				<tr><td><h2>CADASTROS</h2></td></tr>
@@ -76,11 +76,13 @@
 					<td><h3>CADASTRO</h3></td>
 				</tr>
 <?php
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis ORDER BY `codigo` DESC");
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis ORDER BY `codigo` DESC LIMIT 5");
+#TRANSFORMANDO RESULTADO EM NÚMEROS
+	$n = mysqli_num_rows($sql);
 #INICIANDO CONTADOR
 	$i=0;
 #APRESENTANDO DADOS DA TABELA
-	while($i<5){
+	while($i<$n){
 #CADASTROS POR COLUNA
 		$vn = mysqli_fetch_array($sql);	?>
 				<tr>

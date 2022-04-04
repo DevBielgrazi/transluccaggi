@@ -8,4 +8,5 @@
 	$tab_cli = "clientes";
 	$tab_dis = "distribuidoras";
 	$tab_mot = "motoristas";
+	$tab_usu = "usuarios";
  ?>

@@ -12,7 +12,7 @@
         	<h1>MATRIZ PRINCIPAL</h1><p>
             <table id="00001" class="tableb">
 				<tr><td><a href="../saida/form_saida_motorista.html"><button class="buttonb">SAÍDA DE MOTORISTAS</button></a></td></tr>
-				<tr><td><a href="../saida/form_baixa_canhotos.html"><button class="buttonb">BAIXA DE CANHOTOS</button></a></td></tr>
+				<tr><td><a href="../saida/form_baixa_canhotos.php"><button class="buttonb">BAIXA DE CANHOTOS</button></a></td></tr>
 				<tr><td><a href="../saida/form_romaneio_cargas.php"><button class="buttonb">ROMANEIO DE CARGAS</button></a></td></tr>
 				<tr><td><a href="../saida/form_relatorio_devolucao.php"><button class="buttonb">RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
 				<tr><td><h2>CADASTROS</h2></td></tr>
@@ -55,6 +55,9 @@
 <?php
 #ADQUIRINDO INFORMAÇÕES DO BANCO
     $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$not_dev' and `serie` = '$ser_dev' and `cod_distribuidora` = '$dis_dev'");
+#CADASTROS POR COLUNA
+	$x = mysqli_fetch_array($sql);
+	$id = $x['id'];
 #TRANSFORMANDO RESULTADO EM NÚMEROS
     $n = mysqli_num_rows($sql);
 #VERIFICANDO NÚMEROS DE REGISTROS
@@ -63,10 +66,10 @@
         switch($dev){
             case "int":
 #ALTERANDO REGISTROS NO BANCO
-                $sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'DEVOLUÇÃO INTEGRAL' WHERE `numero` = '$not_dev' and `serie` = '$ser_dev' and `cod_distribuidora` = '$dis_dev'");
+                $sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'DEVOLUÇÃO INTEGRAL' WHERE `id` = '$id'");
                 break;
             case "par":
-                $sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'DEVOLUÇÃO PARCIAL' WHERE `numero` = '$not_dev' and `serie` = '$ser_dev' and `cod_distribuidora` = '$dis_dev'");
+                $sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'DEVOLUÇÃO PARCIAL' WHERE `id` = '$id'");
                 break;
         }
         $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `status` LIKE  'DEVOLUÇÃO%' and `cod_distribuidora` = '$dis_dev' ORDER BY `id` DESC");
@@ -75,7 +78,6 @@
         $i=0;
 #APRESENTANDO CADASTROS DO BANCO
         while($i!=$n){
-#CADASTROS POR COLUNA
             $vn = mysqli_fetch_array($sql);
     ?>
                 <tr>
