@@ -47,7 +47,11 @@ if(!isset($_SESSION["system_control"])){
 #VARIÁVEIS DO FORMULÁRIO
 	$not_dev = trim($_POST['not_dev']);
 	$ser_dev = trim($_POST['ser_dev']);
-	$dis_dev = trim($_POST['dis_dev']);
+	if(!isset($_POST['dis_dev'])){
+		$dis_dev = null;
+	}else{
+		$dis_dev = $_POST['dis_dev'];
+	}
     $dev = $_POST['opc'];
 ?>
 	<rn>
@@ -70,7 +74,11 @@ if(!isset($_SESSION["system_control"])){
     $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$not_dev' and `serie` = '$ser_dev' and `cod_distribuidora` = '$dis_dev'");
 #CADASTROS POR COLUNA
 	$x = mysqli_fetch_array($sql);
-	$id = $x['id'];
+	if(!isset($x['id'])){
+		$id = null;
+	}else{
+		$id = $x['id'];
+	}
 #TRANSFORMANDO RESULTADO EM NÚMEROS
     $n = mysqli_num_rows($sql);
 #VERIFICANDO NÚMEROS DE REGISTROS

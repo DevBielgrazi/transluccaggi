@@ -67,7 +67,7 @@ if(!isset($_SESSION["system_control"])){
     $cod_clia = $sql2['codigo'];
     $cod_disa = $sql2['cod_distribuidora'];
 #VERIFICANDO INPUT SELECIONADO
-    switch($fil_nf){
+    switch($fil_cli){
         case "cod":
             $sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `codigo` = '$cod_cli' and `cod_distribuidora` = '$cod_disa'");
 #TRANSFORMANDO O RESULTADO EM NÚMEROS

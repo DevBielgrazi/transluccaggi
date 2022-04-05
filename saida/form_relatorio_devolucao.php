@@ -75,7 +75,7 @@ if(!isset($_SESSION["system_control"])){
 	while($i!=$n){
 #CADASTROS POR COLUNA
 		$v = mysqli_fetch_array($sql);
-		?><option value="<?php	echo $v['nome']	?>"><?php	echo	$v['nome']	?></option><?php
+		?><option value=<?php	echo $v['codigo']	?>><?php	echo	$v['nome']	?></option><?php
 #SOMANDO AO CONTADOR
 		$i=$i+1;
 	}

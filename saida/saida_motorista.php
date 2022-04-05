@@ -104,10 +104,10 @@ if(!isset($_SESSION["system_control"])){
         $id = $x['id'];
     }
 #VERIFICANDO COLUNA NO BANCO
-	if(!isset($v['tentativas'])){
-        $t = 0;
+	if(!isset($x['tentativas'])){
+        $t = 1;
     }else{
-        $t = $v['tentativas'] + 1;
+        $t = $x['tentativas']+1;
     }
 #ATUALIZANDO REGISTRO NO BANCO
 	$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `motorista` = '$nom_mot',`saida` = '$dat_sai',`status` = 'ROTA',`tentativas` = '$t' WHERE `id` = '$id'");

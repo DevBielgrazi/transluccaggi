@@ -49,6 +49,7 @@
             $i=$i+1;
         }
 ?>
+            <a href="http://localhost/transluccaggi/menu.php"><img src="..\imagem/logo.png" width=10%></a>
             </table>
             <script>window.print();</script>
     </body>

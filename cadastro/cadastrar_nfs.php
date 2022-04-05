@@ -56,7 +56,11 @@ if(!isset($_SESSION["system_control"])){
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `codigo` = '$cod_cli'");
 #CADASTROS POR COLUNA
 	$sql2 = mysqli_fetch_array($sql);
-	$cod_dis = $sql2['cod_distribuidora'];
+	if(!isset($sql2['cod_distribuidora'])) {
+		$cod_dis = null;
+    }else{
+		$cod_dis = $sql2['cod_distribuidora'];
+    }
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' and `serie` = '$ser_nf' and `cod_distribuidora` = '$cod_dis'");
 #TRANSFORMANDO RESULTADOS EM NÚMEROS
 	$n = mysqli_num_rows($sql);
@@ -94,7 +98,7 @@ if(!isset($_SESSION["system_control"])){
 				$status = "AGENDAR";
 			}
 #INSERINDO CADASTROS NA TABELA
-			$sql = mysqli_query($conn,"INSERT INTO $tab_nfs (`numero`, `serie`, `emissao`, `entrada`, `volumes`, `valor`, `peso`, `rota`, `cod_cliente`, `nome_cliente`, `cidade_cliente`, `bairro_cliente`, `endereco_cliente`, `cod_distribuidora`, `status`, `observacao`, `tentativas`)  VALUES ('$num_nf', '$ser_nf', '$emi_nf', '$ent_nf', '$vol_nf', '$val_nf', '$pes_nf', '$rot_nf', '$cod_cli', '$nom_cli', '$cid_cli', '$bai_cli', '$end_cli', '$cod_dis', '$status', '', '0')");
+			$sql = mysqli_query($conn,"INSERT INTO $tab_nfs (`numero`, `serie`, `emissao`, `entrada`, `volumes`, `valor`, `peso`, `rota`, `cod_cliente`, `nome_cliente`, `cidade_cliente`, `bairro_cliente`, `endereco_cliente`, `cod_distribuidora`, `status`)  VALUES ('$num_nf', '$ser_nf', '$emi_nf', '$ent_nf', '$vol_nf', '$val_nf', '$pes_nf', '$rot_nf', '$cod_cli', '$nom_cli', '$cid_cli', '$bai_cli', '$end_cli', '$cod_dis', '$status')");
 ?>
 				<pag>
 					<h1>CADASTRAR NOTAS FISCAIS</h1><p>

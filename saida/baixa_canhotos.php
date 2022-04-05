@@ -64,7 +64,7 @@ if(!isset($_SESSION["system_control"])){
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' and `serie` = '$ser_nf' and `cod_distribuidora` = '$cod_dis'");
 	$con = mysqli_fetch_array($sql);
 	if(!isset($con['id'])) {
-		$t = null;
+		$id = null;
 	}else{
 		$id = $con['id'];
 	}
@@ -74,15 +74,15 @@ if(!isset($_SESSION["system_control"])){
 	switch($ver_ent){
 		case "ent":
 #VERIFICANDO O NÚMERO DE CADASTROS
-			if($n != 0)
-			{
+			if($n != 0){
+				$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `id` = '$id'");
 				$v = mysqli_fetch_array($sql);
 #VERIFICANDO EXISTÊNCIA NO FORMULÁRIO
 				if(!isset($v['tentativas'])) {
 					$t = null;
 				}else{
 					$t = $v['tentativas'];
-}
+				}
 #VERIFICANDO RESULTADO DA COLUNA
 				if($t>1){
 #ATUALIZANDO REGISTRO NO BANCO
@@ -149,12 +149,39 @@ if(!isset($_SESSION["system_control"])){
 						<form method="post" action="baixa_canhotos.php">
 							<table>
 								<tr>
-									<td><h4>ENTREGUE<input type="radio" name="opc" value="ent"></h4></td>
+									<td><h4>ENTREGUE<input type="radio" name="opc" value="ent" checked></h4></td>
 									<td><h4>PENDENTE<input type="radio" name="opc" value="pen"></h4></td>
 								</tr>
 								<tr>
 									<td><h4>NOTA FISCAL:</h4></td>
 									<td><input name="num_nf" type=text size=16 maxlength=16 required></td>
+								</tr>
+								<tr>
+									<td><h4>SÉRIE:</h4></td>
+									<td><input name="ser_nf" type=text size=16 maxlength=32 required></td>
+								</tr>
+								<tr>
+									<td><h4>DISTRIBUIDORA:</h4></td>
+									<td><select name="dis_nf">
+<?php
+#IMPORTANDO CONEXÃO DO BANCO
+require('../connect.php');
+#ADQUIRINDO INFORMAÇÕES DO BANCO
+$sql = mysqli_query($conn,"SELECT * FROM $tab_dis");
+#TRANSFORMANDO RESULTADO EM NÚMEROS
+$n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
+$i=0;
+#APRESENTANDO REGISTROS DO BANCO
+while($i!=$n){
+#CADASTROS POR COLUNA
+	$v = mysqli_fetch_array($sql);
+	?><option value="<?php	echo $v['nome']	?>"><?php	echo	$v['nome']	?></option><?php
+#SOMANDO AO CONTADOR
+	$i=$i+1;
+}
+?>
+									</select></td>
 								</tr>
 								<tr>
 									<td><h4>OBSERVAÇÃO:</h4></td>

@@ -91,7 +91,7 @@ if(!isset($_SESSION["system_control"])){
 								</tr>
                                 <tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="mot">MOTORISTA:<?php echo $vn['motorista'];   ?></nobr></h2></td>
-                                    <td><input name="sai_nf" type=text size=16 maxlength=16></td>
+                                    <td><input name="mot_nf" type=text size=16 maxlength=16></td>
 								</tr>
 							</table>
                             <tr>
