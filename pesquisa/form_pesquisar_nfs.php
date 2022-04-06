@@ -105,16 +105,16 @@ if(!isset($_SESSION["system_control"])){
 								<tr>
 									<td><h4>ROTA:<input type="radio" name="opc" value="rot"></h4></td>
 									<td><select name="rot_nf">
-										<option value="VP0" selected>VP0</option>
-										<option value="VP1">VP1</option>
-										<option value="VP2">VP2</option>
-										<option value="VP3">VP3</option>
-										<option value="VP4">VP4</option>
-										<option value="VP5">VP5</option>
-										<option value="VP6">VP6</option>
-										<option value="VP7">VP7</option>
-										<option value="VP8">VP8</option>
-										<option value="VP9">VP9</option>
+										<option value="VP00" selected>VP00</option>
+										<option value="VP01">VP01</option>
+										<option value="VP02">VP02</option>
+										<option value="VP03">VP03</option>
+										<option value="VP04">VP04</option>
+										<option value="VP05">VP05</option>
+										<option value="VP06">VP06</option>
+										<option value="VP07">VP07</option>
+										<option value="VP08">VP08</option>
+										<option value="VP09">VP09</option>
 										<option value="VP10">VP10</option>
 										<option value="VP11">VP11</option>
 										<option value="VP12">VP12</option>
