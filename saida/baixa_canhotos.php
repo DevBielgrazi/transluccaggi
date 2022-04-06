@@ -159,7 +159,7 @@ if(!isset($_SESSION["system_control"])){
 #IMPORTANDO CONEXÃO DO BANCO
 require('../connect.php');
 #ADQUIRINDO INFORMAÇÕES DO BANCO
-$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs");
+$sql = mysqli_query($conn,"SELECT DISTINCT `serie` FROM $tab_nfs");
 #TRANSFORMANDO RESULTADO EM NÚMEROS
 $n = mysqli_num_rows($sql);
 #INICIANDO CONTADOR

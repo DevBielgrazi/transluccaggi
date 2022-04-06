@@ -97,17 +97,17 @@ if(!isset($_SESSION["system_control"])){
     }
 
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$not_sai' and `serie` = '$ser_nf' and `cod_distribuidora` = '$cod_dis'");
-	$x = mysqli_fetch_array($sql);
-	if(!isset($x['id'])) {
+	$v = mysqli_fetch_array($sql);
+	if(!isset($v['id'])) {
         $id = null;
     }else{
-        $id = $x['id'];
+        $id = $v['id'];
     }
 #VERIFICANDO COLUNA NO BANCO
-	if(!isset($x['tentativas'])){
+	if(!isset($v['tentativas'])){
         $t = 1;
     }else{
-        $t = $x['tentativas']+1;
+        $t = $v['tentativas']+1;
     }
 #ATUALIZANDO REGISTRO NO BANCO
 	$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `motorista` = '$nom_mot',`saida` = '$dat_sai',`status` = 'ROTA',`tentativas` = '$t' WHERE `id` = '$id'");
@@ -159,7 +159,7 @@ if(!isset($_SESSION["system_control"])){
 #IMPORTANDO CONEXÃO DO BANCO
 require('../connect.php');
 #ADQUIRINDO INFORMAÇÕES DO BANCO
-$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs");
+$sql = mysqli_query($conn,"SELECT DISTINCT `serie` FROM $tab_nfs");
 #TRANSFORMANDO RESULTADO EM NÚMEROS
 $n = mysqli_num_rows($sql);
 #INICIANDO CONTADOR
@@ -177,7 +177,7 @@ while($i!=$n){
 								</tr>
 								<tr>
 									<td><h4>DISTRIBUIDORA:</h4></td>
-									<td><select name="dis_sai">
+									<td><select name="cod_dis">
 <?php
 #IMPORTANDO CONEXÃO DO BANCO
 require('../connect.php');
@@ -191,7 +191,7 @@ $i=0;
 while($i!=$n){
 #CADASTROS POR COLUNA
 	$v = mysqli_fetch_array($sql);
-	?><option value=<?php	echo $v['codigo']	?>><?php	echo	$v['nome']	?></option><?php
+	?><option value="<?php	echo $v['codigo']	?>"><?php	echo	$v['nome']	?></option><?php
 #SOMANDO AO CONTADOR
 	$i=$i+1;
 }
