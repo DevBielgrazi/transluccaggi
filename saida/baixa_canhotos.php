@@ -56,12 +56,7 @@ if(!isset($_SESSION["system_control"])){
         $ver_ent = $_POST['opc'];
     }
 #ADQUIRINDO DADOS DO BANCO
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `nome` = '$dis_nf'");
-#CADASTROS POR COLUNAS
-	$cod = mysqli_fetch_array($sql);
-	$cod_dis = $cod['codigo'];
-
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' and `serie` = '$ser_nf' and `cod_distribuidora` = '$cod_dis'");
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' and `serie` = '$ser_nf' and `cod_distribuidora` = '$dis_nf'");
 	$con = mysqli_fetch_array($sql);
 	if(!isset($con['id'])) {
 		$id = null;
@@ -76,6 +71,7 @@ if(!isset($_SESSION["system_control"])){
 #VERIFICANDO O NÚMERO DE CADASTROS
 			if($n != 0){
 				$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `id` = '$id'");
+#CADASTROS POR COLUNAS
 				$v = mysqli_fetch_array($sql);
 #VERIFICANDO EXISTÊNCIA NO FORMULÁRIO
 				if(!isset($v['tentativas'])) {
@@ -158,8 +154,28 @@ if(!isset($_SESSION["system_control"])){
 								</tr>
 								<tr>
 									<td><h4>SÉRIE:</h4></td>
-									<td><input name="ser_nf" type=text size=16 maxlength=32 required></td>
+									<td><select name="ser_nf">
+<?php
+#IMPORTANDO CONEXÃO DO BANCO
+require('../connect.php');
+#ADQUIRINDO INFORMAÇÕES DO BANCO
+$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs");
+#TRANSFORMANDO RESULTADO EM NÚMEROS
+$n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
+$i=0;
+#APRESENTANDO REGISTROS DO BANCO
+while($i!=$n){
+#CADASTROS POR COLUNA
+	$v = mysqli_fetch_array($sql);
+	?><option value="<?php	echo $v['serie']	?>"><?php	echo	$v['serie']	?></option><?php
+#SOMANDO AO CONTADOR
+	$i=$i+1;
+}
+?>
+									</select></td>
 								</tr>
+								<tr>
 								<tr>
 									<td><h4>DISTRIBUIDORA:</h4></td>
 									<td><select name="dis_nf">
@@ -176,7 +192,7 @@ $i=0;
 while($i!=$n){
 #CADASTROS POR COLUNA
 	$v = mysqli_fetch_array($sql);
-	?><option value="<?php	echo $v['nome']	?>"><?php	echo	$v['nome']	?></option><?php
+	?><option value=<?php	echo $v['codigo']	?>><?php	echo	$v['nome']	?></option><?php
 #SOMANDO AO CONTADOR
 	$i=$i+1;
 }

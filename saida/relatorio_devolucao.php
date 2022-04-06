@@ -143,8 +143,28 @@ if(!isset($_SESSION["system_control"])){
 								</tr>
                                 <tr>
 									<td><h4>SÉRIE:</h4></td>
-									<td><input name="ser_dev" type=text size=16 maxlength=32 required></td>
+									<td><select name="ser_nf">
+<?php
+#IMPORTANDO CONEXÃO DO BANCO
+require('../connect.php');
+#ADQUIRINDO INFORMAÇÕES DO BANCO
+$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs");
+#TRANSFORMANDO RESULTADO EM NÚMEROS
+$n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
+$i=0;
+#APRESENTANDO REGISTROS DO BANCO
+while($i!=$n){
+#CADASTROS POR COLUNA
+	$v = mysqli_fetch_array($sql);
+	?><option value="<?php	echo $v['serie']	?>"><?php	echo	$v['serie']	?></option><?php
+#SOMANDO AO CONTADOR
+	$i=$i+1;
+}
+?>
+									</select></td>
 								</tr>
+								<tr>
 							</table>
 							<tr>
 								<td><input class="inputb" type=submit value=PRÓXIMA></td>

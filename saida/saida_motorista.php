@@ -154,12 +154,51 @@ if(!isset($_SESSION["system_control"])){
 								</tr>
 								<tr>
 									<td><h4>SÉRIE:</h4></td>
-									<td><input name="ser_nf" type=text size=16 maxlength=16 required></td>
+									<td><select name="ser_nf">
+<?php
+#IMPORTANDO CONEXÃO DO BANCO
+require('../connect.php');
+#ADQUIRINDO INFORMAÇÕES DO BANCO
+$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs");
+#TRANSFORMANDO RESULTADO EM NÚMEROS
+$n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
+$i=0;
+#APRESENTANDO REGISTROS DO BANCO
+while($i!=$n){
+#CADASTROS POR COLUNA
+	$v = mysqli_fetch_array($sql);
+	?><option value="<?php	echo $v['serie']	?>"><?php	echo	$v['serie']	?></option><?php
+#SOMANDO AO CONTADOR
+	$i=$i+1;
+}
+?>
+									</select></td>
 								</tr>
 								<tr>
 									<td><h4>DISTRIBUIDORA:</h4></td>
-									<td><input name="cod_dis" type=int size=16 maxlength=16 required></td>
+									<td><select name="dis_sai">
+<?php
+#IMPORTANDO CONEXÃO DO BANCO
+require('../connect.php');
+#ADQUIRINDO INFORMAÇÕES DO BANCO
+$sql = mysqli_query($conn,"SELECT * FROM $tab_dis");
+#TRANSFORMANDO RESULTADO EM NÚMEROS
+$n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
+$i=0;
+#APRESENTANDO REGISTROS DO BANCO
+while($i!=$n){
+#CADASTROS POR COLUNA
+	$v = mysqli_fetch_array($sql);
+	?><option value=<?php	echo $v['codigo']	?>><?php	echo	$v['nome']	?></option><?php
+#SOMANDO AO CONTADOR
+	$i=$i+1;
+}
+?>
+									</select></td>
 								</tr>
+								<tr>
 							</table>
 							<tr>
 								<td><input class="inputb" type=submit value=PRÓXIMA></td>
