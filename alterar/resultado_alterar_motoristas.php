@@ -82,6 +82,82 @@ if(!isset($_SESSION["system_control"])){
                                     <td><h2><nobr><input type="radio" name="opc" value="end">ENDEREÇO:<?php echo $vn['endereco'];   ?></nobr></h2></td>
                                     <td><input name="end_mot" type=text size=16 maxlength=64></td>
 								</tr>
+                                <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="cpf">CPF:<?php echo $vn['cpf'];   ?></nobr></h2></td>
+                                    <td><input name="cpf_mot" type=text size=16 maxlength=16></td>
+								</tr>
+                                <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="rg">RG:<?php echo $vn['rg'];   ?></nobr></h2></td>
+                                    <td><input name="rg_mot" type=text size=16 maxlength=16></td>
+								</tr>
+                                <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="nas">NASCIMENTO:<?php echo $vn['nascimento'];   ?></nobr></h2></td>
+                                    <td><input name="nas_mot" type=date></td>
+								</tr>
+                                <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="nat">NATURALIDADE:<?php echo $vn['naturalidade'];   ?></nobr></h2></td>
+                                    <td><input name="nat_mot" type=text size=16 maxlength=16></td>
+								</tr>
+                                <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="cnh">CNH:<?php echo $vn['cnh'];   ?></nobr></h2></td>
+                                    <td><input name="cnh_mot" type=text size=16 maxlength=16></td>
+								</tr>
+                                <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="val">VALIDADE(CNH):<?php echo $vn['validade_cnh'];   ?></nobr></h2></td>
+                                    <td><input name="val_mot" type=text size=16 maxlength=16></td>
+								</tr>
+                                <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="cat">CATEGORIA(CNH):<?php echo $vn['categoria_cnh'];   ?></nobr></h2></td>
+                                    <td><input name="cat_mot" type=text size=16 maxlength=16></td>
+								</tr>
+                                <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="cep">CEP:<?php echo $vn['cep'];   ?></nobr></h2></td>
+                                    <td><input name="cep_mot" type=text size=16 maxlength=16></td>
+								</tr>
+                                <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="ban">CEP:<?php echo $vn['banco'];   ?></nobr></h2></td>
+                                    <td><input name="ban_mot" type=text size=16 maxlength=16></td>
+								</tr>
+                                <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="cod">CÓDIGO BANCO:<?php echo $vn['cod_banco'];   ?></nobr></h2></td>
+                                    <td><input name="cod_mot" type=text size=16 maxlength=16></td>
+								</tr>
+                                <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="age">AGÊNCIA BANCO:<?php echo $vn['agencia_banco'];   ?></nobr></h2></td>
+                                    <td><input name="age_mot" type=text size=16 maxlength=16></td>
+								</tr>
+                                <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="">CONTA BANCO:<?php echo $vn['conta_banco'];   ?></nobr></h2></td>
+                                    <td><input name="con_mot" type=text size=16 maxlength=16></td>
+								</tr>
+                                <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="ano">ANO VEÍCULO:<?php echo $vn['ano_veiculo'];   ?></nobr></h2></td>
+                                    <td><input name="ano_mot" type=text size=16 maxlength=16></td>
+								</tr>
+                                <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="cor">COR VEÍCULO:<?php echo $vn['cor_veiculo'];   ?></nobr></h2></td>
+                                    <td><input name="cor_mot" type=text size=16 maxlength=16></td>
+								</tr>
+                                <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="ren">RENAVAM:<?php echo $vn['renavam'];   ?></nobr></h2></td>
+                                    <td><input name="ren_mot" type=text size=16 maxlength=16></td>
+								</tr>
+                                <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="num">NÚMERO CHASSI:<?php echo $vn['num_chassi'];   ?></nobr></h2></td>
+                                    <td><input name="num_mot" type=text size=16 maxlength=16></td>
+								</tr>
+                                <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="ant">ANTT:<?php echo $vn['antt'];   ?></nobr></h2></td>
+                                    <td><input name="ant_mot" type=text size=16 maxlength=16></td>
+								</tr>
+                                <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="caa">CATEGORIA(ANTT):<?php echo $vn['categoria_antt'];   ?></nobr></h2></td>
+                                    <td><input name="caa_mot" type=text size=16 maxlength=16></td>
+								</tr>
+                                <tr>
+                                    <td><h2><nobr><input type="radio" name="opc" value="vaa">VALIDADE(ANTT):<?php echo $vn['validade_antt'];   ?></nobr></h2></td>
+                                    <td><input name="vaa_mot" type=text size=16 maxlength=16></td>
+								</tr>
 							</table>
                             <tr>
                                 <td><input class="inputb" type=submit value=ALTERAR></td>

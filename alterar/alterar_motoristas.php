@@ -116,6 +116,63 @@ if(!isset($_SESSION["system_control"])){
         case "end":
             $sql = mysqli_query($conn,"UPDATE $tab_mot SET `endereco` = '$end_mot'  WHERE `id` = '$id'");
             break;
+        case "cpf":
+            $sql = mysqli_query($conn,"UPDATE $tab_mot SET `cpf` = '$cpf_mot'  WHERE `id` = '$id'");
+            break;
+        case "rg":
+            $sql = mysqli_query($conn,"UPDATE $tab_mot SET `rg` = '$rg_mot'  WHERE `id` = '$id'");
+            break;
+        case "nas":
+            $sql = mysqli_query($conn,"UPDATE $tab_mot SET `nascimento` = '$nas_mot'  WHERE `id` = '$id'");
+            break;
+        case "nat":
+            $sql = mysqli_query($conn,"UPDATE $tab_mot SET `naturalidade` = '$nat_mot'  WHERE `id` = '$id'");
+            break;
+        case "cnh":
+            $sql = mysqli_query($conn,"UPDATE $tab_mot SET `cnh` = '$cnh_mot'  WHERE `id` = '$id'");
+            break;
+        case "val":
+            $sql = mysqli_query($conn,"UPDATE $tab_mot SET `validade_cnh` = '$val_mot'  WHERE `id` = '$id'");
+            break;
+        case "cat":
+            $sql = mysqli_query($conn,"UPDATE $tab_mot SET `categoria_cnh` = '$cat_mot'  WHERE `id` = '$id'");
+            break;
+        case "cep":
+            $sql = mysqli_query($conn,"UPDATE $tab_mot SET `cep` = '$cep_mot'  WHERE `id` = '$id'");
+            break;
+        case "ban":
+            $sql = mysqli_query($conn,"UPDATE $tab_mot SET `banco` = '$ban_mot'  WHERE `id` = '$id'");
+            break;
+        case "cod":
+            $sql = mysqli_query($conn,"UPDATE $tab_mot SET `cod_banco` = '$cod_mot'  WHERE `id` = '$id'");
+            break;
+        case "age":
+            $sql = mysqli_query($conn,"UPDATE $tab_mot SET `agencia_banco` = '$age_mot'  WHERE `id` = '$id'");
+            break;
+        case "con":
+            $sql = mysqli_query($conn,"UPDATE $tab_mot SET `conta_banco` = '$con_mot'  WHERE `id` = '$id'");
+            break;
+        case "ano":
+            $sql = mysqli_query($conn,"UPDATE $tab_mot SET `ano_veiculo` = '$ano_mot'  WHERE `id` = '$id'");
+            break;
+        case "cor":
+            $sql = mysqli_query($conn,"UPDATE $tab_mot SET `cor_veiculo` = '$cor_mot'  WHERE `id` = '$id'");
+            break;
+        case "ren":
+            $sql = mysqli_query($conn,"UPDATE $tab_mot SET `renavam` = '$ren_mot'  WHERE `id` = '$id'");
+            break;
+        case "num":
+            $sql = mysqli_query($conn,"UPDATE $tab_mot SET `num_chassi` = '$num_mot'  WHERE `id` = '$id'");
+            break;
+        case "ant":
+            $sql = mysqli_query($conn,"UPDATE $tab_mot SET `antt` = '$ant_mot'  WHERE `id` = '$id'");
+            break;
+        case "caa":
+            $sql = mysqli_query($conn,"UPDATE $tab_mot SET `categoria_antt` = '$caa_mot'  WHERE `id` = '$id'");
+            break;
+        case "vaa":
+            $sql = mysqli_query($conn,"UPDATE $tab_mot SET `validade_antt` = '$vaa_mot'  WHERE `id` = '$id'");
+            break;
         default:
             $sql = mysqli_query($conn, "SELECT * FROM $tab_mot WHERE `id` = '0'");
     }
