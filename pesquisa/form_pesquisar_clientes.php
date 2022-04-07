@@ -74,7 +74,7 @@ if(!isset($_SESSION["system_control"])){
 								<tr>
 									<td><h4>ROTA:<input type="radio" name="opc" value="rot"></h4></td>
 									<td><select name="rot_cli">
-										<option value="VP00" selected>VP0</option>
+										<option value="VP00" selected>VP00</option>
 										<option value="VP01">VP01</option>
 										<option value="VP02">VP02</option>
 										<option value="VP03">VP03</option>

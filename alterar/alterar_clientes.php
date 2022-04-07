@@ -136,7 +136,6 @@ if(!isset($_SESSION["system_control"])){
             <table border=1>
                 <h3>CLIENTES CADASTRADOS</h3>
                 <tr>
-                <td></td>
 					<td><h3>CÓDIGO</h3></td>
 					<td><h3>NOME</h3></td>
                     <td><h3>AGENDAR</h3></td>

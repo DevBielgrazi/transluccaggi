@@ -34,9 +34,10 @@
 			<td>VALOR</td>
 			<td>VOLUMES</td>
 			<td>CLIENTE</td>						
+			<td>ENDEREÇO</td>						
 		</tr>
 <?php
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `motorista` = '$nom_mot' and `saida` = '$dat_sai'");
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `motorista` = '$nom_mot' and `saida` = '$dat_sai' ORDER BY `cidade_cliente`");
 	$n = mysqli_num_rows($sql);
 #INICIANDO CONTADOR
     $i=0;
@@ -49,6 +50,7 @@
             <td><nobr><?php echo $vn['valor'];    ?></nobr></td>
             <td><nobr><?php echo $vn['volumes'];    ?></nobr></td>
             <td><nobr><?php echo $vn['nome_cliente'];    ?></nobr></td>
+            <td><nobr><?php echo $vn['endereco_cliente'];    ?></nobr></td>
 		</tr>
 <?php
     $i = $i + 1;
