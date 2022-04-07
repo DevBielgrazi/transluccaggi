@@ -84,19 +84,7 @@ if(!isset($_SESSION["system_control"])){
         $not_sai = trim($_POST['not_sai']);
     }
 
-	if(!isset($_POST['ser_nf'])){
-        $ser_nf = null;
-    }else{
-		$ser_nf = trim($_POST['ser_nf']);
-    }
-
-	if(!isset($_POST['cod_dis'])) {
-        $cod_dis = null;
-    }else{
-        $cod_dis = trim($_POST['cod_dis']);
-    }
-
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$not_sai' and `serie` = '$ser_nf' and `cod_distribuidora` = '$cod_dis'");
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$not_sai' ORDER BY `id` DESC LIMIT 1");
 	$v = mysqli_fetch_array($sql);
 	if(!isset($v['id'])) {
         $id = null;
@@ -152,53 +140,6 @@ if(!isset($_SESSION["system_control"])){
 									<td><h4>NOTA FISCAL:</h4></td>
 									<td><input name="not_sai" type=text size=16 maxlength=16 required></td>
 								</tr>
-								<tr>
-									<td><h4>SÉRIE:</h4></td>
-									<td><select name="ser_nf">
-<?php
-#IMPORTANDO CONEXÃO DO BANCO
-require('../connect.php');
-#ADQUIRINDO INFORMAÇÕES DO BANCO
-$sql = mysqli_query($conn,"SELECT DISTINCT `serie` FROM $tab_nfs");
-#TRANSFORMANDO RESULTADO EM NÚMEROS
-$n = mysqli_num_rows($sql);
-#INICIANDO CONTADOR
-$i=0;
-#APRESENTANDO REGISTROS DO BANCO
-while($i!=$n){
-#CADASTROS POR COLUNA
-	$v = mysqli_fetch_array($sql);
-	?><option value="<?php	echo $v['serie']	?>"><?php	echo	$v['serie']	?></option><?php
-#SOMANDO AO CONTADOR
-	$i=$i+1;
-}
-?>
-									</select></td>
-								</tr>
-								<tr>
-									<td><h4>DISTRIBUIDORA:</h4></td>
-									<td><select name="cod_dis">
-<?php
-#IMPORTANDO CONEXÃO DO BANCO
-require('../connect.php');
-#ADQUIRINDO INFORMAÇÕES DO BANCO
-$sql = mysqli_query($conn,"SELECT * FROM $tab_dis");
-#TRANSFORMANDO RESULTADO EM NÚMEROS
-$n = mysqli_num_rows($sql);
-#INICIANDO CONTADOR
-$i=0;
-#APRESENTANDO REGISTROS DO BANCO
-while($i!=$n){
-#CADASTROS POR COLUNA
-	$v = mysqli_fetch_array($sql);
-	?><option value="<?php	echo $v['codigo']	?>"><?php	echo	$v['nome']	?></option><?php
-#SOMANDO AO CONTADOR
-	$i=$i+1;
-}
-?>
-									</select></td>
-								</tr>
-								<tr>
 							</table>
 							<tr>
 								<td><input class="inputb" type=submit value=PRÓXIMA></td>

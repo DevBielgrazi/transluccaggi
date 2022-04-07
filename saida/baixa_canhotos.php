@@ -45,8 +45,6 @@ if(!isset($_SESSION["system_control"])){
 	require('../connect.php');
 #VARIÁVEIS DO FORMULÁRIO
     $num_nf = trim($_POST['num_nf']);
-    $ser_nf = trim($_POST['ser_nf']);
-    $dis_nf = trim($_POST['dis_nf']);
     $obs_nf = trim($_POST['obs_nf']);
 
 #VERIFICANDO EXISTÊNCIA DO INPUT
@@ -56,7 +54,7 @@ if(!isset($_SESSION["system_control"])){
         $ver_ent = $_POST['opc'];
     }
 #ADQUIRINDO DADOS DO BANCO
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' and `serie` = '$ser_nf' and `cod_distribuidora` = '$dis_nf'");
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' ORDER BY `id` DESC LIMIT 1");
 	$con = mysqli_fetch_array($sql);
 	if(!isset($con['id'])) {
 		$id = null;
@@ -151,53 +149,6 @@ if(!isset($_SESSION["system_control"])){
 								<tr>
 									<td><h4>NOTA FISCAL:</h4></td>
 									<td><input name="num_nf" type=text size=16 maxlength=16 required></td>
-								</tr>
-								<tr>
-									<td><h4>SÉRIE:</h4></td>
-									<td><select name="ser_nf">
-<?php
-#IMPORTANDO CONEXÃO DO BANCO
-require('../connect.php');
-#ADQUIRINDO INFORMAÇÕES DO BANCO
-$sql = mysqli_query($conn,"SELECT DISTINCT `serie` FROM $tab_nfs");
-#TRANSFORMANDO RESULTADO EM NÚMEROS
-$n = mysqli_num_rows($sql);
-#INICIANDO CONTADOR
-$i=0;
-#APRESENTANDO REGISTROS DO BANCO
-while($i!=$n){
-#CADASTROS POR COLUNA
-	$v = mysqli_fetch_array($sql);
-	?><option value="<?php	echo $v['serie']	?>"><?php	echo	$v['serie']	?></option><?php
-#SOMANDO AO CONTADOR
-	$i=$i+1;
-}
-?>
-									</select></td>
-								</tr>
-								<tr>
-								<tr>
-									<td><h4>DISTRIBUIDORA:</h4></td>
-									<td><select name="dis_nf">
-<?php
-#IMPORTANDO CONEXÃO DO BANCO
-require('../connect.php');
-#ADQUIRINDO INFORMAÇÕES DO BANCO
-$sql = mysqli_query($conn,"SELECT * FROM $tab_dis");
-#TRANSFORMANDO RESULTADO EM NÚMEROS
-$n = mysqli_num_rows($sql);
-#INICIANDO CONTADOR
-$i=0;
-#APRESENTANDO REGISTROS DO BANCO
-while($i!=$n){
-#CADASTROS POR COLUNA
-	$v = mysqli_fetch_array($sql);
-	?><option value=<?php	echo $v['codigo']	?>><?php	echo	$v['nome']	?></option><?php
-#SOMANDO AO CONTADOR
-	$i=$i+1;
-}
-?>
-									</select></td>
 								</tr>
 								<tr>
 									<td><h4>OBSERVAÇÃO:</h4></td>
