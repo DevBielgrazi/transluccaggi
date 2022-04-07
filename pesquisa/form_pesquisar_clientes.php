@@ -91,12 +91,50 @@ if(!isset($_SESSION["system_control"])){
 								</tr>
                                 <tr>
 									<td><h4>CIDADE:<input type="radio" name="opc" value="cid"></h4></td>
-									<td><input name="cid_cli" type=text size=16 maxlength=32 ></td>
+									<td><select name="cid_cli">
+<?php
+#IMPORTANDO CONEXÃO DO BANCO
+require('../connect.php');
+#ADQUIRINDO INFORMAÇÕES DO BANCO
+$sql = mysqli_query($conn,"SELECT DISTINCT `cidade` FROM $tab_cli ORDER BY `cidade`");
+#TRANSFORMANDO RESULTADO EM NÚMEROS
+$n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
+$i=0;
+#APRESENTANDO REGISTROS DO BANCO
+while($i!=$n){
+#CADASTROS POR COLUNA
+	$v = mysqli_fetch_array($sql);
+	?><option value="<?php	echo $v['cidade']	?>"><?php	echo	$v['cidade']	?></option><?php
+#SOMANDO AO CONTADOR
+	$i=$i+1;
+}
+?>
+									</select></td>
 								</tr>
                                 <tr>
-									<td><h4>CÓDIGO DISTRIBUIDORA:<input type="radio" name="opc" value="codd"></h4></td>
-									<td><input name="cod_dis" type=text size=16 maxlength=16 ></td>
-								</tr>
+									<td><h4>DISTRIBUIDORA:<input type="radio" name="opc" value="dis"></h4></td>
+									<td><select name="cod_dis">
+<?php
+#IMPORTANDO CONEXÃO DO BANCO
+	require('../connect.php');
+#ADQUIRINDO INFORMAÇÕES DO BANCO
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis");
+#TRANSFORMANDO RESULTADO EM NÚMEROS
+	$n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
+	$i=0;
+#APRESENTANDO REGISTROS DO BANCO
+	while($i!=$n){
+#CADASTROS POR COLUNA
+		$v = mysqli_fetch_array($sql);
+		?><option value=<?php	echo $v['codigo']	?>><?php	echo	$v['nome']	?></option><?php
+#SOMANDO AO CONTADOR
+		$i=$i+1;
+	}
+?>
+										</select></td>
+									</tr>
 							</table>
                             <tr>
                                 <td><input class="inputb" type=submit value=PESQUISAR></td>

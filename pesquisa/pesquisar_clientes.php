@@ -85,7 +85,7 @@ if(!isset($_SESSION["system_control"])){
             $sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `codigo` = '$cod_cli' ORDER BY `id` DESC");
             break;
         case 'nom':
-            $sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `nome` = '$nom_cli' ORDER BY `id` DESC");
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `nome` LIKE '% $nom_cli %' ORDER BY `id` DESC");
             break;
         case 'ages':
             $sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `agendar` = 'SIM' ORDER BY `id` DESC");
@@ -102,7 +102,7 @@ if(!isset($_SESSION["system_control"])){
         case 'cid':
             $sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `cidade` = '$cid_cli' ORDER BY `id` DESC");
             break;
-        case 'codd':
+        case 'dis':
             $sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `cod_distribuidora` = '$cod_dis' ORDER BY `id` DESC");
             break;
         default:
