@@ -57,7 +57,7 @@ if(!isset($_SESSION["system_control"])){
 					<td>
 						<form method="post" action="alterar_clientes.php">
 							<table>
-                                <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
+                                <input type="hidden" name="id" value=<?php echo $vn['id']?>>
 								<tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="cod">CÓDIGO:<?php echo $vn['codigo'];   ?></nobr></h2></td>
                                     <td><input name="cod_cli" type=int size=16 maxlength=16 ></td>

@@ -41,6 +41,18 @@ if(!isset($_SESSION["system_control"])){
             </table>
         </menu>
         <rn>
+<?php
+#VARIÁVEIS DO FORMULÁRIO
+$dat = trim($_POST['dat']);
+$dat2 = trim($_POST['dat2']);
+$dis = trim($_POST['dis']);
+?>
+            <form method="post" action="imprimir_romaneio.php">
+                <input type="hidden" name="dat" value="<?php echo $sat;  ?>">
+                <input type="hidden" name="dat2" value="<?php echo $dat2;  ?>">
+                <input type="hidden" name="dis" value="<?php echo $dis;  ?>">
+                <input class="inputd" type=submit value=IMPRIMIR>
+            </form>
             <table border=1>
                 <tr><h3>NOTAS FISCAIS</h3></tr>
                 <tr>
@@ -56,10 +68,6 @@ if(!isset($_SESSION["system_control"])){
 <?php
 #IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
-#VARIÁVEIS DO FORMULÁRIO
-    $dat = trim($_POST['dat']);
-    $dat2 = trim($_POST['dat2']);
-    $dis = trim($_POST['dis']);
 #ADQUIRINDO DADOS DO BANCO
     $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `cod_distribuidora` = '$dis' and `entrada` >= '$dat' and `entrada` <= '$dat2'");
 #TRANSFORMANDO RESULTADO EM NÚMEROS
@@ -86,12 +94,6 @@ if(!isset($_SESSION["system_control"])){
     }
 ?>
             </table>
-            <form method="post" action="imprimir_romaneio.php">
-			<input type="hidden" name="dat" value="<?php echo $sat;  ?>">
-			<input type="hidden" name="dat2" value="<?php echo $dat2;  ?>">
-			<input type="hidden" name="dis" value="<?php echo $dis;  ?>">
-			<input class="inputd" type=submit value=IMPRIMIR>
-		</form>
         </rn>
     </body>
 </html>

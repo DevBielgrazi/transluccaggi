@@ -167,13 +167,37 @@ while($i!=$n){
 										</select></td>
 									</tr>
 								<tr>
+									<td><h4>CÓDIGO CLIENTE:<input type="radio" name="opc" value="ccl"></h4></td>
+									<td><input name="cod_cli" type=text size=32 maxlength=64 ></td>
+								</tr>
+								<tr>
 									<td><h4>NOME CLIENTE:<input type="radio" name="opc" value="cli"></h4></td>
 									<td><input name="nom_cli" type=text size=32 maxlength=64 ></td>
 								</tr>
 								<tr>
 									<td><h4>MOTORISTAS:<input type="radio" name="opc" value="mot"></h4></td>
-									<td><input name="mot_nf" type=text size=32 maxlength=16 ></td>
-								</tr>
+									<td><select name="mot_nf">
+<?php
+#IMPORTANDO CONEXÃO DO BANCO
+	require('../connect.php');
+#ADQUIRINDO INFORMAÇÕES DO BANCO
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_mot");
+#TRANSFORMANDO RESULTADO EM NÚMEROS
+	$n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
+	$i=0;
+#APRESENTANDO REGISTROS DO BANCO
+	while($i!=$n){
+#CADASTROS POR COLUNA
+		$v = mysqli_fetch_array($sql);
+		?><option value="<?php	echo $v['nome']	?>"><?php	echo	$v['nome']	?></option><?php
+#SOMANDO AO CONTADOR
+		$i=$i+1;
+	}
+?>
+										</select></td>
+									</tr>
+								<tr>
 							</table>
                             <tr>
                                 <td><input class="inputb" type=submit value=PESQUISAR></td>

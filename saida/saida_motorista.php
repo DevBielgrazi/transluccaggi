@@ -63,6 +63,11 @@ if(!isset($_SESSION["system_control"])){
 		<table border=1>
 			<tr><h3>SAÍDA MOTORISTA</h3></tr>
 			<tr>
+				<td><form method="post" action="imprimir_saida.php">
+					<input type="hidden" name="mot_sai" value="<?php echo $mot_sai;  ?>">
+					<input type="hidden" name="dat_sai" value="<?php echo $dat_sai;  ?>">
+					<input class="inputd" type=submit value=IMPRIMIR>
+				</form></td>
 				<td><h3>DATA:<?php  echo date( 'd/m/Y' , strtotime($dat_sai)); ?></h3></td>
 				<td><h3>MOTORISTA:<?php  echo $nom_mot; ?></h3></td>
 				<td><h3>VEÍCULO:<?php echo $vei_mot  ?></h3></td>
@@ -73,6 +78,7 @@ if(!isset($_SESSION["system_control"])){
 				<td><h3>VALOR</h3></td>
 				<td><h3>VOLUMES</h3></td>
 				<td><h3>CLIENTE</h3></td>
+				<td><h3>CIDADE</h3></td>
 		</tr>
 <?php
 #INICIANDO CONTADOR
@@ -83,7 +89,6 @@ if(!isset($_SESSION["system_control"])){
     }else{
         $not_sai = trim($_POST['not_sai']);
     }
-
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$not_sai' ORDER BY `id` DESC LIMIT 1");
 	$v = mysqli_fetch_array($sql);
 	if(!isset($v['id'])) {
@@ -111,6 +116,7 @@ if(!isset($_SESSION["system_control"])){
 					<td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
 					<td><h4><nobr><?php echo $vn['volumes'];    ?></nobr></h4></td>
 					<td><h4><nobr><?php echo $vn['nome_cliente'];    ?></nobr></h4></td>
+					<td><h4><nobr><?php echo $vn['cidade_cliente'];    ?></nobr></h4></td>
 <?php
 #SOMANDO AO CONTADOR
 		$i = $i + 1;
@@ -120,6 +126,7 @@ if(!isset($_SESSION["system_control"])){
 			<tr>
 			<input type="hidden" name="n" value="<?php $nn = ($_POST['n']+1)?>">
 				<td><h4><nobr>NÃO CADASTRADA</nobr></h4></td>
+				<td><h4><nobr></nobr></h4></td>
 				<td><h4><nobr></nobr></h4></td>
 				<td><h4><nobr></nobr></h4></td>
 				<td><h4><nobr></nobr></h4></td>
@@ -149,11 +156,6 @@ if(!isset($_SESSION["system_control"])){
 				</tr>
 			</table>
 		</pag>
-		<form method="post" action="imprimir_saida.php">
-			<input type="hidden" name="mot_sai" value="<?php echo $mot_sai;  ?>">
-			<input type="hidden" name="dat_sai" value="<?php echo $dat_sai;  ?>">
-			<input class="inputd" type=submit value=IMPRIMIR>
-		</form>
 <?php
 	}else{
 		$nom_mot = null;

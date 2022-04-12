@@ -87,10 +87,12 @@ if(!isset($_SESSION["system_control"])){
             }else{
 #ALTERANDO DADOS DO CAMPO SELECIONADO
                 $sql2 = mysqli_query($conn,"UPDATE $tab_cli SET `codigo` = '$cod_cli' WHERE `id` = '$id'");
+                $sql3 = mysqli_query($conn,"UPDATE $tab_nfs SET `cod_cliente` = '$cod_cli' WHERE `cod_cliente` = '$cod_clia'");
             }
             break;
-        case "nome":
+        case "nom":
             $sql2 = mysqli_query($conn,"UPDATE $tab_cli SET `nome` = '$nom_cli' WHERE `id` = '$id'");
+            $sql3 = mysqli_query($conn,"UPDATE $tab_nfs SET `nome_cliente` = '$nom_cli' WHERE `cod_cliente` = '$cod_clia'");
             break;
         case "age":
             $sql2 = mysqli_query($conn,"UPDATE $tab_cli SET `agendar` = '$age_cli' WHERE `id` = '$id'");
@@ -100,18 +102,22 @@ if(!isset($_SESSION["system_control"])){
             break;
         case "rot":
             $sql2 = mysqli_query($conn,"UPDATE $tab_cli SET `rota` = '$rot_cli' WHERE `id` = '$id'");
+            $sql3 = mysqli_query($conn,"UPDATE $tab_nfs SET `rota` = '$rot_cli' WHERE `cod_cliente` = '$cod_clia'");
             break;
         case "cid":
             $sql2 = mysqli_query($conn,"UPDATE $tab_cli SET `cidade` = '$cid_cli' WHERE `id` = '$id'");
+            $sql3 = mysqli_query($conn,"UPDATE $tab_nfs SET `cidade_cliente` = '$cid_cli' WHERE `cod_cliente` = '$cod_clia'");
             break;
         case "bai":
             $sql2 = mysqli_query($conn,"UPDATE $tab_cli SET `bairro` = '$bai_cli' WHERE `id` = '$id'");
+            $sql3 = mysqli_query($conn,"UPDATE $tab_nfs SET `bairro_cliente` = '$bai_cli' WHERE `cod_cliente` = '$cod_clia'");
             break;
         case "end":
             $sql2 = mysqli_query($conn,"UPDATE $tab_cli SET `endereco` = '$end_cli' WHERE `id` = '$id'");
+            $sql3 = mysqli_query($conn,"UPDATE $tab_nfs SET `endereco_cliente` = '$end_cli' WHERE `cod_cliente` = '$cod_clia'");
             break;
         case "dis":
-            $sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `codigo` = '$cod_clia' and `cod_distribuidora` = '$cod_dis'");
+            $sql2 = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `codigo` = '$cod_clia' and `cod_distribuidora` = '$cod_dis'");
             $n = mysqli_num_rows($sql);
             if($n!=0){
                 ?>
@@ -126,6 +132,7 @@ if(!isset($_SESSION["system_control"])){
 			<?php
             }else{
                 $sql2 = mysqli_query($conn,"UPDATE $tab_cli SET `cod_distribuidora` = '$cod_dis' WHERE `id` = '$id'");
+                $sql3 = mysqli_query($conn,"UPDATE $tab_nfs SET `cod_distribuidora` = '$cod_dis' WHERE `cod_cliente` = '$cod_clia'");
             }
         default:
             $sql2 = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `id` = '$id'");

@@ -25,19 +25,20 @@
 	<table border=2>
 		<tr>
 			<td>DATA:<?php  echo date( 'd/m/Y' , strtotime($dat_sai)) ?></td>
-			<td>MOTORISTA:<?php  echo $nom_mot ?></td>
 			<td>VEÍCULO:<?php echo $vei_mot  ?></td>
+			<td>MOTORISTA:<?php  echo $nom_mot ?></td>
 			<td>PLACA:<?php echo $pla_mot  ?></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>NF</td>
-			<td>VALOR</td>
 			<td>VOLUMES</td>
-			<td>CLIENTE</td>						
-			<td>ENDEREÇO</td>						
+			<td>CLIENTE</td>					
+			<td>CIDADE</td>
+			<td>BAIRRO</td>
 		</tr>
 <?php
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `motorista` = '$nom_mot' and `saida` = '$dat_sai' ORDER BY `cidade_cliente`");
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `motorista` = '$nom_mot' and `saida` = '$dat_sai' ORDER BY `cidade_cliente`,`bairro_cliente`");
 	$n = mysqli_num_rows($sql);
 #INICIANDO CONTADOR
     $i=0;
@@ -47,10 +48,10 @@
 ?>
         <tr>
             <td><nobr><?php echo $vn['numero'];   ?></nobr></td>
-            <td><nobr><?php echo $vn['valor'];    ?></nobr></td>
             <td><nobr><?php echo $vn['volumes'];    ?></nobr></td>
             <td><nobr><?php echo $vn['nome_cliente'];    ?></nobr></td>
-            <td><nobr><?php echo $vn['endereco_cliente'];    ?></nobr></td>
+            <td><nobr><?php echo $vn['cidade_cliente'];    ?></nobr></td>
+            <td><nobr><?php echo $vn['bairro_cliente'];    ?></nobr></td>
 		</tr>
 <?php
     $i = $i + 1;

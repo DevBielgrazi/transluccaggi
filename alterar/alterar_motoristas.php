@@ -50,6 +50,25 @@ if(!isset($_SESSION["system_control"])){
 	$pla_mot = trim($_POST['pla_mot']);
 	$tel_mot = trim($_POST['tel_mot']);
 	$end_mot = trim($_POST['end_mot']);
+    $cpf_mot = trim($_POST['cpf_mot']);
+	$rg_mot = trim($_POST['rg_mot']);
+	$nas_mot = trim($_POST['nas_mot']);
+	$nat_mot = trim($_POST['nat_mot']);
+	$cnh_mot = trim($_POST['cnh_mot']);
+	$val_mot = trim($_POST['val_mot']);
+	$cat_mot = trim($_POST['cat_mot']);
+	$cep_mot = trim($_POST['cep_mot']);
+	$ban_mot = trim($_POST['ban_mot']);
+	$cod_mot = trim($_POST['cod_mot']);
+	$age_mot = trim($_POST['age_mot']);
+	$con_mot = trim($_POST['con_mot']);
+	$ano_mot = trim($_POST['ano_mot']);
+	$cor_mot = trim($_POST['cor_mot']);
+	$ren_mot = trim($_POST['ren_mot']);
+	$num_mot = trim($_POST['num_mot']);
+	$ant_mot = trim($_POST['ant_mot']);
+	$caa_mot = trim($_POST['caa_mot']);
+	$vaa_mot = trim($_POST['vaa_mot']);
 	$id = trim($_POST['id']);
 #VERIFICANDO EXISTÊNCIA DO INPUT
     if(!isset($_POST['opc'])){

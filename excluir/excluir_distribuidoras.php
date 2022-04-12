@@ -23,10 +23,10 @@ if(!isset($_SESSION["system_control"])){
 			<h1>MATRIZ PRINCIPAL</h1><p>
             <a href="http://localhost/transluccaggi/logout.php"><img src="..\imagem/exit.png" width=3%></a>
 				<table class="tableb">
-					<tr><td><a href="../saida/form_saida_motorista.php"><button>SAÍDA DE MOTORISTAS</button></a></td></tr>
-                    <tr><td><a href="../saida/form_baixa_canhotos.php"><button>BAIXA DE CANHOTOS</button></a></td></tr>
-					<tr><td><a href="../saida/form_romaneio_cargas.php"><button>ROMANEIO DE CARGAS</button></a></td></tr>
-					<tr><td><a href="../saida/form_relatorio_devolucao.php"><button>RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
+					<tr><td><a href="../saida/form_saida_motorista.php"><button class="buttonb">SAÍDA DE MOTORISTAS</button></a></td></tr>
+                    <tr><td><a href="../saida/form_baixa_canhotos.php"><button class="buttonb">BAIXA DE CANHOTOS</button></a></td></tr>
+					<tr><td><a href="../saida/form_romaneio_cargas.php"><button class="buttonb">ROMANEIO DE CARGAS</button></a></td></tr>
+					<tr><td><a href="../saida/form_relatorio_devolucao.php"><button class="buttonb">RELATÓRIO DE DEVOLUÇÕES</button></a></td></tr>
 					<tr><td><h2>CADASTROS</h2></td></tr>
                     <tr><td><a href="..\cadastro/form_cadastrar_nfs.php"><button>NOTAS</button></a></td></tr>
                     <tr><td><a href="..\cadastro/form_cadastrar_clientes.php"><button>CLIENTES</button></a></td></tr>
@@ -47,6 +47,8 @@ if(!isset($_SESSION["system_control"])){
 	$cod_dis = trim($_POST['cod_dis']);
 #EXCLUINDO REGISTRO DO BANCO
     $sql = mysqli_query($conn,"DELETE FROM $tab_dis WHERE `codigo` = '$cod_dis'");
+    $sql2 = mysqli_query($conn,"UPDATE $tab_nfs SET `cod_distribuidora` = 'nulo' WHERE `cod_distribuidora` = '$cod_dis'");
+    $sql3 = mysqli_query($conn,"UPDATE $tab_cli SET `cod_distribuidora` = 'nulo' WHERE `cod_distribuidora` = '$cod_dis'");
 ?>
         <pag>
 				<h1>EXCLUIR DISTRIBUIDORAS</h1><p>

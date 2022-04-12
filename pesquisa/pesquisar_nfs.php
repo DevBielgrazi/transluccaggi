@@ -73,6 +73,7 @@ if(!isset($_SESSION["system_control"])){
     $sai_nf2 = trim($_POST['sai_nf2']);
     $rot_nf = trim($_POST['rot_nf']);
     $cid_cli = trim($_POST['cid_cli']);
+    $cod_cli = trim($_POST['cod_cli']);
     $nom_cli = trim($_POST['nom_cli']);
     $cod_dis = trim($_POST['cod_dis']);
     $mot_nf = trim($_POST['mot_nf']);
@@ -105,6 +106,9 @@ if(!isset($_SESSION["system_control"])){
             break;
         case 'cid':
             $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `cidade_cliente` = '$cid_cli'  ORDER BY `id` DESC");
+            break;
+        case 'ccl':
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `cod_cliente` = '$cod_cli'  ORDER BY `id` DESC");
             break;
         case 'cli':
             $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `nome_cliente` LIKE '% $nom_cli %'  ORDER BY `id` DESC");

@@ -59,7 +59,7 @@ if(!isset($_SESSION["system_control"])){
 							<table>
                                 <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
                                 <tr>
-                                    <td><h2><nobr><input type="radio" name="opc" value="cad">CADASTRO:<?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));;   ?></nobr></h2></td>
+                                    <td><h2><nobr><input type="radio" name="opc" value="cad">CADASTRO:<?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));   ?></nobr></h2></td>
                                     <td><input name="cad_mot" type=date></td>
 								</tr>
                                 <tr>
@@ -91,7 +91,7 @@ if(!isset($_SESSION["system_control"])){
                                     <td><input name="rg_mot" type=text size=16 maxlength=16></td>
 								</tr>
                                 <tr>
-                                    <td><h2><nobr><input type="radio" name="opc" value="nas">NASCIMENTO:<?php echo $vn['nascimento'];   ?></nobr></h2></td>
+                                    <td><h2><nobr><input type="radio" name="opc" value="nas">NASCIMENTO:<?php echo date( 'd/m/Y' , strtotime( $vn['nascimento']));   ?></nobr></h2></td>
                                     <td><input name="nas_mot" type=date></td>
 								</tr>
                                 <tr>
@@ -103,7 +103,7 @@ if(!isset($_SESSION["system_control"])){
                                     <td><input name="cnh_mot" type=text size=16 maxlength=16></td>
 								</tr>
                                 <tr>
-                                    <td><h2><nobr><input type="radio" name="opc" value="val">VALIDADE(CNH):<?php echo $vn['validade_cnh'];   ?></nobr></h2></td>
+                                    <td><h2><nobr><input type="radio" name="opc" value="val">VALIDADE(CNH):<?php echo date( 'd/m/Y' , strtotime( $vn['validade_cnh']));   ?></nobr></h2></td>
                                     <td><input name="val_mot" type=text size=16 maxlength=16></td>
 								</tr>
                                 <tr>
@@ -155,8 +155,8 @@ if(!isset($_SESSION["system_control"])){
                                     <td><input name="caa_mot" type=text size=16 maxlength=16></td>
 								</tr>
                                 <tr>
-                                    <td><h2><nobr><input type="radio" name="opc" value="vaa">VALIDADE(ANTT):<?php echo $vn['validade_antt'];   ?></nobr></h2></td>
-                                    <td><input name="vaa_mot" type=text size=16 maxlength=16></td>
+                                    <td><h2><nobr><input type="radio" name="opc" value="vaa">VALIDADE(ANTT):<?php echo date( 'd/m/Y' , strtotime( $vn['validade_antt']));   ?></nobr></h2></td>
+                                    <td><input name="vaa_mot" type=date></td>
 								</tr>
 							</table>
                             <tr>

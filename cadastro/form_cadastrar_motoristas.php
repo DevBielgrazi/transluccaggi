@@ -145,7 +145,7 @@ if(!isset($_SESSION["system_control"])){
 								</tr>
 								<tr>
 									<td><h4>VALIDADE ANTT:</h4></td>
-									<td><input name="vaa_mot" type=text size=16 maxlength=16></td>
+									<td><input name="vaa_mot" type=date></td>
 								</tr>
 							</table>
 							<tr>
