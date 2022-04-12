@@ -3,7 +3,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<link rel="icon" href="..\imagem/favicone.png"/>
 		<title>.</title>
-	</head> 
+	</head>
 	<body>
 <?php
 #IMPORTANDO CONEXÃO COM O BANCO
@@ -72,4 +72,4 @@
 		</tr>
         <script>window.print();</script>
     </body>
-</htmml>
+</html>
