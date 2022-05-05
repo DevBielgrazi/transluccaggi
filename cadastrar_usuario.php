@@ -6,88 +6,64 @@
 		<title>Matriz Principal</title>
 	</head>
 	<body>
+        <login>
+			<img src="imagem/logo.png" width=30%>
+			<table>
+				<tr>
+					<td>
 <?php
-#IMPORTANDO CONEXÃO DO BANCO
-	require('connect.php');
-#VARIÁVEIS DO FORMULÁRIO
-    $login = trim($_POST['login']);
-    $senha = trim($_POST['senha']);
-    $senha2 = trim($_POST['senha2']);
-#ADQUIRINDO INFORMAÇÕES DO BANCO
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_usu WHERE `login` = '$login'");
-#TRANSFORMANDO RESULTADO EM NUMEROS
-	$n = mysqli_num_rows($sql);
-#VERIFICANDO O NÚMERO DE CADASTROS
-	if($n != 0){
+    $login = $_POST["login"];
+    $senha = $_POST["senha"];
+    
+    if(!isset($_POST['log_adm'])) {
+        $log_adm = "nul";
+    }else{
+        $log_adm = $_POST["log_adm"];
+    }
+
+    if(!isset($_POST['sen_adm'])) {
+        $sen_adm = "nul";
+    }else{
+        $sen_adm = $_POST["sen_adm"];
+    }
+    
+    require("connect.php");
+    $sql = mysqli_query($conn,"SELECT * FROM $tab_usu");
+    $n = mysqli_num_rows($sql);
+    if ($n != 0){
+        $sen_adm = md5($sen_adm);
+        $sql2 = mysqli_query($conn,"SELECT * FROM $tab_usu WHERE `id` = '1' AND `login` = '$login' AND `senha` = '$sen_adm'");
+        $n2 = mysqli_num_rows($sql);
+        if($n2 == 0)
+        {
 ?>
-			<pag>
-				<h1>FAZER CADASTRO</h1><p>
-				<table>
-					<tr>
-						<td><h6>USUÁRIO JÁ CADASTARDO</h6></td>
-					</tr>
-					<tr>
-						<td><a href="index.html"><button class="buttonc">FAZER LOGIN</button></a></td>
-					</tr>
-				</table>
-			</pag>
+            <tr>
+                <td><h6>SENHA DE ADMINISTRADOR INVÁLIDA</h6></td>
+            </tr>
 <?php
-	}
-	else
-	{
-		if($senha==$senha2){
-#INSERINDO DADOS NA TABELA
-			$senha = md5($senha);
-			$sql = mysqli_query($conn,"INSERT INTO $tab_usu(`login`, `senha`) VALUES ('$login', '$senha')");
-?>
-				<pag>
-					<h1>FAZER CADASTRO</h1><p>
-					<table>
-						<tr>
-							<td><h7>CADASTRO REALIZADO</h7></td>
-						</tr>
-						<tr>
-							<td><a href="index.html"><button class="buttonc">FAZER LOGIN</button></a></td>
-						</tr>
-					</table>
-				</pag>
+        }
+        else
+        {
+            $sql = mysqli_query($conn,"INSERT INTO $tab_usu(`login`, `senha`) VALUES ('$login', '$senha')");
+?>            
+            <script>document.location.href="index.html"</script>
 <?php
-		}else{
+        }
+    }
+    else
+    {
+        $sql = mysqli_query($conn,"INSERT INTO $tab_usu(`login`, `senha`) VALUES ('$login', '$senha')");
+?>            
+        <script>document.location.href="index.html"</script>
+<?php
+    }
 ?>
-			<pag>
-				<h1>FAZER CADASTRO</h1><p>
-				<table>
-					<tr>
-						<td><h5>SENHAS DIVERGENTES</h5></td>
-					</tr>
-					<tr>
-						<td>
-							<form method="post" action="cadastrar_usuario.php">
-								<table>
-									<tr>
-										<td><h4>LOGIN:</h4></td>
-										<td><input name="login" type=text size=16 maxlength=16 required></td>
-									</tr>
-									<tr>
-										<td><h4>SENHA:</h4></td>
-										<td><input name="senha" type=password size=16 maxlength=16 required></td>
-									</tr>
-									<tr>
-										<td><h4>CONFIRMAR SENHA:</h4></td>
-										<td><input name="senha2" type=password size=16 maxlength=16 required></td>
-									</tr>
-								</table>
-								<tr>
-									<td><input class="inputb" type=submit value=CADASTRAR></td>
-								</tr>
-							</form>
-						</td>
-					</tr>
-				</table>
-			</pag>
-<?php		
-		}
-	}
-?>
-	</body>
+                        <tr>
+                            <td><a href="index.html"><button class="buttonc">VOLTAR</button></a></td>
+                        </tr>
+                    </td>
+                </tr>
+            </table>
+        </login>
+    </body>
 </html>
