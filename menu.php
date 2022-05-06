@@ -8,7 +8,7 @@ if(!isset($_SESSION["system_control"])){
 <?php
 }else{
 	$system_control = $_SESSION["system_control"];
-	if($system_control == 1){
+	if($system_control == 1 || $system_control == 2){
 ?>
 <html>
 	<head>
@@ -38,6 +38,8 @@ if(!isset($_SESSION["system_control"])){
 					<tr><td><h2>MOTORISTAS</h2></td></tr>
 					<tr><td><a href="cadastro/form_cadastrar_motoristas.php"><button>CADASTRAR</button></a></td></tr>
 					<tr><td><a href="pesquisa/form_pesquisar_motoristas.php"><button>PESQUISAR</button></a></td></tr>
+					<tr><td><h2>FINANCEIRO</h2></td></tr>
+					<tr><td><a href="financeiro/form_financeiro_fretes.php"><button>FRETE MOTORISTAS</button></a></td></tr>
 			</table>
 		</menu>
 	</body>

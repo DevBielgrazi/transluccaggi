@@ -8,7 +8,7 @@ if(!isset($_SESSION["system_control"])){
 <?php
 }else{
 	$system_control = $_SESSION["system_control"];
-	if($system_control == 1){
+	if($system_control == 1 || $system_control == 2){
 ?>
 <html>
 	<head>

@@ -9,4 +9,5 @@
 	$tab_dis = "distribuidoras";
 	$tab_mot = "motoristas";
 	$tab_usu = "usuarios";
+	$tab_fre = "fretes";
  ?>

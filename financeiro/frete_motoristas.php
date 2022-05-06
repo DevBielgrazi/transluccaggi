@@ -8,7 +8,7 @@ if(!isset($_SESSION["system_control"])){
 <?php
 }else{
 	$system_control = $_SESSION["system_control"];
-	if($system_control == 1 || $system_control == 2){
+	if($system_control == 2){
 ?>
 <html>
 	<head>
@@ -38,86 +38,57 @@ if(!isset($_SESSION["system_control"])){
 				<tr><td><h2>MOTORISTAS</h2></td></tr>
 				<tr><td><a href="..\cadastro/form_cadastrar_motoristas.php"><button>CADASTRAR</button></a></td></tr>
 				<tr><td><a href="..\pesquisa/form_pesquisar_motoristas.php"><button>PESQUISAR</button></a></td></tr>
+                <tr><td><h2>FINANCEIRO</h2></td></tr>
+				<tr><td><a href="..\financeiro/form_financeiro_fretes.php"><button>FRETE MOTORISTAS</button></a></td></tr>
             </table>
         </menu>
 <?php
 #IMPORTANDO CONEXÃO DO BANCO
-	require('../connect.php');
+	require('..\connect.php');
 #VARIÁVEIS DO FORMULÁRIO
-    $nom_dis = trim($_POST['nom_dis']);
-    $por_dis = trim($_POST['por_dis']);
-    $cad_dis = trim($_POST['cad_dis']);
+    $mot_fre = trim($_POST['mot_fre']);
+    $dat_fre = trim($_POST['dat_fre']);
+    $val_fre = trim($_POST['val_fre']);
+    $sai_fre = 1;
 #ADQUIRINDO INFORMAÇÕES DO BANCO
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `nome` = '$nom_dis'");
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_fre WHERE `data` = '$dat_fre' AND `motorista` = '$mot_fre'");
 #TRANSFORMANDO RESULTADO EM NUMEROS
 	$n = mysqli_num_rows($sql);
 #VERIFICANDO O NÚMERO DE CADASTROS
 	if($n != 0){
-?>
-			<pag>
-				<h1>CADASTRAR DISTRIBUIDORA</h1><p>
-				<table>
-					<tr>
-						<td><h5>DISTRIBUIDORA JÁ CADASTARDA</h5></td>
-					</tr>
-					<tr>
-						<td><a href="form_cadastrar_distribuidoras.php"><button class="buttonc">VOLTAR</button></a></td>
-                    </tr>
-				</table>
-			</pag>
-<?php
-	}
-	else
-	{
+        $vn = mysqli_fetch_array($sql);
+        $sai_frea = $vn['saidas'];
+        $sai_fre = $sai_fre+$sai_frea;
+        $sql = mysqli_query($conn,"UPDATE $tab_fre SET `valor` = '$val_fre', `saidas` = '$sai_fre' WHERE `data` = '$dat_fre' AND `motorista` = '$mot_fre'");
+	}else{
 #INSERINDO DADOS NA TABELA
-		$sql = mysqli_query($conn,"INSERT INTO $tab_dis(`nome`, `porcentagem`, `cadastro`) VALUES ('$nom_dis', '$por_dis', '$cad_dis')");
-?>
-			<pag>
-				<h1>CADASTRAR DISTRIBUIDORAS</h1><p>
-				<table>
-					<tr>
-						<td><h7>DISTRIBUIDORA CADASTRADA</h7></td>
-					</tr>
-					<tr>
-						<td><a href="form_cadastrar_distribuidoras.php"><button class="buttonc">PRÓXIMA</button></a></td>
-                    </tr>
-				</table>
-			</pag>
-<?php
-	}
+        $sql = mysqli_query($conn,"INSERT INTO $tab_fre(`data`, `motorista`, `valor`, `saidas`) VALUES ('$dat_fre', '$mot_fre', '$val_fre', '$sai_fre')");
+    }
 ?>
 		<urd>
 			<table border=1>
 				<h3>DISTRIBUIDORAS CADASTRADAS</h3>
 				<tr>
-					<td><h3>CÓDIGO</h3></td>
-					<td><h3>NOME</h3></td>
-					<td><h3>CADASTRO</h3></td>
+					<td><h3>DATA</h3></td>
+					<td><h3>MOTORISTA</h3></td>
+					<td><h3>VALOR</h3></td>
 				</tr>
-<?php
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis ORDER BY `codigo` DESC LIMIT 5");
-#TRANSFORMANDO RESULTADO EM NÚMEROS
-	$n = mysqli_num_rows($sql);
-#INICIANDO CONTADOR
-	$i=0;
-#APRESENTANDO DADOS DA TABELA
-	while($i<$n){
-#CADASTROS POR COLUNA
-		$vn = mysqli_fetch_array($sql);	?>
-				<tr>
-					<td><h4><nobr><?php echo $vn['codigo'];   ?><nobr></h4></td>
-					<td><h4><nobr><?php echo $vn['nome'];    ?><nobr></h4></td>
-					<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?><nobr></h4></td>
+                <tr>
+					<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $dat_fre));   ?><nobr></h4></td>
+					<td><h4><nobr><?php echo $mot_fre;    ?><nobr></h4></td>
+					<td><h4><nobr><?php echo $val_fre;    ?><nobr></h4></td>
 				</tr>
-<?php
-#SOMANDO AO CONTADOR
-		$i = $i + 1;
-	}
-?>
 			</table>
 		</urd>
 	</body>
 </html>
+<?php
+    }
+    else{
+?>
+        <script>
+            document.location.href="http://localhost/transluccaggi/financeiro/index_financeiro.html";
+        </script>
 <?php
     }
 }
