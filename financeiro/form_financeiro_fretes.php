@@ -44,7 +44,7 @@ if(!isset($_SESSION["system_control"])){
 			</table>
 		</menu>
 		<pag>
-			<h1>FRETE MOTORISTAS</h1><p>
+			<h1>FRETE POR MOTORISTAS</h1><p>
 			<table>
 				<tr>
 					<td>

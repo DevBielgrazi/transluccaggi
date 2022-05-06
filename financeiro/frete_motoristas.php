@@ -68,7 +68,7 @@ if(!isset($_SESSION["system_control"])){
 ?>
 		<urd>
 			<table border=1>
-				<h3>DISTRIBUIDORAS CADASTRADAS</h3>
+				<h3>FRETE POR MOTORISTAS</h3>
 				<tr>
 					<td><h3>DATA</h3></td>
 					<td><h3>MOTORISTA</h3></td>
