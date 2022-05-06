@@ -39,7 +39,7 @@ if(!isset($_SESSION["system_control"])){
 				<tr><td><a href="..\cadastro/form_cadastrar_motoristas.php"><button>CADASTRAR</button></a></td></tr>
 				<tr><td><a href="..\pesquisa/form_pesquisar_motoristas.php"><button>PESQUISAR</button></a></td></tr>
                 <tr><td><h2>FINANCEIRO</h2></td></tr>
-				<tr><td><a href="..\financeiro/form_financeiro_fretes.php"><button>FRETE MOTORISTAS</button></a></td></tr>
+				<tr><td><a href="..\financeiro/form_frete_motoristas.php"><button>FRETE MOTORISTAS</button></a></td></tr>
 				<tr><td><a href="..\financeiro/form_frete_distribuidoras.php"><button>FRETE DISTRIBUIDORAS</button></a></td></tr>
 			</table>
         </menu>
@@ -66,9 +66,9 @@ if(!isset($_SESSION["system_control"])){
         $sql = mysqli_query($conn,"INSERT INTO $tab_fre(`data`, `motorista`, `valor`, `saidas`) VALUES ('$dat_fre', '$mot_fre', '$val_fre', '$sai_fre')");
     }
 ?>
-		<urd>
+		<pag>
 			<table border=1>
-				<h3>FRETE POR MOTORISTAS</h3>
+				<h1>FRETE POR MOTORISTAS</h1>
 				<tr>
 					<td><h3>DATA</h3></td>
 					<td><h3>MOTORISTA</h3></td>
@@ -80,7 +80,7 @@ if(!isset($_SESSION["system_control"])){
 					<td><h4><nobr><?php echo $val_fre;    ?><nobr></h4></td>
 				</tr>
 			</table>
-		</urd>
+</pag>
 	</body>
 </html>
 <?php

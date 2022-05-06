@@ -40,7 +40,7 @@ if(!isset($_SESSION["system_control"])){
 				<tr><td><a href="..\cadastro/form_cadastrar_motoristas.php"><button>CADASTRAR</button></a></td></tr>
 				<tr><td><a href="..\pesquisa/form_pesquisar_motoristas.php"><button>PESQUISAR</button></a></td></tr>
                 <tr><td><h2>FINANCEIRO</h2></td></tr>
-				<tr><td><a href="..\financeiro/form_financeiro_fretes.php"><button>FRETE MOTORISTAS</button></a></td></tr>
+				<tr><td><a href="..\financeiro/form_frete_motoristas.php"><button>FRETE MOTORISTAS</button></a></td></tr>
 				<tr><td><a href="..\financeiro/form_frete_distribuidoras.php"><button>FRETE DISTRIBUIDORAS</button></a></td></tr>
             </table>
         </menu>
@@ -63,7 +63,7 @@ if(!isset($_SESSION["system_control"])){
 ?>
 	<rn>
 		<table border=1>
-			<tr><h3>FRETE MOTORISTA</h3></tr>
+			<tr><h1>FRETE MOTORISTA</h1></tr>
 			<tr>
 				<td><h3>DATA:</h3><h4><?php  echo date( 'd/m/Y' , strtotime($dat_fre)); ?></h4></td>
 			</tr>

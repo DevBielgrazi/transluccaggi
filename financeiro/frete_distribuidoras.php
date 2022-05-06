@@ -39,7 +39,7 @@ if(!isset($_SESSION["system_control"])){
                     <tr><td><a href="..\cadastro/form_cadastrar_motoristas.php"><button>CADASTRAR</button></a></td></tr>
                     <tr><td><a href="..\pesquisa/form_pesquisar_motoristas.php"><button>PESQUISAR</button></a></td></tr>
                     <tr><td><h2>FINANCEIRO</h2></td></tr>
-                    <tr><td><a href="..\financeiro/form_financeiro_fretes.php"><button>FRETE MOTORISTAS</button></a></td></tr>
+                    <tr><td><a href="..\financeiro/form_frete_motoristas.php"><button>FRETE MOTORISTAS</button></a></td></tr>
                     <tr><td><a href="..\financeiro/form_frete_distribuidoras.php"><button>FRETE DISTRIBUIDORAS</button></a></td></tr>
             </table>
         </menu>
@@ -70,9 +70,9 @@ $sql2 = mysqli_fetch_array($sql2);
 #VARIÁVEL DO BANCO
 $nom_dis = $sql2['nome'];
 ?>
-		<urd>
+		<rf>
 			<table border=1>
-				<h3></h3>
+				<h1>FRETE POR DISTRIBUIDORAS</h1>
 				<tr>
 					<td><h3>DATA</h3></td>
 					<td><h3>DISTRIBUIDORA</h3></td>
@@ -84,7 +84,7 @@ $nom_dis = $sql2['nome'];
 					<td><h4><nobr><?php echo $val_mes;    ?><nobr></h4></td>
 				</tr>
 			</table>
-		</urd>
+</rf>
 	</body>
 </html>
 <?php

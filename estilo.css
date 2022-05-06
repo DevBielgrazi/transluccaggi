@@ -88,6 +88,11 @@ rn{
     top:50px;
     left:325px;
 }
+rf{
+    position:absolute;
+    top:20px;
+    left:250px;
+}
 input, select{
     border-radius: 8px;
     background-color: gray;
