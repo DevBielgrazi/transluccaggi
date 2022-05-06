@@ -68,6 +68,7 @@
 		<tr>
 			<td>TOTAL VOLUMES:<?php  echo $tot_vol ?></td>
 			<td>VALOR TOTAL:<?php  echo $val_tot ?></td>
+			<td>VALOR FRETE:<?php  echo "" ?></td>
 			<a href="http://localhost/transluccaggi/menu.php"><img src="..\imagem/logo.png" width=10%></a>
 		</tr>
         <script>window.print();</script>

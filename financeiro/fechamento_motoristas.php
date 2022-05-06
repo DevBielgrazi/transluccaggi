@@ -3,21 +3,21 @@ session_start();
 if(!isset($_SESSION["system_control"])){
 ?>
 	<script>
-		document.location.href="http://localhost/transluccaggi/index.html";
+		document.location.href="http://localhost/transluccaggi/index_financeiro.html";
 	</script>
 <?php
 }else{
 	$system_control = $_SESSION["system_control"];
-	if($system_control == 1 || $system_control == 2){
+	if($system_control == 2){
 ?>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <link rel="icon" href="..\imagem/favicone.png"/>
-        <link href="..\estilo.css" rel="stylesheet"/>
-        <title>Matriz Principal</title>
-    </head>
-    <body>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<link rel="icon" href="..\imagem/favicone.png"/>
+		<link href="..\estilo.css" rel="stylesheet"/>
+		<title>Matriz Principal</title>
+	</head>
+	<body>
         <menu>
             <a href="http://localhost/transluccaggi/menu.php"><img src="..\imagem/logo.png" width=20%></a>
             <h1>MATRIZ PRINCIPAL</h1><p>
@@ -44,39 +44,48 @@ if(!isset($_SESSION["system_control"])){
                 <tr><td><a href="..\financeiro/form_fechamento_motoristas.php"><button>FECHAMENTO MOTORISTAS</button></a></td></tr>
             </table>
         </menu>
+        <rn>
 <?php
-#IMPORTANDO CONEXÃO COM O BANCO
-	require('..\connect.php');
-#VARIÁVEL HIDDEN DO FORMULÁRIO
-	$cod_dis = $_POST['cod_dis'];
-#ADQUIRINDO INFORMAÇÕES DO BANCO
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `codigo` = '$cod_dis'");
-#CADASTROS POR COLUNA
-	$vn = mysqli_fetch_array($sql);
+#VARIÁVEIS DO FORMULÁRIO
+$ano_fec= trim($_POST['ano_fec']);
+$mes_fec= trim($_POST['mes_fec']);
+$mot_fec= trim($_POST['mot_fec']);
+
+$dat_fec = $ano_fec."-".$mes_fec."-01";
+$dat_fec2 = $ano_fec."-".$mes_fec."-31";
+
+require('../connect.php');
+$sql = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_fre WHERE `motorista` = '$mot_fec' AND `data` >= '$dat_fec' AND `data` <= '$dat_fec2'");
+$sql = mysqli_fetch_array($sql);
+#VARIÁVEL DO BANCO
+$val_mes = number_format(($sql['val']), 2, '.', '');
 ?>
-            <pag>
-			<h1>ALTERAR DISTRIBUIDORA</h1><p>
-			<table>
+		<rf>
+			<table border=1>
+				<h1>FECHAMENTO DISTRIBUIDORAS</h1>
 				<tr>
-					<td>
-						<form method="post" action="alterar_distribuidoras.php">
-							<table>
-                                <input type="hidden" name="cod_dis" value="<?php echo $vn['codigo'];?>">
-                                <tr>
-                                    <td><h2><nobr>NOME:<?php echo $vn['nome'];   ?></nobr></h2></td>
-                                    <td><input name="nom_dis" type=int size=16 maxlength=64 ></td>
-								</tr>
-							</table>
-                            <tr>
-                                <td><input class="inputb" type=submit value=ALTERAR></td>
-                            </tr>
-						</form>
-					</td>
+					<td><h3>DATA</h3></td>
+					<td><h3>MOTORISTA</h3></td>
+					<td><h3>VALOR</h3></td>
+				</tr>
+                <tr>
+					<td><h4><nobr><?php echo $mes_fec."/".$ano_fec;   ?><nobr></h4></td>
+					<td><h4><nobr><?php echo $mot_fec;    ?><nobr></h4></td>
+					<td><h4><nobr><?php echo $val_mes;    ?><nobr></h4></td>
 				</tr>
 			</table>
-		</pag>
-    </body>
+</rf>
+	</body>
 </html>
+<?php
+    }
+    
+    else
+    {
+?>
+	<script>
+		document.location.href="http://localhost/transluccaggi/financeiro/index_financeiro.html";
+	</script>
 <?php
     }
 }

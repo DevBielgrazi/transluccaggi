@@ -40,20 +40,21 @@ if(!isset($_SESSION["system_control"])){
 				<tr><td><a href="..\pesquisa/form_pesquisar_motoristas.php"><button>PESQUISAR</button></a></td></tr>
                 <tr><td><h2>FINANCEIRO</h2></td></tr>
                 <tr><td><a href="..\financeiro/form_frete_motoristas.php"><button>FRETE MOTORISTAS</button></a></td></tr>
-                <tr><td><a href="..\financeiro/form_frete_distribuidoras.php"><button>FRETE DISTRIBUIDORAS</button></a></td></tr>
+                <tr><td><a href="..\financeiro/form_fechamento_distribuidoras.php"><button>FECHAMENTO DISTRIBUIDORAS</button></a></td></tr>
+				<tr><td><a href="..\financeiro/form_fechamento_motoristas.php"><button>FECHAMENTO MOTORISTAS</button></a></td></tr>
 			</table>
 		</menu>
 		<pag>
-			<h1>FRETE POR DISTRIBUIDORAS</h1><p>
+			<h1>FECHAMENTO MOTORISTAS</h1><p>
 			<table>
 				<tr>
 					<td>
-						<form method="post" action="frete_distribuidoras.php">
+						<form method="post" action="fechamento_motoristas.php">
 							<table>
 								<tr>
                                 <tr>
 									<td><h4>ANO:</h4></td>
-									<td><select name="ano_fre">
+									<td><select name="ano_fec">
 <?php
 $ano = date(Y);
 $ano_a = $ano-1;
@@ -65,7 +66,7 @@ $ano_a = $ano-1;
 								</tr>
                                 <tr>
 									<td><h4>MÊS:</h4></td>
-									<td><select name="mes_fre">
+									<td><select name="mes_fec">
 										<option value="01" selected>JANEIRO</option>
 										<option value="02">FEVEREIRO</option>
 										<option value="03">MARÇO</option>
@@ -80,13 +81,13 @@ $ano_a = $ano-1;
 										<option value="12">DEZEMBRO</option>
 									</select></td>
 								<tr>
-									<td><h4>DISTRIBUIDORA:</h4></td>
-									<td><select name="dis_fre">
+									<td><h4>MOTORISTA:</h4></td>
+									<td><select name="mot_fec">
 <?php
 #IMPORTANDO CONEXÃO DO BANCO
 	require('../connect.php');
 #ADQUIRINDO INFORMAÇÕES DO BANCO
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis");
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_mot");
 #TRANSFORMANDO RESULTADOS NÚMEROS
 	$n = mysqli_num_rows($sql);
 #INICIANDO CONTADOR
@@ -95,7 +96,7 @@ $ano_a = $ano-1;
 	while($i!=$n){
 #CADASTROS POR COLUNA
 		$v = mysqli_fetch_array($sql);
-		?><option value="<?php	echo $v['codigo']	?>"><?php	echo	$v['nome']	?></option><?php
+		?><option value="<?php	echo $v['nome']	?>"><?php	echo	$v['nome']	?></option><?php
 #SOMANDO AO CONTADOR
 		$i=$i+1;
 }
