@@ -3,12 +3,12 @@ session_start();
 if(!isset($_SESSION["system_control"])){
 ?>
 	<script>
-		document.location.href="http://localhost/transluccaggi/index.html";
+		document.location.href="http://localhost/transluccaggi/index_financeiro.html";
 	</script>
 <?php
 }else{
 	$system_control = $_SESSION["system_control"];
-	if($system_control == 1 || $system_control == 2){
+	if($system_control == 2){
 ?>
 <html>
 	<head>
@@ -38,50 +38,74 @@ if(!isset($_SESSION["system_control"])){
 				<tr><td><h2>MOTORISTAS</h2></td></tr>
 				<tr><td><a href="..\cadastro/form_cadastrar_motoristas.php"><button>CADASTRAR</button></a></td></tr>
 				<tr><td><a href="..\pesquisa/form_pesquisar_motoristas.php"><button>PESQUISAR</button></a></td></tr>
-				<tr><td><h2>FINANCEIRO</h2></td></tr>
-				<tr><td><a href="..\financeiro/form_financeiro_fretes.php"><button>FRETE MOTORISTAS</button></a></td></tr>
-				<tr><td><a href="..\financeiro/form_frete_distribuidoras.php"><button>FRETE DISTRIBUIDORAS</button></a></td></tr>
+                <tr><td><h2>FINANCEIRO</h2></td></tr>
+                <tr><td><a href="..\financeiro/form_financeiro_fretes.php"><button>FRETE MOTORISTAS</button></a></td></tr>
+                <tr><td><a href="..\financeiro/form_frete_distribuidoras.php"><button>FRETE DISTRIBUIDORAS</button></a></td></tr>
 			</table>
-        </menu>
+		</menu>
 		<pag>
-			<h1>SAÍDA DE MOTORISTAS</h1><p>
+			<h1>FRETE POR DISTRIBUIDORA</h1><p>
 			<table>
 				<tr>
 					<td>
-						<form method="post" action="saida_motorista.php">
+						<form method="post" action="frete_distribuidoras.php">
 							<table>
-								<input type="hidden" name="n" value=0>
 								<tr>
-									<td><h4>MOTORISTA:</h4></td>
-									<td><select name="mot_sai">
+                                <tr>
+									<td><h4>ANO:</h4></td>
+									<td><select name="ano_fre">
+<?php
+$ano = date(Y);
+$ano_a = $ano-1;
+?>
+                                        <option value="<?php echo $ano ?>" selected><?php echo $ano ?></option>
+                                        <option value="<?php echo $ano_a ?>"><?php echo $ano_a ?></option>
+?>
+									</select></td>
+								</tr>
+                                <tr>
+									<td><h4>MÊS:</h4></td>
+									<td><select name="mes_fre">
+										<option value="01" selected>JANEIRO</option>
+										<option value="02">FEVEREIRO</option>
+										<option value="03">MARÇO</option>
+										<option value="04">ABRIL</option>
+										<option value="05">MAIO</option>
+										<option value="06">JUNHO</option>
+										<option value="07">JULHO</option>
+										<option value="08">AGOSTO</option>
+										<option value="09">SETEMBRO</option>
+										<option value="10">OUTUBRO</option>
+										<option value="11">NOVEMBRO</option>
+										<option value="12">DEZEMBRO</option>
+									</select></td>
+								<tr>
+									<td><h4>DISTRIBUIDORA:</h4></td>
+									<td><select name="dis_fre">
 <?php
 #IMPORTANDO CONEXÃO DO BANCO
 	require('../connect.php');
 #ADQUIRINDO INFORMAÇÕES DO BANCO
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_mot");
-#TRANSFORMANDO RESULTADO EM NÚMEROS
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis");
+#TRANSFORMANDO RESULTADOS NÚMEROS
 	$n = mysqli_num_rows($sql);
 #INICIANDO CONTADOR
 	$i=0;
-#APRESENTANDO REGISTROS DO BANCO
+#APRESENTANDO DADOS DO BANCO
 	while($i!=$n){
 #CADASTROS POR COLUNA
 		$v = mysqli_fetch_array($sql);
-		?><option value="<?php	echo $v['nome']	?>"><?php	echo	$v['nome']	?></option><?php
+		?><option value="<?php	echo $v['codigo']	?>"><?php	echo	$v['nome']	?></option><?php
 #SOMANDO AO CONTADOR
 		$i=$i+1;
-	}
+}
 ?>
-										</select></td>
-									</tr>
-								<tr>
-									<td><h4>DATA:</h4></td>
-									<td><input name="dat_sai" type=date required></td>
+									</select></td>
 								</tr>
 							</table>
-							<tr>
-								<td><input class="inputb" type=submit value=PRÓXIMA></td>
-							</tr>
+                            <tr>
+                                <td><input class="inputb" type=submit value=VISUALIZAR></td>
+                            </tr>
 						</form>
 					</td>
 				</tr>
@@ -89,6 +113,14 @@ if(!isset($_SESSION["system_control"])){
 		</pag>
 	</body>
 </html>
+<?php
+    }
+    else
+    {
+?>
+	<script>
+		document.location.href="http://localhost/transluccaggi/financeiro/index_financeiro.html";
+	</script>
 <?php
     }
 }
