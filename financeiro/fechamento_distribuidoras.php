@@ -39,6 +39,7 @@ if(!isset($_SESSION["system_control"])){
                 <tr><td><a href="..\cadastro/form_cadastrar_motoristas.php"><button>CADASTRAR</button></a></td></tr>
                 <tr><td><a href="..\pesquisa/form_pesquisar_motoristas.php"><button>PESQUISAR</button></a></td></tr>
                 <tr><td><h2>FINANCEIRO</h2></td></tr>
+                <tr><td><a href="..\financeiro/form_relatorio_mensal.php"><button>RELATÓRIO MENSAL</button></a></td></tr>
                 <tr><td><a href="..\financeiro/form_frete_motoristas.php"><button>FRETE MOTORISTAS</button></a></td></tr>
                 <tr><td><a href="..\financeiro/form_fechamento_distribuidoras.php"><button>FECHAMENTO DISTRIBUIDORAS</button></a></td></tr>
                 <tr><td><a href="..\financeiro/form_fechamento_motoristas.php"><button>FECHAMENTO MOTORISTAS</button></a></td></tr>
@@ -82,7 +83,7 @@ $nom_dis = $sql2['nome'];
                 <tr>
 					<td><h4><nobr><?php echo $mes_fec."/".$ano_fec;   ?><nobr></h4></td>
 					<td><h4><nobr><?php echo $nom_dis;    ?><nobr></h4></td>
-					<td><h4><nobr><?php echo $val_mes;    ?><nobr></h4></td>
+					<td><h4><nobr><?php echo "R$".$val_mes;    ?><nobr></h4></td>
 				</tr>
 			</table>
 </rf>

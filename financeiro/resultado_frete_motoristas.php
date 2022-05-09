@@ -40,6 +40,7 @@ if(!isset($_SESSION["system_control"])){
 				<tr><td><a href="..\cadastro/form_cadastrar_motoristas.php"><button>CADASTRAR</button></a></td></tr>
 				<tr><td><a href="..\pesquisa/form_pesquisar_motoristas.php"><button>PESQUISAR</button></a></td></tr>
                 <tr><td><h2>FINANCEIRO</h2></td></tr>
+                <tr><td><a href="..\financeiro/form_relatorio_mensal.php"><button>RELATÓRIO MENSAL</button></a></td></tr>
 				<tr><td><a href="..\financeiro/form_frete_motoristas.php"><button>FRETE MOTORISTAS</button></a></td></tr>
 				<tr><td><a href="..\financeiro/form_fechamento_distribuidoras.php"><button>FECHAMENTO DISTRIBUIDORAS</button></a></td></tr>
 				<tr><td><a href="..\financeiro/form_fechamento_motoristas.php"><button>FECHAMENTO MOTORISTAS</button></a></td></tr>
@@ -72,7 +73,7 @@ if(!isset($_SESSION["system_control"])){
                 <td><h3>MOTORISTA:</h3><h4><?php  echo $mot_fre; ?></h4></td>
             </tr>
             <tr>
-                <td><h3>VALOR NOTAS:</h3><h4><?php  echo $val_tot; ?></h4></td>
+                <td><h3>VALOR NOTAS:</h3><h4><?php  echo "R$".$val_tot; ?></h4></td>
             </tr>
             <tr>
 				<td><h3>CIDADES</h3></td>

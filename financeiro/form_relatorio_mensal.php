@@ -46,16 +46,16 @@ if(!isset($_SESSION["system_control"])){
 			</table>
 		</menu>
 		<pag>
-			<h1>FECHAMENTO MOTORISTAS</h1><p>
+			<h1>RELATÓRIO MENSAL</h1><p>
 			<table>
 				<tr>
 					<td>
-						<form method="post" action="fechamento_motoristas.php">
+						<form method="post" action="relatorio_mensal.php">
 							<table>
 								<tr>
                                 <tr>
 									<td><h4>ANO:</h4></td>
-									<td><select name="ano_fec">
+									<td><select name="ano_rel">
 <?php
 $ano = date(Y);
 $ano_a = $ano-1;
@@ -67,7 +67,7 @@ $ano_a = $ano-1;
 								</tr>
                                 <tr>
 									<td><h4>MÊS:</h4></td>
-									<td><select name="mes_fec">
+									<td><select name="mes_rel">
 										<option value="01" selected>JANEIRO</option>
 										<option value="02">FEVEREIRO</option>
 										<option value="03">MARÇO</option>
@@ -81,31 +81,6 @@ $ano_a = $ano-1;
 										<option value="11">NOVEMBRO</option>
 										<option value="12">DEZEMBRO</option>
 									</select></td>
-								<tr>
-									<td><h4>MOTORISTA:</h4></td>
-									<td><select name="mot_fec">
-<?php
-#IMPORTANDO CONEXÃO DO BANCO
-	require('../connect.php');
-#ADQUIRINDO INFORMAÇÕES DO BANCO
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_mot");
-#TRANSFORMANDO RESULTADOS NÚMEROS
-	$n = mysqli_num_rows($sql);
-#INICIANDO CONTADOR
-	$i=0;
-#APRESENTANDO DADOS DO BANCO
-	while($i!=$n){
-#CADASTROS POR COLUNA
-		$v = mysqli_fetch_array($sql);
-		?><option value="<?php	echo $v['nome']	?>"><?php	echo	$v['nome']	?></option><?php
-#SOMANDO AO CONTADOR
-		$i=$i+1;
-}
-?>
-									</select></td>
-								</tr>
-							</table>
-                            <tr>
                                 <td><input class="inputb" type=submit value=VISUALIZAR></td>
                             </tr>
 						</form>

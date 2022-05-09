@@ -39,6 +39,7 @@ if(!isset($_SESSION["system_control"])){
 				<tr><td><a href="..\cadastro/form_cadastrar_motoristas.php"><button>CADASTRAR</button></a></td></tr>
 				<tr><td><a href="..\pesquisa/form_pesquisar_motoristas.php"><button>PESQUISAR</button></a></td></tr>
                 <tr><td><h2>FINANCEIRO</h2></td></tr>
+                <tr><td><a href="..\financeiro/form_relatorio_mensal.php"><button>RELATÓRIO MENSAL</button></a></td></tr>
 				<tr><td><a href="..\financeiro/form_frete_motoristas.php"><button>FRETE MOTORISTAS</button></a></td></tr>
 				<tr><td><a href="..\financeiro/form_fechamento_distribuidoras.php"><button>FECHAMENTO DISTRIBUIDORAS</button></a></td></tr>
 				<tr><td><a href="..\financeiro/form_fechamento_motoristas.php"><button>FECHAMENTO MOTORISTAS</button></a></td></tr>
@@ -63,9 +64,11 @@ if(!isset($_SESSION["system_control"])){
         $sai_fre = $sai_fre+$sai_frea;
         $sql = mysqli_query($conn,"UPDATE $tab_fre SET `valor` = '$val_fre', `saidas` = '$sai_fre' WHERE `data` = '$dat_fre' AND `motorista` = '$mot_fre'");
 	}else{
-#INSERINDO DADOS NA TABELA
-        $sql = mysqli_query($conn,"INSERT INTO $tab_fre(`data`, `motorista`, `valor`, `saidas`) VALUES ('$dat_fre', '$mot_fre', '$val_fre', '$sai_fre')");
-    }
+		$sql2 = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `nome` = '$mot_fre'");
+		$vn = mysqli_fetch_array($sql2);
+		$id_mot = $vn['id'];
+		$sql = mysqli_query($conn,"INSERT INTO $tab_fre(`data`, `id_motorista`, `motorista`, `valor`, `saidas`) VALUES ('$dat_fre', '$id_mot', '$mot_fre', '$val_fre', '$sai_fre')");
+	}
 ?>
 		<pag>
 			<table border=1>
@@ -76,9 +79,9 @@ if(!isset($_SESSION["system_control"])){
 					<td><h3>VALOR</h3></td>
 				</tr>
                 <tr>
-					<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $dat_fre));   ?><nobr></h4></td>
+					<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime($dat_fre));   ?><nobr></h4></td>
 					<td><h4><nobr><?php echo $mot_fre;    ?><nobr></h4></td>
-					<td><h4><nobr><?php echo $val_fre;    ?><nobr></h4></td>
+					<td><h4><nobr><?php echo "R$".$val_fre;    ?><nobr></h4></td>
 				</tr>
 			</table>
 </pag>
