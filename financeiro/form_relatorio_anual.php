@@ -3,12 +3,12 @@ session_start();
 if(!isset($_SESSION["system_control"])){
 ?>
 	<script>
-		document.location.href="http://localhost/transluccaggi/index.html";
+		document.location.href="http://localhost/transluccaggi/index_financeiro.html";
 	</script>
 <?php
 }else{
 	$system_control = $_SESSION["system_control"];
-	if($system_control == 1 || $system_control == 2){
+	if($system_control == 2){
 ?>
 <html>
 	<head>
@@ -38,42 +38,42 @@ if(!isset($_SESSION["system_control"])){
 				<tr><td><h2>MOTORISTAS</h2></td></tr>
 				<tr><td><a href="..\cadastro/form_cadastrar_motoristas.php"><button>CADASTRAR</button></a></td></tr>
 				<tr><td><a href="..\pesquisa/form_pesquisar_motoristas.php"><button>PESQUISAR</button></a></td></tr>
-				<tr><td><h2>FINANCEIRO</h2></td></tr>
+                <tr><td><h2>FINANCEIRO</h2></td></tr>
                 <tr><td><a href="..\financeiro/form_relatorio_diario.php"><button>RELATÓRIO DIÁRIO</button></a></td></tr>
                 <tr><td><a href="..\financeiro/form_relatorio_mensal.php"><button>RELATÓRIO MENSAL</button></a></td></tr>
                 <tr><td><a href="..\financeiro/form_relatorio_anual.php"><button>RELATÓRIO ANUAL</button></a></td></tr>
-				<tr><td><a href="..\financeiro/form_frete_motoristas.php"><button>FRETE MOTORISTAS</button></a></td></tr>
-				<tr><td><a href="..\financeiro/form_fechamento_distribuidoras.php"><button>FECHAMENTO DISTRIBUIDORAS</button></a></td></tr>
+                <tr><td><a href="..\financeiro/form_frete_motoristas.php"><button>FRETE MOTORISTAS</button></a></td></tr>
+                <tr><td><a href="..\financeiro/form_fechamento_distribuidoras.php"><button>FECHAMENTO DISTRIBUIDORAS</button></a></td></tr>
 				<tr><td><a href="..\financeiro/form_fechamento_motoristas.php"><button>FECHAMENTO MOTORISTAS</button></a></td></tr>
 			</table>
-			</menu>
+		</menu>
 		<pag>
-			<h1>PESQUISAR DISTRIBUIDORAS</h1><p>
+			<h1>RELATÓRIO MENSAL</h1><p>
 			<table>
 				<tr>
 					<td>
-						<form method="post" action="pesquisar_distribuidoras.php">
+						<form method="post" action="relatorio_anual.php">
 							<table>
-                                <tr>
-									<td><h4>TODOS<input type="radio" name="opc" value="tod"></h4></td>
-								</tr>
 								<tr>
-									<td><h4>CÓDIGO:<input type="radio" name="opc" value="cod"></h4></td>
-									<td><input name="cod_dis" type=text size=16 maxlength=16 ></td>
-								</tr>
                                 <tr>
-									<td><h4>NOME:<input type="radio" name="opc" value="nom"></h4></td>
-									<td><input name="nom_dis" type=text size=16 maxlength=32 ></td>
+									<td><h4>ANO:</h4></td>
+									<td><select name="ano_rel">
+<?php
+$ano = date(Y);
+$ano_a = $ano-1;
+$ano_a1 = $ano-2;
+$ano_a2 = $ano-3;
+$ano_a3 = $ano-4;
+?>
+                                        <option value="<?php echo $ano ?>" selected><?php echo $ano ?></option>
+                                        <option value="<?php echo $ano_a ?>"><?php echo $ano_a ?></option>
+                                        <option value="<?php echo $ano_a2 ?>"><?php echo $ano_a1 ?></option>
+                                        <option value="<?php echo $ano_a3 ?>"><?php echo $ano_a2 ?></option>
+                                        <option value="<?php echo $ano_a4 ?>"><?php echo $ano_a3 ?></option>
+?>
+									</select></td>
 								</tr>
-								<tr>
-									<td><h4>CADASTRO:<input type="radio" name="opc" value="cad"></h4></td>
-									<td><input name="cad_dis" type=date ></td>
-									<td><h4>ATÉ</h4></td>
-									<td><input name="cad_dis2" type=date ></td>
-								</tr>
-							</table>
-                            <tr>
-                                <td><input class="inputb" type=submit value=PESQUISAR></td>
+                                <td><input class="inputb" type=submit value=VISUALIZAR></td>
                             </tr>
 						</form>
 					</td>
@@ -82,6 +82,14 @@ if(!isset($_SESSION["system_control"])){
 		</pag>
 	</body>
 </html>
+<?php
+    }
+    else
+    {
+?>
+	<script>
+		document.location.href="http://localhost/transluccaggi/financeiro/index_financeiro.html";
+	</script>
 <?php
     }
 }

@@ -51,10 +51,9 @@ if(!isset($_SESSION["system_control"])){
 <?php
 #VARIÁVEIS DO FORMULÁRIO
 $ano_rel = trim($_POST['ano_rel']);
-$mes_rel = trim($_POST['mes_rel']);
 
-$dat_rel = $ano_rel."-".$mes_rel."-01";
-$dat_rel2 = $ano_rel."-".$mes_rel."-31";
+$dat_rel = $ano_rel."-01-01";
+$dat_rel2 = $ano_rel."-12-31";
 
 require('../connect.php');
 #ADQUIRINDO INFORMAÇÕES DO BANCO
@@ -84,7 +83,7 @@ $sql = mysqli_query($conn,"SELECT SUM(`valor`) as 'fre' FROM $tab_fre WHERE `dat
 $sql = mysqli_fetch_array($sql);
 $fre_mot = number_format(($sql['fre']), 2, '.', '');
 
-$sql = mysqli_query($conn,"SELECT SUM(`valor`) as 'cus' FROM $tab_cus WHERE `mes` = '$dat_rel'");
+$sql = mysqli_query($conn,"SELECT SUM(`valor`) as 'cus' FROM $tab_cus WHERE `mes` >= '$dat_rel' AND `mes` <= '$dat_rel2'");
 $sql = mysqli_fetch_array($sql);
 $cus_men = number_format(($sql['cus']), 2, '.', '');
 $cus_men = $cus_men+$fre_mot;
@@ -95,22 +94,16 @@ $sal_men = number_format(($sal_men), 2, '.', '');
 ?>
 		<rf>
 			<table border=1>
-				<h1>RELATÓRIO MENSAL</h1>
+				<h1>RELATÓRIO ANUAL</h1>
 				<tr>
-					<td><h3>MÊS</h3></td>
+					<td><h3>ANO</h3></td>
 					<td><h3>VALOR FRETES</h3></td>
-                    <form method="post" action="custos_mensal.php">
-                        <input type="hidden" name="mes_rel" value="<?php echo $mes_rel;?>">
-                        <input type="hidden" name="ano_rel" value="<?php echo $ano_rel;?>">
-                        <input type="hidden" name="fre_disg" value="<?php echo $fre_disg;?>">
-                        <input type="hidden" name="fre_mot" value="<?php echo $fre_mot;?>">
-                        <td><button class="buttond" type=submit>+CUSTOS</button></td>
-                    </form>
+					<td><h3>CUSTOS</h3></td>
 					<td><h3>SALDO</h3></td>
 					<td><h3>STATUS</h3></td>
 				</tr>
                 <tr>
-					<td><h4><nobr><?php echo $mes_rel."/".$ano_rel;   ?><nobr></h4></td>
+					<td><h4><nobr><?php echo $ano_rel;   ?><nobr></h4></td>
 					<td><h4><nobr><?php echo "R$".$fre_disg;    ?><nobr></h4></td>
 					<td><h4><nobr><?php echo "R$".$cus_men;    ?><nobr></h4></td>
 					<td><h4><nobr><?php echo "R$".$sal_men;    ?><nobr></h4></td>
