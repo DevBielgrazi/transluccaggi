@@ -10,4 +10,5 @@
 	$tab_mot = "motoristas";
 	$tab_usu = "usuarios";
 	$tab_fre = "fretes";
+	$tab_cus = "custos";
  ?>

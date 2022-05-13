@@ -53,6 +53,13 @@ button{
     border-radius: 20px;
     border-color: black;
 }
+.buttond{
+    background-color:darkblue;
+    color:gray;
+    font-size: 15px;
+    border-radius: 20px;
+    border-color: gray;
+}
 menu{
     position:absolute;
     top:10px;
@@ -67,6 +74,11 @@ pag{
     position:absolute;
     top:50px;
     left:330px;
+}
+pag2{
+    position:absolute;
+    top:50px;
+    left:500px;
 }
 urn{
     position:absolute;

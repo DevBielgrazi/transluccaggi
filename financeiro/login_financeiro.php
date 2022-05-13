@@ -39,7 +39,7 @@
         $_SESSION["system_control"] = 2;
         $_SESSION["id"] = $v['id'];
 ?>            
-        <script>document.location.href="form_frete_motoristas.php"</script>
+        <script>document.location.href="../menu.php"</script>
 <?php
     }
 ?>

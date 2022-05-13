@@ -48,76 +48,88 @@ if(!isset($_SESSION["system_control"])){
         <rn>
 <?php
 #VARIÁVEIS DO FORMULÁRIO
-$ano_rel = trim($_POST['ano_rel']);
-$mes_rel = trim($_POST['mes_rel']);
+$dat_cus = trim($_POST['dat_cus']);
+$des_cus = trim($_POST['des_cus']);
+$val_cus = trim($_POST['val_cus']);
 
-$dat_rel = $ano_rel."-".$mes_rel."-01";
-$dat_rel2 = $ano_rel."-".$mes_rel."-31";
+$des_cus = strtolower($des_cus);
 
 require('../connect.php');
-#ADQUIRINDO INFORMAÇÕES DO BANCO
-
-$sql = mysqli_query($conn,"SELECT * FROM $tab_dis");
+$sql = mysqli_query($conn,"SELECT * FROM $tab_cus WHERE `mes` = '$dat_cus' AND `descricao` = '$des_cus'");
 $n = mysqli_num_rows($sql);
 
-$fre_disg = 0;
-for($i=1; $i<$n; $i++){
-    $sql = mysqli_query($conn,"SELECT `porcentagem` as 'por' FROM $tab_dis WHERE `codigo` = '$i'");
-    $sql = mysqli_fetch_array($sql);
-    $por = (float) $sql['por'];
-    if($i==1){
-        $sql = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cod_distribuidora` = '$i' AND `emissao` >= '$dat_rel' AND `emissao` <= '$dat_rel2'");
-    }
-    else{
-        $sql = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cod_distribuidora` = '$i' AND `entrada` >= '$dat_rel' AND `entrada` <= '$dat_rel2'");
-    }
-    $sql = mysqli_fetch_array($sql);
-    $val_mer = (float) $sql['val'];
-    $fre_dis = ($por * $val_mer)/100;
-    $fre_disg = $fre_disg+$fre_dis;
+if($n!=0){
+    $sql = mysqli_query($conn,"UPDATE $tab_cus SET `valor` = '$val_cus' WHERE `mes` = '$dat_cus' AND `descricao` = '$des_cus'");
+}else{
+    $sql = mysqli_query($conn,"INSERT INTO $tab_cus VALUES ('$dat_cus','$des_cus','$val_cus')");
 }
-$fre_disg = number_format(($fre_disg), 2, '.', '');
-
-$sql = mysqli_query($conn,"SELECT SUM(`valor`) as 'fre' FROM $tab_fre WHERE `data` >= '$dat_rel' AND `data` <= '$dat_rel2'");
-$sql = mysqli_fetch_array($sql);
-$fre_mot = number_format(($sql['fre']), 2, '.', '');
-
-$sql = mysqli_query($conn,"SELECT SUM(`valor`) as 'cus' FROM $tab_cus WHERE `mes` = '$dat_rel'");
+$sql = mysqli_query($conn,"SELECT SUM(`valor`) as 'cus' FROM $tab_cus WHERE `mes` = '$dat_cus'");
 $sql = mysqli_fetch_array($sql);
 $cus_men = number_format(($sql['cus']), 2, '.', '');
-$cus_men = $cus_men+$fre_mot;
-
-$sal_men = $fre_disg - $cus_men;
-$sal_men = number_format(($sal_men), 2, '.', '');
 
 ?>
 		<rf>
 			<table border=1>
-				<h1>RELATÓRIO MENSAL</h1>
 				<tr>
-					<td><h3>DATA</h3></td>
-					<td><h3>VALOR FRETES</h3></td>
-                    <form method="post" action="custos_mensal.php">
-                        <input type="hidden" name="mes_rel" value="<?php echo $mes_rel;?>">
-                        <input type="hidden" name="ano_rel" value="<?php echo $ano_rel;?>">
-                        <input type="hidden" name="fre_disg" value="<?php echo $fre_disg;?>">
-                        <input type="hidden" name="fre_mot" value="<?php echo $fre_mot;?>">
-                        <td><button class="buttond" type=submit>+CUSTOS</button></td>
-                    </form>
-					<td><h3>SALDO</h3></td>
-					<td><h3>STATUS</h3></td>
-				</tr>
+					<td><h3>DATA:</h3></td>
+                    <td><h4><nobr><?php echo date( 'm/Y' , strtotime($dat_cus));   ?></nobr></h4></td>
+                </tr>
                 <tr>
-					<td><h4><nobr><?php echo $mes_rel."/".$ano_rel;   ?><nobr></h4></td>
-					<td><h4><nobr><?php echo "R$".$fre_disg;    ?><nobr></h4></td>
-					<td><h4><nobr><?php echo "R$".$cus_men;    ?><nobr></h4></td>
-					<td><h4><nobr><?php echo "R$".$sal_men;    ?><nobr></h4></td>
-<?php if($sal_men<0){?><td><h6><nobr>NEGATIVO</nobr></h6></td><?php
-        }else{?><td><h7><nonr>POSITIVO</nobr></h7></td><?php
-        }?>
+					<td><h3>DESCRIÇÃO</h3></td>
+                    <td><h3>CUSTO</h3></td>
 				</tr>
+<?php	
+    $sql = mysqli_query($conn,"SELECT * FROM $tab_cus WHERE `mes` = '$dat_cus'");
+	$n = mysqli_num_rows($sql);
+    $i=0;
+    while($i!=$n){
+        $vn = mysqli_fetch_array($sql);
+?>
+                <tr>
+                    <td><h4><nobr><?php echo $vn['descricao'];   ?></nobr></h4></td>
+                    <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
+                </tr>
+<?php
+#SOMANDO AO CONTADOR
+    $i = $i + 1;
+    }
+?>
+                <tr>
+					<td><h3>CUSTO TOTAL:</h3></td>
+                    <td><h4><nobr><?php echo $cus_men;   ?></nobr></h4></td>
+                </tr>
 			</table>
-</rf>
+        </rf>
+        <pag2>
+            <h1>CUSTO MENSAL</h1>
+            <form method="post" action="relatorio_mensal.php">
+                <input type="hidden" name="mes_rel" value="<?php echo date( 'm' , strtotime($dat_cus));?>">
+                <input type="hidden" name="ano_rel" value="<?php echo date( 'Y' , strtotime($dat_cus));?>">
+                <td><button class="buttond" type=submit>RELATÓRIO MENSAL</button></td>
+            </form>
+			<table>
+                <tr>
+                    <td>
+                        <form method="post" action="cadastrar_custos.php">
+                            <table>
+                            <input type="hidden" name="dat_cus" value="<?php echo $dat_cus;?>">
+                                <tr>
+                                    <td><h4>DESCRIÇÃO:</h4></td>
+                                    <td><input name="des_cus" type=text size=16 maxlength=16 required></td>
+                                </tr>
+                                <tr>
+                                    <td><h4>VALOR:</h4></td>
+                                    <td><input name="val_cus" type=float size=16 maxlength=8 required></td>
+                                </tr>
+                            </table>
+                            <tr>
+                                <td><input class="inputb" type=submit value=CADASTRAR></td>									
+                            </tr>
+                        </form>
+                    </td>	
+                </tr>
+            </table>
+        </pag2>
 	</body>
 </html>
 <?php
