@@ -48,7 +48,7 @@ if(!isset($_SESSION["system_control"])){
 			</table>
 		</menu>
 		<pag>
-			<h1>RELATÓRIO MENSAL</h1><p>
+			<h1>RELATÓRIO DIÁRIO</h1><p>
 			<table>
 				<tr>
 					<td>

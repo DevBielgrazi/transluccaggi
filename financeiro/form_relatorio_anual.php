@@ -64,13 +64,22 @@ $ano_a = $ano-1;
 $ano_a1 = $ano-2;
 $ano_a2 = $ano-3;
 $ano_a3 = $ano-4;
+$ano_a4 = $ano-5;
+$ano_a5 = $ano-6;
+$ano_a6 = $ano-7;
+$ano_a7 = $ano-8;
+$ano_a8 = $ano-9;
 ?>
                                         <option value="<?php echo $ano ?>" selected><?php echo $ano ?></option>
                                         <option value="<?php echo $ano_a ?>"><?php echo $ano_a ?></option>
-                                        <option value="<?php echo $ano_a2 ?>"><?php echo $ano_a1 ?></option>
-                                        <option value="<?php echo $ano_a3 ?>"><?php echo $ano_a2 ?></option>
-                                        <option value="<?php echo $ano_a4 ?>"><?php echo $ano_a3 ?></option>
-?>
+                                        <option value="<?php echo $ano_a1 ?>"><?php echo $ano_a1 ?></option>
+                                        <option value="<?php echo $ano_a2 ?>"><?php echo $ano_a2 ?></option>
+                                        <option value="<?php echo $ano_a3 ?>"><?php echo $ano_a3 ?></option>
+                                        <option value="<?php echo $ano_a4 ?>"><?php echo $ano_a4 ?></option>
+                                        <option value="<?php echo $ano_a5 ?>"><?php echo $ano_a5 ?></option>
+                                        <option value="<?php echo $ano_a6 ?>"><?php echo $ano_a6 ?></option>
+                                        <option value="<?php echo $ano_a7 ?>"><?php echo $ano_a7 ?></option>
+                                        <option value="<?php echo $ano_a8 ?>"><?php echo $ano_a8 ?></option>
 									</select></td>
 								</tr>
                                 <td><input class="inputb" type=submit value=VISUALIZAR></td>

@@ -90,6 +90,10 @@ $dat_cus = $ano_cus."-".$mes_cus."-01";
                     <td><h4><nobr><?php echo $cus_men;   ?></nobr></h4></td>
                 </tr>
 			</table>
+            <form method="post" action="..\graficos/grafico_custos.php" target="_blank">
+            <input type="hidden" name="dat_cus" value="<?php echo $dat_cus;?>">
+            <td><nobr><input width="80" type="image" src="..\imagem/grafico.jpg" alt="submit"></td>
+        </form>
         </rf>
 		<pag2>
 			<h1>CUSTOS MENSAL</h1><p>

@@ -112,6 +112,10 @@ $sal_men = number_format(($sal_men), 2, '.', '');
         }?>
 				</tr>
 			</table>
+        <form method="post" action="..\graficos/grafico_geral.php" target="_blank">
+            <input type="hidden" name="dat_rel" value="<?php echo $dat_rel;?>">
+            <td><nobr><input width="80" type="image" src="..\imagem/grafico.jpg" alt="submit"></td>
+        </form>
 </rf>
 	</body>
 </html>
