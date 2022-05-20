@@ -89,7 +89,7 @@ if(!isset($_SESSION["system_control"])){
 	{
 		$sql2 = mysqli_query($conn, "SELECT * FROM $tab_dis WHERE `codigo` = '$cod_dis'");
 		$n2 = mysqli_num_rows($sql2);
-		if($n2 != 0){
+		if($n2 == 0){
 #INSERINDO DADOS NA TABELA
 			$sql = mysqli_query($conn,"INSERT INTO $tab_cli(`codigo`, `nome`, `agendar`, `cadastro`, `rota`, `cidade`, `bairro`, `endereco`, `cod_distribuidora`) VALUES ('$cod_cli', '$nom_cli', '$age', '$cad_cli', '$rot_cli', '$cid_cli', '$bai_cli', '$end_cli', '$cod_dis')");
 			?>

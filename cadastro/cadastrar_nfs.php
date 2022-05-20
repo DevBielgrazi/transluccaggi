@@ -89,7 +89,7 @@ if(!isset($_SESSION["system_control"])){
 	}else{
 		$sql2 = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `codigo` = '$cod_cli'");
 		$n2 = mysqli_num_rows($sql2);
-		if($n2 != 0){
+		if($n2 == 0){
 			$sql3 = mysqli_fetch_array($sql2);
 			$cod_dis = $sql3['cod_distribuidora'];
 			$rot_nf = $sql3['rota'];
