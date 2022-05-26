@@ -1,8 +1,8 @@
 body{
-    background-image:linear-gradient(to right,darkblue 60%,dodgerblue);
+    background-color:white;
 }
 h1{
-    color: gray;
+    color: blue;
     font-family: OCR A Std, monospace;
 }
 h3{
@@ -11,7 +11,7 @@ h3{
     font-size: 15px;
 }
 h4{
-    color:black;
+    color:darkblue;
     font-family:OCR A Std, monospace;
 }
 h5{
@@ -30,31 +30,31 @@ h7{
     font-size: 20px;
 }
 h2{
-    color: dodgerblue;
+    color: blue;
     font-family: OCR A Std, monospace;
 }
 button{
-    background-color: gray;
+    background-color: dodgerblue;
     font-family: OCR A Std, monospace;
     color:black;
     font-size: 15px;
     border-radius: 8px;
 }
 .buttonb{
-    background-color: gray;
+    background-color: dodgerblue;
     font-family: OCR A Std, monospace;
     font-size: 20px;
     border-radius: 8px;
 }
 .buttonc{
-    background-color:gray;
+    background-color:dodgerblue;
     color:black;
     font-size: 20px;
     border-radius: 20px;
     border-color: black;
 }
 .buttond{
-    background-color:darkblue;
+    background-color:blue;
     color:gray;
     font-size: 15px;
     border-radius: 20px;
@@ -117,12 +117,13 @@ rf{
 }
 input, select{
     border-radius: 8px;
-    background-color: gray;
+    border-color: gray;
+    background-color: white;
     color:black;
     font-size: 20px;
 }
 .inputb{
-    background-color:gray;
+    background-color:dodgerblue;
     color:black;
     font-size: 20px;
     border-radius: 20px;
@@ -147,7 +148,7 @@ table{
     text-align: center;
     border-style: outset;
     border-radius: 10px;
-    border-color:gray;
+    border-color:darkblue;
     padding: 0%;
 }
 .tableb{
@@ -155,5 +156,5 @@ table{
     text-align: left;
     border-style: inset;
     border-radius: 10px;
-    border-color:gray;
+    border-color:darkblue;
 }

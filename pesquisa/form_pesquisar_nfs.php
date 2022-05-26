@@ -60,7 +60,7 @@ if(!isset($_SESSION["system_control"])){
 								<tr>
 									<td><h4>STATUS:<input type="radio" name="opc" value="sta"></h4></td>
 									<td><select name="sta_nf">
-										<option value="DISPONÍVEL" selected>DISPONÍVEL</option>
+										<option value="DISPONIVEL" selected>DISPONIVEL</option>
 										<option value="AGENDAR">AGENDAR</option>
 										<option value="AGENDADA">AGENDADA</option>
 										<option value="ROTA">ROTA</option>

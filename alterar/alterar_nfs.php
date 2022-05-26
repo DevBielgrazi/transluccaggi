@@ -150,7 +150,7 @@ if(!isset($_SESSION["system_control"])){
 #VERIFICANDO COLUNA DA TABELA
                 if($age!="SIM")
                 {
-                    $status = "DISPONÍVEL";
+                    $status = "DISPONIVEL";
                 }else{
                     $status = "AGENDAR";
                 }
