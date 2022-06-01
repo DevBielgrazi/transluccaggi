@@ -9,6 +9,7 @@ if(!isset($_SESSION["system_control"])){
 }else{
 	$system_control = $_SESSION["system_control"];
 	if($system_control == 1 || $system_control == 2){
+		require('../connect.php');
 ?>
 <html>
 	<head>
@@ -18,38 +19,135 @@ if(!isset($_SESSION["system_control"])){
 		<title>Matriz Principal</title>
 	</head>
 	<body>
-		<menu>
-        	<a href="http://localhost/transluccaggi/menu.php"><img src="..\imagem/logo.png" width=20%></a>
-        	<h1>MATRIZ PRINCIPAL</h1><p>
-            <a href="http://localhost/transluccaggi/logout.php"><img src="..\imagem/exit.png" width=3%></a>
-            <table class="tableb">
-				<tr><td><a href="../saida/form_saida_motorista.php"><button class="buttonb">SAÍDA DE MOTORISTAS</button class="buttonb"></a></td></tr>
-				<tr><td><a href="../saida/form_baixa_canhotos.php"><button class="buttonb">BAIXA DE CANHOTOS</button class="buttonb"></a></td></tr>
-				<tr><td><a href="../saida/form_romaneio_cargas.php"><button class="buttonb">ROMANEIO DE CARGAS</button class="buttonb"></a></td></tr>
-				<tr><td><a href="../saida/form_registro_devolucao.php"><button class="buttonb">REGISTRO DE DEVOLUÇÕES</button class="buttonb"></a></td></tr>
-				<tr><td><h2>CADASTROS</h2></td></tr>
-				<tr><td><a href="..\cadastro/form_cadastrar_nfs.php"><button>NOTAS</button></a></td></tr>
-				<tr><td><a href="..\cadastro/form_cadastrar_clientes.php"><button>CLIENTES</button></a></td></tr>
-				<tr><td><a href="..\cadastro/form_cadastrar_distribuidoras.php"><button>DISTRIBUIDORAS</button></a></td></tr>
-				<tr><td><h2>PESQUISAS</h2></td></tr>
-				<tr><td><a href="..\pesquisa/form_pesquisar_nfs.php"><button>NOTAS</button></a></td></tr>
-				<tr><td><a href="..\pesquisa/form_pesquisar_clientes.php"><button>CLIENTES</button></a></td></tr>
-				<tr><td><a href="..\pesquisa/form_pesquisar_distribuidoras.php"><button>DISTRIBUIDORAS</button></a></td></tr>
-				<tr><td><h2>MOTORISTAS</h2></td></tr>
-				<tr><td><a href="..\cadastro/form_cadastrar_motoristas.php"><button>CADASTRAR</button></a></td></tr>
-				<tr><td><a href="..\pesquisa/form_pesquisar_motoristas.php"><button>PESQUISAR</button></a></td></tr>
-				<tr><td><h2>FINANCEIRO</h2></td></tr>
-                <tr><td><a href="..\financeiro/form_relatorio_diario.php"><button>RELATÓRIO DIÁRIO</button></a></td></tr>
-                <tr><td><a href="..\financeiro/form_relatorio_mensal.php"><button>RELATÓRIO MENSAL</button></a></td></tr>
-                <tr><td><a href="..\financeiro/form_relatorio_anual.php"><button>RELATÓRIO ANUAL</button></a></td></tr>
-				<tr><td><a href="..\financeiro/form_frete_motoristas.php"><button>FRETE MOTORISTAS</button></a></td></tr>
-				<tr><td><a href="..\financeiro/form_fechamento_distribuidoras.php"><button>FECHAMENTO DISTRIBUIDORAS</button></a></td></tr>
-				<tr><td><a href="..\financeiro/form_fechamento_motoristas.php"><button>FECHAMENTO MOTORISTAS</button></a></td></tr>
-			</table>
-        </menu>
+		<div class="menu">
+			<img src="..\imagem/logo.png" width=15%>
+			<div class="item">
+				<a href="..\saida/form_saida_motorista.php"><button class="buttonb">>SAÍDA DE MOTORISTAS</button></a>
+				<a href="..\saida/form_baixa_canhotos.php"><button class="buttonb">>BAIXA DE CANHOTOS</button></a>
+				<a href="..\saida/form_romaneio_cargas.php"><button class="buttonb">>ROMANEIO DE CARGAS</button></a>
+				<a href="..\saida/form_registro_devolucao.php"><button class="buttonb">>REGISTRO DE DEVOLUÇÕES</button></a>
+				<a href="..\cadastro/cadastrar_nfs.php"><button class="buttonb2">>CADASTRO NOTAS</button></a>
+				<a href="..\cadastro/cadastrar_clientes.php"><button class="buttonb2">>CADASTRO CLIENTES</button></a>
+				<a href="..\cadastro/cadastrar_distribuidoras.php"><button class="buttonb2">>CADASTRO DISTRIBUIDORAS</button></a>
+				<a href="..\pesquisa/form_pesquisar_nfs.php"><button class="buttonb3">>PESQUISAR NOTAS</button></a>
+				<a href="..\pesquisa/form_pesquisar_clientes.php"><button class="buttonb3">>PESQUISAR CLIENTES</button></a>
+				<a href="..\pesquisa/form_pesquisar_distribuidoras.php"><button class="buttonb3">>PESQUISAR DISTRIBUIDORAS</button></a>
+				<a href="..\cadastro/cadastrar_motoristas.php"><button class="buttonb2">>CADASTRAR MOTORISTA</button></a>
+				<a href="..\pesquisa/form_pesquisar_motoristas.php"><button class="buttonb2">>PESQUISAR MOTORISTA</button></a>
+				<a href="..\financeiro/form_relatorio_diario.php"><button class="buttonb4">>RELATÓRIO DIÁRIO</button></a>
+				<a href="..\financeiro/form_relatorio_mensal.php"><button class="buttonb4">>RELATÓRIO MENSAL</button></a>
+				<a href="..\financeiro/form_relatorio_anual.php"><button class="buttonb4">>RELATÓRIO ANUAL</button></a>
+				<a href="..\financeiro/form_frete_motoristas.php"><button class="buttonb4">>FRETE MOTORISTAS</button></a>
+				<a href="..\financeiro/form_fechamento_distribuidoras.php"><button class="buttonb4">>FECHAMENTO DISTRIBUIDORAS</button></a>
+				<a href="..\financeiro/form_fechamento_motoristas.php"><button class="buttonb4">>FECHAMENTO MOTORISTAS</button></a>
+			</div>
+		</div>
+		<exit>
+        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
+		</exit>
 <?php
-#IMPORTANDO CONEXÃO COM O BANCO
-	require('../connect.php');
+	if(!isset($_POST['num_nf'])){
+?>
+		<pag>
+			<h1>CADASTRAR NOTAS FISCAIS</h1><p>
+			<table>
+				<tr>
+					<td>
+						<form method="post" action="cadastrar_nfs.php">
+							<table>
+								<tr>
+									<td><h4>NÚMERO:</h4></td>
+									<td><input name="num_nf" type=int size=16 maxlength=16 required></td>
+								</tr>
+								<tr>
+									<td><h4>SÉRIE:</h4></td>
+									<td><input name="ser_nf" type=int size=16 maxlength=8 required></td>
+								</tr>
+								<tr>
+									<td><h4>EMISSÃO:</h4></td>
+									<td><input name="emi_nf" type=date required></td>
+								</tr>
+								<tr>
+									<td><h4>ENTRADA:</h4></td>
+									<td><input name="ent_nf" type=date required></td>
+								</tr>
+								<tr>
+									<td><h4>VOLUMES:</h4></td>
+									<td><input name="vol_nf" type=int size=16 maxlength=16 required></td>
+								</tr>
+								<tr>
+									<td><h4>VALOR:</h4></td>
+									<td><input name="val_nf" type=float size=16 maxlength=16 required></td>
+								</tr>
+								<tr>
+									<td><h4>PESO:</h4></td>
+									<td><input name="pes_nf" type=float size=16 maxlength=16 required></td>
+								</tr>
+								<tr>
+									<td><h4>CÓDIGO CLIENTE:</h4></td>
+									<td><input name="cod_cli" type=int size=16 maxlength=16 required></td>
+								</tr>
+							</table>
+							<tr>
+								<td><input class="inputb" type=submit value=CADASTRAR></td>
+							</tr>
+						</form>
+					</td>
+				</tr>
+			</table>
+		</pag>
+<?php
+	}else{
+		?>
+		<pag>
+			<h1>CADASTRAR NOTAS FISCAIS</h1><p>
+			<table>
+				<tr>
+					<td>
+						<form method="post" action="cadastrar_nfs.php">
+							<table>
+								<tr>
+									<td><h4>NÚMERO:</h4></td>
+									<td><input name="num_nf" type=int size=16 maxlength=16 required></td>
+								</tr>
+								<tr>
+									<td><h4>SÉRIE:</h4></td>
+									<td><input name="ser_nf" type=int size=16 maxlength=8 required></td>
+								</tr>
+								<tr>
+									<td><h4>EMISSÃO:</h4></td>
+									<td><input name="emi_nf" type=date required></td>
+								</tr>
+								<tr>
+									<td><h4>ENTRADA:</h4></td>
+									<td><input name="ent_nf" type=date required></td>
+								</tr>
+								<tr>
+									<td><h4>VOLUMES:</h4></td>
+									<td><input name="vol_nf" type=int size=16 maxlength=16 required></td>
+								</tr>
+								<tr>
+									<td><h4>VALOR:</h4></td>
+									<td><input name="val_nf" type=float size=16 maxlength=16 required></td>
+								</tr>
+								<tr>
+									<td><h4>PESO:</h4></td>
+									<td><input name="pes_nf" type=float size=16 maxlength=16 required></td>
+								</tr>
+								<tr>
+									<td><h4>CÓDIGO CLIENTE:</h4></td>
+									<td><input name="cod_cli" type=int size=16 maxlength=16 required></td>
+								</tr>
+							</table>
+							<tr>
+								<td><input class="inputb" type=submit value=CADASTRAR></td>
+							</tr>
+						</form>
+					</td>
+				</tr>
+			</table>
+		</pag>
+<?php
 #VARIÁVEIS DO FORMULÁRIO
 	$num_nf = trim($_POST['num_nf']);
     $ser_nf = trim($_POST['ser_nf']);
@@ -74,17 +172,7 @@ if(!isset($_SESSION["system_control"])){
 #VERIFICANDO CADASTROS NA TABELA
 	if($n != 0){
 ?>
-			<pag>
-				<h1>CADASTRAR NOTAS FISCAIS</h1><p>
-				<table>
-					<tr>
-						<td><h5>NOTA JÁ CADASTRADA</h5></td>
-					</tr>
-					<tr>
-                            <td><a href="form_cadastrar_nfs.php"><button class="buttonc">VOLTAR</button></a></td>
-                    </tr>
-				</table>
-			</pag>
+			<script>alert("NOTA JÁ CADASTRADA!");</script>
 <?php
 	}else{
 		$sql2 = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `codigo` = '$cod_cli'");
@@ -107,34 +195,15 @@ if(!isset($_SESSION["system_control"])){
 #INSERINDO CADASTROS NA TABELA
 			$sql = mysqli_query($conn,"INSERT INTO $tab_nfs (`numero`, `serie`, `emissao`, `entrada`, `volumes`, `valor`, `peso`, `rota`, `cod_cliente`, `nome_cliente`, `cidade_cliente`, `bairro_cliente`, `endereco_cliente`, `cod_distribuidora`, `status`)  VALUES ('$num_nf', '$ser_nf', '$emi_nf', '$ent_nf', '$vol_nf', '$val_nf', '$pes_nf', '$rot_nf', '$cod_cli', '$nom_cli', '$cid_cli', '$bai_cli', '$end_cli', '$cod_dis', '$status')");
 ?>
-				<pag>
-					<h1>CADASTRAR NOTAS FISCAIS</h1><p>
-					<table>
-						<tr>
-							<td><h7>NOTA CADASTRADA</h7></td>
-						</tr>
-						<tr>
-                            <td><a href="form_cadastrar_nfs.php"><button class="buttonc">PRÓXIMA</button></a></td>
-                    	</tr>
-					</table>
-				</pag>
+				<script>alert("NOTA CADASTRADA COM SUCESSO")</script>
 <?php
 		}else{
 ?>
-				<pag>
-					<h1>CADASTRAR NOTAS FISCAIS</h1><p>
-					<table>
-						<tr>
-							<td><h6>CLIENTE NÃO CADASTRADO</h6></td>
-						</tr>
-						<tr>
-                            <td><a href="form_cadastrar_clientes.php"><button class="buttonc">CADASTRAR</button></a></td>
-                    	</tr>
-					</table>
-				</pag>
+				<script>alert("CLIENTE NÃO CADASTRADO!")</script>
 <?php
 		}
 	}
+}
 ?>
 		<urn>
             <table border=1>

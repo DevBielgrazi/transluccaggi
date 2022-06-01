@@ -3,48 +3,70 @@ body{
 }
 h1{
     color: blue;
-    font-family: OCR A Std, monospace;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 25px;
 }
 h3{
     color:gray;
-    font-family: OCR A Std, monospace;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 15px;
 }
 h4{
     color:darkblue;
-    font-family:OCR A Std, monospace;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 h5{
     color:yellow;
-    font-family:OCR A Std, monospace;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 20px;
 }
 h6{
     color:red;
-    font-family:OCR A Std, monospace;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 20px;
 }
 h7{
     color:green;
-    font-family:OCR A Std, monospace;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 20px;
 }
 h2{
     color: blue;
-    font-family: OCR A Std, monospace;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 button{
     background-color: dodgerblue;
-    font-family: OCR A Std, monospace;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color:black;
     font-size: 15px;
-    border-radius: 8px;
 }
 .buttonb{
-    background-color: dodgerblue;
-    font-family: OCR A Std, monospace;
-    font-size: 20px;
-    border-radius: 8px;
+    background-color: rgb(160, 160, 160);
+    color: darkblue;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    border: none;
+}
+.buttonb2{
+    background-color: rgb(160, 160, 160);
+    color: darkblue;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    border: none;
+}
+.buttonb3{
+    background-color: rgb(160, 160, 160);
+    color: darkblue;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    border: none;
+}
+.buttonb4{
+    background-color: rgb(160, 160, 160);
+    color: darkblue;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    border: none;
 }
 .buttonc{
     background-color:dodgerblue;
@@ -60,10 +82,41 @@ button{
     border-radius: 20px;
     border-color: gray;
 }
-menu{
-    position:absolute;
-    top:10px;
-    left:0px;
+.menu{
+    position: relative;
+    display: contents;
+}
+exit{
+    position: absolute;
+    top: 5px;
+    left: 1300px;
+}
+.item{
+    display: none;
+    position: absolute;
+    background-color: rgb(160, 160, 160);
+    border-radius: 16px;
+    min-width: 160px;
+    z-index: 1;
+}
+.item a{
+    display: block;
+}
+.subitem{
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    z-index: 1;
+}
+.subitem a{
+    display: block;
+}
+.menu:hover .item{
+    display: block;
+}
+.item:hover .subitem{
+    display: block;
 }
 grafico{
     position:absolute;
@@ -83,7 +136,7 @@ login{
 pag{
     position:absolute;
     top:50px;
-    left:330px;
+    left:250px;
 }
 pag2{
     position:absolute;
@@ -98,7 +151,7 @@ urn{
 urc{
     position:absolute;
     top:550px;
-    left:0px;
+    left:-250px;
 }
 urd{
     position:absolute;
@@ -109,6 +162,11 @@ rn{
     position:absolute;
     top:50px;
     left:325px;
+}
+rs{
+    position:absolute;
+    top:150px;
+    left:50px;
 }
 rf{
     position:absolute;

@@ -7,7 +7,7 @@
 	</head>
 	<body>
         <login>
-			<img src="imagem/logo.png" width=30%>
+			<img src="..\imagem/logo.png" width=30%>
 			<table>
 				<tr>
 					<td>

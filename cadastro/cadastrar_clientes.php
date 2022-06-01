@@ -9,6 +9,7 @@ if(!isset($_SESSION["system_control"])){
 }else{
 	$system_control = $_SESSION["system_control"];
 	if($system_control == 1 || $system_control == 2){
+		require('../connect.php');
 ?>
 <html>
 	<head>
@@ -18,38 +19,168 @@ if(!isset($_SESSION["system_control"])){
 		<title>Matriz Principal</title>
 	</head>
 	<body>
-		<menu>
-			<a href="http://localhost/transluccaggi/menu.php"><img src="..\imagem/logo.png" width=20%></a>
-			<h1>MATRIZ PRINCIPAL</h1><p>
-            <a href="http://localhost/transluccaggi/logout.php"><img src="..\imagem/exit.png" width=3%></a>
-			<table class="tableb">
-				<tr><td><a href="../saida/form_saida_motorista.php"><button class="buttonb">SAÍDA DE MOTORISTAS</button></a></td></tr>
-				<tr><td><a href="../saida/form_baixa_canhotos.php"><button class="buttonb">BAIXA DE CANHOTOS</button></a></td></tr>
-				<tr><td><a href="../saida/form_romaneio_cargas.php"><button class="buttonb">ROMANEIO DE CARGAS</button></a></td></tr>
-				<tr><td><a href="../saida/form_registro_devolucao.php"><button class="buttonb">REGISTRO DE DEVOLUÇÕES</button></a></td></tr>
-				<tr><td><h2>CADASTROS</h2></td></tr>
-				<tr><td><a href="..\cadastro/form_cadastrar_nfs.php"><button>NOTAS</button></a></td></tr>
-				<tr><td><a href="..\cadastro/form_cadastrar_clientes.php"><button>CLIENTES</button></a></td></tr>
-				<tr><td><a href="..\cadastro/form_cadastrar_distribuidoras.php"><button>DISTRIBUIDORAS</button></a></td></tr>
-				<tr><td><h2>PESQUISAS</h2></td></tr>
-				<tr><td><a href="..\pesquisa/form_pesquisar_nfs.php"><button>NOTAS</button></a></td></tr>
-				<tr><td><a href="..\pesquisa/form_pesquisar_clientes.php"><button>CLIENTES</button></a></td></tr>
-				<tr><td><a href="..\pesquisa/form_pesquisar_distribuidoras.php"><button>DISTRIBUIDORAS</button></a></td></tr>
-				<tr><td><h2>MOTORISTAS</h2></td></tr>
-				<tr><td><a href="..\cadastro/form_cadastrar_motoristas.php"><button>CADASTRAR</button></a></td></tr>
-				<tr><td><a href="..\pesquisa/form_pesquisar_motoristas.php"><button>PESQUISAR</button></a></td></tr>
-				<tr><td><h2>FINANCEIRO</h2></td></tr>
-                <tr><td><a href="..\financeiro/form_relatorio_diario.php"><button>RELATÓRIO DIÁRIO</button></a></td></tr>
-                <tr><td><a href="..\financeiro/form_relatorio_mensal.php"><button>RELATÓRIO MENSAL</button></a></td></tr>
-                <tr><td><a href="..\financeiro/form_relatorio_anual.php"><button>RELATÓRIO ANUAL</button></a></td></tr>
-				<tr><td><a href="..\financeiro/form_frete_motoristas.php"><button>FRETE MOTORISTAS</button></a></td></tr>
-				<tr><td><a href="..\financeiro/form_fechamento_distribuidoras.php"><button>FECHAMENTO DISTRIBUIDORAS</button></a></td></tr>
-				<tr><td><a href="..\financeiro/form_fechamento_motoristas.php"><button>FECHAMENTO MOTORISTAS</button></a></td></tr>
-			</table>
-		</menu>
+		<div class="menu">
+			<img src="..\imagem/logo.png" width=15%>
+			<div class="item">
+				<a href="..\saida/form_saida_motorista.php"><button class="buttonb">>SAÍDA DE MOTORISTAS</button></a>
+				<a href="..\saida/form_baixa_canhotos.php"><button class="buttonb">>BAIXA DE CANHOTOS</button></a>
+				<a href="..\saida/form_romaneio_cargas.php"><button class="buttonb">>ROMANEIO DE CARGAS</button></a>
+				<a href="..\saida/form_registro_devolucao.php"><button class="buttonb">>REGISTRO DE DEVOLUÇÕES</button></a>
+				<a href="..\cadastro/cadastrar_nfs.php"><button class="buttonb2">>CADASTRO NOTAS</button></a>
+				<a href="..\cadastro/cadastrar_clientes.php"><button class="buttonb2">>CADASTRO CLIENTES</button></a>
+				<a href="..\cadastro/cadastrar_distribuidoras.php"><button class="buttonb2">>CADASTRO DISTRIBUIDORAS</button></a>
+				<a href="..\pesquisa/form_pesquisar_nfs.php"><button class="buttonb3">>PESQUISAR NOTAS</button></a>
+				<a href="..\pesquisa/form_pesquisar_clientes.php"><button class="buttonb3">>PESQUISAR CLIENTES</button></a>
+				<a href="..\pesquisa/form_pesquisar_distribuidoras.php"><button class="buttonb3">>PESQUISAR DISTRIBUIDORAS</button></a>
+				<a href="..\cadastro/cadastrar_motoristas.php"><button class="buttonb2">>CADASTRAR MOTORISTA</button></a>
+				<a href="..\pesquisa/form_pesquisar_motoristas.php"><button class="buttonb2">>PESQUISAR MOTORISTA</button></a>
+				<a href="..\financeiro/form_relatorio_diario.php"><button class="buttonb4">>RELATÓRIO DIÁRIO</button></a>
+				<a href="..\financeiro/form_relatorio_mensal.php"><button class="buttonb4">>RELATÓRIO MENSAL</button></a>
+				<a href="..\financeiro/form_relatorio_anual.php"><button class="buttonb4">>RELATÓRIO ANUAL</button></a>
+				<a href="..\financeiro/form_frete_motoristas.php"><button class="buttonb4">>FRETE MOTORISTAS</button></a>
+				<a href="..\financeiro/form_fechamento_distribuidoras.php"><button class="buttonb4">>FECHAMENTO DISTRIBUIDORAS</button></a>
+				<a href="..\financeiro/form_fechamento_motoristas.php"><button class="buttonb4">>FECHAMENTO MOTORISTAS</button></a>
+			</div>
+		</div>
+		<exit>
+        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
+		</exit>
 <?php
-#IMPORTANDO CONEXÃO COM O BANCO
-	require('../connect.php');
+	if(!isset($_POST['cod_cli'])){
+?>
+		<pag>
+			<h1>CADASTRAR CLIENTES</h1><p>
+			<table>
+				<tr>
+					<td>
+						<form method="post" action="cadastrar_clientes.php">
+							<table>
+								<tr>
+									<td><h4>CÓDIGO:</h4></td>
+									<td><input name="cod_cli" type=text size=32 maxlength=16 required></td>
+								</tr>
+								<tr>
+									<td><h4>NOME:</h4></td>
+									<td><input name="nom_cli" type=int size=32 maxlength=64 required></td>
+								</tr>
+								<tr>
+									<td><h4>CADASTRO:</h4></td>
+									<td><input name="cad_cli" type=date required></td>
+								</tr>
+								<tr>
+									<td><h4>ROTA:</h4></td>
+									<td><select name="rot_cli">
+										<option value="VP00" selected>VP00</option>
+										<option value="VP01">VP01</option>
+										<option value="VP02">VP02</option>
+										<option value="VP03">VP03</option>
+										<option value="VP04">VP04</option>
+										<option value="VP05">VP05</option>
+										<option value="VP06">VP06</option>
+										<option value="VP07">VP07</option>
+										<option value="VP08">VP08</option>
+										<option value="VP09">VP09</option>
+										<option value="VP10">VP10</option>
+										<option value="VP11">VP11</option>
+										<option value="VP12">VP12</option>
+									</select></td>
+								</tr>
+								<tr>
+									<td><h4>CIDADE:</h4></td>
+									<td><input name="cid_cli" type=text size=32 maxlength=32 required></td>
+								</tr>
+								<tr>
+									<td><h4>BAIRRO:</h4></td>
+									<td><input name="bai_cli" type=text size=32 maxlength=32 required></td>
+								</tr>
+								<tr>
+									<td><h4>ENDEREÇO:</h4></td>
+									<td><input name="end_cli" type=text size=32 maxlength=64 required></td>
+								</tr>
+								<tr>
+									<td><h4>CÓDIGO DISTRIBUIDORA:</h4></td>
+									<td><input name="cod_dis" type=int size=32 maxlength=16 required></td>
+								</tr>
+								<tr>
+									<td><h4>AGENDAR:<input type=checkbox name="age" value="SIM"></h4></td>
+								</tr>
+							</table>
+							<tr>
+								<td><input class="inputb" type=submit value=CADASTRAR></td>
+							</tr>
+						</form>
+					</td>
+				</tr>
+			</table>
+		</pag>
+<?php
+	}else{
+		?><pag>
+		<h1>CADASTRAR CLIENTES</h1><p>
+		<table>
+			<tr>
+				<td>
+					<form method="post" action="cadastrar_clientes.php">
+						<table>
+							<tr>
+								<td><h4>CÓDIGO:</h4></td>
+								<td><input name="cod_cli" type=text size=32 maxlength=16 required></td>
+							</tr>
+							<tr>
+								<td><h4>NOME:</h4></td>
+								<td><input name="nom_cli" type=int size=32 maxlength=64 required></td>
+							</tr>
+							<tr>
+								<td><h4>CADASTRO:</h4></td>
+								<td><input name="cad_cli" type=date required></td>
+							</tr>
+							<tr>
+								<td><h4>ROTA:</h4></td>
+								<td><select name="rot_cli">
+									<option value="VP00" selected>VP00</option>
+									<option value="VP01">VP01</option>
+									<option value="VP02">VP02</option>
+									<option value="VP03">VP03</option>
+									<option value="VP04">VP04</option>
+									<option value="VP05">VP05</option>
+									<option value="VP06">VP06</option>
+									<option value="VP07">VP07</option>
+									<option value="VP08">VP08</option>
+									<option value="VP09">VP09</option>
+									<option value="VP10">VP10</option>
+									<option value="VP11">VP11</option>
+									<option value="VP12">VP12</option>
+								</select></td>
+							</tr>
+							<tr>
+								<td><h4>CIDADE:</h4></td>
+								<td><input name="cid_cli" type=text size=32 maxlength=32 required></td>
+							</tr>
+							<tr>
+								<td><h4>BAIRRO:</h4></td>
+								<td><input name="bai_cli" type=text size=32 maxlength=32 required></td>
+							</tr>
+							<tr>
+								<td><h4>ENDEREÇO:</h4></td>
+								<td><input name="end_cli" type=text size=32 maxlength=64 required></td>
+							</tr>
+							<tr>
+								<td><h4>CÓDIGO DISTRIBUIDORA:</h4></td>
+								<td><input name="cod_dis" type=int size=32 maxlength=16 required></td>
+							</tr>
+							<tr>
+								<td><h4>AGENDAR:<input type=checkbox name="age" value="SIM"></h4></td>
+							</tr>
+						</table>
+						<tr>
+							<td><input class="inputb" type=submit value=CADASTRAR></td>
+						</tr>
+					</form>
+				</td>
+			</tr>
+		</table>
+	</pag>
+<?php
 #VARIÁVEIS DO FORMULÁRIO
 	$cod_cli = trim($_POST['cod_cli']);
     $nom_cli = trim($_POST['nom_cli']);
@@ -72,17 +203,7 @@ if(!isset($_SESSION["system_control"])){
 #VERIFICANDO CADASTROS DA TABELA
 	if($n!=0){
 ?>
-			<pag>
-				<h1>CADASTRAR CLIENTES</h1><p>
-				<table>
-					<tr>
-						<td><h5>CLIENTE JÁ CADASTRADO</h5></td>
-					</tr>
-					<tr>
-						<td><a href="form_cadastrar_clientes.php"><button class="buttonc">VOLTAR</button></a></td>
-                    </tr>
-				</table>
-			</pag>
+			<script>alert("CLIENTE JÁ CADASTRADO!");</script>
 		<?php
 	}
 	else
@@ -93,36 +214,17 @@ if(!isset($_SESSION["system_control"])){
 #INSERINDO DADOS NA TABELA
 			$sql = mysqli_query($conn,"INSERT INTO $tab_cli(`codigo`, `nome`, `agendar`, `cadastro`, `rota`, `cidade`, `bairro`, `endereco`, `cod_distribuidora`) VALUES ('$cod_cli', '$nom_cli', '$age', '$cad_cli', '$rot_cli', '$cid_cli', '$bai_cli', '$end_cli', '$cod_dis')");
 			?>
-				<pag>
-					<h1>CADASTRAR CLIENTES</h1><p>
-					<table>
-						<tr>
-							<td><h7>CLIENTE CADASTRADO</h7></td>
-						</tr>
-						<tr>
-                            <td><a href="form_cadastrar_clientes.php"><button class="buttonc">PRÓXIMO</button></a></td>
-                    	</tr>
-					</table>
-				</pag>
+				<script>alert("CLIENTE CADASTRADO COM SUCESSO!");</script>
 			<?php
 		}
 		else
 		{
 			?>
-				<pag>
-					<h1>CADASTRAR CLIENTES</h1><p>
-					<table>
-						<tr>
-							<td><h6>DISTRIBUIDORA NÃO CADASTRADA</h6></td>
-						</tr>
-						<tr>
-                            <td><a href="form_cadastrar_distribuidoras.php"><button class="buttonc">CADASTRAR</button></a></td>
-                    	</tr>
-					</table>
-				</pag>
+				<script>alert("DISTRIBUIDORA NÃO CADASTRADA!");</script>
 			<?php
 		}
 	}
+}
 ?>
 		<urc>
             <table border=1>
@@ -161,7 +263,8 @@ if(!isset($_SESSION["system_control"])){
 								<td><h4><nobr><?php echo $vn['cod_distribuidora'];    ?></nobr></h4></td>
 							</tr>
 					<?php   $i = $i + 1;
-				}   ?>
+				}   
+?>
             </table>
         </urc>
 	</body>
