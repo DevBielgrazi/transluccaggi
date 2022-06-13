@@ -20,9 +20,7 @@
     if($n == 0)
     {
 ?>
-    <tr>
-        <td><h6>LOGIN NÃO ENCONTRADO</h6></td>
-    </tr>
+    <script>alert("SENHA INVÁLIDA!")</script>
 <?php
     }
     else
@@ -33,9 +31,7 @@
         if($n == 0)
         {
 ?>
-            <tr>
-                <td><h6>SENHA INVÁLIDA</h6></td>
-            </tr>
+            <script>alert("SENHA INVÁLIDA!")</script>
 <?php
         }    
         else

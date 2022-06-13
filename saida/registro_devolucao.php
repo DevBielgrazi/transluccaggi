@@ -43,120 +43,85 @@ if(!isset($_SESSION["system_control"])){
 			</div>
 		</div>
 		<exit>
-        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
+        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=80%></a>
 		</exit>
-<?php
+		<?php
 #IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
 #VARIÁVEIS DO FORMULÁRIO
 	$not_dev = trim($_POST['not_dev']);
-	$ser_dev = trim($_POST['ser_dev']);
-	if(!isset($_POST['dis_dev'])){
-		$dis_dev = null;
-	}else{
-		$dis_dev = $_POST['dis_dev'];
-	}
-    $dev = $_POST['opc'];
-?>
-	<rn>
-		<table border=1>
-			<tr><h3>REGISTRO DE DEVOLUÇÕES</h3></tr>
-			<tr>
-				<td><h3>DISTRIBUIDORA:<?php echo $dis_dev  ?></h3></td>
-			</tr>
-			<tr>
-				<td><h3>ENTRADA</h3></td>
-				<td><h3>NF</h3></td>
-				<td><h3>SÉRIE</h3></td>
-				<td><h3>VOLUMES</h3></td>
-				<td><h3>CLIENTE</h3></td>
-				<td><h3>DISTRIBUIDORA</h3></td>
-				<td><h3>DEVOLUÇÃO</h3></td>
-			</tr>
-<?php
+	$val_dev = trim($_POST['val_dev']);
+	$vol_dev = trim($_POST['vol_dev']);
+	$mot_dev = trim($_POST['mot_dev']);
+    if(!isset($_POST['par_dev'])){
+        $par_dev = "xxx";
+    }else{
+        $par_dev = $_POST['par_dev'];
+    }
 #ADQUIRINDO INFORMAÇÕES DO BANCO
-    $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$not_dev' ORDER BY `id` DESC LIMIT 1");
-#CADASTROS POR COLUNA
-	$x = mysqli_fetch_array($sql);
-	if(!isset($x['id'])){
-		$id = null;
+    $sql = mysqli_query($conn,"SELECT * FROM $tab_dev WHERE `nota` = '$not_dev'");
+	$v = mysqli_fetch_array($sql);
+	$status = $v['status'];
+	if($status=='AGUARDANDO'){
+		?>
+			<script>alert("NOTA AGUARDANDO PROTOCOLO");
+					window.history.back();</script>
+		<?php
+	}elseif($status=='LIBERAR'){
+		?>
+		<script>alert("NOTA JÁ COM PROTOCOLO");
+				window.history.back();</script>
+		<?php
 	}else{
-		$id = $x['id'];
-	}
-#TRANSFORMANDO RESULTADO EM NÚMEROS
-    $n = mysqli_num_rows($sql);
-#VERIFICANDO NÚMEROS DE REGISTROS
-    if($n!=0){
-#VERIFICANDO INPUT SELECIONADO
-        switch($dev){
-            case "int":
-#ALTERANDO REGISTROS NO BANCO
-                $sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'DEVOLUÇÃO INTEGRAL' WHERE `id` = '$id'");
-                break;
-            case "par":
-                $sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'DEVOLUÇÃO PARCIAL' WHERE `id` = '$id'");
-                break;
-        }
-        $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `status` LIKE  'DEVOLUÇÃO%' and `cod_distribuidora` = '$dis_dev' ORDER BY `id` DESC");
-        $n = mysqli_num_rows($sql);
-#INICIANDO CONTADOR
-        $i=0;
-#APRESENTANDO CADASTROS DO BANCO
-        while($i!=$n){
-            $vn = mysqli_fetch_array($sql);
-    ?>
+		$sql = mysqli_query($conn,"UPDATE $tab_dev SET `nota`='$not_dev',`parcial`='$par_dev',`valor`='$val_dev',`volumes`='$vol_dev',`motivo`='$mot_dev',`status`='AGUARDANDO' WHERE `nota` = '$not_dev'");
+?>
+        <script>alert("NOTA REGISTRADA");</script>
+		<urn>
+            <table border=1>
+                <h3>DEVOLUÇÕES</h3>
                 <tr>
-                    <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime($vn['entrada']));   ?></nobr></h4></td>
-                    <td><h4><nobr><?php echo $vn['numero'];   ?></nobr></h4></td>
-                    <td><h4><nobr><?php echo $vn['serie'];    ?></nobr></h4></td>
-                    <td><h4><nobr><?php echo $vn['volumes'];    ?></nobr></h4></td>
-                    <td><h4><nobr><?php echo $vn['nome_cliente'];    ?></nobr></h4></td>
-                    <td><h4><nobr><?php echo $vn['cod_distribuidora'];    ?></nobr></h4></td>
-                    <td><h4><nobr><?php echo $vn['status'];    ?></nobr></h4></td>
-    <?php
-#SOMANDO AO CONTADOR
-	        $i = $i + 1;
-        }
-	}
-	else
-    {
-?>
-        <tr>
-            <td><h4><nobr>NÃO CADASTRADA</nobr></h4></td>
-            <td><h4><nobr></nobr></h4></td>
-            <td><h4><nobr></nobr></h4></td>
-            <td><h4><nobr></nobr></h4></td>
-            <td><h4><nobr></nobr></h4></td>
-            <td><h4><nobr></nobr></h4></td>
+                    <td><h3>NOTA</h3></td>
+                    <td><h3>NOTA PARCIAL</h3></td>
+                    <td><h3>VALOR</h3></td>
+                    <td><h3>VOLUMES</h3></td>
+                    <td><h3>CIDADE</h3></td>
+                    <td><h3>CLIENTE</h3></td>
+                    <td><h3>COD_<br>CLIENTE</h3></td>
+                    <td><h3>MOTIVO</h3></td>
+                    <td><h3>PROTOCOLO</h3></td>
+                </tr>
 <?php
-	}
+    $sql = mysqli_query($conn,"SELECT * FROM $tab_dev WHERE `status` = 'AGUARDANDO'");
+    $n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
+    $i=0;
+#APRESENTANDO DADOS DA TABELA
+    while($i!=$n)
+    {
+        $vn = mysqli_fetch_array($sql);
+?>                        
+                <tr>
+                    <td><h4><nobr><?php echo $vn['nota'];   ?></nobr></h4></td>
+                    <td><h4><nobr><?php echo $vn['parcial'];    ?></nobr></h4></td>
+                    <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
+                    <td><h4><nobr><?php echo $vn['volumes'];    ?></nobr></h4></td>
+                    <td><h4><nobr><?php echo $vn['cidade'];    ?></nobr></h4></td>
+                    <td><h4><nobr><?php echo $vn['cliente'];    ?></nobr></h4></td>
+                    <td><h4><nobr><?php echo $vn['cod_cliente'];    ?></nobr></h4></td>
+                    <td><h4><nobr><?php echo $vn['motivo'];    ?></nobr></h4></td>
+                    <td><h4><nobr><?php echo $vn['protocolo'];    ?></nobr></h4></td>
+                </tr>
+<?php
+#SOMANDO AO CONTADOR
+            $i = $i + 1;
+        }
 ?>
-		<pag>
-			<table>
-				<tr>
-					<td>
-						<form method="post" action="registro_devolucao.php">
-							<table>
-                                <tr>
-                                    <td><h4>INTEGRAL<input type="radio" name="opc" value="int" checked></h4></td>
-                                    <td><h4>PARCIAL<input type="radio" name="opc" value="par"></h4></td>
-                                </tr>
-								<tr>
-									<td><h4>NOTA:</h4></td>
-									<td><input name="not_dev" type=text size=16 maxlength=32 required></td>
-								</tr>
-							</table>
-							<tr>
-								<td><input class="inputb" type=submit value=PRÓXIMA></td>
-							</tr>
-						</form>
-					</td>
-				</tr>
-			</table>
-		</pag>
+            </table>
+        </urn>
 	</body>
 </html>
 <?php
     }
+}
 }
 ?>

@@ -42,7 +42,7 @@ if(!isset($_SESSION["system_control"])){
 			</div>
 		</div>
 		<exit>
-        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
+        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=80%></a>
 		</exit>
 		<pag>
 			<h1>BAIXA DE CANHOTOS</h1><p>
@@ -54,6 +54,8 @@ if(!isset($_SESSION["system_control"])){
 									<tr>
 										<td><h4>ENTREGUE<input type="radio" name="opc" value="ent" checked></h4></td>
 										<td><h4>PENDENTE<input type="radio" name="opc" value="pen"></h4></td>
+										<td><h4>DEVOLUÇÃO INTEGRAL<input type="radio" name="opc" value="int"></h4></td>
+										<td><h4>DEVOLUÇÃO PARCIAL<input type="radio" name="opc" value="par"></h4></td>
 									</tr>
 									<tr>
 										<td><h4>NOTA FISCAL:</h4></td>

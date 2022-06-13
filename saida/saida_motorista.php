@@ -43,7 +43,7 @@ if(!isset($_SESSION["system_control"])){
 			</div>
 		</div>
 		<exit>
-        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
+        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=80%></a>
 		</exit>
 		<pag>
 			<table>
@@ -92,7 +92,7 @@ if(!isset($_SESSION["system_control"])){
 				<td><form method="post" action="imprimir_saida.php" target="_blank">
 					<input type="hidden" name="mot_sai" value="<?php echo $mot_sai;  ?>">
 					<input type="hidden" name="dat_sai" value="<?php echo $dat_sai;  ?>">
-					<input type=image width=10% height=10% src="..\imagem/imprimir.png" alt=submit>
+					<input type=image width=5% height=5% src="..\imagem/imprimir.png" alt=submit>
 				</form></td>
 				<td><h3>DATA:<?php  echo date( 'd/m/Y' , strtotime($dat_sai)); ?></h3></td>
 				<td><h3>MOTORISTA:<?php  echo $nom_mot; ?></h3></td>
@@ -164,14 +164,9 @@ if(!isset($_SESSION["system_control"])){
 		$vei_mot = null;
 		$pla_mot = null;
 		?>
-			<rn>
-				<h1>SAÍDA DE MOTORISTA</h1><p>
-				<table>
-					<tr>
-						<td><h5>MOTORISTA NÃO CADASTRADO</h5></td>
-					</tr>
-				</table>
-            </rn>
+			<script>
+				alert("MOTORISTA NÃO CADASTRADO!");
+			</script>
 		<?php
 	}
 ?>

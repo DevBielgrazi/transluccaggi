@@ -16,13 +16,13 @@
     $senha = $_POST["senha"];
     
     if(!isset($_POST['log_adm'])) {
-        $log_adm = "nul";
+        $log_adm = "null";
     }else{
         $log_adm = $_POST["log_adm"];
     }
 
     if(!isset($_POST['sen_adm'])) {
-        $sen_adm = "nul";
+        $sen_adm = "null";
     }else{
         $sen_adm = $_POST["sen_adm"];
     }
@@ -37,9 +37,7 @@
         if($n2 == 0)
         {
 ?>
-            <tr>
-                <td><h6>SENHA DE ADMINISTRADOR INVÁLIDA</h6></td>
-            </tr>
+            <script>alert("SENHA DE ADMINISTRADOR INVÁLIDA!");</script>
 <?php
         }
         else

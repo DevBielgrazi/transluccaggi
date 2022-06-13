@@ -42,7 +42,7 @@ if(!isset($_SESSION["system_control"])){
 			</div>
 		</div>
 		<exit>
-        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
+        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=80%></a>
 		</exit>
 <?php
 #IMPORTANDO CONEXÃO COM O BANCO

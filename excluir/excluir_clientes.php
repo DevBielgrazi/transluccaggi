@@ -18,32 +18,6 @@ if(!isset($_SESSION["system_control"])){
 		<title>Matriz Principal</title>
 	</head>
 	<body>
-		<div class="menu">
-			<img src="..\imagem/logo.png" width=15%>
-			<div class="item">
-				<a href="..\saida/form_saida_motorista.php"><button class="buttonb">>SAÍDA DE MOTORISTAS</button></a>
-				<a href="..\saida/form_baixa_canhotos.php"><button class="buttonb">>BAIXA DE CANHOTOS</button></a>
-				<a href="..\saida/form_romaneio_cargas.php"><button class="buttonb">>ROMANEIO DE CARGAS</button></a>
-				<a href="..\saida/form_registro_devolucao.php"><button class="buttonb">>REGISTRO DE DEVOLUÇÕES</button></a>
-				<a href="..\cadastro/cadastrar_nfs.php"><button class="buttonb2">>CADASTRO NOTAS</button></a>
-				<a href="..\cadastro/cadastrar_clientes.php"><button class="buttonb2">>CADASTRO CLIENTES</button></a>
-				<a href="..\cadastro/cadastrar_distribuidoras.php"><button class="buttonb2">>CADASTRO DISTRIBUIDORAS</button></a>
-				<a href="..\pesquisa/form_pesquisar_nfs.php"><button class="buttonb3">>PESQUISAR NOTAS</button></a>
-				<a href="..\pesquisa/form_pesquisar_clientes.php"><button class="buttonb3">>PESQUISAR CLIENTES</button></a>
-				<a href="..\pesquisa/form_pesquisar_distribuidoras.php"><button class="buttonb3">>PESQUISAR DISTRIBUIDORAS</button></a>
-				<a href="..\cadastro/cadastrar_motoristas.php"><button class="buttonb2">>CADASTRAR MOTORISTA</button></a>
-				<a href="..\pesquisa/form_pesquisar_motoristas.php"><button class="buttonb2">>PESQUISAR MOTORISTA</button></a>
-				<a href="..\financeiro/form_relatorio_diario.php"><button class="buttonb4">>RELATÓRIO DIÁRIO</button></a>
-				<a href="..\financeiro/form_relatorio_mensal.php"><button class="buttonb4">>RELATÓRIO MENSAL</button></a>
-				<a href="..\financeiro/form_relatorio_anual.php"><button class="buttonb4">>RELATÓRIO ANUAL</button></a>
-				<a href="..\financeiro/form_frete_motoristas.php"><button class="buttonb4">>FRETE MOTORISTAS</button></a>
-				<a href="..\financeiro/form_fechamento_distribuidoras.php"><button class="buttonb4">>FECHAMENTO DISTRIBUIDORAS</button></a>
-				<a href="..\financeiro/form_fechamento_motoristas.php"><button class="buttonb4">>FECHAMENTO MOTORISTAS</button></a>
-			</div>
-		</div>
-		<exit>
-        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
-		</exit>
 <?php
 #IMPORTANDO CONEXÃO DO BANCO
 	require('../connect.php');
@@ -53,14 +27,10 @@ if(!isset($_SESSION["system_control"])){
 #EXCLUINDO REGISTRO DO BANCO
     $sql = mysqli_query($conn,"DELETE FROM $tab_cli WHERE `id` = '$id'");
     $sql = mysqli_query($conn,"UPDATE $tab_nfs SET `rota` = 'nulo', `nome_cliente` = 'nulo', `bairro_cliente` = 'nulo', `cidade_cliente` = 'nulo', `endereco_cliente` = 'nulo', `cod_distribuidora` = 'nulo' WHERE `cod_cliente` = '$cod_cli'");?>
-        <pag>
-				<h1>EXCLUIR CLIENTES</h1><p>
-				<table>
-					<tr>
-						<td><h7>CLIENTE EXCLUÌDO</h7></td>
-					</tr>
-				</table>
-			</pag>
+        <script>
+			alert("CLIENTE EXCLUIDO!");
+			document.location.href="http://localhost/transluccaggi/pesquisa/form_pesquisar_clientes.php";
+		</script>
 	</body>
 </html>
 <?php

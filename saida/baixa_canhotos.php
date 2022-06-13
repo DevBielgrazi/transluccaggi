@@ -42,7 +42,7 @@ if(!isset($_SESSION["system_control"])){
 			</div>
 		</div>
 		<exit>
-        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
+        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=80%></a>
 		</exit>
 <?php
 #IMPORTANDO CONEXÃO COM O BANCO
@@ -58,7 +58,7 @@ if(!isset($_SESSION["system_control"])){
         $ver_ent = $_POST['opc'];
     }
 #ADQUIRINDO DADOS DO BANCO
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' ORDER BY `id` DESC LIMIT 1");
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' AND `status` = 'ROTA' ORDER BY `id` DESC LIMIT 1");
 	$con = mysqli_fetch_array($sql);
 	if(!isset($con['id'])) {
 		$id = null;
@@ -89,25 +89,11 @@ if(!isset($_SESSION["system_control"])){
 					$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'ENTREGUE', `observacao` = '$obs_nf' WHERE `id` = '$id'");
 				}
 				?>
-					<rn>
-						<h1>BAIXA DE CANHOTOS</h1><p>
-						<table>
-							<tr>
-								<td><h7>CANHOTO CONFERIDO</h7></td>
-							</tr>
-						</table>
-					</rn>
+					<script>alert("NOTA CONFERIDA")</script>
 				<?php
 			}else{
 				?>
-					<rn>
-						<h1>BAIXA DE CANHOTOS</h1><p>
-						<table>
-							<tr>
-								<td><h5>NOTA NÃO CADASTRADA</h5></td>
-							</tr>
-						</table>
-					</rn>
+					<script>alert("NOTA EM ESTOQUE")</script>
 				<?php
 			}
 			break;
@@ -116,25 +102,49 @@ if(!isset($_SESSION["system_control"])){
 			{
 				$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'PENDENTE', `observacao` = '$obs_nf' WHERE `id` = '$id'");
 				?>
-					<rn>
-						<h1>BAIXA DE CANHOTOS</h1><p>
-						<table>
-							<tr>
-								<td><h7>NOTA DEVOLVIDA</h7></td>
-							</tr>
-						</table>
-					</rn>
+					<script>alert("NOTA REENTREGUE")</script>
 				<?php
 			}else{
 				?>
-					<rn>
-						<h1>BAIXA DE CANHOTOS</h1><p>
-						<table>
-							<tr>
-								<td><h5>NOTA NÃO CADASTRADA</h5></td>
-							</tr>
-						</table>
-					</rn>
+				<script>alert("NOTA EM ESTOQUE")</script>
+				<?php
+			}
+			break;
+		case "int":
+			if($n != 0)
+			{
+				$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `id` = '$id'");
+				$v = mysqli_fetch_array($sql);
+				$cid_cli = $v['cidade_cliente'];
+				$nom_cli = $v['nome_cliente'];
+				$cod_cli = $v['cod_cliente'];
+				$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'DEVOLUCAO INTEGRAL', `observacao` = '$obs_nf' WHERE `id` = '$id'");
+				$sql2 = mysqli_query($conn,"INSERT INTO $tab_dev(`nota`,`cidade`,`cliente`,`cod_cliente`,`tipo`,`status`) VALUES('$num_nf','$cid_cli','$nom_cli','$cod_cli','INTEGRAL','INFORMAR')'");
+				?>
+					<script>alert("NOTA DEVOLVIDA")</script>
+				<?php
+			}else{
+				?>
+				<script>alert("NOTA EM ESTOQUE")</script>
+				<?php
+			}
+			break;
+		case "par":
+			if($n != 0)
+			{
+				$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `id` = '$id'");
+				$v = mysqli_fetch_array($sql);
+				$cid_cli = $v['cidade_cliente'];
+				$nom_cli = $v['nome_cliente'];
+				$cod_cli = $v['cod_cliente'];
+				$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'DEVOLUCAO PARCIAL', `observacao` = '$obs_nf' WHERE `id` = '$id'");
+				$sql2 = mysqli_query($conn,"INSERT INTO $tab_dev(`nota`,`cidade`,`cliente`,`cod_cliente`,`tipo`,`status`) VALUES('$num_nf','$cid_cli','$nom_cli','$cod_cli','INTEGRAL','INFORMAR')'");
+				?>
+					<script>alert("NOTA ENTREGUE")</script>
+				<?php
+			}else{
+				?>
+				<script>alert("NOTA EM ESTOQUE")</script>
 				<?php
 			}
 	}
@@ -149,6 +159,8 @@ if(!isset($_SESSION["system_control"])){
 								<tr>
 									<td><h4>ENTREGUE<input type="radio" name="opc" value="ent" checked></h4></td>
 									<td><h4>PENDENTE<input type="radio" name="opc" value="pen"></h4></td>
+									<td><h4>DEVOLUÇÃO INTEGRAL<input type="radio" name="opc" value="int"></h4></td>
+									<td><h4>DEVOLUÇÃO PARCIAL<input type="radio" name="opc" value="par"></h4></td>
 								</tr>
 								<tr>
 									<td><h4>NOTA FISCAL:</h4></td>

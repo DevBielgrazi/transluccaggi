@@ -101,37 +101,8 @@
 		}
 		else{
 ?>
-			<pag>
-				<h1>FAZER CADASTRO</h1><p>
-				<table>
-					<tr>
-						<td><h5>SENHAS DIVERGENTES</h5></td>
-					</tr>
-					<tr>
-						<td>
-							<form method="post" action="verificar_usuario.php">
-								<table>
-									<tr>
-										<td><h4>LOGIN:</h4></td>
-										<td><input name="login" type=text size=16 maxlength=16 required></td>
-									</tr>
-									<tr>
-										<td><h4>SENHA:</h4></td>
-										<td><input name="senha" type=password size=16 maxlength=16 required></td>
-									</tr>
-									<tr>
-										<td><h4>CONFIRMAR SENHA:</h4></td>
-										<td><input name="senha2" type=password size=16 maxlength=16 required></td>
-									</tr>
-								</table>
-								<tr>
-									<td><input class="inputb" type=submit value=CADASTRAR></td>
-								</tr>
-							</form>
-						</td>
-					</tr>
-				</table>
-			</pag>
+			<script>alert("SENHAS DIVERGENTES!");
+			document.location.href="form_cadastrar_usuario.html";</script>
 <?php		
 		}
 	}

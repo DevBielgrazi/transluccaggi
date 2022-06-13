@@ -42,7 +42,7 @@ if(!isset($_SESSION["system_control"])){
                 </div>
             </div>
             <exit>
-                <a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
+                <a href="..\logout.php"><img src="..\imagem/exit.png" width=80%></a>
 	    	</exit>
 <?php
 #IMPORTANDO CONEXÃO COM O BANCO
@@ -79,14 +79,9 @@ if(!isset($_SESSION["system_control"])){
 #VERIFICANDO O NÚMERO DE CADASTROS
             if($n!=0){
                 ?>
-				<pag>
-					<h1>ALTERAR CLIENTES</h1><p>
-					<table>
-						<tr>
-							<td><h6>CLIENTE JÁ CADASTRADO</h6></td>
-						</tr>
-					</table>
-				</pag>
+				<script>
+			        alert("CLIENTE ATUALIZADO!");
+			    </script>
 			<?php
             }else{
 #ALTERANDO DADOS DO CAMPO SELECIONADO
@@ -125,14 +120,9 @@ if(!isset($_SESSION["system_control"])){
             $n = mysqli_num_rows($sql);
             if($n!=0){
                 ?>
-				<pag>
-					<h1>ALTERAR CLIENTES</h1><p>
-					<table>
-						<tr>
-							<td><h6>CLIENTE JÁ CADASTRADO</h6></td>
-						</tr>
-					</table>
-				</pag>
+				<script>
+			        alert("CLIENTE JÁ CADASTRADO!");
+			    </script>
 			<?php
             }else{
                 $sql2 = mysqli_query($conn,"UPDATE $tab_cli SET `cod_distribuidora` = '$cod_dis' WHERE `id` = '$id'");

@@ -4,21 +4,17 @@ body{
 h1{
     color: blue;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 25px;
+    font-size: 100%;
 }
 h3{
     color:gray;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 15px;
+    font-size: 75%;
 }
 h4{
     color:darkblue;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-h5{
-    color:yellow;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 20px;
+    font-size: 75%;
 }
 h6{
     color:red;
@@ -88,8 +84,8 @@ button{
 }
 exit{
     position: absolute;
-    top: 5px;
-    left: 1300px;
+    top: 1%;
+    left: 95%;
 }
 .item{
     display: none;
@@ -130,13 +126,13 @@ gra{
 }
 login{
     position:absolute;
-    top:10px;
-    left:500px;
+    top:20%;
+    left:37%;
 }
 pag{
     position:absolute;
-    top:50px;
-    left:250px;
+    top:10%;
+    left:1%;
 }
 pag2{
     position:absolute;
@@ -145,18 +141,23 @@ pag2{
 }
 urn{
     position:absolute;
-    top:50px;
-    left:380px;
+    top:15%;
+    left: 120%;
 }
 urc{
     position:absolute;
-    top:550px;
-    left:-250px;
+    top:100%;
+    left:1%;
 }
 urd{
     position:absolute;
-    top:5px;
-    left:550px;
+    top:10%;
+    left:110%;
+}
+urm{
+    position:absolute;
+    top:5%;
+    left:110%;
 }
 rn{
     position:absolute;
@@ -165,8 +166,8 @@ rn{
 }
 rs{
     position:absolute;
-    top:150px;
-    left:50px;
+    top:30%;
+    left:1%;
 }
 rf{
     position:absolute;
@@ -174,17 +175,17 @@ rf{
     left:250px;
 }
 input, select{
-    border-radius: 8px;
+    border-radius: 20%;
     border-color: gray;
     background-color: white;
     color:black;
-    font-size: 20px;
+    font-size: 80%;
 }
 .inputb{
     background-color:dodgerblue;
     color:black;
-    font-size: 20px;
-    border-radius: 20px;
+    font-size: 80%;
+    border-radius: 20%;
     border-color: black;
 }
 .inputc{

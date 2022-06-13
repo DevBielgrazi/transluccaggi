@@ -11,4 +11,5 @@
 	$tab_usu = "usuarios";
 	$tab_fre = "fretes";
 	$tab_cus = "custos";
+	$tab_dev = "devolucoes";
  ?>

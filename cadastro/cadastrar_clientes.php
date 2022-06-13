@@ -43,7 +43,7 @@ if(!isset($_SESSION["system_control"])){
 			</div>
 		</div>
 		<exit>
-        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
+        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=80%></a>
 		</exit>
 <?php
 	if(!isset($_POST['cod_cli'])){
@@ -233,11 +233,9 @@ if(!isset($_SESSION["system_control"])){
 					<td><h3>CÓDIGO</h3></td>
 					<td><h3>NOME</h3></td>
 					<td><h3>AGENDAR</h3></td>
-                    <td><h3>CADASTRO</h3></td>
                     <td><h3>ROTA</h3></td>
                     <td><h3>CIDADE</h3></td>
                     <td><h3>BAIRRO</h3></td>
-                    <td><h3>ENDEREÇO</h3></td>
                     <td><h3>COD_<br>DISTRIBUIDORA</h3></td>
 				</tr>
 <?php
@@ -255,11 +253,9 @@ if(!isset($_SESSION["system_control"])){
 								<td><h4><nobr><?php echo $vn['codigo'];   ?></nobr></h4></td>
 								<td><h4><nobr><?php echo $vn['nome'];    ?></nobr></h4></td>
 								<td><h4><nobr><?php echo $vn['agendar'];    ?></nobr></h4></td>
-								<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>
 								<td><h4><nobr><?php echo $vn['rota'];    ?></nobr></h4></td>
 								<td><h4><nobr><?php echo $vn['cidade'];    ?></nobr></h4></td>
 								<td><h4><nobr><?php echo $vn['bairro'];    ?></nobr></h4></td>
-								<td><h4><nobr><?php echo $vn['endereco'];    ?></nobr></h4></td>
 								<td><h4><nobr><?php echo $vn['cod_distribuidora'];    ?></nobr></h4></td>
 							</tr>
 					<?php   $i = $i + 1;

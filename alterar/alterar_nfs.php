@@ -42,7 +42,7 @@ if(!isset($_SESSION["system_control"])){
 			</div>
 		</div>
 		<exit>
-        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
+        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=80%></a>
 		</exit>
 <?php
 #IMPORTANDO CONEXÃO COM O BANCO
@@ -81,14 +81,9 @@ if(!isset($_SESSION["system_control"])){
 #VERIFICANDO O NÚMERO DE CADASTROS
             if($n!=0){
                 ?>
-				<pag>
-					<h1>ALTERAR NOTAS FISCAIS</h1><p>
-					<table>
-						<tr>
-							<td><h6>NOTA JÁ CADASTRADA</h6></td>
-						</tr>
-					</table>
-				</pag>
+				<script>
+			        alert("NOTA JÁ CADASTRADA!");
+			    </script>
 			<?php
             }
             else
@@ -102,14 +97,9 @@ if(!isset($_SESSION["system_control"])){
             $n = mysqli_num_rows($sql);
             if($n!=0){
                 ?>
-				<pag>
-					<h1>ALTERAR NOTAS FISCAIS</h1><p>
-					<table>
-						<tr>
-							<td><h7>NOTA JÁ CADASTRADA</h7></td>
-						</tr>
-					</table>
-				</pag>
+				<script>
+			        alert("NOTA JÁ CADASTRADA!");
+			    </script>
 			<?php
             }
             else{
@@ -156,14 +146,9 @@ if(!isset($_SESSION["system_control"])){
             else
             {
 ?>
-				<pag>
-					<h1>ALTERAR NOTAS FISCAIS</h1><p>
-					<table>
-						<tr>
-							<td><h7>CLIENTE NÂO CADASTRADO</h7></td>
-						</tr>
-					</table>
-				</pag>
+				<script>
+			        alert("CLIENTE NÃO CADASTRADO!");
+			    </script>
 <?php
             }
             break;
@@ -175,6 +160,9 @@ if(!isset($_SESSION["system_control"])){
             break;
     }
 ?>
+                <script>
+			        alert("NOTA ATUALIZADA!");
+			    </script>
         <urn>
             <table border=1>
                 <h3>NOTAS CADASTRADAS</h3>

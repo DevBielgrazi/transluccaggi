@@ -42,7 +42,7 @@ if(!isset($_SESSION["system_control"])){
 			</div>
 		</div>
 		<exit>
-        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
+        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=80%></a>
 		</exit>
 		<pag>
 			<h1>REGISTRO DE DEVOLUÇÕES</h1><p>
@@ -51,17 +51,29 @@ if(!isset($_SESSION["system_control"])){
 					<td>
 						<form method="post" action="registro_devolucao.php">
 							<table>
-                                <tr>
-                                    <td><h4>INTEGRAL<input type="radio" name="opc" value="int" checked></h4></td>
-                                    <td><h4>PARCIAL<input type="radio" name="opc" value="par"></h4></td>
-                                </tr>
 								<tr>
 									<td><h4>NOTA:</h4></td>
 									<td><input name="not_dev" type=text size=16 maxlength=32 required></td>
 								</tr>
+								<tr>
+									<td><h4>NOTA PARCIAL:</h4></td>
+									<td><input name="par_dev" type=text size=16 maxlength=32></td>
+								</tr>
+								<tr>
+									<td><h4>VALOR:</h4></td>
+									<td><input name="val_dev" type=text size=16 maxlength=32 required></td>
+								</tr>
+								<tr>
+									<td><h4>VOLUMES:</h4></td>
+									<td><input name="vol_dev" type=text size=16 maxlength=32 required></td>
+								</tr>
+								<tr>
+									<td><h4>MOTIVO:</h4></td>
+									<td><input name="mot_dev" type=text size=16 maxlength=32 required></td>
+								</tr>
 							</table>
 							<tr>
-								<td><input class="inputb" type=submit value=PRÓXIMA></td>
+								<td><input class="inputb" type=submit value=REGISTRAR></td>
 							</tr>
 						</form>
 					</td>
