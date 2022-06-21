@@ -1,5 +1,5 @@
 body{
-    background-color:white;
+    background-color: white;
 }
 h1{
     color: blue;
@@ -67,8 +67,8 @@ button{
 .buttonc{
     background-color:dodgerblue;
     color:black;
-    font-size: 20px;
-    border-radius: 20px;
+    font-size: 60%;
+    border-radius: 20%;
     border-color: black;
 }
 .buttond{

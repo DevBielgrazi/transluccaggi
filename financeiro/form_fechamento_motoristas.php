@@ -56,7 +56,7 @@ if(!isset($_SESSION["system_control"])){
 									<td><h4>ANO:</h4></td>
 									<td><select name="ano_fec">
 <?php
-$ano = date(Y);
+$ano = date('Y');
 $ano_a = $ano-1;
 ?>
                                         <option value="<?php echo $ano ?>" selected><?php echo $ano ?></option>

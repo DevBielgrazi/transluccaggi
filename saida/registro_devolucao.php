@@ -73,7 +73,7 @@ if(!isset($_SESSION["system_control"])){
 				window.history.back();</script>
 		<?php
 	}else{
-		$sql = mysqli_query($conn,"UPDATE $tab_dev SET `nota`='$not_dev',`parcial`='$par_dev',`valor`='$val_dev',`volumes`='$vol_dev',`motivo`='$mot_dev',`status`='AGUARDANDO' WHERE `nota` = '$not_dev'");
+		$sql = mysqli_query($conn,"UPDATE $tab_dev SET `parcial`='$par_dev',`valor`='$val_dev',`volumes`='$vol_dev',`motivo`='$mot_dev',`status`='AGUARDANDO' WHERE `nota` = '$not_dev'");
 ?>
         <script>alert("NOTA REGISTRADA");</script>
 		<urn>

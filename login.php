@@ -6,11 +6,6 @@
 		<title>Matriz Principal</title>
 	</head>
 	<body>
-        <login>
-			<img src="imagem/logo.png" width=30%>
-			<table>
-				<tr>
-					<td>
 <?php
     $login = $_POST["login"];
     $senha = $_POST["senha"];
@@ -20,7 +15,8 @@
     if($n == 0)
     {
 ?>
-    <script>alert("SENHA INVÁLIDA!")</script>
+    <script>alert("LOGIN INVÁLIDO!");
+                    window.history.back()</script>
 <?php
     }
     else
@@ -31,7 +27,8 @@
         if($n == 0)
         {
 ?>
-            <script>alert("SENHA INVÁLIDA!")</script>
+            <script>alert("SENHA INVÁLIDA!");
+                    window.history.back()</script>
 <?php
         }    
         else
@@ -46,12 +43,5 @@
         }
     }
 ?>
-                        <tr>
-                            <td><a href="index.html"><button class="buttonc">VOLTAR</button></a></td>
-                        </tr>
-                    </td>
-                </tr>
-            </table>
-        </login>
     </body>
 </html>

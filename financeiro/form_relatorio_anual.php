@@ -45,7 +45,7 @@ if(!isset($_SESSION["system_control"])){
         	<a href="..\logout.php"><img src="..\imagem/exit.png" width=80%></a>
 		</exit>
 		<pag>
-			<h1>RELATÓRIO MENSAL</h1><p>
+			<h1>RELATÓRIO ANUAL</h1><p>
 			<table>
 				<tr>
 					<td>
@@ -56,7 +56,7 @@ if(!isset($_SESSION["system_control"])){
 									<td><h4>ANO:</h4></td>
 									<td><select name="ano_rel">
 <?php
-$ano = date(Y);
+$ano = date('Y');
 $ano_a = $ano-1;
 $ano_a1 = $ano-2;
 $ano_a2 = $ano-3;

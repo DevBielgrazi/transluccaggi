@@ -9,6 +9,11 @@ if(!isset($_SESSION["system_control"])){
 }else{
 	$system_control = $_SESSION["system_control"];
 	if($system_control == 1 || $system_control == 2){
+#IMPORTANDO CONEXÃO COM O BANCO
+require('../connect.php');
+#VARIÁVEIS DO FORMULÁRIO
+	$mot_sai = trim($_POST['mot_sai']);
+	$dat_sai = trim($_POST['dat_sai']);
 ?>
 <html>
 	<head>
@@ -68,11 +73,6 @@ if(!isset($_SESSION["system_control"])){
 			</table>
 		</pag>
 <?php
-#IMPORTANDO CONEXÃO COM O BANCO
-	require('../connect.php');
-#VARIÁVEIS DO FORMULÁRIO
-	$mot_sai = trim($_POST['mot_sai']);
-	$dat_sai = trim($_POST['dat_sai']);
 #ADQUIRINDO INFORMAÇÕES DO BANCO
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `nome` = '$mot_sai'");
 #TRANSFORMANDO RESULTADO EM NÚMEROS

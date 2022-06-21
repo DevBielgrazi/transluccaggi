@@ -119,7 +119,7 @@ if(!isset($_SESSION["system_control"])){
 	}else{
 		?>
 			<script>alert("MOTORISTA SEM FRETE NESTA DATA!");
-			document.location.href="frete_motorista.php"</script>
+			document.location.href="form_frete_motoristas.php"</script>
 		<?php
 	}
 ?>
