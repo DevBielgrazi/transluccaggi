@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18-Maio-2022 às 19:55
--- Versão do servidor: 10.4.22-MariaDB
--- versão do PHP: 7.4.27
+-- Tempo de geração: 21-Jun-2022 às 20:29
+-- Versão do servidor: 10.4.24-MariaDB
+-- versão do PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -50,6 +50,27 @@ CREATE TABLE `custos` (
   `mes` date NOT NULL,
   `descricao` varchar(16) NOT NULL,
   `valor` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `devolucoes`
+--
+
+CREATE TABLE `devolucoes` (
+  `id` int(11) NOT NULL,
+  `nota` varchar(16) NOT NULL,
+  `parcial` varchar(16) NOT NULL,
+  `valor` float NOT NULL,
+  `volumes` int(11) NOT NULL,
+  `cidade` varchar(16) NOT NULL,
+  `cliente` varchar(32) NOT NULL,
+  `cod_cliente` int(16) NOT NULL,
+  `motivo` varchar(32) NOT NULL,
+  `protocolo` int(11) NOT NULL,
+  `tipo` varchar(16) NOT NULL,
+  `status` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -167,6 +188,12 @@ ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `devolucoes`
+--
+ALTER TABLE `devolucoes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `distribuidoras`
 --
 ALTER TABLE `distribuidoras`
@@ -204,6 +231,12 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `devolucoes`
+--
+ALTER TABLE `devolucoes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
