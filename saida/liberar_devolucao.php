@@ -24,11 +24,11 @@ if(!isset($_SESSION["system_control"])){
 #VARIÁVEL HIDDEN DO BANCO
 	$id = trim($_POST['id']);
 #EXCLUINDO REGISTRO DO BANCO
-    $sql = mysqli_query($conn,"DELETE FROM $tab_nfs WHERE `id` = '$id'");
+    $sql = mysqli_query($conn,"UPDATE $tab_dev SET `status`='LIBERADA' WHERE `id` = '$id'");
 ?>
         <script>
-			alert("NOTA EXCLUIDA!");
-			document.location.href="http://localhost/transluccaggi/pesquisa/form_pesquisar_nfs.php";
+			alert("DEVOLUÇÃO LIBERADA!");
+			document.location.href="http://localhost/transluccaggi/saida/registro_devolucao.php";
 		</script>
 	</body>
 </html>

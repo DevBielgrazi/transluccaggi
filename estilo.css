@@ -1,5 +1,5 @@
 body{
-    background-color: white;
+    background-color: rgb(132, 140, 212);
 }
 h1{
     color: blue;
@@ -7,7 +7,7 @@ h1{
     font-size: 100%;
 }
 h3{
-    color:gray;
+    color:rgb(78, 78, 78);
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 75%;
 }
@@ -19,50 +19,15 @@ h4{
 h6{
     color:red;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 20px;
 }
 h7{
     color:green;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 20px;
 }
 h2{
-    color: blue;
+    color: black;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-button{
-    background-color: dodgerblue;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color:black;
-    font-size: 15px;
-}
-.buttonb{
-    background-color: rgb(160, 160, 160);
-    color: darkblue;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 15px;
-    border: none;
-}
-.buttonb2{
-    background-color: rgb(160, 160, 160);
-    color: darkblue;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 15px;
-    border: none;
-}
-.buttonb3{
-    background-color: rgb(160, 160, 160);
-    color: darkblue;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 15px;
-    border: none;
-}
-.buttonb4{
-    background-color: rgb(160, 160, 160);
-    color: darkblue;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 15px;
-    border: none;
+    font-size: 80%;
 }
 .buttonc{
     background-color:dodgerblue;
@@ -74,55 +39,53 @@ button{
 .buttond{
     background-color:blue;
     color:gray;
-    font-size: 15px;
-    border-radius: 20px;
+    font-size: 80%;
+    border-radius: 20%;
     border-color: gray;
 }
-.menu{
-    position: relative;
-    display: contents;
+logo{
+    position: absolute;
+    left:42%;
 }
 exit{
     position: absolute;
-    top: 1%;
     left: 95%;
 }
-.item{
+.dropbtn {
+    border: none;
+    cursor: pointer;
+    position: relative;
+}
+.dropdown {
+    position: absolute;
+    display: contents;
+}
+.dropdown-content {
     display: none;
     position: absolute;
-    background-color: rgb(160, 160, 160);
-    border-radius: 16px;
-    min-width: 160px;
+    overflow: auto;
     z-index: 1;
+    border-radius: 5%;
+    border-style:groove;
+    border-color: darkblue;
+    background-color: gray;
 }
-.item a{
+.dropdown-content a {
+    color: darkblue;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 100%;
+    border-style:solid;
+    border-color: black;
+    text-decoration: none;
     display: block;
 }
-.subitem{
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 160px;
-    z-index: 1;
-}
-.subitem a{
-    display: block;
-}
-.menu:hover .item{
-    display: block;
-}
-.item:hover .subitem{
+.show {
     display: block;
 }
 grafico{
     position:absolute;
-    top:100px;
-    left:500px;
-}
-gra{
-    position:absolute;
-    top:100px;
-    left:100px;
+    top:20%;
+    left:80%;
 }
 login{
     position:absolute;
@@ -136,18 +99,28 @@ pag{
 }
 pag2{
     position:absolute;
-    top:50px;
-    left:500px;
+    top:10%;
+    left:1%;
+}
+pag3{
+    position:absolute;
+    top:15%;
+    left:40%;
 }
 urn{
     position:absolute;
     top:15%;
     left: 120%;
 }
+urn2{
+    position:absolute;
+    top:15%;
+    left: 10%;
+}
 urc{
     position:absolute;
-    top:100%;
-    left:1%;
+    top:10%;
+    left:120%;
 }
 urd{
     position:absolute;
@@ -161,8 +134,8 @@ urm{
 }
 rn{
     position:absolute;
-    top:50px;
-    left:325px;
+    top:10%;
+    left:1%;
 }
 rs{
     position:absolute;
@@ -171,8 +144,8 @@ rs{
 }
 rf{
     position:absolute;
-    top:20px;
-    left:250px;
+    top:5%;
+    left:15%;
 }
 input, select{
     border-radius: 20%;
@@ -191,22 +164,26 @@ input, select{
 .inputc{
     background-color:gray;
     color:red;
-    font-size: 20px;
-    border-radius: 20px;
+    font-size: 100%;
+    border-radius: 20%;
     border-color: black;
 }
 .inputd{
     background-color:gray;
     color:black;
-    font-size: 15px;
-    border-radius: 10px;
+    font-size: 80%;
+    border-radius: 15%;
     border-color:gray;
+}
+.inpute{
+    border-radius: 20%;
+    background: none;
 }
 table{
     align-items: center;
     text-align: center;
     border-style: outset;
-    border-radius: 10px;
+    border-radius: 5%;
     border-color:darkblue;
     padding: 0%;
 }
@@ -214,6 +191,6 @@ table{
     align-items: left;
     text-align: left;
     border-style: inset;
-    border-radius: 10px;
+    border-radius: 15%;
     border-color:darkblue;
 }

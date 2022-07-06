@@ -67,43 +67,23 @@ if(!isset($_SESSION["system_control"])){
         	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
 		</exit>
 		<pag>
-			<h1>SAÍDA DE MOTORISTAS</h1><p>
+			<h1>AGENDAR ENTREGAS</h1><p>
 			<table>
 				<tr>
 					<td>
-						<form method="post" action="saida_motorista.php">
+						<form method="post" action="agendar_entrega.php">
 							<table>
-								<input type="hidden" name="n" value=0>
 								<tr>
-									<td><h4>MOTORISTA:</h4></td>
-									<td><select name="mot_sai">
-<?php
-#IMPORTANDO CONEXÃO DO BANCO
-	require('../connect.php');
-#ADQUIRINDO INFORMAÇÕES DO BANCO
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_mot");
-#TRANSFORMANDO RESULTADO EM NÚMEROS
-	$n = mysqli_num_rows($sql);
-#INICIANDO CONTADOR
-	$i=0;
-#APRESENTANDO REGISTROS DO BANCO
-	while($i!=$n){
-#CADASTROS POR COLUNA
-		$v = mysqli_fetch_array($sql);
-		?><option value="<?php	echo $v['nome']	?>"><?php	echo	$v['nome']	?></option><?php
-#SOMANDO AO CONTADOR
-		$i=$i+1;
-	}
-?>
-										</select></td>
-									</tr>
+									<td><h4>NOTA FISCAL:</h4></td>
+									<td><input name="age_nf" type=text size=16 maxlength=16 required></td>
+								</tr>
 								<tr>
 									<td><h4>DATA:</h4></td>
-									<td><input name="dat_sai" type=date required></td>
+									<td><input name="age_dat" type=date></td>
 								</tr>
 							</table>
 							<tr>
-								<td><input class="inputb" type=submit value=PRÓXIMA></td>
+								<td><input class="inputb" type=submit value=AGENDAR></td>
 							</tr>
 						</form>
 					</td>
@@ -113,6 +93,27 @@ if(!isset($_SESSION["system_control"])){
 	</body>
 </html>
 <?php
+if(isset($_POST['age_nf'])) {
+#IMPORTANDO CONEXÃO COM O BANCO
+	require('../connect.php');
+#VARIÁVEIS DO FORMULÁRIO
+    $age_nf = trim($_POST['num_nf']);
+    $age_dat = "AGENDADA PARA DIA:".date( 'd/m/Y' , strtotime( $_POST['dat_nf']));
+
+#ADQUIRINDO DADOS DO BANCO
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' AND `status` = 'AGENDAR' ORDER BY `id` DESC LIMIT 1");
+	$n = mysqli_num_rows($sql);
+    if($n != 0){
+        $sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'AGENDADA', `observacao` = '$age_dat' WHERE `numero` = '$num_nf'");
+        ?>
+            <script>alert("ENTREGA AGENDADA")</script>
+        <?php
+    }else{
+        ?>
+        <script>alert("NOTA NÃO ENCONTRADA")</script>
+        <?php
+    }
+}
     }
 }
 ?>

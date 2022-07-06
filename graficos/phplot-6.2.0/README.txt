@@ -161,7 +161,7 @@ You can test your installation by creating the following two files somewhere
 in your web document area. First, the HTML file:
 
 ------------ simpleplot.html ----------------------------
-<html>
+<html lang="pt-br">
 <head>
 <title>Hello, PHPlot!</title>
 </head>

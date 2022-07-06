@@ -10,7 +10,7 @@ if(!isset($_SESSION["system_control"])){
 	$system_control = $_SESSION["system_control"];
 	if($system_control == 1 || $system_control == 2){
 ?>
-<html>
+<html lang="pt-br">
 	<head>
 		<link rel="stylesheet" href="print.css" media="print"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -19,35 +19,99 @@ if(!isset($_SESSION["system_control"])){
 		<title>Matriz Principal</title>
 	</head>
 	<body>
-		<div class="menu">
-			<img src="..\imagem/logo.png" width=15%>
-			<div class="item">
-				<a href="..\saida/form_saida_motorista.php"><button class="buttonb">>SAÍDA DE MOTORISTAS</button></a>
-				<a href="..\saida/form_baixa_canhotos.php"><button class="buttonb">>BAIXA DE CANHOTOS</button></a>
-				<a href="..\saida/form_romaneio_cargas.php"><button class="buttonb">>ROMANEIO DE CARGAS</button></a>
-				<a href="..\saida/form_registro_devolucao.php"><button class="buttonb">>REGISTRO DE DEVOLUÇÕES</button></a>
-				<a href="..\cadastro/cadastrar_nfs.php"><button class="buttonb2">>CADASTRO NOTAS</button></a>
-				<a href="..\cadastro/cadastrar_clientes.php"><button class="buttonb2">>CADASTRO CLIENTES</button></a>
-				<a href="..\cadastro/cadastrar_distribuidoras.php"><button class="buttonb2">>CADASTRO DISTRIBUIDORAS</button></a>
-				<a href="..\pesquisa/form_pesquisar_nfs.php"><button class="buttonb3">>PESQUISAR NOTAS</button></a>
-				<a href="..\pesquisa/form_pesquisar_clientes.php"><button class="buttonb3">>PESQUISAR CLIENTES</button></a>
-				<a href="..\pesquisa/form_pesquisar_distribuidoras.php"><button class="buttonb3">>PESQUISAR DISTRIBUIDORAS</button></a>
-				<a href="..\cadastro/cadastrar_motoristas.php"><button class="buttonb2">>CADASTRAR MOTORISTA</button></a>
-				<a href="..\pesquisa/form_pesquisar_motoristas.php"><button class="buttonb2">>PESQUISAR MOTORISTA</button></a>
-				<a href="..\financeiro/form_relatorio_diario.php"><button class="buttonb4">>RELATÓRIO DIÁRIO</button></a>
-				<a href="..\financeiro/form_relatorio_mensal.php"><button class="buttonb4">>RELATÓRIO MENSAL</button></a>
-				<a href="..\financeiro/form_relatorio_anual.php"><button class="buttonb4">>RELATÓRIO ANUAL</button></a>
-				<a href="..\financeiro/form_frete_motoristas.php"><button class="buttonb4">>FRETE MOTORISTAS</button></a>
-				<a href="..\financeiro/form_fechamento_distribuidoras.php"><button class="buttonb4">>FECHAMENTO DISTRIBUIDORAS</button></a>
-				<a href="..\financeiro/form_fechamento_motoristas.php"><button class="buttonb4">>FECHAMENTO MOTORISTAS</button></a>
-			</div>
-		</div>
+		<div class="dropdown">
+        <img onclick="myFunction()"class="dropbtn" src="..\imagem/bars.png" width="2%"></img>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="form_saida_motorista.php">>SAÍDA DE MOTORISTAS</a>
+                <a href="baixa_canhotos.php">>BAIXA DE CANHOTOS</a>
+                <a href="form_romaneio_cargas.php">>ROMANEIO DE CARGAS</a>
+                <a href="registro_devolucao.php">>REGISTRO DE DEVOLUÇÕES</a>
+				<a href="agendar_entrega.php">>AGENDAR ENTREGA</a>
+                <a href="..\cadastro/cadastrar_nfs.php">>CADASTRO NOTAS</a>
+                <a href="..\cadastro/cadastrar_clientes.php">>CADASTRO CLIENTES</a>
+                <a href="..\cadastro/cadastrar_distribuidoras.php">>CADASTRO DISTRIBUIDORAS</a>
+                <a href="..\pesquisa/form_pesquisar_nfs.php">>PESQUISAR NOTAS</a>
+                <a href="..\pesquisa/form_pesquisar_clientes.php">>PESQUISAR CLIENTES</a>
+                <a href="..\pesquisa/form_pesquisar_distribuidoras.php">>PESQUISAR DISTRIBUIDORAS</a>
+                <a href="..\cadastro/cadastrar_motoristas.php">>CADASTRAR MOTORISTA</a>
+                <a href="..\pesquisa/form_pesquisar_motoristas.php">>PESQUISAR MOTORISTA</a>
+                <a href="..\financeiro/form_relatorio_diario.php">>RELATÓRIO DIÁRIO</a>
+                <a href="..\financeiro/form_relatorio_mensal.php">>RELATÓRIO MENSAL</a>
+                <a href="..\financeiro/form_relatorio_anual.php">>RELATÓRIO ANUAL</a>
+                <a href="..\financeiro/form_frete_motoristas.php">>FRETE MOTORISTAS</a>
+                <a href="..\financeiro/form_fechamento_distribuidoras.php">>FECHAMENTO DISTRIBUIDORAS</a>
+                <a href="..\financeiro/form_fechamento_motoristas.php">>FECHAMENTO MOTORISTAS</a>
+            </div>
+        </div>
+        <script>
+            function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+            }
+
+            window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+                }
+            }
+            }
+        </script>
+        <logo>
+        	<a href="..\menu.php"><img src="..\imagem/logo.png" width=25%></a>
+        </logo>
 		<exit>
-        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=80%></a>
+        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
 		</exit>
+        <pag>
+			<h1>REGISTRO DE DEVOLUÇÕES</h1><p>
+			<table>
+				<tr>
+					<td>
+						<form method="post" action="registro_devolucao.php">
+							<table>
+								<tr>
+									<td><h4>NOTA:</h4></td>
+									<td><input name="not_dev" type=text size=16 maxlength=32 required></td>
+								</tr>
+								<tr>
+									<td><h4>NOTA PARCIAL:</h4></td>
+									<td><input name="par_dev" type=text size=16 maxlength=32></td>
+								</tr>
+								<tr>
+									<td><h4>VALOR:</h4></td>
+									<td><input name="val_dev" type=text size=16 maxlength=32></td>
+								</tr>
+								<tr>
+									<td><h4>VOLUMES:</h4></td>
+									<td><input name="vol_dev" type=text size=16 maxlength=32></td>
+								</tr>
+								<tr>
+									<td><h4>MOTIVO:</h4></td>
+									<td><input name="mot_dev" type=text size=16 maxlength=32></td>
+								</tr>
+                                <tr>
+									<td><h4>PROTOCOLO:</h4></td>
+									<td><input name="pro_dev" type=text size=16 maxlength=32></td>
+								</tr>
+							</table>
+							<tr>
+								<td><input class="inputb" type=submit value=REGISTRAR></td>
+							</tr>
+						</form>
+					</td>
+				</tr>
+			</table>
+		</pag>
 		<?php
 #IMPORTANDO CONEXÃO COM O BANCO
-	require('../connect.php');
+    require('../connect.php');
+#ADQUIRINDO INFORMAÇÕES DO BANCO
+if(isset($_POST['not_dev'])){	
 #VARIÁVEIS DO FORMULÁRIO
 	$not_dev = trim($_POST['not_dev']);
 	$val_dev = trim($_POST['val_dev']);
@@ -58,70 +122,82 @@ if(!isset($_SESSION["system_control"])){
     }else{
         $par_dev = $_POST['par_dev'];
     }
-#ADQUIRINDO INFORMAÇÕES DO BANCO
-    $sql = mysqli_query($conn,"SELECT * FROM $tab_dev WHERE `nota` = '$not_dev'");
-	$v = mysqli_fetch_array($sql);
-	$status = $v['status'];
-	if($status=='AGUARDANDO'){
-		?>
-			<script>alert("NOTA AGUARDANDO PROTOCOLO");
-					window.history.back();</script>
-		<?php
-	}elseif($status=='LIBERAR'){
-		?>
-		<script>alert("NOTA JÁ COM PROTOCOLO");
-				window.history.back();</script>
-		<?php
-	}else{
-		$sql = mysqli_query($conn,"UPDATE $tab_dev SET `parcial`='$par_dev',`valor`='$val_dev',`volumes`='$vol_dev',`motivo`='$mot_dev',`status`='AGUARDANDO' WHERE `nota` = '$not_dev'");
+    $sql2 = mysqli_query($conn,"SELECT * FROM $tab_dev WHERE `nota` = '$not_dev' ORDER BY `id` DESC");
+    $n = mysqli_num_rows($sql2);
+    if($n!=0){
+        $v = mysqli_fetch_array($sql2);
+        $status = $v['status'];
+        if($status=='AGUARDANDO'){
+	        $pro_dev = trim($_POST['pro_dev']);
+            $sql3 = mysqli_query($conn,"UPDATE $tab_dev SET `status`='LIBERAR', `protocolo`='$pro_dev' WHERE `nota` = '$not_dev'");
+            ?>
+                <script>alert("NOTA AGUARDANDO LIBERAÇÃO");</script>
+            <?php
+        }elseif($status=='INFORMAR'){
+            $sql3 = mysqli_query($conn,"UPDATE $tab_dev SET `parcial`='$par_dev',`valor`='$val_dev',`volumes`='$vol_dev',`motivo`='$mot_dev',`status`='AGUARDANDO' WHERE `nota` = '$not_dev'");
+    ?>
+            <script>alert("NOTA REGISTRADA");</script>
+<?php
+        }else{
 ?>
-        <script>alert("NOTA REGISTRADA");</script>
-		<urn>
-            <table border=1>
-                <h3>DEVOLUÇÕES</h3>
-                <tr>
-                    <td><h3>NOTA</h3></td>
-                    <td><h3>NOTA PARCIAL</h3></td>
-                    <td><h3>VALOR</h3></td>
-                    <td><h3>VOLUMES</h3></td>
-                    <td><h3>CIDADE</h3></td>
-                    <td><h3>CLIENTE</h3></td>
-                    <td><h3>COD_<br>CLIENTE</h3></td>
-                    <td><h3>MOTIVO</h3></td>
-                    <td><h3>PROTOCOLO</h3></td>
-                </tr>
+            <script>alert("NOTA JÁ LIBERADA");</script>
 <?php
-    $sql = mysqli_query($conn,"SELECT * FROM $tab_dev WHERE `status` = 'AGUARDANDO'");
-    $n = mysqli_num_rows($sql);
-#INICIANDO CONTADOR
-    $i=0;
-#APRESENTANDO DADOS DA TABELA
-    while($i!=$n)
-    {
-        $vn = mysqli_fetch_array($sql);
-?>                        
-                <tr>
-                    <td><h4><nobr><?php echo $vn['nota'];   ?></nobr></h4></td>
-                    <td><h4><nobr><?php echo $vn['parcial'];    ?></nobr></h4></td>
-                    <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
-                    <td><h4><nobr><?php echo $vn['volumes'];    ?></nobr></h4></td>
-                    <td><h4><nobr><?php echo $vn['cidade'];    ?></nobr></h4></td>
-                    <td><h4><nobr><?php echo $vn['cliente'];    ?></nobr></h4></td>
-                    <td><h4><nobr><?php echo $vn['cod_cliente'];    ?></nobr></h4></td>
-                    <td><h4><nobr><?php echo $vn['motivo'];    ?></nobr></h4></td>
-                    <td><h4><nobr><?php echo $vn['protocolo'];    ?></nobr></h4></td>
-                </tr>
-<?php
-#SOMANDO AO CONTADOR
-            $i = $i + 1;
         }
-?>
-            </table>
-        </urn>
-	</body>
-</html>
-<?php
     }
 }
+?>
+            <urn>
+                <table border=1>
+                    <h3>DEVOLUÇÕES</h3>
+                    <tr>
+                        <td><h3>LIBERAR</h3></td>
+                        <td><h3>NOTA</h3></td>
+                        <td><h3>NOTA PARCIAL</h3></td>
+                        <td><h3>VALOR</h3></td>
+                        <td><h3>VOLUMES</h3></td>
+                        <td><h3>CIDADE</h3></td>
+                        <td><h3>CLIENTE</h3></td>
+                        <td><h3>COD_<br>CLIENTE</h3></td>
+                        <td><h3>MOTIVO</h3></td>
+                        <td><h3>PROTOCOLO</h3></td>
+                        <td><h3>STATUS</h3></td>
+                    </tr>
+    <?php
+    #INICIANDO CONTADOR
+        $i=0;
+    #APRESENTANDO DADOS DA TABELA
+    $sql = mysqli_query($conn,"SELECT * FROM $tab_dev WHERE `status` != 'LIBERADA' ORDER BY `status`");
+    $n = mysqli_num_rows($sql);
+        while($i!=$n)
+        {
+            $vn = mysqli_fetch_array($sql);
+    ?>                        
+                    <tr>
+                        <td><form method="post" action="liberar_devolucao.php">
+                            <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
+                            <nobr><input class="inpute" width="30%" type="image" src="..\imagem/check.png" alt="submit">
+                        </form></td>
+                        <td><h4><nobr><?php echo $vn['nota'];   ?></nobr></h4></td>
+                        <td><h4><nobr><?php echo $vn['parcial'];    ?></nobr></h4></td>
+                        <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
+                        <td><h4><nobr><?php echo $vn['volumes'];    ?></nobr></h4></td>
+                        <td><h4><nobr><?php echo $vn['cidade'];    ?></nobr></h4></td>
+                        <td><h4><nobr><?php echo $vn['cliente'];    ?></nobr></h4></td>
+                        <td><h4><nobr><?php echo $vn['cod_cliente'];    ?></nobr></h4></td>
+                        <td><h4><nobr><?php echo $vn['motivo'];    ?></nobr></h4></td>
+                        <td><h4><nobr><?php echo $vn['protocolo'];    ?></nobr></h4></td>
+                        <td><h4><nobr><?php echo $vn['status'];    ?></nobr></h4></td>
+                    </tr>
+    <?php
+    #SOMANDO AO CONTADOR
+                $i = $i + 1;
+            }
+    ?>
+                </table>
+            </urn>
+        </body>
+    </html>
+    <?php
+    }
 }
 ?>

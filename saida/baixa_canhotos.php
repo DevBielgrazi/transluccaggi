@@ -10,7 +10,7 @@ if(!isset($_SESSION["system_control"])){
 	$system_control = $_SESSION["system_control"];
 	if($system_control == 1 || $system_control == 2){
 ?>
-<html>
+<html lang="pt-br">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<link rel="icon" href="..\imagem/favicone.png"/>
@@ -18,33 +18,88 @@ if(!isset($_SESSION["system_control"])){
 		<title>Matriz Principal</title>
 	</head>
 	<body>
-		<div class="menu">
-			<img src="..\imagem/logo.png" width=15%>
-			<div class="item">
-				<a href="..\saida/form_saida_motorista.php"><button class="buttonb">>SAÍDA DE MOTORISTAS</button></a>
-				<a href="..\saida/form_baixa_canhotos.php"><button class="buttonb">>BAIXA DE CANHOTOS</button></a>
-				<a href="..\saida/form_romaneio_cargas.php"><button class="buttonb">>ROMANEIO DE CARGAS</button></a>
-				<a href="..\saida/form_registro_devolucao.php"><button class="buttonb">>REGISTRO DE DEVOLUÇÕES</button></a>
-				<a href="..\cadastro/cadastrar_nfs.php"><button class="buttonb2">>CADASTRO NOTAS</button></a>
-				<a href="..\cadastro/cadastrar_clientes.php"><button class="buttonb2">>CADASTRO CLIENTES</button></a>
-				<a href="..\cadastro/cadastrar_distribuidoras.php"><button class="buttonb2">>CADASTRO DISTRIBUIDORAS</button></a>
-				<a href="..\pesquisa/form_pesquisar_nfs.php"><button class="buttonb3">>PESQUISAR NOTAS</button></a>
-				<a href="..\pesquisa/form_pesquisar_clientes.php"><button class="buttonb3">>PESQUISAR CLIENTES</button></a>
-				<a href="..\pesquisa/form_pesquisar_distribuidoras.php"><button class="buttonb3">>PESQUISAR DISTRIBUIDORAS</button></a>
-				<a href="..\cadastro/cadastrar_motoristas.php"><button class="buttonb2">>CADASTRAR MOTORISTA</button></a>
-				<a href="..\pesquisa/form_pesquisar_motoristas.php"><button class="buttonb2">>PESQUISAR MOTORISTA</button></a>
-				<a href="..\financeiro/form_relatorio_diario.php"><button class="buttonb4">>RELATÓRIO DIÁRIO</button></a>
-				<a href="..\financeiro/form_relatorio_mensal.php"><button class="buttonb4">>RELATÓRIO MENSAL</button></a>
-				<a href="..\financeiro/form_relatorio_anual.php"><button class="buttonb4">>RELATÓRIO ANUAL</button></a>
-				<a href="..\financeiro/form_frete_motoristas.php"><button class="buttonb4">>FRETE MOTORISTAS</button></a>
-				<a href="..\financeiro/form_fechamento_distribuidoras.php"><button class="buttonb4">>FECHAMENTO DISTRIBUIDORAS</button></a>
-				<a href="..\financeiro/form_fechamento_motoristas.php"><button class="buttonb4">>FECHAMENTO MOTORISTAS</button></a>
-			</div>
-		</div>
+		<div class="dropdown">
+        <img onclick="myFunction()"class="dropbtn" src="..\imagem/bars.png" width="2%"></img>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="form_saida_motorista.php">>SAÍDA DE MOTORISTAS</a>
+                <a href="baixa_canhotos.php">>BAIXA DE CANHOTOS</a>
+                <a href="form_romaneio_cargas.php">>ROMANEIO DE CARGAS</a>
+                <a href="registro_devolucao.php">>REGISTRO DE DEVOLUÇÕES</a>
+				<a href="agendar_entrega.php">>AGENDAR ENTREGA</a>
+                <a href="..\cadastro/cadastrar_nfs.php">>CADASTRO NOTAS</a>
+                <a href="..\cadastro/cadastrar_clientes.php">>CADASTRO CLIENTES</a>
+                <a href="..\cadastro/cadastrar_distribuidoras.php">>CADASTRO DISTRIBUIDORAS</a>
+                <a href="..\pesquisa/form_pesquisar_nfs.php">>PESQUISAR NOTAS</a>
+                <a href="..\pesquisa/form_pesquisar_clientes.php">>PESQUISAR CLIENTES</a>
+                <a href="..\pesquisa/form_pesquisar_distribuidoras.php">>PESQUISAR DISTRIBUIDORAS</a>
+                <a href="..\cadastro/cadastrar_motoristas.php">>CADASTRAR MOTORISTA</a>
+                <a href="..\pesquisa/form_pesquisar_motoristas.php">>PESQUISAR MOTORISTA</a>
+                <a href="..\financeiro/form_relatorio_diario.php">>RELATÓRIO DIÁRIO</a>
+                <a href="..\financeiro/form_relatorio_mensal.php">>RELATÓRIO MENSAL</a>
+                <a href="..\financeiro/form_relatorio_anual.php">>RELATÓRIO ANUAL</a>
+                <a href="..\financeiro/form_frete_motoristas.php">>FRETE MOTORISTAS</a>
+                <a href="..\financeiro/form_fechamento_distribuidoras.php">>FECHAMENTO DISTRIBUIDORAS</a>
+                <a href="..\financeiro/form_fechamento_motoristas.php">>FECHAMENTO MOTORISTAS</a>
+            </div>
+        </div>
+        <script>
+            function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+            }
+
+            window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+                }
+            }
+            }
+        </script>
+        <logo>
+        	<a href="..\menu.php"><img src="..\imagem/logo.png" width=25%></a>
+        </logo>
 		<exit>
-        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=80%></a>
+        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
 		</exit>
+		<pag>
+			<h1>BAIXA DE CANHOTOS</h1><p>
+			<table>
+				<tr>
+					<td>
+						<form method="post" action="baixa_canhotos.php">
+							<table>
+								<tr>
+									<td><h4>ENTREGUE<input type="radio" name="opc" value="ent" checked></h4></td>
+									<td><h4>PENDENTE<input type="radio" name="opc" value="pen"></h4></td>
+									<td><h4>DEVOLUÇÃO INTEGRAL<input type="radio" name="opc" value="int"></h4></td>
+									<td><h4>DEVOLUÇÃO PARCIAL<input type="radio" name="opc" value="par"></h4></td>
+								</tr>
+								<tr>
+									<td><h4>NOTA FISCAL:</h4></td>
+									<td><input name="num_nf" type=text size=16 maxlength=16 required></td>
+								</tr>
+								<tr>
+									<td><h4>OBSERVAÇÃO:</h4></td>
+									<td><input name="obs_nf" type=text size=64 maxlength=128></td>
+								</tr>
+							</table>
+							<tr>
+								<td><input class="inputb" type=submit value=PRÓXIMA></td>
+							</tr>
+						</form>
+					</td>
+				</tr>
+			</table>
+		</pag>
+	</body>
+</html>
 <?php
+if(isset($_POST['num_nf'])) {
 #IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
 #VARIÁVEIS DO FORMULÁRIO
@@ -93,7 +148,7 @@ if(!isset($_SESSION["system_control"])){
 				<?php
 			}else{
 				?>
-					<script>alert("NOTA EM ESTOQUE")</script>
+					<script>alert("NOTA NÃO ENCONTRADA")</script>
 				<?php
 			}
 			break;
@@ -106,7 +161,7 @@ if(!isset($_SESSION["system_control"])){
 				<?php
 			}else{
 				?>
-				<script>alert("NOTA EM ESTOQUE")</script>
+				<script>alert("NOTA NÃO ENCONTRADA")</script>
 				<?php
 			}
 			break;
@@ -119,13 +174,13 @@ if(!isset($_SESSION["system_control"])){
 				$nom_cli = $v['nome_cliente'];
 				$cod_cli = $v['cod_cliente'];
 				$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'DEVOLUCAO INTEGRAL', `observacao` = '$obs_nf' WHERE `id` = '$id'");
-				$sql2 = mysqli_query($conn,"INSERT INTO $tab_dev(`nota`,`cidade`,`cliente`,`cod_cliente`,`tipo`,`status`) VALUES('$num_nf','$cid_cli','$nom_cli','$cod_cli','INTEGRAL','INFORMAR')'");
+				$sql2 = mysqli_query($conn,"INSERT INTO $tab_dev (`nota`, `cidade`, `cliente`, `cod_cliente`, `tipo`, `status`) VALUES ('$num_nf', '$cid_cli', '$nom_cli', '$cod_cli', 'INTEGRAL', 'INFORMAR')");
 				?>
 					<script>alert("NOTA DEVOLVIDA")</script>
 				<?php
 			}else{
 				?>
-				<script>alert("NOTA EM ESTOQUE")</script>
+				<script>alert("NOTA NÃO ENCONTRADA")</script>
 				<?php
 			}
 			break;
@@ -144,44 +199,11 @@ if(!isset($_SESSION["system_control"])){
 				<?php
 			}else{
 				?>
-				<script>alert("NOTA EM ESTOQUE")</script>
+				<script>alert("NOTA NÃO ENCONTRADA")</script>
 				<?php
 			}
 	}
-?>
-		<pag>
-			<h1>BAIXA DE CANHOTOS</h1><p>
-			<table>
-				<tr>
-					<td>
-						<form method="post" action="baixa_canhotos.php">
-							<table>
-								<tr>
-									<td><h4>ENTREGUE<input type="radio" name="opc" value="ent" checked></h4></td>
-									<td><h4>PENDENTE<input type="radio" name="opc" value="pen"></h4></td>
-									<td><h4>DEVOLUÇÃO INTEGRAL<input type="radio" name="opc" value="int"></h4></td>
-									<td><h4>DEVOLUÇÃO PARCIAL<input type="radio" name="opc" value="par"></h4></td>
-								</tr>
-								<tr>
-									<td><h4>NOTA FISCAL:</h4></td>
-									<td><input name="num_nf" type=text size=16 maxlength=16 required></td>
-								</tr>
-								<tr>
-									<td><h4>OBSERVAÇÃO:</h4></td>
-									<td><input name="obs_nf" type=text size=64 maxlength=128></td>
-								</tr>
-							</table>
-							<tr>
-								<td><input class="inputb" type=submit value=PRÓXIMA></td>
-							</tr>
-						</form>
-					</td>
-				</tr>
-			</table>
-		</pag>
-	</body>
-</html>
-<?php
     }
+}
 }
 ?>

@@ -10,7 +10,7 @@ if(!isset($_SESSION["system_control"])){
 	$system_control = $_SESSION["system_control"];
 	if($system_control == 1 || $system_control == 2){
 ?>
-<html>
+<html lang="pt-br">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<link rel="icon" href="..\imagem/favicone.png"/>
@@ -18,31 +18,53 @@ if(!isset($_SESSION["system_control"])){
 		<title>Matriz Principal</title>
 	</head>
 	<body>
-        <div class="menu">
-			<img src="..\imagem/logo.png" width=15%>
-			<div class="item">
-				<a href="..\saida/form_saida_motorista.php"><button class="buttonb">>SAÍDA DE MOTORISTAS</button></a>
-				<a href="..\saida/form_baixa_canhotos.php"><button class="buttonb">>BAIXA DE CANHOTOS</button></a>
-				<a href="..\saida/form_romaneio_cargas.php"><button class="buttonb">>ROMANEIO DE CARGAS</button></a>
-				<a href="..\saida/form_registro_devolucao.php"><button class="buttonb">>REGISTRO DE DEVOLUÇÕES</button></a>
-				<a href="..\cadastro/cadastrar_nfs.php"><button class="buttonb2">>CADASTRO NOTAS</button></a>
-				<a href="..\cadastro/cadastrar_clientes.php"><button class="buttonb2">>CADASTRO CLIENTES</button></a>
-				<a href="..\cadastro/cadastrar_distribuidoras.php"><button class="buttonb2">>CADASTRO DISTRIBUIDORAS</button></a>
-				<a href="..\pesquisa/form_pesquisar_nfs.php"><button class="buttonb3">>PESQUISAR NOTAS</button></a>
-				<a href="..\pesquisa/form_pesquisar_clientes.php"><button class="buttonb3">>PESQUISAR CLIENTES</button></a>
-				<a href="..\pesquisa/form_pesquisar_distribuidoras.php"><button class="buttonb3">>PESQUISAR DISTRIBUIDORAS</button></a>
-				<a href="..\cadastro/cadastrar_motoristas.php"><button class="buttonb2">>CADASTRAR MOTORISTA</button></a>
-				<a href="..\pesquisa/form_pesquisar_motoristas.php"><button class="buttonb2">>PESQUISAR MOTORISTA</button></a>
-				<a href="..\financeiro/form_relatorio_diario.php"><button class="buttonb4">>RELATÓRIO DIÁRIO</button></a>
-				<a href="..\financeiro/form_relatorio_mensal.php"><button class="buttonb4">>RELATÓRIO MENSAL</button></a>
-				<a href="..\financeiro/form_relatorio_anual.php"><button class="buttonb4">>RELATÓRIO ANUAL</button></a>
-				<a href="..\financeiro/form_frete_motoristas.php"><button class="buttonb4">>FRETE MOTORISTAS</button></a>
-				<a href="..\financeiro/form_fechamento_distribuidoras.php"><button class="buttonb4">>FECHAMENTO DISTRIBUIDORAS</button></a>
-				<a href="..\financeiro/form_fechamento_motoristas.php"><button class="buttonb4">>FECHAMENTO MOTORISTAS</button></a>
-			</div>
-		</div>
+        <div class="dropdown">
+        <img onclick="myFunction()"class="dropbtn" src="..\imagem/bars.png" width="2%"></img>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="..\saida/form_saida_motorista.php">>SAÍDA DE MOTORISTAS</a>
+                <a href="..\saida/baixa_canhotos.php">>BAIXA DE CANHOTOS</a>
+                <a href="..\saida/form_romaneio_cargas.php">>ROMANEIO DE CARGAS</a>
+                <a href="..\saida/registro_devolucao.php">>REGISTRO DE DEVOLUÇÕES</a>
+				<a href="..\saida/agendar_entrega.php">>AGENDAR ENTREGA</a>
+                <a href="..\cadastro/cadastrar_nfs.php">>CADASTRO NOTAS</a>
+                <a href="..\cadastro/cadastrar_clientes.php">>CADASTRO CLIENTES</a>
+                <a href="..\cadastro/cadastrar_distribuidoras.php">>CADASTRO DISTRIBUIDORAS</a>
+                <a href="..\pesquisa/form_pesquisar_nfs.php">>PESQUISAR NOTAS</a>
+                <a href="..\pesquisa/form_pesquisar_clientes.php">>PESQUISAR CLIENTES</a>
+                <a href="..\pesquisa/form_pesquisar_distribuidoras.php">>PESQUISAR DISTRIBUIDORAS</a>
+                <a href="..\cadastro/cadastrar_motoristas.php">>CADASTRAR MOTORISTA</a>
+                <a href="..\pesquisa/form_pesquisar_motoristas.php">>PESQUISAR MOTORISTA</a>
+                <a href="..\financeiro/form_relatorio_diario.php">>RELATÓRIO DIÁRIO</a>
+                <a href="..\financeiro/form_relatorio_mensal.php">>RELATÓRIO MENSAL</a>
+                <a href="..\financeiro/form_relatorio_anual.php">>RELATÓRIO ANUAL</a>
+                <a href="..\financeiro/form_frete_motoristas.php">>FRETE MOTORISTAS</a>
+                <a href="..\financeiro/form_fechamento_distribuidoras.php">>FECHAMENTO DISTRIBUIDORAS</a>
+                <a href="..\financeiro/form_fechamento_motoristas.php">>FECHAMENTO MOTORISTAS</a>
+            </div>
+        </div>
+        <script>
+            function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+            }
+
+            window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+                }
+            }
+            }
+        </script>
+        <logo>
+        	<a href="..\menu.php"><img src="..\imagem/logo.png" width=25%></a>
+        </logo>
 		<exit>
-        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=80%></a>
+        	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
 		</exit>
 <?php
 #IMPORTANDO CONEXÃO COM O BANCO
@@ -163,7 +185,7 @@ if(!isset($_SESSION["system_control"])){
                 <script>
 			        alert("NOTA ATUALIZADA!");
 			    </script>
-        <urn>
+        <urn2>
             <table border=1>
                 <h3>NOTAS CADASTRADAS</h3>
                 <tr>
@@ -206,7 +228,7 @@ if(!isset($_SESSION["system_control"])){
         }
 ?>
             </table>
-        </urn>
+        </urn2>
 	</body>
 </html>
 <?php
