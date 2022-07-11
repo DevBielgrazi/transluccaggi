@@ -120,6 +120,11 @@ require('../connect.php');
 				<td><h3>MOTORISTA:<?php  echo $nom_mot; ?></h3></td>
 				<td><h3>VEÍCULO:<?php echo $vei_mot  ?></h3></td>
 				<td><h3>PLACA:<?php echo $pla_mot  ?></h3></td>
+				<form method="post" action="cancelar_saida.php">
+                    <input type="hidden" name="mot_sai" value="<?php echo $mot_sai;?>">
+                    <input type="hidden" name="dat_sai" value="<?php echo $dat_sai;?>">
+                    <td><nobr><input class="inpute" width="20" type="image" src="..\imagem/cancel.png" alt="submit"></td>
+                </form>
 			</tr>
 			<tr>
 				<td><h3>NF</h3></td>
@@ -127,6 +132,7 @@ require('../connect.php');
 				<td><h3>VOLUMES</h3></td>
 				<td><h3>CLIENTE</h3></td>
 				<td><h3>CIDADE</h3></td>
+				<td><h3>REMOVER</h3></td>
 		</tr>
 <?php
 #INICIANDO CONTADOR
@@ -165,22 +171,25 @@ require('../connect.php');
 					<td><h4><nobr><?php echo $vn['volumes'];    ?></nobr></h4></td>
 					<td><h4><nobr><?php echo $vn['nome_cliente'];    ?></nobr></h4></td>
 					<td><h4><nobr><?php echo $vn['cidade_cliente'];    ?></nobr></h4></td>
+				<form method="post" action="remover_nf.php">
+                    <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
+                    <input type="hidden" name="mot_sai" value="<?php echo $mot_sai;?>">
+                    <input type="hidden" name="dat_sai" value="<?php echo $dat_sai;?>">
+                    <td><nobr><input class="inpute" width="20" type="image" src="..\imagem/cancel.png" alt="submit"></td>
+                </form>
 <?php
 #SOMANDO AO CONTADOR
 		$i = $i + 1;
 		}
 	}else{
-		?>
-			<tr>
-			<input type="hidden" name="n" value="<?php $nn = ($_POST['n']+1)?>">
-				<td><h4><nobr>NÃO ENCONTRADA</nobr></h4></td>
-				<td><h4><nobr></nobr></h4></td>
-				<td><h4><nobr></nobr></h4></td>
-				<td><h4><nobr></nobr></h4></td>
-				<td><h4><nobr></nobr></h4></td>
+		if(isset($not_sai)){
+?>
+			<script>
+				alert("NOTA NÃO ENCONTRADA!");
+			</script>
 <?php
-        $i = $i + 1;
 		}
+	}
 	}else{
 		$nom_mot = null;
 		$vei_mot = null;

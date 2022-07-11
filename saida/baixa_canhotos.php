@@ -140,12 +140,15 @@ if(isset($_POST['num_nf'])) {
 				if($t>1){
 #ATUALIZANDO REGISTRO NO BANCO
 					$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'REENTREGUE', `observacao` = '$obs_nf' WHERE `id` = '$id'");
+					?>
+						<script>alert("NOTA REENTREGUE")</script>
+					<?php
 				}else{
 					$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'ENTREGUE', `observacao` = '$obs_nf' WHERE `id` = '$id'");
+					?>
+						<script>alert("NOTA CONFERIDA")</script>
+					<?php
 				}
-				?>
-					<script>alert("NOTA CONFERIDA")</script>
-				<?php
 			}else{
 				?>
 					<script>alert("NOTA NÃO ENCONTRADA")</script>
@@ -157,7 +160,7 @@ if(isset($_POST['num_nf'])) {
 			{
 				$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'PENDENTE', `observacao` = '$obs_nf' WHERE `id` = '$id'");
 				?>
-					<script>alert("NOTA REENTREGUE")</script>
+					<script>alert("NOTA PENDENTE")</script>
 				<?php
 			}else{
 				?>
