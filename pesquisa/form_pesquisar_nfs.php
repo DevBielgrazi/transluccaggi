@@ -173,8 +173,6 @@ while($i!=$n){
 									<td><h4>DISTRIBUIDORA:<input type="radio" name="opc" value="dis"></h4></td>
 									<td><select name="cod_dis">
 <?php
-#IMPORTANDO CONEXÃO DO BANCO
-	require('../connect.php');
 #ADQUIRINDO INFORMAÇÕES DO BANCO
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis");
 #TRANSFORMANDO RESULTADO EM NÚMEROS

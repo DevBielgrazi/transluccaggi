@@ -82,10 +82,20 @@ exit{
 .show {
     display: block;
 }
-grafico{
+fdc{
     position:absolute;
-    top:20%;
-    left:80%;
+    top:10%;
+    left:40%;
+}
+fdc2{
+    position:absolute;
+    top:10%;
+    left:45%;
+}
+rdc{
+    position:absolute;
+    top:10%;
+    left:120%;
 }
 login{
     position:absolute;
