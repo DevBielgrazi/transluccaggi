@@ -66,6 +66,9 @@ require('../connect.php');
             }
             }
         </script>
+		<back>
+        	<a href="form_saida_motorista.php"><img src="..\imagem/back.png" width=20%></a>
+        </back>
         <logo>
         	<a href="..\menu.php"><img src="..\imagem/logo.png" width=25%></a>
         </logo>

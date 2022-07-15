@@ -9,6 +9,24 @@ if(!isset($_SESSION["system_control"])){
 }else{
 	$system_control = $_SESSION["system_control"];
 	if($system_control == 2){
+        if(isset($_POST['des_cus'])){
+            #VARIÁVEIS DO FORMULÁRIO
+            $dat_cus2 = trim($_POST['dat_cus']);
+            $des_cus = trim($_POST['des_cus']);
+            $val_cus = trim($_POST['val_cus']);
+
+            $des_cus = strtolower($des_cus);
+
+            require('../connect.php');
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_cus WHERE `mes` = '$dat_cus2' AND `descricao` = '$des_cus'");
+            $n = mysqli_num_rows($sql);
+
+            if($n!=0){
+                $sql = mysqli_query($conn,"UPDATE $tab_cus SET `valor` = '$val_cus' WHERE `mes` = '$dat_cus2' AND `descricao` = '$des_cus'");
+            }else{
+                $sql = mysqli_query($conn,"INSERT INTO $tab_cus VALUES ('$dat_cus2','$des_cus','$val_cus')");
+            }
+        }
 ?>
 <html lang="pt-br">
 	<head>
@@ -60,6 +78,9 @@ if(!isset($_SESSION["system_control"])){
             }
             }
         </script>
+        <back>
+        	<a href="form_relatorio_mensal.php"><img src="..\imagem/back.png" width=20%></a>
+        </back>
         <logo>
         	<a href="..\menu.php"><img src="..\imagem/logo.png" width=25%></a>
         </logo>
@@ -70,13 +91,13 @@ if(!isset($_SESSION["system_control"])){
 #VARIÁVEIS DO FORMULÁRIO
 $ano_cus = trim($_POST['ano_rel']);
 $mes_cus = trim($_POST['mes_rel']);
-$dat_cus = $ano_cus."-".$mes_cus."-01";
+$dat_cus2 = $ano_cus."-".$mes_cus."-01";
 ?>
 		<pag3>
 			<table border=1>
 				<tr>
 					<td><h3>MÊS:</h3></td>
-                    <td><h4><nobr><?php echo date( 'm/Y' , strtotime($dat_cus));   ?></nobr></h4></td>
+                    <td><h4><nobr><?php echo date( 'm/Y' , strtotime($dat_cus2));   ?></nobr></h4></td>
                 </tr>
                 <tr>
 					<td><h3>DESCRIÇÃO</h3></td>
@@ -84,11 +105,11 @@ $dat_cus = $ano_cus."-".$mes_cus."-01";
 				</tr>
 <?php
     require('../connect.php');
-    $sql = mysqli_query($conn,"SELECT SUM(`valor`) as 'cus' FROM $tab_cus WHERE `mes` = '$dat_cus'");
+    $sql = mysqli_query($conn,"SELECT SUM(`valor`) as 'cus' FROM $tab_cus WHERE `mes` = '$dat_cus2'");
     $sql = mysqli_fetch_array($sql);
     $cus_men = number_format(($sql['cus']), 2, '.', '');
 
-    $sql = mysqli_query($conn,"SELECT * FROM $tab_cus WHERE `mes` = '$dat_cus'");
+    $sql = mysqli_query($conn,"SELECT * FROM $tab_cus WHERE `mes` = '$dat_cus2'");
 	$n = mysqli_num_rows($sql);
     $i=0;
     while($i!=$n){
@@ -109,23 +130,25 @@ $dat_cus = $ano_cus."-".$mes_cus."-01";
                 </tr>
 			</table>
             <form method="post" action="..\graficos/grafico_custos.php" target="_blank">
-            <input type="hidden" name="dat_cus" value="<?php echo $dat_cus;?>">
+            <input type="hidden" name="dat_cus" value="<?php echo $dat_cus2;?>">
             <td><nobr><input width="80" type="image" src="..\imagem/grafico.jpg" alt="submit"></td>
         </form>
         </pag3>
         <pag2>
 			<h1>CUSTOS MENSAL</h1><p>
             <form method="post" action="relatorio_mensal.php">
-                <input type="hidden" name="mes_rel" value="<?php echo date( 'm' , strtotime($dat_cus));?>">
-                <input type="hidden" name="ano_rel" value="<?php echo date( 'Y' , strtotime($dat_cus));?>">
+                <input type="hidden" name="mes_rel" value="<?php echo date( 'm' , strtotime($dat_cus2));?>">
+                <input type="hidden" name="ano_rel" value="<?php echo date( 'Y' , strtotime($dat_cus2));?>">
                 <td><button class="buttond" type=submit>RELATÓRIO MENSAL</button></td>
             </form>
 			<table>
                 <tr>
                     <td>
-                        <form method="post" action="cadastrar_custos.php">
+                        <form method="post" action="custos_mensal.php">
                             <table>
-                            <input type="hidden" name="dat_cus" value="<?php echo $dat_cus;?>">
+                            <input type="hidden" name="dat_cus" value="<?php echo $dat_cus2;?>">
+                            <input type="hidden" name="ano_rel" value="<?php echo $ano_cus;?>">
+                            <input type="hidden" name="mes_rel" value="<?php echo $mes_cus;?>">
                                 <tr>
                                     <td><h4>DESCRIÇÃO:</h4></td>
                                     <td><input name="des_cus" type=text size=16 maxlength=16 required></td>
@@ -147,7 +170,6 @@ $dat_cus = $ano_cus."-".$mes_cus."-01";
 </html>
 <?php
     }
-    
     else
     {
 ?>

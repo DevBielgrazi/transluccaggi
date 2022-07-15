@@ -51,6 +51,10 @@ exit{
     position: absolute;
     left: 95%;
 }
+back{
+    position: absolute;
+    left: 5%;
+}
 .dropbtn {
     border: none;
     cursor: pointer;

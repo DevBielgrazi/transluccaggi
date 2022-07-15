@@ -59,6 +59,9 @@ if(!isset($_SESSION["system_control"])){
             }
             }
         </script>
+        <back>
+        	<a href="..\pesquisa/form_pesquisar_nfs.php"><img src="..\imagem/back.png" width=20%></a>
+        </back>
         <logo>
         	<a href="..\menu.php"><img src="..\imagem/logo.png" width=25%></a>
         </logo>

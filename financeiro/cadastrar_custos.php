@@ -66,7 +66,6 @@ if(!isset($_SESSION["system_control"])){
 		<exit>
         	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
 		</exit>
-        <rn>
 <?php
 #VARIÁVEIS DO FORMULÁRIO
 $dat_cus = trim($_POST['dat_cus']);
