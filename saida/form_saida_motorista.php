@@ -73,7 +73,7 @@ if(!isset($_SESSION["system_control"])){
 					<td>
 						<form method="post" action="saida_motorista.php">
 							<table>
-								<input type="hidden" name="n" value=0>
+								<input autocomplete="off" type="hidden" name="n" value=0>
 								<tr>
 									<td><h4>MOTORISTA:</h4></td>
 									<td><select name="mot_sai">
@@ -99,11 +99,11 @@ if(!isset($_SESSION["system_control"])){
 									</tr>
 								<tr>
 									<td><h4>DATA:</h4></td>
-									<td><input name="dat_sai" type=date required></td>
+									<td><input autocomplete="off" name="dat_sai" type=date required></td>
 								</tr>
 							</table>
 							<tr>
-								<td><input class="inputb" type=submit value=PRÓXIMA></td>
+								<td><input autocomplete="off" class="inputb" type=submit value=PRÓXIMA></td>
 							</tr>
 						</form>
 					</td>

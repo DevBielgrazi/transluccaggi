@@ -35,8 +35,8 @@ if(!isset($_SESSION["system_control"])){
 			window.onload = formAutoSubmit;
 		</script>
 		<form id="form" method="post" action="saida_motorista.php">
-			<input type="hidden" name="mot_sai" value="<?php echo $mot_sai;?>">
-			<input type="hidden" name="dat_sai" value="<?php echo $dat_sai;?>">
+			<input autocomplete="off" type="hidden" name="mot_sai" value="<?php echo $mot_sai;?>">
+			<input autocomplete="off" type="hidden" name="dat_sai" value="<?php echo $dat_sai;?>">
 		</form>
 	</body>
 </html>

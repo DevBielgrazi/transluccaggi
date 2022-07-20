@@ -79,15 +79,15 @@ if(!isset($_SESSION["system_control"])){
 							<table>
 								<tr>
 									<td><h4>CÓDIGO:</h4></td>
-									<td><input name="cod_cli" type=text size=32 maxlength=16 required></td>
+									<td><input autocomplete="off" name="cod_cli" type=text size=32 maxlength=16 required></td>
 								</tr>
 								<tr>
 									<td><h4>NOME:</h4></td>
-									<td><input name="nom_cli" type=int size=32 maxlength=64 required></td>
+									<td><input autocomplete="off" name="nom_cli" type=int size=32 maxlength=64 required></td>
 								</tr>
 								<tr>
 									<td><h4>CADASTRO:</h4></td>
-									<td><input name="cad_cli" type=date required></td>
+									<td><input autocomplete="off" name="cad_cli" type=date required></td>
 								</tr>
 								<tr>
 									<td><h4>ROTA:</h4></td>
@@ -109,26 +109,26 @@ if(!isset($_SESSION["system_control"])){
 								</tr>
 								<tr>
 									<td><h4>CIDADE:</h4></td>
-									<td><input name="cid_cli" type=text size=32 maxlength=32 required></td>
+									<td><input autocomplete="off" name="cid_cli" type=text size=32 maxlength=32 required></td>
 								</tr>
 								<tr>
 									<td><h4>BAIRRO:</h4></td>
-									<td><input name="bai_cli" type=text size=32 maxlength=32 required></td>
+									<td><input autocomplete="off" name="bai_cli" type=text size=32 maxlength=32 required></td>
 								</tr>
 								<tr>
 									<td><h4>ENDEREÇO:</h4></td>
-									<td><input name="end_cli" type=text size=32 maxlength=64 required></td>
+									<td><input autocomplete="off" name="end_cli" type=text size=32 maxlength=64 required></td>
 								</tr>
 								<tr>
 									<td><h4>CÓDIGO DISTRIBUIDORA:</h4></td>
-									<td><input name="cod_dis" type=int size=32 maxlength=16 required></td>
+									<td><input autocomplete="off" name="cod_dis" type=int size=32 maxlength=16 required></td>
 								</tr>
 								<tr>
-									<td><h4>AGENDAR:<input type=checkbox name="age" value="SIM"></h4></td>
+									<td><h4>AGENDAR:<input autocomplete="off" type=checkbox name="age" value="SIM"></h4></td>
 								</tr>
 							</table>
 							<tr>
-								<td><input class="inputb" type=submit value=CADASTRAR></td>
+								<td><input autocomplete="off" class="inputb" type=submit value=CADASTRAR></td>
 							</tr>
 						</form>
 					</td>
@@ -146,15 +146,15 @@ if(!isset($_SESSION["system_control"])){
 						<table>
 							<tr>
 								<td><h4>CÓDIGO:</h4></td>
-								<td><input name="cod_cli" type=text size=32 maxlength=16 required></td>
+								<td><input autocomplete="off" name="cod_cli" type=text size=32 maxlength=16 required></td>
 							</tr>
 							<tr>
 								<td><h4>NOME:</h4></td>
-								<td><input name="nom_cli" type=int size=32 maxlength=64 required></td>
+								<td><input autocomplete="off" name="nom_cli" type=int size=32 maxlength=64 required></td>
 							</tr>
 							<tr>
 								<td><h4>CADASTRO:</h4></td>
-								<td><input name="cad_cli" type=date required></td>
+								<td><input autocomplete="off" name="cad_cli" type=date required></td>
 							</tr>
 							<tr>
 								<td><h4>ROTA:</h4></td>
@@ -176,26 +176,26 @@ if(!isset($_SESSION["system_control"])){
 							</tr>
 							<tr>
 								<td><h4>CIDADE:</h4></td>
-								<td><input name="cid_cli" type=text size=32 maxlength=32 required></td>
+								<td><input autocomplete="off" name="cid_cli" type=text size=32 maxlength=32 required></td>
 							</tr>
 							<tr>
 								<td><h4>BAIRRO:</h4></td>
-								<td><input name="bai_cli" type=text size=32 maxlength=32 required></td>
+								<td><input autocomplete="off" name="bai_cli" type=text size=32 maxlength=32 required></td>
 							</tr>
 							<tr>
 								<td><h4>ENDEREÇO:</h4></td>
-								<td><input name="end_cli" type=text size=32 maxlength=64 required></td>
+								<td><input autocomplete="off" name="end_cli" type=text size=32 maxlength=64 required></td>
 							</tr>
 							<tr>
 								<td><h4>CÓDIGO DISTRIBUIDORA:</h4></td>
-								<td><input name="cod_dis" type=int size=32 maxlength=16 required></td>
+								<td><input autocomplete="off" name="cod_dis" type=int size=32 maxlength=16 required></td>
 							</tr>
 							<tr>
-								<td><h4>AGENDAR:<input type=checkbox name="age" value="SIM"></h4></td>
+								<td><h4>AGENDAR:<input autocomplete="off" type=checkbox name="age" value="SIM"></h4></td>
 							</tr>
 						</table>
 						<tr>
-							<td><input class="inputb" type=submit value=CADASTRAR></td>
+							<td><input autocomplete="off" class="inputb" type=submit value=CADASTRAR></td>
 						</tr>
 					</form>
 				</td>
@@ -275,12 +275,12 @@ if(!isset($_SESSION["system_control"])){
 ?>
 							<tr>
 								<form method="post" action="..\excluir/resultado_excluir_clientes.php">
-                					<input type="hidden" name="id" value="<?php echo $vn['id'];?>">
-                				<td><nobr><input class="inpute" width="40" type="image" src="..\imagem/delete.png" alt="submit"></td>
+                					<input autocomplete="off" type="hidden" name="id" value="<?php echo $vn['id'];?>">
+                				<td><nobr><input autocomplete="off" class="inpute" width="40" type="image" src="..\imagem/delete.png" alt="submit"></td>
             					</form>
            						 <form method="post" action="..\alterar/resultado_alterar_clientes.php">
-                					<input type="hidden" name="id" value="<?php echo $vn['id'];?>">
-                   	 			<td><input class="inpute" width="40" type="image" src="..\imagem/alter.png" alt="submit"></td>
+                					<input autocomplete="off" type="hidden" name="id" value="<?php echo $vn['id'];?>">
+                   	 			<td><input autocomplete="off" class="inpute" width="40" type="image" src="..\imagem/alter.png" alt="submit"></td>
 								</form>
 								<td><h4><nobr><?php echo $vn['codigo'];   ?></nobr></h4></td>
 								<td><h4><nobr><?php echo $vn['nome'];    ?></nobr></h4></td>

@@ -78,21 +78,21 @@ if(!isset($_SESSION["system_control"])){
 								</tr>
 								<tr>
 									<td><h4>CÓDIGO:<input type="radio" name="opc" value="cod"></h4></td>
-									<td><input name="cod_dis" type=text size=16 maxlength=16 ></td>
+									<td><input autocomplete="off" name="cod_dis" type=text size=16 maxlength=16 ></td>
 								</tr>
                                 <tr>
 									<td><h4>NOME:<input type="radio" name="opc" value="nom"></h4></td>
-									<td><input name="nom_dis" type=text size=16 maxlength=32 ></td>
+									<td><input autocomplete="off" name="nom_dis" type=text size=16 maxlength=32 ></td>
 								</tr>
 								<tr>
 									<td><h4>CADASTRO:<input type="radio" name="opc" value="cad"></h4></td>
-									<td><input name="cad_dis" type=date ></td>
+									<td><input autocomplete="off" name="cad_dis" type=date ></td>
 									<td><h4>ATÉ</h4></td>
-									<td><input name="cad_dis2" type=date ></td>
+									<td><input autocomplete="off" name="cad_dis2" type=date ></td>
 								</tr>
 							</table>
                             <tr>
-                                <td><input class="inputb" type=submit value=PESQUISAR></td>
+                                <td><input autocomplete="off" class="inputb" type=submit value=PESQUISAR></td>
                             </tr>
 						</form>
 					</td>

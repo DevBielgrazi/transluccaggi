@@ -97,8 +97,8 @@ if(!isset($_SESSION["system_control"])){
                                 <td><h3>ENDEREÇO</h3></td>
                                 <td><h3>COD_<br>DISTRIBUIDORA</h3></td>
                                 </tr>
-                                <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
-                                <input type="hidden" name="cod_cli" value="<?php echo $vn['codigo'];?>">
+                                <input autocomplete="off" type="hidden" name="id" value="<?php echo $vn['id'];?>">
+                                <input autocomplete="off" type="hidden" name="cod_cli" value="<?php echo $vn['codigo'];?>">
 								<h6>DESEJA MESMO EXCLUIR ESSE CLIENTE?</h6>
                                 <td><h4><nobr><?php echo $vn['codigo'];   ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['nome'];    ?></nobr></h4></td>
@@ -111,10 +111,10 @@ if(!isset($_SESSION["system_control"])){
                                     <td><h4><nobr><?php echo $vn['cod_distribuidora'];    ?></nobr></h4></td>
 							</table>
                             <tr>
-                                <td><input class="inputc" type=submit value=SIM>
+                                <td><input autocomplete="off" class="inputc" type=submit value=SIM>
 						</form>
                         <form method="post" action="..\pesquisa\form_pesquisar_clientes.php">
-                                <input class="inputb" type=submit value=NÃO></td>
+                                <input autocomplete="off" class="inputb" type=submit value=NÃO></td>
                             </tr>
                         </form>
 					</td>

@@ -123,12 +123,12 @@ if(!isset($_SESSION["system_control"])){
 ?>
                 <tr>
             <form method="post" action="..\excluir/resultado_excluir_distribuidoras.php">
-                <input type="hidden" name="cod_dis" value="<?php echo $vn['codigo'];?>">
-                    <td><nobr><input class="inpute" width="40" type="image" src="..\imagem/delete.png" alt="submit"></td>
+                <input autocomplete="off" type="hidden" name="cod_dis" value="<?php echo $vn['codigo'];?>">
+                    <td><nobr><input autocomplete="off" class="inpute" width="40" type="image" src="..\imagem/delete.png" alt="submit"></td>
             </form>
             <form method="post" action="..\alterar/resultado_alterar_distribuidoras.php">
-                <input type="hidden" name="cod_dis" value="<?php echo $vn['codigo'];?>">
-                    <td><input class="inpute" width="40" type="image" src="..\imagem/alter.png" alt="submit"></nobr></td>
+                <input autocomplete="off" type="hidden" name="cod_dis" value="<?php echo $vn['codigo'];?>">
+                    <td><input autocomplete="off" class="inpute" width="40" type="image" src="..\imagem/alter.png" alt="submit"></nobr></td>
                     <td><h4><nobr><?php echo $vn['codigo'];   ?></nobr></h4></td>
                     <td><h4><nobr><?php echo $vn['nome'];    ?></nobr></h4></td>
                     <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>

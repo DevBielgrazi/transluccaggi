@@ -79,39 +79,39 @@ if(!isset($_SESSION["system_control"])){
 							<table>
 								<tr>
 									<td><h4>NÚMERO:</h4></td>
-									<td><input name="num_nf" type=int size=16 maxlength=16 required></td>
+									<td><input autocomplete="off" name="num_nf" type=int size=16 maxlength=16 required></td>
 								</tr>
 								<tr>
 									<td><h4>SÉRIE:</h4></td>
-									<td><input name="ser_nf" type=int size=16 maxlength=8 required></td>
+									<td><input autocomplete="off" name="ser_nf" type=int size=16 maxlength=8 required></td>
 								</tr>
 								<tr>
 									<td><h4>EMISSÃO:</h4></td>
-									<td><input name="emi_nf" type=date required></td>
+									<td><input autocomplete="off" name="emi_nf" type=date required></td>
 								</tr>
 								<tr>
 									<td><h4>ENTRADA:</h4></td>
-									<td><input name="ent_nf" type=date required></td>
+									<td><input autocomplete="off" name="ent_nf" type=date required></td>
 								</tr>
 								<tr>
 									<td><h4>VOLUMES:</h4></td>
-									<td><input name="vol_nf" type=int size=16 maxlength=16 required></td>
+									<td><input autocomplete="off" name="vol_nf" type=int size=16 maxlength=16 required></td>
 								</tr>
 								<tr>
 									<td><h4>VALOR:</h4></td>
-									<td><input name="val_nf" type=float size=16 maxlength=16 required></td>
+									<td><input autocomplete="off" name="val_nf" type=float size=16 maxlength=16 required></td>
 								</tr>
 								<tr>
 									<td><h4>PESO:</h4></td>
-									<td><input name="pes_nf" type=float size=16 maxlength=16 required></td>
+									<td><input autocomplete="off" name="pes_nf" type=float size=16 maxlength=16 required></td>
 								</tr>
 								<tr>
 									<td><h4>CÓDIGO CLIENTE:</h4></td>
-									<td><input name="cod_cli" type=int size=16 maxlength=16 required></td>
+									<td><input autocomplete="off" name="cod_cli" type=int size=16 maxlength=16 required></td>
 								</tr>
 							</table>
 							<tr>
-								<td><input class="inputb" type=submit value=CADASTRAR></td>
+								<td><input autocomplete="off" class="inputb" type=submit value=CADASTRAR></td>
 							</tr>
 						</form>
 					</td>
@@ -130,39 +130,39 @@ if(!isset($_SESSION["system_control"])){
 							<table>
 								<tr>
 									<td><h4>NÚMERO:</h4></td>
-									<td><input name="num_nf" type=int size=16 maxlength=16 required></td>
+									<td><input autocomplete="off" name="num_nf" type=int size=16 maxlength=16 required></td>
 								</tr>
 								<tr>
 									<td><h4>SÉRIE:</h4></td>
-									<td><input name="ser_nf" type=int size=16 maxlength=8 required></td>
+									<td><input autocomplete="off" name="ser_nf" type=int size=16 maxlength=8 required></td>
 								</tr>
 								<tr>
 									<td><h4>EMISSÃO:</h4></td>
-									<td><input name="emi_nf" type=date required></td>
+									<td><input autocomplete="off" name="emi_nf" type=date required></td>
 								</tr>
 								<tr>
 									<td><h4>ENTRADA:</h4></td>
-									<td><input name="ent_nf" type=date required></td>
+									<td><input autocomplete="off" name="ent_nf" type=date required></td>
 								</tr>
 								<tr>
 									<td><h4>VOLUMES:</h4></td>
-									<td><input name="vol_nf" type=int size=16 maxlength=16 required></td>
+									<td><input autocomplete="off" name="vol_nf" type=int size=16 maxlength=16 required></td>
 								</tr>
 								<tr>
 									<td><h4>VALOR:</h4></td>
-									<td><input name="val_nf" type=float size=16 maxlength=16 required></td>
+									<td><input autocomplete="off" name="val_nf" type=float size=16 maxlength=16 required></td>
 								</tr>
 								<tr>
 									<td><h4>PESO:</h4></td>
-									<td><input name="pes_nf" type=float size=16 maxlength=16 required></td>
+									<td><input autocomplete="off" name="pes_nf" type=float size=16 maxlength=16 required></td>
 								</tr>
 								<tr>
 									<td><h4>CÓDIGO CLIENTE:</h4></td>
-									<td><input name="cod_cli" type=int size=16 maxlength=16 required></td>
+									<td><input autocomplete="off" name="cod_cli" type=int size=16 maxlength=16 required></td>
 								</tr>
 							</table>
 							<tr>
-								<td><input class="inputb" type=submit value=CADASTRAR></td>
+								<td><input autocomplete="off" class="inputb" type=submit value=CADASTRAR></td>
 							</tr>
 						</form>
 					</td>
@@ -259,12 +259,12 @@ if(!isset($_SESSION["system_control"])){
 ?>
 					<tr>
 				<form method="post" action="..\excluir/resultado_excluir_nfs.php">
-                    <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
-                    	<td><nobr><input class="inpute" width="40" type="image" src="..\imagem/delete.png" alt="submit"></td>
+                    <input autocomplete="off" type="hidden" name="id" value="<?php echo $vn['id'];?>">
+                    	<td><nobr><input autocomplete="off" class="inpute" width="40" type="image" src="..\imagem/delete.png" alt="submit"></td>
                 </form>
                 <form method="post" action="..\alterar/resultado_alterar_nfs.php">
-                    <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
-                        <td><input class="inpute" width="40" type="image" src="..\imagem/alter.png" alt="submit"></td>
+                    <input autocomplete="off" type="hidden" name="id" value="<?php echo $vn['id'];?>">
+                        <td><input autocomplete="off" class="inpute" width="40" type="image" src="..\imagem/alter.png" alt="submit"></td>
 				</form>
 						<td><h4><nobr><?php echo $vn['numero'];   ?></nobr></h4></td>
 						<td><h4><nobr><?php echo $vn['serie'];    ?></nobr></h4></td>

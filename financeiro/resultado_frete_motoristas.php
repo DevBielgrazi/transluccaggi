@@ -92,15 +92,15 @@ if(!isset($_SESSION["system_control"])){
                 <td>
                     <form method="post" action="frete_motoristas.php">
                         <table>
-                            <input type="hidden" name="mot_fre" value="<?php echo $mot_fre;  ?>">
-                            <input type="hidden" name="dat_fre" value="<?php echo $dat_fre;  ?>">
+                            <input autocomplete="off" type="hidden" name="mot_fre" value="<?php echo $mot_fre;  ?>">
+                            <input autocomplete="off" type="hidden" name="dat_fre" value="<?php echo $dat_fre;  ?>">
                             <tr>
                                 <td><h4>VALOR FRETE:</h4></td>
-                                <td><input name="val_fre" type=float size=16 maxlength=16 required></td>
+                                <td><input autocomplete="off" name="val_fre" type=float size=16 maxlength=16 required></td>
                             </tr>
                         </table>
                         <tr>
-                            <td><input class="inputb" type=submit value=REGISTRAR></td>
+                            <td><input autocomplete="off" class="inputb" type=submit value=REGISTRAR></td>
                         </tr>
                     </form>
                 </td>

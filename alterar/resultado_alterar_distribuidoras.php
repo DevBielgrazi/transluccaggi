@@ -86,14 +86,14 @@ if(!isset($_SESSION["system_control"])){
 					<td>
 						<form method="post" action="alterar_distribuidoras.php">
 							<table>
-                                <input type="hidden" name="cod_dis" value="<?php echo $vn['codigo'];?>">
+                                <input autocomplete="off" type="hidden" name="cod_dis" value="<?php echo $vn['codigo'];?>">
                                 <tr>
                                     <td><h2><nobr>NOME:<?php echo $vn['nome'];   ?></nobr></h2></td>
-                                    <td><input name="nom_dis" type=int size=16 maxlength=64 ></td>
+                                    <td><input autocomplete="off" name="nom_dis" type=int size=16 maxlength=64 ></td>
 								</tr>
 							</table>
                             <tr>
-                                <td><input class="inputb" type=submit value=ALTERAR></td>
+                                <td><input autocomplete="off" class="inputb" type=submit value=ALTERAR></td>
                             </tr>
 						</form>
 					</td>

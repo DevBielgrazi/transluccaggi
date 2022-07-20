@@ -94,7 +94,7 @@ if(!isset($_SESSION["system_control"])){
                                     <td><h3>TELEFONE</h3></td>
                                     <td><h3>ENDERECO</h3></td>
                                 </tr>
-                                <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
+                                <input autocomplete="off" type="hidden" name="id" value="<?php echo $vn['id'];?>">
 								<h6>DESEJA MESMO EXCLUIR ESSE MOTORISTA?</h6>
                                     <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['nome'];   ?></nobr></h4></td>
@@ -104,10 +104,10 @@ if(!isset($_SESSION["system_control"])){
                                     <td><h4><nobr><?php echo $vn['endereco'];   ?></nobr></h4></td>
 							</table>
                             <tr>
-                                <td><input class="inputc" type=submit value=SIM>
+                                <td><input autocomplete="off" class="inputc" type=submit value=SIM>
 						</form>
                         <form method="post" action="..\pesquisa\form_pesquisar_motoristas.php">
-                                <input class="inputb" type=submit value=NÃO></td>
+                                <input autocomplete="off" class="inputb" type=submit value=NÃO></td>
                             </tr>
                         </form>
 					</td>

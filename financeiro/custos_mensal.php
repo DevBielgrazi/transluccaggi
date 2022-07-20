@@ -121,16 +121,16 @@ $dat_cus2 = $ano_cus."-".$mes_cus."-01";
                     <td><h4><nobr><?php echo $vn['descricao'];   ?></nobr></h4></td>
                     <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
                 <form method="post" action="..\excluir/resultado_excluir_custos.php">
-                    <input type="hidden" name="dat_cus" value="<?php echo $vn['mes'];?>">
-                    <input type="hidden" name="des_cus" value="<?php echo $vn['descricao'];?>">
-                    <input type="hidden" name="val_cus" value="<?php echo $vn['valor'];?>">
-                    <td><nobr><input class="inpute" width="40" type="image" src="..\imagem/delete.png" alt="submit"></td>
+                    <input autocomplete="off" type="hidden" name="dat_cus" value="<?php echo $vn['mes'];?>">
+                    <input autocomplete="off" type="hidden" name="des_cus" value="<?php echo $vn['descricao'];?>">
+                    <input autocomplete="off" type="hidden" name="val_cus" value="<?php echo $vn['valor'];?>">
+                    <td><nobr><input autocomplete="off" class="inpute" width="40" type="image" src="..\imagem/delete.png" alt="submit"></td>
                 </form>
                 <form method="post" action="..\alterar/resultado_alterar_custos.php">
-                    <input type="hidden" name="dat_cus" value="<?php echo $vn['mes'];?>">
-                    <input type="hidden" name="des_cus" value="<?php echo $vn['descricao'];?>">
-                    <input type="hidden" name="val_cus" value="<?php echo $vn['valor'];?>">
-                    <td><input class="inpute" width="40" type="image" src="..\imagem/alter.png" alt="submit"></td>
+                    <input autocomplete="off" type="hidden" name="dat_cus" value="<?php echo $vn['mes'];?>">
+                    <input autocomplete="off" type="hidden" name="des_cus" value="<?php echo $vn['descricao'];?>">
+                    <input autocomplete="off" type="hidden" name="val_cus" value="<?php echo $vn['valor'];?>">
+                    <td><input autocomplete="off" class="inpute" width="40" type="image" src="..\imagem/alter.png" alt="submit"></td>
                 </form>
                 </tr>
 <?php
@@ -144,15 +144,15 @@ $dat_cus2 = $ano_cus."-".$mes_cus."-01";
                 </tr>
 			</table>
             <form method="post" action="..\graficos/grafico_custos.php" target="_blank">
-            <input type="hidden" name="dat_cus" value="<?php echo $dat_cus2;?>">
-            <td><nobr><input width="80" type="image" src="..\imagem/grafico.jpg" alt="submit"></td>
+            <input autocomplete="off" type="hidden" name="dat_cus" value="<?php echo $dat_cus2;?>">
+            <td><nobr><input autocomplete="off" width="80" type="image" src="..\imagem/grafico.jpg" alt="submit"></td>
         </form>
         </pag3>
         <pag2>
 			<h1>CUSTOS MENSAL</h1><p>
             <form method="post" action="relatorio_mensal.php">
-                <input type="hidden" name="mes_rel" value="<?php echo date( 'm' , strtotime($dat_cus2));?>">
-                <input type="hidden" name="ano_rel" value="<?php echo date( 'Y' , strtotime($dat_cus2));?>">
+                <input autocomplete="off" type="hidden" name="mes_rel" value="<?php echo date( 'm' , strtotime($dat_cus2));?>">
+                <input autocomplete="off" type="hidden" name="ano_rel" value="<?php echo date( 'Y' , strtotime($dat_cus2));?>">
                 <td><button class="buttond" type=submit>RELATÓRIO MENSAL</button></td>
             </form>
 			<table>
@@ -160,20 +160,20 @@ $dat_cus2 = $ano_cus."-".$mes_cus."-01";
                     <td>
                         <form method="post" action="custos_mensal.php">
                             <table>
-                            <input type="hidden" name="dat_cus" value="<?php echo $dat_cus2;?>">
-                            <input type="hidden" name="ano_rel" value="<?php echo $ano_cus;?>">
-                            <input type="hidden" name="mes_rel" value="<?php echo $mes_cus;?>">
+                            <input autocomplete="off" type="hidden" name="dat_cus" value="<?php echo $dat_cus2;?>">
+                            <input autocomplete="off" type="hidden" name="ano_rel" value="<?php echo $ano_cus;?>">
+                            <input autocomplete="off" type="hidden" name="mes_rel" value="<?php echo $mes_cus;?>">
                                 <tr>
                                     <td><h4>DESCRIÇÃO:</h4></td>
-                                    <td><input name="des_cus" type=text size=16 maxlength=16 required></td>
+                                    <td><input autocomplete="off" name="des_cus" type=text size=16 maxlength=16 required></td>
                                 </tr>
                                 <tr>
                                     <td><h4>VALOR:</h4></td>
-                                    <td><input name="val_cus" type=float size=16 maxlength=8 required></td>
+                                    <td><input autocomplete="off" name="val_cus" type=float size=16 maxlength=8 required></td>
                                 </tr>
                             </table>
                             <tr>
-                                <td><input class="inputb" type=submit value=CADASTRAR></td>									
+                                <td><input autocomplete="off" class="inputb" type=submit value=CADASTRAR></td>									
                             </tr>
                         </form>
                     </td>	

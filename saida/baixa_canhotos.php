@@ -81,24 +81,89 @@ if(!isset($_SESSION["system_control"])){
 								</tr>
 								<tr>
 									<td><h4>NOTA FISCAL:</h4></td>
-									<td><input name="num_nf" type=text size=16 maxlength=16 required></td>
+									<td><input autocomplete="off" name="num_nf" type=text size=16 maxlength=16 required></td>
 								</tr>
 								<tr>
 									<td><h4>OBSERVAÇÃO:</h4></td>
-									<td><input name="obs_nf" type=text size=64 maxlength=128></td>
+									<td><input autocomplete="off" name="obs_nf" type=text size=64 maxlength=128></td>
 								</tr>
 							</table>
 							<tr>
-								<td><input class="inputb" type=submit value=PRÓXIMA></td>
+								<td><input autocomplete="off" class="inputb" type=submit value=PRÓXIMA></td>
 							</tr>
 						</form>
 					</td>
 				</tr>
 			</table>
 		</pag>
+		<pag3>
+			<h1>BAIXA DE CANHOTOS(POR DATA)</h1><p>
+			<table>
+				<tr>
+					<td>
+						<form method="post" action="baixa_canhotos.php">
+							<table>
+								<tr>
+									<td><h4>DATA:</h4></td>
+									<td><input autocomplete="off" name="dat_bai" type=date required></td>
+								</tr>
+								<tr>
+									<td><h4>MOTORISTA:</h4></td>
+									<td><select name="mot_bai">
+<?php
+#IMPORTANDO CONEXÃO DO BANCO
+	require('../connect.php');
+#ADQUIRINDO INFORMAÇÕES DO BANCO
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_mot");
+#TRANSFORMANDO RESULTADO EM NÚMEROS
+	$n = mysqli_num_rows($sql);
+#INICIANDO CONTADOR
+	$i=0;
+#APRESENTANDO REGISTROS DO BANCO
+	while($i!=$n){
+#CADASTROS POR COLUNA
+		$v = mysqli_fetch_array($sql);
+		?><option value="<?php	echo $v['nome']	?>"><?php	echo	$v['nome']	?></option><?php
+#SOMANDO AO CONTADOR
+		$i=$i+1;
+	}
+?>
+										</select></td>
+									</tr>
+							</table>
+							<tr>
+								<td><input autocomplete="off" class="inputb" type=submit value=PRÓXIMA></td>
+							</tr>
+						</form>
+					</td>
+				</tr>
+			</table>
+		</pag3>
 	</body>
 </html>
 <?php
+if(isset($_POST['dat_bai'])) {
+	#IMPORTANDO CONEXÃO COM O BANCO
+		require('../connect.php');
+	#VARIÁVEIS DO FORMULÁRIO
+		$dat_bai = trim($_POST['dat_bai']);
+		$mot_bai = trim($_POST['mot_bai']);
+	
+#ADQUIRINDO DADOS DO BANCO
+	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `saida` = '$dat_bai' AND `motorista` = '$mot_bai'");
+#TRANSFORMANDO RESULTADO EM NÚMEROS
+	$n = mysqli_num_rows($sql);
+	if($n!=0){
+		$sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'ENTREGUE' WHERE `saida` = '$dat_bai' AND `motorista` = '$mot_bai'");
+?>
+			<script>alert("NOTAS ATUALIZADAS!")</script>
+<?php
+	}else{
+?>
+			<script>alert("MOTORISTA SEM ENTREGA NESTA DATA!")</script>
+<?php
+	}
+}
 if(isset($_POST['num_nf'])) {
 #IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');

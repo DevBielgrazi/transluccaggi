@@ -121,10 +121,10 @@ $sal_men = number_format(($sal_men), 2, '.', '');
 					<td><h3>MÊS</h3></td>
 					<td><h3>VALOR FRETES</h3></td>
                     <form method="post" action="custos_mensal.php">
-                        <input type="hidden" name="mes_rel" value="<?php echo $mes_rel;?>">
-                        <input type="hidden" name="ano_rel" value="<?php echo $ano_rel;?>">
-                        <input type="hidden" name="fre_disg" value="<?php echo $fre_disg;?>">
-                        <input type="hidden" name="fre_mot" value="<?php echo $fre_mot;?>">
+                        <input autocomplete="off" type="hidden" name="mes_rel" value="<?php echo $mes_rel;?>">
+                        <input autocomplete="off" type="hidden" name="ano_rel" value="<?php echo $ano_rel;?>">
+                        <input autocomplete="off" type="hidden" name="fre_disg" value="<?php echo $fre_disg;?>">
+                        <input autocomplete="off" type="hidden" name="fre_mot" value="<?php echo $fre_mot;?>">
                         <td><button class="buttond" type=submit>+CUSTOS</button></td>
                     </form>
 					<td><h3>SALDO</h3></td>
@@ -141,8 +141,8 @@ $sal_men = number_format(($sal_men), 2, '.', '');
 				</tr>
 			</table>
         <form method="post" action="..\graficos/grafico_anual.php" target="_blank">
-            <input type="hidden" name="dat_rel" value="<?php echo $dat_rel;?>">
-            <td><nobr><input width="80" type="image" src="..\imagem/grafico.jpg" alt="submit"></td>
+            <input autocomplete="off" type="hidden" name="dat_rel" value="<?php echo $dat_rel;?>">
+            <td><nobr><input autocomplete="off" width="80" type="image" src="..\imagem/grafico.jpg" alt="submit"></td>
         </form>
 </rf>
 <fdc2>
@@ -151,8 +151,8 @@ $sal_men = number_format(($sal_men), 2, '.', '');
 				<tr>
 					<td>
 						<form method="post" action="relatorio_mensal.php">
-                            <input type="hidden" name="ano_rel" value="<?php echo $ano_rel;?>">
-                            <input type="hidden" name="mes_rel" value="<?php echo $mes_rel;?>">
+                            <input autocomplete="off" type="hidden" name="ano_rel" value="<?php echo $ano_rel;?>">
+                            <input autocomplete="off" type="hidden" name="mes_rel" value="<?php echo $mes_rel;?>">
 							<table>
                                 <tr>
 									<td><h4>DISTRIBUIDORA:<input type="radio" name="opc" value="dis"></h4></td>
@@ -179,7 +179,7 @@ $sal_men = number_format(($sal_men), 2, '.', '');
                                 </tr>
 							</table>
                             <tr>
-                                <td><input class="inputb" type=submit value=VISUALIZAR></td>
+                                <td><input autocomplete="off" class="inputb" type=submit value=VISUALIZAR></td>
                             </tr>
 						</form>
 					</td>

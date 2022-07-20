@@ -93,19 +93,19 @@ if(!isset($_SESSION["system_control"])){
                                 <td><h3>DESCRIÇÃO</h3></td>
                                 <td><h3>VALOR</h3></td>
                                 </tr>
-                                <input type="hidden" name="dat_cus" value="<?php echo $vn['mes'];?>">
-                                <input type="hidden" name="des_cus" value="<?php echo $vn['descricao'];?>">
-                                <input type="hidden" name="val_cus" value="<?php echo $vn['valor'];?>">
+                                <input autocomplete="off" type="hidden" name="dat_cus" value="<?php echo $vn['mes'];?>">
+                                <input autocomplete="off" type="hidden" name="des_cus" value="<?php echo $vn['descricao'];?>">
+                                <input autocomplete="off" type="hidden" name="val_cus" value="<?php echo $vn['valor'];?>">
 								<h6>DESEJA MESMO EXCLUIR ESSE CUSTO?</h6>
                                     <td><h4><nobr><?php echo date( 'm/Y' , strtotime( $vn['mes']));    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['descricao'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
                                 </table>
                             <tr>
-                                <td><input class="inputc" type=submit value=SIM>
+                                <td><input autocomplete="off" class="inputc" type=submit value=SIM>
 						</form>
                         <form method="post" action="..\financeiro\form_relatorio_mensal.php">
-                                <input class="inputb" type=submit value=NÃO></td>
+                                <input autocomplete="off" class="inputb" type=submit value=NÃO></td>
                             </tr>
                         </form>
 					</td>

@@ -102,7 +102,7 @@ $ano_a = $ano-1;
 										<option value="11">NOVEMBRO</option>
 										<option value="12">DEZEMBRO</option>
 									</select></td>
-                                <td><input class="inputb" type=submit value=VISUALIZAR></td>
+                                <td><input autocomplete="off" class="inputb" type=submit value=VISUALIZAR></td>
                             </tr>
 						</form>
 					</td>

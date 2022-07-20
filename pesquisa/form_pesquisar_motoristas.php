@@ -78,33 +78,33 @@ if(!isset($_SESSION["system_control"])){
 								</tr>
 								<tr>
 									<td><h4>CADASTRO:<input type="radio" name="opc" value="cad"></h4></td>
-									<td><input name="cad_mot" type=date ></td>
+									<td><input autocomplete="off" name="cad_mot" type=date ></td>
 									<td><h4>ATÉ</h4></td>
-									<td><input name="cad_mot2" type=date ></td>
+									<td><input autocomplete="off" name="cad_mot2" type=date ></td>
 								</tr>
                                 <tr>
 									<td><h4>NOME:<input type="radio" name="opc" value="nom"></h4></td>
-									<td><input name="nom_mot" type= size=16 maxlength= ></td>
+									<td><input autocomplete="off" name="nom_mot" type= size=16 maxlength= ></td>
 								</tr>
                                 <tr>
 									<td><h4>VEÍCULO:<input type="radio" name="opc" value="vei"></h4></td>
-									<td><input name="vei_mot" type= size=16 maxlength= ></td>
+									<td><input autocomplete="off" name="vei_mot" type= size=16 maxlength= ></td>
 								</tr>
                                 <tr>
 									<td><h4>PLACA:<input type="radio" name="opc" value="pla"></h4></td>
-									<td><input name="pla_mot" type= size=16 maxlength= ></td>
+									<td><input autocomplete="off" name="pla_mot" type= size=16 maxlength= ></td>
 								</tr>
                                 <tr>
 									<td><h4>TELEFONE:<input type="radio" name="opc" value="tel"></h4></td>
-									<td><input name="tel_mot" type= size=16 maxlength= ></td>
+									<td><input autocomplete="off" name="tel_mot" type= size=16 maxlength= ></td>
 								</tr>
                                 <tr>
 									<td><h4>ENDEREÇO:<input type="radio" name="opc" value="end"></h4></td>
-									<td><input name="end_mot" type= size=16 maxlength= ></td>
+									<td><input autocomplete="off" name="end_mot" type= size=16 maxlength= ></td>
 								</tr>
 							</table>
                             <tr>
-                                <td><input class="inputb" type=submit value=PESQUISAR></td>
+                                <td><input autocomplete="off" class="inputb" type=submit value=PESQUISAR></td>
                             </tr>
 						</form>
 					</td>

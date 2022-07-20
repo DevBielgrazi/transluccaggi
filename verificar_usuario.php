@@ -48,13 +48,13 @@
 						<tr>
 							<td>
 								<form method="post" action="cadastrar_usuario.php">
-								<input name="login" type=hidden value="<?php echo $login ?>">
-								<input name="senha" type=hidden value="<?php echo $senha ?>">
+								<input autocomplete="off" name="login" type=hidden value="<?php echo $login ?>">
+								<input autocomplete="off" name="senha" type=hidden value="<?php echo $senha ?>">
 								<tr>
 									<td><h1>CADASTRAR ADMINISTRADOR?</h1></td>
 								</tr>
 								<tr>
-									<td><input class="inputb" type=submit value=CADASTRAR></td>
+									<td><input autocomplete="off" class="inputb" type=submit value=CADASTRAR></td>
 								</tr>
 								</form>
 								<tr>
@@ -75,18 +75,18 @@
 							<tr>
 								<td>
 									<form method="post" action="cadastrar_usuario.php">
-									<input name="login" type=hidden value="<?php echo $login ?>">
-									<input name="senha" type=hidden value="<?php echo $senha ?>">
+									<input autocomplete="off" name="login" type=hidden value="<?php echo $login ?>">
+									<input autocomplete="off" name="senha" type=hidden value="<?php echo $senha ?>">
 									<tr>
 										<td><h4>LOGIN ADMINISTRADOR:</h4></td>
-										<td><input name="log_adm" type=text size=16 maxlength=16 required></td>
+										<td><input autocomplete="off" name="log_adm" type=text size=16 maxlength=16 required></td>
 									</tr>
 									<tr>
 										<td><h4>SENHA ADMINISTRADOR:</h4></td>
-										<td><input name="sen_adm" type=password size=16 maxlength=16 required></td>
+										<td><input autocomplete="off" name="sen_adm" type=password size=16 maxlength=16 required></td>
 									</tr>
 									<tr>
-										<td><input class="inputb" type=submit value=CADASTRAR></td>
+										<td><input autocomplete="off" class="inputb" type=submit value=CADASTRAR></td>
 									</tr>
 									</form>
 									<tr>

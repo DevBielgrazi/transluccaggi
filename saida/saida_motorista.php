@@ -81,16 +81,16 @@ require('../connect.php');
 					<td>
 						<form method="post" action="saida_motorista.php">
 							<table>
-								<input type="hidden" name="n" value=1>
-								<input type="hidden" name="mot_sai" value="<?php echo $mot_sai;  ?>">
-								<input type="hidden" name="dat_sai" value="<?php echo $dat_sai;  ?>">
+								<input autocomplete="off" type="hidden" name="n" value=1>
+								<input autocomplete="off" type="hidden" name="mot_sai" value="<?php echo $mot_sai;  ?>">
+								<input autocomplete="off" type="hidden" name="dat_sai" value="<?php echo $dat_sai;  ?>">
 								<tr>
 									<td><h4>NOTA FISCAL:</h4></td>
-									<td><input name="not_sai" type=text size=16 maxlength=16 required></td>
+									<td><input autocomplete="off" name="not_sai" type=text size=16 maxlength=16 required></td>
 								</tr>
 							</table>
 							<tr>
-								<td><input class="inputb" type=submit value=PRÓXIMA></td>
+								<td><input autocomplete="off" class="inputb" type=submit value=PRÓXIMA></td>
 							</tr>
 						</form>
 					</td>
@@ -115,18 +115,18 @@ require('../connect.php');
 			<tr><h3>SAÍDA MOTORISTA</h3></tr>
 			<tr>
 				<td><form method="post" action="imprimir_saida.php" target="_blank">
-					<input type="hidden" name="mot_sai" value="<?php echo $mot_sai;  ?>">
-					<input type="hidden" name="dat_sai" value="<?php echo $dat_sai;  ?>">
-					<input class="inpute" type=image width=5% height=5% src="..\imagem/imprimir.png" alt=submit>
+					<input autocomplete="off" type="hidden" name="mot_sai" value="<?php echo $mot_sai;  ?>">
+					<input autocomplete="off" type="hidden" name="dat_sai" value="<?php echo $dat_sai;  ?>">
+					<input autocomplete="off" class="inpute" type=image width=5% height=5% src="..\imagem/imprimir.png" alt=submit>
 				</form></td>
 				<td><h3>DATA:<?php  echo date( 'd/m/Y' , strtotime($dat_sai)); ?></h3></td>
 				<td><h3>MOTORISTA:<?php  echo $nom_mot; ?></h3></td>
 				<td><h3>VEÍCULO:<?php echo $vei_mot  ?></h3></td>
 				<td><h3>PLACA:<?php echo $pla_mot  ?></h3></td>
 				<form method="post" action="cancelar_saida.php">
-                    <input type="hidden" name="mot_sai" value="<?php echo $mot_sai;?>">
-                    <input type="hidden" name="dat_sai" value="<?php echo $dat_sai;?>">
-                    <td><nobr><input class="inpute" width="20" type="image" src="..\imagem/cancel.png" alt="submit"></td>
+                    <input autocomplete="off" type="hidden" name="mot_sai" value="<?php echo $mot_sai;?>">
+                    <input autocomplete="off" type="hidden" name="dat_sai" value="<?php echo $dat_sai;?>">
+                    <td><nobr><input autocomplete="off" class="inpute" width="20" type="image" src="..\imagem/cancel.png" alt="submit"></td>
                 </form>
 			</tr>
 			<tr>
@@ -175,10 +175,10 @@ require('../connect.php');
 					<td><h4><nobr><?php echo $vn['nome_cliente'];    ?></nobr></h4></td>
 					<td><h4><nobr><?php echo $vn['cidade_cliente'];    ?></nobr></h4></td>
 				<form method="post" action="remover_nf.php">
-                    <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
-                    <input type="hidden" name="mot_sai" value="<?php echo $mot_sai;?>">
-                    <input type="hidden" name="dat_sai" value="<?php echo $dat_sai;?>">
-                    <td><nobr><input class="inpute" width="20" type="image" src="..\imagem/cancel.png" alt="submit"></td>
+                    <input autocomplete="off" type="hidden" name="id" value="<?php echo $vn['id'];?>">
+                    <input autocomplete="off" type="hidden" name="mot_sai" value="<?php echo $mot_sai;?>">
+                    <input autocomplete="off" type="hidden" name="dat_sai" value="<?php echo $dat_sai;?>">
+                    <td><nobr><input autocomplete="off" class="inpute" width="20" type="image" src="..\imagem/cancel.png" alt="submit"></td>
                 </form>
 <?php
 #SOMANDO AO CONTADOR

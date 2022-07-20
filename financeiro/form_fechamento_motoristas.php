@@ -127,7 +127,7 @@ $ano_a = $ano-1;
 								</tr>
 							</table>
                             <tr>
-                                <td><input class="inputb" type=submit value=VISUALIZAR></td>
+                                <td><input autocomplete="off" class="inputb" type=submit value=VISUALIZAR></td>
                             </tr>
 						</form>
 					</td>

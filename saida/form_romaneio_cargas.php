@@ -75,9 +75,9 @@ if(!isset($_SESSION["system_control"])){
 							<table>
 								<tr>
 									<td><h4>DATA:</h4></td>
-									<td><input name="dat" type=date></td>
+									<td><input autocomplete="off" name="dat" type=date></td>
 									<td><h4>ATÉ</h4></td>
-									<td><input name="dat2" type=date required></td>
+									<td><input autocomplete="off" name="dat2" type=date required></td>
 								</tr>
 								<tr>
 									<td><h4>DISTRIBUIDORA:</h4></td>
@@ -104,7 +104,7 @@ if(!isset($_SESSION["system_control"])){
 								</tr>
 							</table>
                             <tr>
-                                <td><input class="inputb" type=submit value=PESQUISAR></td>
+                                <td><input autocomplete="off" class="inputb" type=submit value=PESQUISAR></td>
                             </tr>
 						</form>
 					</td>

@@ -204,12 +204,12 @@ if(!isset($_SESSION["system_control"])){
 ?>
                     <tr>
                 <form method="post" action="..\excluir/resultado_excluir_nfs.php">
-                    <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
-                    <td><nobr><input class="inpute" width="40" type="image" src="..\imagem/delete.png" alt="submit"></td>
+                    <input autocomplete="off" type="hidden" name="id" value="<?php echo $vn['id'];?>">
+                    <td><nobr><input autocomplete="off" class="inpute" width="40" type="image" src="..\imagem/delete.png" alt="submit"></td>
                 </form>
                 <form method="post" action="..\alterar/resultado_alterar_nfs.php">
-                    <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
-                        <td><input class="inpute" width="40" type="image" src="..\imagem/alter.png" alt="submit"></td>
+                    <input autocomplete="off" type="hidden" name="id" value="<?php echo $vn['id'];?>">
+                        <td><input autocomplete="off" class="inpute" width="40" type="image" src="..\imagem/alter.png" alt="submit"></td>
                         <td><h4><nobr><?php echo $vn['numero'];   ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['serie'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['emissao']));    ?></nobr></h4></td>

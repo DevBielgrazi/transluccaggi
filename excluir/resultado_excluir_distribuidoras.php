@@ -91,17 +91,17 @@ if(!isset($_SESSION["system_control"])){
                                     <td><h3>NOME</h3></td>
                                     <td><h3>CADASTRO</h3></td>
                                 </tr>
-                                <input type="hidden" name="cod_dis" value="<?php echo $vn['codigo'];?>">
+                                <input autocomplete="off" type="hidden" name="cod_dis" value="<?php echo $vn['codigo'];?>">
 								<h6>DESEJA MESMO EXCLUIR ESSA DISTRIBUIDORA?</h6>
                                 <td><h4><nobr><?php echo $vn['codigo'];   ?></nobr></h4></td>
                                 <td><h4><nobr><?php echo $vn['nome'];    ?></nobr></h4></td>
                                 <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>
 							</table>
                             <tr>
-                                <td><input class="inputc" type=submit value=SIM>
+                                <td><input autocomplete="off" class="inputc" type=submit value=SIM>
 						</form>
                         <form method="post" action="..\pesquisa\form_pesquisar_distribuidoras.php">
-                                <input class="inputb" type=submit value=NÃO></td>
+                                <input autocomplete="off" class="inputb" type=submit value=NÃO></td>
                             </tr>
                         </form>
 					</td>

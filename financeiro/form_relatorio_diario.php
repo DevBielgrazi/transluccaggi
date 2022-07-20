@@ -75,11 +75,11 @@ if(!isset($_SESSION["system_control"])){
 							<table>
                                 <tr>
                                     <td><h4>DATA:</h4></td>
-									<td><input name="dat_rel" type=date required></td>
+									<td><input autocomplete="off" name="dat_rel" type=date required></td>
                                 </tr>
                             </table>
                             <tr>
-                                <td><input class="inputb" type=submit value=VISUALIZAR></td>
+                                <td><input autocomplete="off" class="inputb" type=submit value=VISUALIZAR></td>
                             </tr>
 						</form>
 					</td>

@@ -108,25 +108,25 @@ if(!isset($_SESSION["system_control"])){
 								</tr>
 								<tr>
 									<td><h4>NÚMERO:<input type="radio" name="opc" value="num"></h4></td>
-									<td><input name="num_nf" type=text size=16 maxlength=16 ></td>
+									<td><input autocomplete="off" name="num_nf" type=text size=16 maxlength=16 ></td>
 								</tr>
 								<tr>
 									<td><h4>EMISSÃO:<input type="radio" name="opc" value="emi"></h4></td>
-									<td><input name="emi_nf" type=date ></td>
+									<td><input autocomplete="off" name="emi_nf" type=date ></td>
 									<td><h4>ATÉ</h4></td>
-									<td><input name="emi_nf2" type=date ></td>
+									<td><input autocomplete="off" name="emi_nf2" type=date ></td>
 								</tr>
 								<tr>
 									<td><h4>ENTRADA:<input type="radio" name="opc" value="ent"></h4></td>
-									<td><input name="ent_nf" type=date ></td>
+									<td><input autocomplete="off" name="ent_nf" type=date ></td>
 									<td><h4>ATÉ</h4></td>
-									<td><input name="ent_nf2" type=date ></td>
+									<td><input autocomplete="off" name="ent_nf2" type=date ></td>
 								</tr>
 								<tr>
 									<td><h4>SAÍDA:<input type="radio" name="opc" value="sai"></h4></td>
-									<td><input name="sai_nf" type=date ></td>
+									<td><input autocomplete="off" name="sai_nf" type=date ></td>
 									<td><h4>ATÉ</h4></td>
-									<td><input name="sai_nf2" type=date ></td>
+									<td><input autocomplete="off" name="sai_nf2" type=date ></td>
 								</tr>
 								<tr>
 									<td><h4>ROTA:<input type="radio" name="opc" value="rot"></h4></td>
@@ -192,11 +192,11 @@ while($i!=$n){
 									</tr>
 								<tr>
 									<td><h4>CÓDIGO CLIENTE:<input type="radio" name="opc" value="ccl"></h4></td>
-									<td><input name="cod_cli" type=text size=32 maxlength=64 ></td>
+									<td><input autocomplete="off" name="cod_cli" type=text size=32 maxlength=64 ></td>
 								</tr>
 								<tr>
 									<td><h4>NOME CLIENTE:<input type="radio" name="opc" value="cli"></h4></td>
-									<td><input name="nom_cli" type=text size=32 maxlength=64 ></td>
+									<td><input autocomplete="off" name="nom_cli" type=text size=32 maxlength=64 ></td>
 								</tr>
 								<tr>
 									<td><h4>MOTORISTAS:<input type="radio" name="opc" value="mot"></h4></td>
@@ -224,7 +224,7 @@ while($i!=$n){
 								<tr>
 							</table>
                             <tr>
-                                <td><input class="inputb" type=submit value=PESQUISAR></td>
+                                <td><input autocomplete="off" class="inputb" type=submit value=PESQUISAR></td>
                             </tr>
 						</form>
 					</td>

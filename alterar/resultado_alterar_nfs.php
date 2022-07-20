@@ -85,46 +85,46 @@ if(!isset($_SESSION["system_control"])){
 					<td>
 						<form method="post" action="alterar_nfs.php">
 							<table>
-                                <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
+                                <input autocomplete="off" type="hidden" name="id" value="<?php echo $vn['id'];?>">
 								<tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="num">NÚMERO:<?php echo $vn['numero'];   ?></nobr></h2></td>
-                                    <td><input name="num_nf" type=int size=16 maxlength=16 ></td>
+                                    <td><input autocomplete="off" name="num_nf" type=int size=16 maxlength=16 ></td>
 								</tr>
                                 <tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="ser">SÉRIE:<?php echo $vn['serie'];   ?></nobr></h2></td>
-                                    <td><input name="ser_nf" type=int size=16 maxlength=8 ></td>
+                                    <td><input autocomplete="off" name="ser_nf" type=int size=16 maxlength=8 ></td>
 								</tr>
                                 <tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="emi">EMISSÃO:<?php echo $vn['emissao'];   ?></nobr></h2></td>
-                                    <td><input name="emi_nf" type=date></td>
+                                    <td><input autocomplete="off" name="emi_nf" type=date></td>
 								</tr>
                                 <tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="ent">ENTRADA:<?php echo $vn['entrada'];   ?></nobr></h2></td>
-                                    <td><input name="ent_nf" type=date></td>
+                                    <td><input autocomplete="off" name="ent_nf" type=date></td>
 								</tr>
                                 <tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="sai">SAÍDA:<?php echo $vn['saida'];   ?></nobr></h2></td>
-                                    <td><input name="sai_nf" type=date></td>
+                                    <td><input autocomplete="off" name="sai_nf" type=date></td>
 								</tr>
                                 <tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="val">VALOR:<?php echo $vn['valor'];   ?></nobr></h2></td>
-                                    <td><input name="val_nf" type=float size=16 maxlength=16></td>
+                                    <td><input autocomplete="off" name="val_nf" type=float size=16 maxlength=16></td>
 								</tr>
                                 <tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="pes">PESO:<?php echo $vn['peso'];   ?></nobr></h2></td>
-                                    <td><input name="pes_nf" type=float size=16 maxlength=16></td>
+                                    <td><input autocomplete="off" name="pes_nf" type=float size=16 maxlength=16></td>
 								</tr>
                                 <tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="cli">COD_CLIENTE:<?php echo $vn['cod_cliente'];   ?></nobr></h2></td>
-                                    <td><input name="cod_cli" type=text size=16 maxlength=16></td>
+                                    <td><input autocomplete="off" name="cod_cli" type=text size=16 maxlength=16></td>
 								</tr>
                                 <tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="mot">MOTORISTA:<?php echo $vn['motorista'];   ?></nobr></h2></td>
-                                    <td><input name="mot_nf" type=text size=16 maxlength=16></td>
+                                    <td><input autocomplete="off" name="mot_nf" type=text size=16 maxlength=16></td>
 								</tr>
 							</table>
                             <tr>
-                                <td><input class="inputb" type=submit value=ALTERAR></td>
+                                <td><input autocomplete="off" class="inputb" type=submit value=ALTERAR></td>
                             </tr>
 						</form>
 					</td>

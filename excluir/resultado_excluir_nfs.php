@@ -100,7 +100,7 @@ if(!isset($_SESSION["system_control"])){
                                 <td><h3>MOTORISTA</h3></td>
                                 <td><h3>STATUS</h3></td>
                                 </tr>
-                                <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
+                                <input autocomplete="off" type="hidden" name="id" value="<?php echo $vn['id'];?>">
 								<h6>DESEJA MESMO EXCLUIR ESSA NOTA?</h6>
                                     <td><h4><nobr><?php echo $vn['numero'];   ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['serie'];    ?></nobr></h4></td>
@@ -116,10 +116,10 @@ if(!isset($_SESSION["system_control"])){
                                     <td><h4><nobr><?php echo $vn['status'];    ?></nobr></h4></td>
 							</table>
                             <tr>
-                                <td><input class="inputc" type=submit value=SIM>
+                                <td><input autocomplete="off" class="inputc" type=submit value=SIM>
 						</form>
                         <form method="post" action="..\pesquisa\form_pesquisar_nfs.php">
-                                <input class="inputb" type=submit value=NÃO></td>
+                                <input autocomplete="off" class="inputb" type=submit value=NÃO></td>
                             </tr>
                         </form>
 					</td>

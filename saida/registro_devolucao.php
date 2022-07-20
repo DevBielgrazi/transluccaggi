@@ -76,31 +76,31 @@ if(!isset($_SESSION["system_control"])){
 							<table>
 								<tr>
 									<td><h4>NOTA:</h4></td>
-									<td><input name="not_dev" type=text size=16 maxlength=32 required></td>
+									<td><input autocomplete="off" name="not_dev" type=text size=16 maxlength=32 required></td>
 								</tr>
 								<tr>
 									<td><h4>NOTA PARCIAL:</h4></td>
-									<td><input name="par_dev" type=text size=16 maxlength=32></td>
+									<td><input autocomplete="off" name="par_dev" type=text size=16 maxlength=32></td>
 								</tr>
 								<tr>
 									<td><h4>VALOR:</h4></td>
-									<td><input name="val_dev" type=text size=16 maxlength=32></td>
+									<td><input autocomplete="off" name="val_dev" type=text size=16 maxlength=32></td>
 								</tr>
 								<tr>
 									<td><h4>VOLUMES:</h4></td>
-									<td><input name="vol_dev" type=text size=16 maxlength=32></td>
+									<td><input autocomplete="off" name="vol_dev" type=text size=16 maxlength=32></td>
 								</tr>
 								<tr>
 									<td><h4>MOTIVO:</h4></td>
-									<td><input name="mot_dev" type=text size=16 maxlength=32></td>
+									<td><input autocomplete="off" name="mot_dev" type=text size=16 maxlength=32></td>
 								</tr>
                                 <tr>
 									<td><h4>PROTOCOLO:</h4></td>
-									<td><input name="pro_dev" type=text size=16 maxlength=32></td>
+									<td><input autocomplete="off" name="pro_dev" type=text size=16 maxlength=32></td>
 								</tr>
 							</table>
 							<tr>
-								<td><input class="inputb" type=submit value=REGISTRAR></td>
+								<td><input autocomplete="off" class="inputb" type=submit value=REGISTRAR></td>
 							</tr>
 						</form>
 					</td>
@@ -174,8 +174,8 @@ if(isset($_POST['not_dev'])){
     ?>                        
                     <tr>
                         <td><form method="post" action="liberar_devolucao.php">
-                            <input type="hidden" name="id" value="<?php echo $vn['id'];?>">
-                            <nobr><input class="inpute" width="30%" type="image" src="..\imagem/check.png" alt="submit">
+                            <input autocomplete="off" type="hidden" name="id" value="<?php echo $vn['id'];?>">
+                            <nobr><input autocomplete="off" class="inpute" width="30%" type="image" src="..\imagem/check.png" alt="submit">
                         </form></td>
                         <td><h4><nobr><?php echo $vn['nota'];   ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['parcial'];    ?></nobr></h4></td>

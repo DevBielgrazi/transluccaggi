@@ -87,20 +87,20 @@ if(!isset($_SESSION["system_control"])){
 					<td>
 						<form method="post" action="alterar_custos.php">
 							<table>
-                                <input type="hidden" name="dat_cus" value="<?php echo $vn['mes'];?>">
-                                <input type="hidden" name="des_cus" value="<?php echo $vn['descricao'];?>">
-                                <input type="hidden" name="val_cus" value="<?php echo $vn['valor'];?>">
+                                <input autocomplete="off" type="hidden" name="dat_cus" value="<?php echo $vn['mes'];?>">
+                                <input autocomplete="off" type="hidden" name="des_cus" value="<?php echo $vn['descricao'];?>">
+                                <input autocomplete="off" type="hidden" name="val_cus" value="<?php echo $vn['valor'];?>">
 								<tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="des">DESCRIÇÃO:<?php echo $vn['descricao'];   ?></nobr></h2></td>
-                                    <td><input name="des_cusn" type=int size=16 maxlength=16 ></td>
+                                    <td><input autocomplete="off" name="des_cusn" type=int size=16 maxlength=16 ></td>
 								</tr>
                                 <tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="val">VALOR: R$<?php echo $vn['valor'];   ?></nobr></h2></td>
-                                    <td><input name="val_cusn" type=int size=16 maxlength=8 ></td>
+                                    <td><input autocomplete="off" name="val_cusn" type=int size=16 maxlength=8 ></td>
 								</tr>
 							</table>
                             <tr>
-                                <td><input class="inputb" type=submit value=ALTERAR></td>
+                                <td><input autocomplete="off" class="inputb" type=submit value=ALTERAR></td>
                             </tr>
 						</form>
 					</td>

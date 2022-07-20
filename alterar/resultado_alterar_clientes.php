@@ -86,14 +86,14 @@ if(!isset($_SESSION["system_control"])){
 					<td>
 						<form method="post" action="alterar_clientes.php">
 							<table>
-                                <input type="hidden" name="id" value=<?php echo $vn['id']?>>
+                                <input autocomplete="off" type="hidden" name="id" value=<?php echo $vn['id']?>>
 								<tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="cod">CÓDIGO:<?php echo $vn['codigo'];   ?></nobr></h2></td>
-                                    <td><input name="cod_cli" type=int size=16 maxlength=16 ></td>
+                                    <td><input autocomplete="off" name="cod_cli" type=int size=16 maxlength=16 ></td>
 								</tr>
                                 <tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="nom">NOME:<?php echo $vn['nome'];   ?></nobr></h2></td>
-                                    <td><input name="nom_cli" type=int size=16 maxlength=64 ></td>
+                                    <td><input autocomplete="off" name="nom_cli" type=int size=16 maxlength=64 ></td>
 								</tr>
                                 <tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="age">AGENDAR:<?php echo $vn['agendar'];   ?></nobr></h2></td>
@@ -104,7 +104,7 @@ if(!isset($_SESSION["system_control"])){
 								</tr>
                                 <tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="cad">CADASTRO:<?php echo $vn['cadastro'];   ?></nobr></h2></td>
-                                    <td><input name="cad_cli" type=date></td>
+                                    <td><input autocomplete="off" name="cad_cli" type=date></td>
 								</tr>
                                 <tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="rot">ROTA:<?php echo $vn['rota'];   ?></nobr></h2></td>
@@ -126,23 +126,23 @@ if(!isset($_SESSION["system_control"])){
 								</tr>
                                 <tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="cid">CIDADE:<?php echo $vn['cidade'];   ?></nobr></h2></td>
-                                    <td><input name="cid_cli" type=int size=16 maxlength=64 ></td>
+                                    <td><input autocomplete="off" name="cid_cli" type=int size=16 maxlength=64 ></td>
 								</tr>
                                 <tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="bai">BAIRRO:<?php echo $vn['bairro'];   ?></nobr></h2></td>
-                                    <td><input name="bai_cli" type=int size=16 maxlength=64 ></td>
+                                    <td><input autocomplete="off" name="bai_cli" type=int size=16 maxlength=64 ></td>
 								</tr>
                                 <tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="end">ENDEREÇO:<?php echo $vn['endereco'];   ?></nobr></h2></td>
-                                    <td><input name="end_cli" type=int size=16 maxlength=64 ></td>
+                                    <td><input autocomplete="off" name="end_cli" type=int size=16 maxlength=64 ></td>
 								</tr>
                                 <tr>
                                     <td><h2><nobr><input type="radio" name="opc" value="dis">CÓDIGO DISTRIBUIDORA:<?php echo $vn['cod_distribuidora'];   ?></nobr></h2></td>
-                                    <td><input name="cod_dis" type=int size=16 maxlength=16 ></td>
+                                    <td><input autocomplete="off" name="cod_dis" type=int size=16 maxlength=16 ></td>
 								</tr>
 							</table>
                             <tr>
-                                <td><input class="inputb" type=submit value=ALTERAR></td>
+                                <td><input autocomplete="off" class="inputb" type=submit value=ALTERAR></td>
                             </tr>
 						</form>
 					</td>

@@ -75,15 +75,15 @@ if(!isset($_SESSION["system_control"])){
 							<table>
 								<tr>
 									<td><h4>NOTA FISCAL:</h4></td>
-									<td><input name="age_nf" type=text size=16 maxlength=16 required></td>
+									<td><input autocomplete="off" name="age_nf" type=text size=16 maxlength=16 required></td>
 								</tr>
 								<tr>
 									<td><h4>DATA:</h4></td>
-									<td><input name="age_dat" type=date></td>
+									<td><input autocomplete="off" name="age_dat" type=date></td>
 								</tr>
 							</table>
 							<tr>
-								<td><input class="inputb" type=submit value=AGENDAR></td>
+								<td><input autocomplete="off" class="inputb" type=submit value=AGENDAR></td>
 							</tr>
 						</form>
 					</td>

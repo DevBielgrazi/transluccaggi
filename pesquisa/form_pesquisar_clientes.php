@@ -81,11 +81,11 @@ if(!isset($_SESSION["system_control"])){
 								</tr>
 								<tr>
 									<td><h4>CÓDIGO:<input type="radio" name="opc" value="cod"></h4></td>
-									<td><input name="cod_cli" type=text size=16 maxlength=16 ></td>
+									<td><input autocomplete="off" name="cod_cli" type=text size=16 maxlength=16 ></td>
 								</tr>
                                 <tr>
 									<td><h4>NOME:<input type="radio" name="opc" value="nom"></h4></td>
-									<td><input name="nom_cli" type=text size=16 maxlength=32 ></td>
+									<td><input autocomplete="off" name="nom_cli" type=text size=16 maxlength=32 ></td>
 								</tr>
                                 <tr>
 									<td><h4>AGENDAMENTO: SIM<input type="radio" name="opc" value="ages"></h4></td>
@@ -93,9 +93,9 @@ if(!isset($_SESSION["system_control"])){
 								</tr>
 								<tr>
 									<td><h4>CADASTRO:<input type="radio" name="opc" value="cad"></h4></td>
-									<td><input name="cad_cli" type=date ></td>
+									<td><input autocomplete="off" name="cad_cli" type=date ></td>
 									<td><h4>ATÉ</h4></td>
-									<td><input name="cad_cli2" type=date ></td>
+									<td><input autocomplete="off" name="cad_cli2" type=date ></td>
 								</tr>
 								<tr>
 									<td><h4>ROTA:<input type="radio" name="opc" value="rot"></h4></td>
@@ -163,7 +163,7 @@ while($i!=$n){
 									</tr>
 							</table>
                             <tr>
-                                <td><input class="inputb" type=submit value=PESQUISAR></td>
+                                <td><input autocomplete="off" class="inputb" type=submit value=PESQUISAR></td>
                             </tr>
 						</form>
 					</td>

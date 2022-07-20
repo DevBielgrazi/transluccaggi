@@ -123,8 +123,8 @@ $cus_men = number_format(($sql['cus']), 2, '.', '');
         <pag2>
             <h1>CUSTO MENSAL</h1>
             <form method="post" action="relatorio_mensal.php">
-                <input type="hidden" name="mes_rel" value="<?php echo date( 'm' , strtotime($dat_cus));?>">
-                <input type="hidden" name="ano_rel" value="<?php echo date( 'Y' , strtotime($dat_cus));?>">
+                <input autocomplete="off" type="hidden" name="mes_rel" value="<?php echo date( 'm' , strtotime($dat_cus));?>">
+                <input autocomplete="off" type="hidden" name="ano_rel" value="<?php echo date( 'Y' , strtotime($dat_cus));?>">
                 <td><button class="buttond" type=submit>RELATÓRIO MENSAL</button></td>
             </form>
 			<table>
@@ -132,18 +132,18 @@ $cus_men = number_format(($sql['cus']), 2, '.', '');
                     <td>
                         <form method="post" action="cadastrar_custos.php">
                             <table>
-                            <input type="hidden" name="dat_cus" value="<?php echo $dat_cus;?>">
+                            <input autocomplete="off" type="hidden" name="dat_cus" value="<?php echo $dat_cus;?>">
                                 <tr>
                                     <td><h4>DESCRIÇÃO:</h4></td>
-                                    <td><input name="des_cus" type=text size=16 maxlength=16 required></td>
+                                    <td><input autocomplete="off" name="des_cus" type=text size=16 maxlength=16 required></td>
                                 </tr>
                                 <tr>
                                     <td><h4>VALOR:</h4></td>
-                                    <td><input name="val_cus" type=float size=16 maxlength=8 required></td>
+                                    <td><input autocomplete="off" name="val_cus" type=float size=16 maxlength=8 required></td>
                                 </tr>
                             </table>
                             <tr>
-                                <td><input class="inputb" type=submit value=CADASTRAR></td>									
+                                <td><input autocomplete="off" class="inputb" type=submit value=CADASTRAR></td>									
                             </tr>
                         </form>
                     </td>	
