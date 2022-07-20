@@ -102,6 +102,8 @@ $dat_cus2 = $ano_cus."-".$mes_cus."-01";
                 <tr>
 					<td><h3>DESCRIÇÃO</h3></td>
                     <td><h3>CUSTO</h3></td>
+                    <td><h3>EXCLUIR</h3></td>
+                    <td><h3>EDITAR</h3></td>
 				</tr>
 <?php
     require('../connect.php');
@@ -118,6 +120,18 @@ $dat_cus2 = $ano_cus."-".$mes_cus."-01";
                 <tr>
                     <td><h4><nobr><?php echo $vn['descricao'];   ?></nobr></h4></td>
                     <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
+                <form method="post" action="..\excluir/resultado_excluir_custos.php">
+                    <input type="hidden" name="dat_cus" value="<?php echo $vn['mes'];?>">
+                    <input type="hidden" name="des_cus" value="<?php echo $vn['descricao'];?>">
+                    <input type="hidden" name="val_cus" value="<?php echo $vn['valor'];?>">
+                    <td><nobr><input class="inpute" width="40" type="image" src="..\imagem/delete.png" alt="submit"></td>
+                </form>
+                <form method="post" action="..\alterar/resultado_alterar_custos.php">
+                    <input type="hidden" name="dat_cus" value="<?php echo $vn['mes'];?>">
+                    <input type="hidden" name="des_cus" value="<?php echo $vn['descricao'];?>">
+                    <input type="hidden" name="val_cus" value="<?php echo $vn['valor'];?>">
+                    <td><input class="inpute" width="40" type="image" src="..\imagem/alter.png" alt="submit"></td>
+                </form>
                 </tr>
 <?php
 #SOMANDO AO CONTADOR
