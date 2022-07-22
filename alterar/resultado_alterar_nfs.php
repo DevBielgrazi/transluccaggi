@@ -9,7 +9,8 @@ if(!isset($_SESSION["system_control"])){
 }else{
 	$system_control = $_SESSION["system_control"];
 	if($system_control == 1 || $system_control == 2){
-?><html lang="pt-br">
+?><!DOCTYPE html>
+<html lang="pt-br">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link rel="icon" href="..\imagem/favicone.png"/>

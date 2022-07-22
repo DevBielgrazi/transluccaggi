@@ -15,6 +15,7 @@ require('../connect.php');
 	$mot_sai = trim($_POST['mot_sai']);
 	$dat_sai = trim($_POST['dat_sai']);
 ?>
+<!DOCTYPE html>
 <html lang="pt-br">
 	<head>
 		<link rel="stylesheet" href="print.css" media="print"/>

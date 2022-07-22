@@ -10,6 +10,7 @@ if(!isset($_SESSION["system_control"])){
 	$system_control = $_SESSION["system_control"];
 	if($system_control == 2){
 ?>
+<!DOCTYPE html>
 <html lang="pt-br">
 	<head>
 		<link rel="stylesheet" href="print.css" media="print"/>
