@@ -226,8 +226,12 @@ $sal_men = number_format(($sal_men), 2, '.', '');
                 $sql4 = mysqli_query($conn,"SELECT SUM(`peso`) as 'pes' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`!=1 AND `entrada`='$dat_rel' OR `cidade_cliente`='$cid_nf' AND `cod_distribuidora`=1 AND `emissao`='$dat_rel'");
             }
             $sql4 = mysqli_fetch_array($sql4);
-            $pes_cid = number_format(($sql4['pes']), 2, '.', '');
-            $val_pes = $val_cid/$pes_cid;
+            if($sql4['pes']<=0){
+                $val_pes = $val_cid;
+            }else{
+                $pes_cid = number_format(($sql4['pes']), 2, '.', '');
+                $val_pes = $val_cid/$pes_cid;
+            }
             $val_pes = number_format(($val_pes), 2, '.', '');
 
             if(isset($_POST['opc'])){
