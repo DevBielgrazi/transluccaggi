@@ -96,8 +96,8 @@ if(!isset($_SESSION["system_control"])){
                                 <td><h3>PESO</h3></td>
                                 <td><h3>ROTA</h3></td>
                                 <td><h3>CIDADE</h3></td>
-                                <td><h3>NOME_<br>CLIENTE</h3></td>
-                                <td><h3>COD_<br>DISTRIBUIDORA</h3></td>
+                                <td><h3>NOME_CLIENTE</h3></td>
+                                <td><h3>COD_DISTRIBUIDORA</h3></td>
                                 <td><h3>MOTORISTA</h3></td>
                                 <td><h3>STATUS</h3></td>
                                 </tr>
@@ -107,7 +107,7 @@ if(!isset($_SESSION["system_control"])){
                                     <td><h4><nobr><?php echo $vn['serie'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['emissao']));    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['entrada']));    ?></nobr></h4></td>
-                                    <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
+                                    <td><h4><nobr>R$<?php echo $vn['valor'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['peso'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['rota'];    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['cidade_cliente'];    ?></nobr></h4></td>

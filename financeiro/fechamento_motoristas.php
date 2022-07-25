@@ -87,12 +87,12 @@ $sql = mysqli_fetch_array($sql);
 $val_mes = number_format(($sql['val']), 2, '.', '');
 ?>
 		<rf>
-			<table border=1>
+			<table class="tableb" border=1>
 				<h1>FECHAMENTO DISTRIBUIDORAS</h1>
 				<tr>
-					<td><h3>DATA</h3></td>
-					<td><h3>MOTORISTA</h3></td>
-					<td><h3>VALOR</h3></td>
+					<th><h3>DATA</h3></th>
+					<th><h3>MOTORISTA</h3></th>
+					<th><h3>VALOR</h3></th>
 				</tr>
                 <tr>
 					<td><h4><nobr><?php echo $mes_fec."/".$ano_fec;   ?><nobr></h4></td>

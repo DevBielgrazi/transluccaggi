@@ -83,6 +83,7 @@ if(!isset($_SESSION["system_control"])){
 								<tr>
 									<td><h4>DISTRIBUIDORA:</h4></td>
 									<td><select name="dis">
+										<option value="">...</option>
 <?php
 #IMPORTANDO CONEXÃO DO BANCO
 	require('../connect.php');

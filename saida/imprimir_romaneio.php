@@ -41,7 +41,7 @@
                     <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['emissao']));    ?></nobr></h4></td>
                     <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['entrada']));    ?></nobr></h4></td>
                     <td><h4><nobr><?php echo $vn['volumes'];    ?></nobr></h4></td>
-                    <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
+                    <td><h4><nobr>R$<?php echo $vn['valor'];    ?></nobr></h4></td>
                     <td><h4><nobr><?php echo $vn['peso'];    ?></nobr></h4></td>
                     <td><h4><nobr><?php echo $vn['nome_cliente'];    ?></nobr></h4></td>
                 </tr>                                            

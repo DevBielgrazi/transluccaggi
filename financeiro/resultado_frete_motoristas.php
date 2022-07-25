@@ -108,20 +108,20 @@ if(!isset($_SESSION["system_control"])){
             </tr>
         </table>
     </pag>
-	<pag3>
-		<table border=1>
+	<pag2>
+		<table class="tableb" border=1>
 			<tr><h1>FRETE MOTORISTA</h1></tr>
 			<tr>
-				<td><h3>DATA:</h3><h4><?php  echo date( 'd/m/Y' , strtotime($dat_fre)); ?></h4></td>
-			</tr>
-            <tr>
-                <td><h3>MOTORISTA:</h3><h4><?php  echo $mot_fre; ?></h4></td>
+				<th><h3>DATA:</h3><h4><?php  echo date( 'd/m/Y' , strtotime($dat_fre)); ?></h4></th>
+                <th><h3>MOTORISTA:</h3><h4><?php  echo $mot_fre; ?></h4></th>
+                <th><h3>VALOR NOTAS:</h3><h4><?php  echo "R$".$val_tot; ?></h4></th>
             </tr>
+        </table>
+    </pag2>
+    <login>
+		<table class="tableb" border=1>
             <tr>
-                <td><h3>VALOR NOTAS:</h3><h4><?php  echo "R$".$val_tot; ?></h4></td>
-            </tr>
-            <tr>
-				<td><h3>CIDADES</h3></td>
+				<th><h3>CIDADES</h3></th>
 		</tr>
 <?php
 #INICIANDO CONTADOR
@@ -140,7 +140,7 @@ if(!isset($_SESSION["system_control"])){
     $i = $i + 1;
     }
 ?>
-    </pag3>
+    </login>
 <?php
 	}else{
 		?>

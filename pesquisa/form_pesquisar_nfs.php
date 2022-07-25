@@ -80,7 +80,8 @@ if(!isset($_SESSION["system_control"])){
 								<tr>
 									<td><h4>STATUS:<input type="radio" name="opc" value="sta"></h4></td>
 									<td><select name="sta_nf">
-										<option value="DISPONIVEL" selected>DISPONIVEL</option>
+										<option value="" selected>...</option>
+										<option value="DISPONIVEL">DISPONIVEL</option>
 										<option value="AGENDAR">AGENDAR</option>
 										<option value="AGENDADA">AGENDADA</option>
 										<option value="ROTA">ROTA</option>
@@ -132,7 +133,8 @@ if(!isset($_SESSION["system_control"])){
 								<tr>
 									<td><h4>ROTA:<input type="radio" name="opc" value="rot"></h4></td>
 									<td><select name="rot_nf">
-										<option value="VP00" selected>VP00</option>
+										<option value="" selected>...</option>
+										<option value="VP00">VP00</option>
 										<option value="VP01">VP01</option>
 										<option value="VP02">VP02</option>
 										<option value="VP03">VP03</option>
@@ -150,6 +152,7 @@ if(!isset($_SESSION["system_control"])){
 								<tr>
 									<td><h4>CIDADE:<input type="radio" name="opc" value="cid"></h4></td>
 									<td><select name="cid_cli">
+										<option value="">...</option>
 <?php
 #IMPORTANDO CONEXÃO DO BANCO
 require('../connect.php');
@@ -173,6 +176,7 @@ while($i!=$n){
 								<tr>
 									<td><h4>DISTRIBUIDORA:<input type="radio" name="opc" value="dis"></h4></td>
 									<td><select name="cod_dis">
+										<option value="">...</option>
 <?php
 #ADQUIRINDO INFORMAÇÕES DO BANCO
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis");
@@ -202,6 +206,7 @@ while($i!=$n){
 								<tr>
 									<td><h4>MOTORISTAS:<input type="radio" name="opc" value="mot"></h4></td>
 									<td><select name="mot_nf">
+										<option value="">...</option>
 <?php
 #IMPORTANDO CONEXÃO DO BANCO
 	require('../connect.php');

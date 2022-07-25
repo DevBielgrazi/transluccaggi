@@ -156,14 +156,14 @@ if(!isset($_SESSION["system_control"])){
 }
 ?>
 		<urd>
-			<table border=1>
+			<table class="tableb" border=1>
 				<h3>DISTRIBUIDORAS CADASTRADAS</h3>
 				<tr>
-					<td><h3>EXCLUIR</h3></td>
-					<td><h3>EDITAR</h3></td>
-					<td><h3>CÓDIGO</h3></td>
-					<td><h3>NOME</h3></td>
-					<td><h3>CADASTRO</h3></td>
+					<th><h3>EXCLUIR</h3></th>
+					<th><h3>EDITAR</h3></th>
+					<th><h3>CÓDIGO</h3></th>
+					<th><h3>NOME</h3></th>
+					<th><h3>CADASTRO</h3></th>
 				</tr>
 <?php
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis ORDER BY `codigo` DESC LIMIT 5");
@@ -178,11 +178,11 @@ if(!isset($_SESSION["system_control"])){
 				<tr>
 					<form method="post" action="..\excluir/resultado_excluir_distribuidoras.php">
                 		<input autocomplete="off" type="hidden" name="cod_dis" value="<?php echo $vn['codigo'];?>">
-                    <td><nobr><input autocomplete="off" class="inpute" width="40" type="image" src="..\imagem/delete.png" alt="submit"></td>
+                    <td><nobr><input autocomplete="off" class="inpute" width="15" type="image" src="..\imagem/delete.png" alt="submit"></td>
             		</form>
             		<form method="post" action="..\alterar/resultado_alterar_distribuidoras.php">
                 		<input autocomplete="off" type="hidden" name="cod_dis" value="<?php echo $vn['codigo'];?>">
-                    <td><input autocomplete="off" class="inpute" width="40" type="image" src="..\imagem/alter.png" alt="submit"></nobr></td>
+                    <td><input autocomplete="off" class="inpute" width="15" type="image" src="..\imagem/alter.png" alt="submit"></nobr></td>
 					</form>
 					<td><h4><nobr><?php echo $vn['codigo'];   ?><nobr></h4></td>
 					<td><h4><nobr><?php echo $vn['nome'];    ?><nobr></h4></td>

@@ -112,31 +112,31 @@ require('../connect.php');
 		$pla_mot = $sql2['placa'];
 ?>
 	<rs>
-		<table border=1>
+		<table class="tableb" border=2>
 			<tr><h3>SAÍDA MOTORISTA</h3></tr>
 			<tr>
-				<td><form method="post" action="imprimir_saida.php" target="_blank">
+				<th><form method="post" action="imprimir_saida.php" target="_blank">
 					<input autocomplete="off" type="hidden" name="mot_sai" value="<?php echo $mot_sai;  ?>">
 					<input autocomplete="off" type="hidden" name="dat_sai" value="<?php echo $dat_sai;  ?>">
 					<input autocomplete="off" class="inpute" type=image width=5% height=5% src="..\imagem/imprimir.png" alt=submit>
-				</form></td>
-				<td><h3>DATA:<?php  echo date( 'd/m/Y' , strtotime($dat_sai)); ?></h3></td>
-				<td><h3>MOTORISTA:<?php  echo $nom_mot; ?></h3></td>
-				<td><h3>VEÍCULO:<?php echo $vei_mot  ?></h3></td>
-				<td><h3>PLACA:<?php echo $pla_mot  ?></h3></td>
+				</form></th>
+				<th><h3>DATA:<?php  echo date( 'd/m/Y' , strtotime($dat_sai)); ?></h3></th>
+				<th><h3>MOTORISTA:<?php  echo $nom_mot; ?></h3></th>
+				<th><h3>VEÍCULO:<?php echo $vei_mot  ?></h3></th>
+				<th><h3>PLACA:<?php echo $pla_mot  ?></h3></th>
 				<form method="post" action="cancelar_saida.php">
                     <input autocomplete="off" type="hidden" name="mot_sai" value="<?php echo $mot_sai;?>">
                     <input autocomplete="off" type="hidden" name="dat_sai" value="<?php echo $dat_sai;?>">
-                    <td><nobr><input autocomplete="off" class="inpute" width="20" type="image" src="..\imagem/cancel.png" alt="submit"></td>
+                    <th><nobr><input autocomplete="off" class="inpute" width="20" type="image" src="..\imagem/cancel.png" alt="submit"></th>
                 </form>
 			</tr>
 			<tr>
-				<td><h3>NF</h3></td>
-				<td><h3>VALOR</h3></td>
-				<td><h3>VOLUMES</h3></td>
-				<td><h3>CLIENTE</h3></td>
-				<td><h3>CIDADE</h3></td>
-				<td><h3>REMOVER</h3></td>
+				<th><h3>NF</h3></th>
+				<th><h3>VALOR</h3></th>
+				<th><h3>VOLUMES</h3></th>
+				<th><h3>CLIENTE</h3></th>
+				<th><h3>CIDADE</h3></th>
+				<th><h3>REMOVER</h3></th>
 		</tr>
 <?php
 #INICIANDO CONTADOR
@@ -171,7 +171,7 @@ require('../connect.php');
 ?>
 				<tr>
 					<td><h4><nobr><?php echo $vn['numero'];   ?></nobr></h4></td>
-					<td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
+					<td><h4><nobr>R$<?php echo $vn['valor'];    ?></nobr></h4></td>
 					<td><h4><nobr><?php echo $vn['volumes'];    ?></nobr></h4></td>
 					<td><h4><nobr><?php echo $vn['nome_cliente'];    ?></nobr></h4></td>
 					<td><h4><nobr><?php echo $vn['cidade_cliente'];    ?></nobr></h4></td>
@@ -201,6 +201,7 @@ require('../connect.php');
 		?>
 			<script>
 				alert("MOTORISTA NÃO CADASTRADO!");
+				document.location.href="form_saida_motorista.php";
 			</script>
 		<?php
 	}

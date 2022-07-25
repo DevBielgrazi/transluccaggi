@@ -83,15 +83,15 @@ $dis = trim($_POST['dis']);
                 <input autocomplete="off" type="hidden" name="dis" value="<?php echo $dis;  ?>">
                 <input autocomplete="off" class="inpute" type=image width=10% height=10% src="..\imagem/imprimir.png" alt=submit>
             </form>
-            <table border=1>
+            <table class="tableb" border=2>
                 <tr><h3>NOTAS FISCAIS</h3></tr>
                 <tr>
-                    <td><h3>ENTRADA</h3></td>
-                    <td><h3>NÚMERO</h3></td>
-                    <td><h3>VALOR</h3></td>
-                    <td><h3>VOLUMES</h3></td>
-                    <td><h3>CLIENTE</h3></td>
-                    <td><h3>CIDADE</h3></td>
+                    <th><h3>ENTRADA</h3></th>
+                    <th><h3>NÚMERO</h3></th>
+                    <th><h3>VALOR</h3></th>
+                    <th><h3>VOLUMES</h3></th>
+                    <th><h3>CLIENTE</h3></th>
+                    <th><h3>CIDADE</h3></th>
 				</tr>
 <?php
 #IMPORTANDO CONEXÃO COM O BANCO
@@ -109,7 +109,7 @@ $dis = trim($_POST['dis']);
                     <tr>
                         <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['entrada']));    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['numero'];    ?></nobr></h4></td>
-                        <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
+                        <td><h4><nobr>R$<?php echo $vn['valor'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['volumes'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['nome_cliente'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['cidade_cliente'];    ?></nobr></h4></td>

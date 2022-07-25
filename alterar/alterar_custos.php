@@ -137,7 +137,7 @@ if(!isset($_SESSION["system_control"])){
                 <tr>
                     <td><h4><nobr><?php echo date( 'm/Y' , strtotime( $vn['mes']));    ?></nobr></h4></td>
                     <td><h4><nobr><?php echo $vn['descricao'];    ?></nobr></h4></td>
-                    <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
+                    <td><h4><nobr>R$<?php echo $vn['valor'];    ?></nobr></h4></td>
                 </tr>
 <?php
 #SOMANDO AO CONTADOR

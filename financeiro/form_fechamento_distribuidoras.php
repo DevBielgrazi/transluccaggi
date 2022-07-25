@@ -77,20 +77,28 @@ if(!isset($_SESSION["system_control"])){
 								<tr>
                                 <tr>
 									<td><h4>ANO:</h4></td>
-									<td><select name="ano_fec">
+									<td><select name="ano_fec" required>
 <?php
 $ano = date('Y');
 $ano_a = $ano-1;
+$ano_a2 = $ano-2;
+$ano_a3 = $ano-3;
+$ano_a4 = $ano-4;
 ?>
-                                        <option value="<?php echo $ano ?>" selected><?php echo $ano ?></option>
+                                        <option value="" selected>...</option>
+                                        <option value="<?php echo $ano ?>"><?php echo $ano ?></option>
                                         <option value="<?php echo $ano_a ?>"><?php echo $ano_a ?></option>
+                                        <option value="<?php echo $ano_a2 ?>"><?php echo $ano_a2 ?></option>
+                                        <option value="<?php echo $ano_a3 ?>"><?php echo $ano_a3 ?></option>
+                                        <option value="<?php echo $ano_a4 ?>"><?php echo $ano_a4 ?></option>
 ?>
 									</select></td>
 								</tr>
                                 <tr>
 									<td><h4>MÊS:</h4></td>
-									<td><select name="mes_fec">
-										<option value="01" selected>JANEIRO</option>
+									<td><select name="mes_fec" required>
+										<option value="" selected>...</option>
+										<option value="01">JANEIRO</option>
 										<option value="02">FEVEREIRO</option>
 										<option value="03">MARÇO</option>
 										<option value="04">ABRIL</option>
@@ -105,7 +113,8 @@ $ano_a = $ano-1;
 									</select></td>
 								<tr>
 									<td><h4>DISTRIBUIDORA:</h4></td>
-									<td><select name="dis_fec">
+									<td><select name="dis_fec" required>
+										<option value="" selected>...</option>
 <?php
 #IMPORTANDO CONEXÃO DO BANCO
 	require('../connect.php');

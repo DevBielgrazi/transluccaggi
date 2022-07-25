@@ -71,26 +71,26 @@ if(!isset($_SESSION["system_control"])){
         	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
 		</exit>
         <rn>
-            <table border=1>
+            <table class="tableb" border=1>
                 <tr><h3>NOTAS FISCAIS</h3></tr>
                 <tr>
-					<td><h3>EXCLUIR</h3></td>
-					<td><h3>EDITAR</h3></td>
-					<td><h3>NÚMERO</h3></td>
-					<td><h3>SÉRIE</h3></td>
-                    <td><h3>EMISSÃO</h3></td>
-                    <td><h3>ENTRADA</h3></td>
-                    <td><h3>SAÍDA</h3></td>
-                    <td><h3>VALOR</h3></td>
-                    <td><h3>PESO</h3></td>
-                    <td><h3>ROTA</h3></td>
-                    <td><h3>CIDADE</h3></td>
-                    <td><h3>BAIRRO</h3></td>
-                    <td><h3>NOME_<br>CLIENTE</h3></td>
-                    <td><h3>COD_<br>DISTRIBUIDORA</h3></td>
-                    <td><h3>MOTORISTAS</h3></td>
-                    <td><h3>STATUS</h3></td>
-                    <td><h3>OBSERVAÇÃO</h3></td>
+					<th><h3>EXCLUIR</h3></th>
+					<th><h3>EDITAR</h3></th>
+					<th><h3>NÚMERO</h3></th>
+					<th><h3>SÉRIE</h3></th>
+                    <th><h3>EMISSÃO</h3></th>
+                    <th><h3>ENTRADA</h3></th>
+                    <th><h3>SAÍDA</h3></th>
+                    <th><h3>VALOR</h3></th>
+                    <th><h3>PESO</h3></th>
+                    <th><h3>ROTA</h3></th>
+                    <th><h3>CIDADE</h3></th>
+                    <th><h3>BAIRRO</h3></th>
+                    <th><h3>NOME_CLIENTE</h3></th>
+                    <th><h3>COD_DISTRIBUIDORA</h3></th>
+                    <th><h3>MOTORISTAS</h3></th>
+                    <th><h3>STATUS</h3></th>
+                    <th><h3>OBSERVAÇÃO</h3></th>
 				</tr>
 <?php
 #IMPORTANDO CONEXÃO DO BANCO
@@ -206,17 +206,17 @@ if(!isset($_SESSION["system_control"])){
                     <tr>
                 <form method="post" action="..\excluir/resultado_excluir_nfs.php">
                     <input autocomplete="off" type="hidden" name="id" value="<?php echo $vn['id'];?>">
-                    <td><nobr><input autocomplete="off" class="inpute" width="40" type="image" src="..\imagem/delete.png" alt="submit"></td>
+                    <td><nobr><input autocomplete="off" class="inpute" width="15" type="image" src="..\imagem/delete.png" alt="submit"></td>
                 </form>
                 <form method="post" action="..\alterar/resultado_alterar_nfs.php">
                     <input autocomplete="off" type="hidden" name="id" value="<?php echo $vn['id'];?>">
-                        <td><input autocomplete="off" class="inpute" width="40" type="image" src="..\imagem/alter.png" alt="submit"></td>
+                        <td><input autocomplete="off" class="inpute" width="15" type="image" src="..\imagem/alter.png" alt="submit"></td>
                         <td><h4><nobr><?php echo $vn['numero'];   ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['serie'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['emissao']));    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['entrada']));    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['saida']));    ?></nobr></h4></td>
-                        <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
+                        <td><h4><nobr>R$<?php echo $vn['valor'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['peso'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['rota'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['cidade_cliente'];    ?></nobr></h4></td>

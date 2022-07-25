@@ -171,7 +171,7 @@ if(!isset($_SESSION["system_control"])){
                     <td><h3>CIDADE</h3></td>
                     <td><h3>BAIRRO</h3></td>
                     <td><h3>ENDEREÇO</h3></td>
-                    <td><h3>COD_<br>DISTRIBUIDORA</h3></td>
+                    <td><h3>COD_DISTRIBUIDORA</h3></td>
                 </tr>
 <?php
     $sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `id` = '$id'");

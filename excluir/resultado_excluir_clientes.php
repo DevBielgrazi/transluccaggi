@@ -96,7 +96,7 @@ if(!isset($_SESSION["system_control"])){
                                 <td><h3>CIDADE</h3></td>
                                 <td><h3>BAIRRO</h3></td>
                                 <td><h3>ENDEREÇO</h3></td>
-                                <td><h3>COD_<br>DISTRIBUIDORA</h3></td>
+                                <td><h3>COD_DISTRIBUIDORA</h3></td>
                                 </tr>
                                 <input autocomplete="off" type="hidden" name="id" value="<?php echo $vn['id'];?>">
                                 <input autocomplete="off" type="hidden" name="cod_cli" value="<?php echo $vn['codigo'];?>">

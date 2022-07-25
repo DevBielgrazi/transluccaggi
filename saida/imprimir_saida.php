@@ -69,7 +69,7 @@
 ?>
 		<tr>
 			<td>TOTAL VOLUMES:<?php  echo $tot_vol ?></td>
-			<td>VALOR TOTAL:<?php  echo $val_tot ?></td>
+			<td>VALOR TOTAL: R$<?php  echo $val_tot ?></td>
 			<td>VALOR FRETE:<?php  echo "" ?></td>
 		</tr>
         <script>window.print();</script>

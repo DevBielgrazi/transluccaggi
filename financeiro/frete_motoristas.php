@@ -96,12 +96,12 @@ if(!isset($_SESSION["system_control"])){
 	}
 ?>
 		<pag>
-			<table border=1>
+			<table class="tableb" border=1>
 				<h1>FRETE POR MOTORISTAS</h1>
 				<tr>
-					<td><h3>DATA</h3></td>
-					<td><h3>MOTORISTA</h3></td>
-					<td><h3>VALOR</h3></td>
+					<th><h3>DATA</h3></th>
+					<th><h3>MOTORISTA</h3></th>
+					<th><h3>VALOR</h3></th>
 				</tr>
                 <tr>
 					<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime($dat_fre));   ?><nobr></h4></td>

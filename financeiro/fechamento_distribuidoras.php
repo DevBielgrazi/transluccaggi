@@ -98,12 +98,12 @@ $sql2 = mysqli_fetch_array($sql2);
 $nom_dis = $sql2['nome'];
 ?>
 		<rf>
-			<table border=1>
+			<table class="tableb" border=1>
 				<h1>FECHAMENTO DISTRIBUIDORAS</h1>
 				<tr>
-					<td><h3>DATA</h3></td>
-					<td><h3>DISTRIBUIDORA</h3></td>
-					<td><h3>VALOR</h3></td>
+					<th><h3>DATA</h3></th>
+					<th><h3>DISTRIBUIDORA</h3></th>
+					<th><h3>VALOR</h3></th>
 				</tr>
                 <tr>
 					<td><h4><nobr><?php echo $mes_fec."/".$ano_fec;   ?><nobr></h4></td>

@@ -125,13 +125,13 @@ $dat_cus2 = $ano_cus."-".$mes_cus."-01";
                     <input autocomplete="off" type="hidden" name="dat_cus" value="<?php echo $vn['mes'];?>">
                     <input autocomplete="off" type="hidden" name="des_cus" value="<?php echo $vn['descricao'];?>">
                     <input autocomplete="off" type="hidden" name="val_cus" value="<?php echo $vn['valor'];?>">
-                    <td><nobr><input autocomplete="off" class="inpute" width="40" type="image" src="..\imagem/delete.png" alt="submit"></td>
+                    <td><nobr><input autocomplete="off" class="inpute" width="15" type="image" src="..\imagem/delete.png" alt="submit"></td>
                 </form>
                 <form method="post" action="..\alterar/resultado_alterar_custos.php">
                     <input autocomplete="off" type="hidden" name="dat_cus" value="<?php echo $vn['mes'];?>">
                     <input autocomplete="off" type="hidden" name="des_cus" value="<?php echo $vn['descricao'];?>">
                     <input autocomplete="off" type="hidden" name="val_cus" value="<?php echo $vn['valor'];?>">
-                    <td><input autocomplete="off" class="inpute" width="40" type="image" src="..\imagem/alter.png" alt="submit"></td>
+                    <td><input autocomplete="off" class="inpute" width="15" type="image" src="..\imagem/alter.png" alt="submit"></td>
                 </form>
                 </tr>
 <?php
@@ -149,7 +149,7 @@ $dat_cus2 = $ano_cus."-".$mes_cus."-01";
             <td><nobr><input autocomplete="off" width="80" type="image" src="..\imagem/grafico.jpg" alt="submit"></td>
         </form>
         </pag3>
-        <pag2>
+        <pag>
 			<h1>CUSTOS MENSAL</h1><p>
             <form method="post" action="relatorio_mensal.php">
                 <input autocomplete="off" type="hidden" name="mes_rel" value="<?php echo date( 'm' , strtotime($dat_cus2));?>">
@@ -180,7 +180,7 @@ $dat_cus2 = $ano_cus."-".$mes_cus."-01";
                     </td>	
                 </tr>
             </table>
-		</pag2>
+		</pag>
 	</body>
 </html>
 <?php

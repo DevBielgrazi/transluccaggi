@@ -232,21 +232,21 @@ if(!isset($_SESSION["system_control"])){
 }
 ?>
 		<urn>
-            <table border=1>
+            <table class="tableb" border=2>
                 <h3>NOTAS CADASTRADAS</h3>
                 <tr>
-					<td><h3>EXCLUIR</h3></td>
-					<td><h3>EDITAR</h3></td>
-					<td><h3>NÚMERO</h3></td>
-					<td><h3>SÉRIE</h3></td>
-                    <td><h3>EMISSÃO</h3></td>
-                    <td><h3>ENTRADA</h3></td>
-                    <td><h3>VOLUMES</h3></td>
-                    <td><h3>VALOR</h3></td>
-                    <td><h3>PESO</h3></td>
-                    <td><h3>CIDADE</h3></td>
-                    <td><h3>BAIRRO</h3></td>
-                    <td><h3>NOME_<br>CLIENTE</h3></td>
+					<th><h2>EXCLUIR</h2></th>
+					<th><h2>EDITAR</h2></th>
+					<th><h2>NÚMERO</h2></th>
+					<th><h2>SÉRIE</h2></th>
+                    <th><h2>EMISSÃO</h2></th>
+                    <th><h2>ENTRADA</h2></th>
+                    <th><h2>VOLUMES</h2></th>
+                    <th><h2>VALOR</h2></th>
+                    <th><h2>PESO</h2></th>
+                    <th><h2>CIDADE</h2></th>
+                    <th><h2>BAIRRO</h2></th>
+                    <th><h2>NOME_CLIENTE</h2></th>
 				</tr>
 <?php
 				$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs ORDER BY `id` DESC LIMIT 5");
@@ -261,18 +261,18 @@ if(!isset($_SESSION["system_control"])){
 					<tr>
 				<form method="post" action="..\excluir/resultado_excluir_nfs.php">
                     <input autocomplete="off" type="hidden" name="id" value="<?php echo $vn['id'];?>">
-                    	<td><nobr><input autocomplete="off" class="inpute" width="40" type="image" src="..\imagem/delete.png" alt="submit"></td>
+                    	<td><nobr><input autocomplete="off" class="inpute" width="15" type="image" src="..\imagem/delete.png" alt="submit"></td>
                 </form>
                 <form method="post" action="..\alterar/resultado_alterar_nfs.php">
                     <input autocomplete="off" type="hidden" name="id" value="<?php echo $vn['id'];?>">
-                        <td><input autocomplete="off" class="inpute" width="40" type="image" src="..\imagem/alter.png" alt="submit"></td>
+                        <td><input autocomplete="off" class="inpute" width="15" type="image" src="..\imagem/alter.png" alt="submit"></td>
 				</form>
 						<td><h4><nobr><?php echo $vn['numero'];   ?></nobr></h4></td>
 						<td><h4><nobr><?php echo $vn['serie'];    ?></nobr></h4></td>
 						<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['emissao']));    ?></nobr></h4></td>
 						<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['entrada']));    ?></nobr></h4></td>
 						<td><h4><nobr><?php echo $vn['volumes'];    ?></nobr></h4></td>
-						<td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
+						<td><h4><nobr>R$<?php echo $vn['valor'];    ?></nobr></h4></td>
 						<td><h4><nobr><?php echo $vn['peso'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['cidade_cliente'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['bairro_cliente'];    ?></nobr></h4></td>

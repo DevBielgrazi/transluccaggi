@@ -108,7 +108,7 @@ $cus_men = number_format(($sql['cus']), 2, '.', '');
 ?>
                 <tr>
                     <td><h4><nobr><?php echo $vn['descricao'];   ?></nobr></h4></td>
-                    <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
+                    <td><h4><nobr>R$<?php echo $vn['valor'];    ?></nobr></h4></td>
                 </tr>
 <?php
 #SOMANDO AO CONTADOR
@@ -121,7 +121,7 @@ $cus_men = number_format(($sql['cus']), 2, '.', '');
                 </tr>
 			</table>
         </rf>
-        <pag2>
+        <pag>
             <h1>CUSTO MENSAL</h1>
             <form method="post" action="relatorio_mensal.php">
                 <input autocomplete="off" type="hidden" name="mes_rel" value="<?php echo date( 'm' , strtotime($dat_cus));?>">
@@ -150,7 +150,7 @@ $cus_men = number_format(($sql['cus']), 2, '.', '');
                     </td>	
                 </tr>
             </table>
-        </pag2>
+        </pag>
 	</body>
 </html>
 <?php

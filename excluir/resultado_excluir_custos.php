@@ -100,7 +100,7 @@ if(!isset($_SESSION["system_control"])){
 								<h6>DESEJA MESMO EXCLUIR ESSE CUSTO?</h6>
                                     <td><h4><nobr><?php echo date( 'm/Y' , strtotime( $vn['mes']));    ?></nobr></h4></td>
                                     <td><h4><nobr><?php echo $vn['descricao'];    ?></nobr></h4></td>
-                                    <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
+                                    <td><h4><nobr>R$<?php echo $vn['valor'];    ?></nobr></h4></td>
                                 </table>
                             <tr>
                                 <td><input autocomplete="off" class="inputc" type=submit value=SIM>

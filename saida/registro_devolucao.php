@@ -148,20 +148,21 @@ if(isset($_POST['not_dev'])){
 }
 ?>
             <urn>
-                <table border=1>
+                <table class="tableb" border=2>
                     <h3>DEVOLUÇÕES</h3>
                     <tr>
-                        <td><h3>LIBERAR</h3></td>
-                        <td><h3>NOTA</h3></td>
-                        <td><h3>NOTA PARCIAL</h3></td>
-                        <td><h3>VALOR</h3></td>
-                        <td><h3>VOLUMES</h3></td>
-                        <td><h3>CIDADE</h3></td>
-                        <td><h3>CLIENTE</h3></td>
-                        <td><h3>COD_<br>CLIENTE</h3></td>
-                        <td><h3>MOTIVO</h3></td>
-                        <td><h3>PROTOCOLO</h3></td>
-                        <td><h3>STATUS</h3></td>
+                        <th><h3>LIBERAR</h3></th>
+                        <th><h3>NOTA</h3></th>
+                        <th><h3>NOTA PARCIAL</h3></th>
+                        <th><h3>VALOR</h3></th>
+                        <th><h3>VOLUMES</h3></th>
+                        <th><h3>CIDADE</h3></th>
+                        <th><h3>CLIENTE</h3></th>
+                        <th><h3>COD_CLIENTE</h3></th>
+                        <th><h3>MOTIVO</h3></th>
+                        <th><h3>TIPO</h3></th>
+                        <th><h3>PROTOCOLO</h3></th>
+                        <th><h3>STATUS</h3></th>
                     </tr>
     <?php
     #INICIANDO CONTADOR
@@ -176,16 +177,17 @@ if(isset($_POST['not_dev'])){
                     <tr>
                         <td><form method="post" action="liberar_devolucao.php">
                             <input autocomplete="off" type="hidden" name="id" value="<?php echo $vn['id'];?>">
-                            <nobr><input autocomplete="off" class="inpute" width="30%" type="image" src="..\imagem/check.png" alt="submit">
+                            <nobr><input autocomplete="off" class="inpute" width="15" type="image" src="..\imagem/check.png" alt="submit">
                         </form></td>
                         <td><h4><nobr><?php echo $vn['nota'];   ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['parcial'];    ?></nobr></h4></td>
-                        <td><h4><nobr><?php echo $vn['valor'];    ?></nobr></h4></td>
+                        <td><h4><nobr>R$<?php echo $vn['valor'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['volumes'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['cidade'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['cliente'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['cod_cliente'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['motivo'];    ?></nobr></h4></td>
+                        <td><h4><nobr><?php echo $vn['tipo'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['protocolo'];    ?></nobr></h4></td>
                         <td><h4><nobr><?php echo $vn['status'];    ?></nobr></h4></td>
                     </tr>

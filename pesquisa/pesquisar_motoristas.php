@@ -71,17 +71,17 @@ if(!isset($_SESSION["system_control"])){
         	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
 		</exit>
         <rn>
-            <table border=1>
+            <table class="tableb" border=1>
                 <h3>MOTORISTAS CADASTRADOS</h3>
                 <tr>
-					<td><h3>EXCLUIR</h3></td>
-					<td><h3>EDITAR</h3></td>
-					<td><h3>CADASTRO</h3></td>
-					<td><h3>NOME</h3></td>
-					<td><h3>VEÍCULO</h3></td>
-					<td><h3>PLACA</h3></td>
-					<td><h3>TELEFONE</h3></td>
-					<td><h3>ENDERECO</h3></td>
+					<th><h3>EXCLUIR</h3></th>
+					<th><h3>EDITAR</h3></th>
+					<th><h3>CADASTRO</h3></th>
+					<th><h3>NOME</h3></th>
+					<th><h3>VEÍCULO</h3></th>
+					<th><h3>PLACA</h3></th>
+					<th><h3>TELEFONE</h3></th>
+					<th><h3>ENDERECO</h3></th>
 				</tr>
 <?php
 #IMPORTANDO CONEXÃO COM O BANCO
@@ -141,11 +141,11 @@ if(!isset($_SESSION["system_control"])){
                 <tr>
             <form method="post" action="..\excluir/resultado_excluir_motoristas.php">
                 <input autocomplete="off" type="hidden" name="id" value="<?php echo $vn['id'];?>">
-                    <td><nobr><input autocomplete="off" class="inpute" width="40" type="image" src="..\imagem/delete.png" alt="submit"></td>
+                    <td><nobr><input autocomplete="off" class="inpute" width="15" type="image" src="..\imagem/delete.png" alt="submit"></td>
             </form>
             <form method="post" action="..\alterar/resultado_alterar_motoristas.php">
                 <input autocomplete="off" type="hidden" name="id" value="<?php echo $vn['id'];?>">
-                    <td><input autocomplete="off" class="inpute" width="40" type="image" src="..\imagem/alter.png" alt="submit"></nobr></td>
+                    <td><input autocomplete="off" class="inpute" width="15" type="image" src="..\imagem/alter.png" alt="submit"></nobr></td>
                     <td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['cadastro']));    ?></nobr></h4></td>
                     <td><h4><nobr><?php echo $vn['nome'];   ?></nobr></h4></td>
                     <td><h4><nobr><?php echo $vn['veiculo'];   ?></nobr></h4></td>

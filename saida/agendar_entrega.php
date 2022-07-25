@@ -91,30 +91,75 @@ if(!isset($_SESSION["system_control"])){
 				</tr>
 			</table>
 		</pag>
+        <urn>
+                <table class="tableb" border=1>
+                    <h3>DEVOLUÇÕES</h3>
+                    <tr>
+                        <th><h3>NÚMERO</h3></th>
+                        <th><h3>SÉRIE</h3></th>
+                        <th><h3>EMISSÃO</h3></th>
+                        <th><h3>ENTRADA</h3></th>
+                        <th><h3>VOLUMES</h3></th>
+                        <th><h3>VALOR</h3></th>
+                        <th><h3>PESO</h3></th>
+                        <th><h3>CIDADE</h3></th>
+                        <th><h3>BAIRRO</h3></th>
+                        <th><h3>NOME_CLIENTE</h3></th>
+                    </tr>
+    <?php
+    if(isset($_POST['age_nf'])) {
+        #IMPORTANDO CONEXÃO COM O BANCO
+            require('../connect.php');
+        #VARIÁVEIS DO FORMULÁRIO
+            $age_nf = trim($_POST['age_nf']);
+            $age_dat = "AGENDADA PARA DIA:".date( 'd/m/Y' , strtotime( $_POST['age_dat']));
+        
+        #ADQUIRINDO DADOS DO BANCO
+            $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$age_nf' AND `status` = 'AGENDAR' ORDER BY `id` DESC LIMIT 1");
+            $n = mysqli_num_rows($sql);
+            if($n != 0){
+                $sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'AGENDADA', `observacao` = '$age_dat' WHERE `numero` = '$age_nf'");
+                ?>
+                    <script>alert("ENTREGA AGENDADA")</script>
+                <?php
+            }else{
+                ?>
+                <script>alert("NOTA NÃO ENCONTRADA")</script>
+                <?php
+            }
+        }
+    require('../connect.php');
+    #INICIANDO CONTADOR
+        $i=0;
+    #APRESENTANDO DADOS DA TABELA
+    $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `status` = 'AGENDAR' ORDER BY `entrada` DESC");
+    $n = mysqli_num_rows($sql);
+        while($i!=$n)
+        {
+            $vn = mysqli_fetch_array($sql);
+    ?>                        
+                    <tr>
+                        <td><h4><nobr><?php echo $vn['numero'];   ?></nobr></h4></td>
+						<td><h4><nobr><?php echo $vn['serie'];    ?></nobr></h4></td>
+						<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['emissao']));    ?></nobr></h4></td>
+						<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $vn['entrada']));    ?></nobr></h4></td>
+						<td><h4><nobr><?php echo $vn['volumes'];    ?></nobr></h4></td>
+						<td><h4><nobr>R$<?php echo $vn['valor'];    ?></nobr></h4></td>
+						<td><h4><nobr><?php echo $vn['peso'];    ?></nobr></h4></td>
+                        <td><h4><nobr><?php echo $vn['cidade_cliente'];    ?></nobr></h4></td>
+                        <td><h4><nobr><?php echo $vn['bairro_cliente'];    ?></nobr></h4></td>
+                        <td><h4><nobr><?php echo $vn['nome_cliente'];    ?></nobr></h4></td>
+                    </tr>
+    <?php
+    #SOMANDO AO CONTADOR
+                $i = $i + 1;
+            }
+    ?>
+                </table>
+            </urn>
 	</body>
 </html>
 <?php
-if(isset($_POST['age_nf'])) {
-#IMPORTANDO CONEXÃO COM O BANCO
-	require('../connect.php');
-#VARIÁVEIS DO FORMULÁRIO
-    $age_nf = trim($_POST['num_nf']);
-    $age_dat = "AGENDADA PARA DIA:".date( 'd/m/Y' , strtotime( $_POST['dat_nf']));
-
-#ADQUIRINDO DADOS DO BANCO
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' AND `status` = 'AGENDAR' ORDER BY `id` DESC LIMIT 1");
-	$n = mysqli_num_rows($sql);
-    if($n != 0){
-        $sql = mysqli_query($conn,"UPDATE $tab_nfs SET `status` = 'AGENDADA', `observacao` = '$age_dat' WHERE `numero` = '$num_nf'");
-        ?>
-            <script>alert("ENTREGA AGENDADA")</script>
-        <?php
-    }else{
-        ?>
-        <script>alert("NOTA NÃO ENCONTRADA")</script>
-        <?php
-    }
-}
     }
 }
 ?>

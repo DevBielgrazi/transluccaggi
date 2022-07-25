@@ -114,17 +114,17 @@ pag{
 pag2{
     position:absolute;
     top:10%;
-    left:1%;
+    left:20%;
 }
 pag3{
     position:absolute;
-    top:15%;
-    left:40%;
+    top:50%;
+    left:1%;
 }
 urn{
     position:absolute;
     top:15%;
-    left: 120%;
+    left: 21%;
 }
 urn2{
     position:absolute;
@@ -134,17 +134,17 @@ urn2{
 urc{
     position:absolute;
     top:10%;
-    left:120%;
+    left:31%;
 }
 urd{
     position:absolute;
     top:10%;
-    left:110%;
+    left:30%;
 }
 urm{
     position:absolute;
-    top:5%;
-    left:110%;
+    top:15%;
+    left:30%;
 }
 rn{
     position:absolute;
@@ -200,13 +200,29 @@ table{
     border-radius: 5%;
     border-color:darkblue;
     padding: 0%;
+    border-collapse: collapse;
+    line-height:0%;
 }
 .tableb{
-    align-items: left;
-    text-align: left;
-    border-style: inset;
-    border-radius: 15%;
-    border-color:darkblue;
+    align-items: center;
+    text-align: center;
+    padding: 0%;
+    border-collapse: collapse;
+    background-color: lightgray;
+}
+.tableb td{
+    border-top: none;
+    border-color: darkblue;
+    padding: 0%;
+}
+.tableb th{
+    background-color: dodgerblue;
+    border-top: none;
+    border-color: darkblue;
+}
+.tableb tr:nth-child(even) {
+    background:gray;
+    border:none;
 }
 gra{
     position: absolute;

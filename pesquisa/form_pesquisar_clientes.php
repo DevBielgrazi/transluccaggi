@@ -101,7 +101,8 @@ if(!isset($_SESSION["system_control"])){
 								<tr>
 									<td><h4>ROTA:<input type="radio" name="opc" value="rot"></h4></td>
 									<td><select name="rot_cli">
-										<option value="VP00" selected>VP00</option>
+										<option value="" selected>...</option>
+										<option value="VP00">VP00</option>
 										<option value="VP01">VP01</option>
 										<option value="VP02">VP02</option>
 										<option value="VP03">VP03</option>
@@ -119,6 +120,7 @@ if(!isset($_SESSION["system_control"])){
                                 <tr>
 									<td><h4>CIDADE:<input type="radio" name="opc" value="cid"></h4></td>
 									<td><select name="cid_cli">
+										<option value="" selected>...</option>
 <?php
 #IMPORTANDO CONEXÃO DO BANCO
 require('../connect.php');
@@ -142,6 +144,7 @@ while($i!=$n){
                                 <tr>
 									<td><h4>DISTRIBUIDORA:<input type="radio" name="opc" value="dis"></h4></td>
 									<td><select name="cod_dis">
+										<option value="" selected>...</option>
 <?php
 #IMPORTANDO CONEXÃO DO BANCO
 	require('../connect.php');

@@ -108,7 +108,7 @@ if(!isset($_SESSION["system_control"])){
                                     <td><input autocomplete="off" name="sai_nf" type=date></td>
 								</tr>
                                 <tr>
-                                    <td><h2><nobr><input type="radio" name="opc" value="val">VALOR:<?php echo $vn['valor'];   ?></nobr></h2></td>
+                                    <td><h2><nobr><input type="radio" name="opc" value="val">VALOR: R$<?php echo $vn['valor'];   ?></nobr></h2></td>
                                     <td><input autocomplete="off" name="val_nf" type=float size=16 maxlength=16></td>
 								</tr>
                                 <tr>
