@@ -88,7 +88,7 @@ $val_mes = number_format(($sql['val']), 2, '.', '');
 ?>
 		<rf>
 			<table class="tableb" border=1>
-				<h1>FECHAMENTO DISTRIBUIDORAS</h1>
+				<h1>FECHAMENTO MOTORISTAS</h1>
 				<tr>
 					<th><h3>DATA</h3></th>
 					<th><h3>MOTORISTA</h3></th>
