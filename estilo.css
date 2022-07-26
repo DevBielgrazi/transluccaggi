@@ -1,51 +1,60 @@
 body{
-    background-color: rgb(172, 177, 226);
+    background-color: rgb(48, 47, 47);
 }
 h1{
-    color: blue;
+    color: white;
     font-family: 'Calibri';
     font-size: 80%;
 }
 h3{
-    color:rgb(78, 78, 78);
+    color:white;
     font-family: 'Calibri';
     font-size: 70%;
 }
 h4{
-    color:darkblue;
+    color:white;
     font-family: 'Calibri';
     font-size: 70%;
 }
 h6{
     color:red;
     font-family:'Calibri';
+    font-weight: bold;
+    font-size: 80%;
 }
 h7{
-    color:green;
+    color:rgb(50, 182, 50);
     font-family:'Calibri';
+    font-weight: bold;
+    font-size: 80%;
 }
 h2{
-    color: black;
+    color: white;
     font-family: 'Calibri';
     font-size: 75%;
 }
 .buttonc{
-    background-color:dodgerblue;
+    background-color:rgb(70, 69, 69);
     color:black;
     font-size: 75%;
     border-radius: 20%;
-    border-color: black;
+    border-color: rgb(70, 69, 69);
 }
 .buttond{
-    background-color:blue;
-    color:gray;
+    background-color:rgb(70, 69, 69);
+    color:white;
     font-size: 75%;
     border-radius: 20%;
-    border-color: gray;
+    border-color: rgb(70, 69, 69);
 }
 logo{
     position: absolute;
     left:42%;
+}
+bar{
+    position: absolute;
+    top:0%;
+    left:0%;
 }
 exit{
     position: absolute;
@@ -71,15 +80,15 @@ back{
     z-index: 1;
     border-radius: 5%;
     border-style:groove;
-    border-color: darkblue;
-    background-color: gray;
+    border-color: rgb(70, 69, 69);
+    background-color: rgb(70, 69, 69);
 }
 .dropdown-content a {
-    color: darkblue;
+    color: white;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 90%;
     border-style:solid;
-    border-color: black;
+    border-color: rgb(70, 69, 69);
     text-decoration: none;
     display: block;
 }
@@ -173,31 +182,31 @@ rd{
 }
 input, select{
     border-radius: 20%;
-    border-color: gray;
+    border-color: rgb(70, 69, 69);
     background-color: white;
     color:black;
     font-size: 80%;
 }
 .inputb{
-    background-color:dodgerblue;
-    color:black;
+    background-color:rgb(70, 69, 69);
+    color:white;
     font-size: 80%;
     border-radius: 20%;
-    border-color: black;
+    border-color: rgb(70, 69, 69);
 }
 .inputc{
-    background-color:gray;
+    background-color:white;
     color:red;
     font-size: 90%;
     border-radius: 20%;
-    border-color: black;
+    border-color: rgb(70, 69, 69);
 }
 .inputd{
-    background-color:gray;
+    background-color:white;
     color:black;
     font-size: 80%;
     border-radius: 15%;
-    border-color:gray;
+    border-color:rgb(70, 69, 69);
 }
 .inpute{
     border-radius: 20%;
@@ -208,7 +217,7 @@ table{
     text-align: center;
     border-style: outset;
     border-radius: 5%;
-    border-color:darkblue;
+    border-color:rgb(70, 69, 69);
     padding: 0%;
     border-collapse: collapse;
     line-height:0%;
@@ -218,20 +227,20 @@ table{
     text-align: center;
     padding: 0%;
     border-collapse: collapse;
-    background-color: lightgray;
+    background-color: rgb(70, 69, 69);
 }
 .tableb td{
     border-top: none;
-    border-color: darkblue;
+    border-color: black;
     padding: 0%;
 }
 .tableb th{
-    background-color: dodgerblue;
+    background-color: black;
     border-top: none;
-    border-color: darkblue;
+    border-color: rgb(48, 48, 48);
 }
 .tableb tr:nth-child(even) {
-    background:gray;
+    background:rgb(97, 97, 97);
     border:none;
 }
 gra{
