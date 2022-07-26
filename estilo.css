@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(132, 140, 212);
+    background-color: rgb(172, 177, 226);
 }
 h1{
     color: blue;
@@ -89,12 +89,12 @@ back{
 fdc{
     position:absolute;
     top:10%;
-    left:40%;
+    left:25%;
 }
 fdc2{
     position:absolute;
     top:10%;
-    left:45%;
+    left:30%;
 }
 rdc{
     position:absolute;
@@ -120,6 +120,11 @@ pag3{
     position:absolute;
     top:50%;
     left:1%;
+}
+pag4{
+    position:absolute;
+    top:20%;
+    left:20%;
 }
 urn{
     position:absolute;
@@ -160,6 +165,11 @@ rf{
     position:absolute;
     top:5%;
     left:15%;
+}
+rd{
+    position:absolute;
+    top:10%;
+    left:1%;
 }
 input, select{
     border-radius: 20%;
@@ -233,4 +243,14 @@ gra2{
     position: absolute;
     top: 35%;
     left: 20%;
+}
+gra3{
+    position: absolute;
+    top: 20%;
+    left: 40%;
+}
+gra4{
+    position: absolute;
+    top: 15%;
+    left: 60%;
 }

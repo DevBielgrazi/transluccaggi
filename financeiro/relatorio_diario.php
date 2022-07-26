@@ -105,15 +105,15 @@ $fre_mot = number_format(($sql['fre']), 2, '.', '');
 $sal_men = $fre_disg - $fre_mot;
 $sal_men = number_format(($sal_men), 2, '.', '');
 ?>
-		<rf>
-			<table border=1>
+		<rd>
+			<table class="tableb" border=1>
 				<h1>RELATÓRIO DIÁRIO</h1>
 				<tr>
-					<td><h3>DATA</h3></td>
-					<td><h3>VALOR FRETES</h3></td>
-					<td><h3>CUSTO</h3></td>
-					<td><h3>SALDO</h3></td>
-					<td><h3>STATUS</h3></td>
+					<th><h3>DATA</h3></th>
+					<th><h3>VALOR FRETES</h3></th>
+					<th><h3>CUSTO</h3></th>
+					<th><h3>SALDO</h3></th>
+					<th><h3>STATUS</h3></th>
 				</tr>
                 <tr>
 					<td><h4><nobr><?php echo date( 'd/m/Y' , strtotime( $dat_rel));   ?><nobr></h4></td>
@@ -125,7 +125,7 @@ $sal_men = number_format(($sal_men), 2, '.', '');
         }?>
 				</tr>
 			</table>
-        </rf>
+        </rd>
         <fdc>
             <h1>FILTROS POR CIDADE</h1><p>
 			<table>
@@ -137,6 +137,7 @@ $sal_men = number_format(($sal_men), 2, '.', '');
                                 <tr>
 									<td><h4>DISTRIBUIDORA:<input type="radio" name="opc" value="dis"></h4></td>
 									<td><select name="cod_dis">
+                                        <option value=>...</option>
 <?php
 #IMPORTANDO CONEXÃO DO BANCO
 	require('../connect.php');
@@ -162,24 +163,38 @@ $sal_men = number_format(($sal_men), 2, '.', '');
                                 <td><input autocomplete="off" class="inputb" type=submit value=VISUALIZAR></td>
                             </tr>
 						</form>
+                        <form method="post" action="relatorio_diario.php">
+                            <input autocomplete="off" type="hidden" name="dat_rel" value="<?php echo $dat_rel;?>">
+                            <tr>
+                                <td><input autocomplete="off" class="inputb" type=submit value="VISUALIZAR DE TODAS AS CIDADES"></td>
+                            </tr>
+                        </form>
 					</td>
 				</tr>
 			</table>
         </fdc>
         <rdc>
-			<table border=1>
-				<h1>RELATÓRIO POR CIDADE</h1>
+			<table class="tableb" border=1>
+				<h1>RELATÓRIO POR CIDADE(<?php   if(isset($_POST['opc'])){
+                    $cod_dis=$_POST['cod_dis'];
+                    $sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `codigo` = '$cod_dis'");
+                    $v = mysqli_fetch_array($sql);
+                    $distribuidora = $v['nome'];
+                }else{
+                    $distribuidora = "TOTAL";
+                }
+                    echo $distribuidora;
+                ?>)</h1>
 				<tr>
-					<td><h3>CIDADE</h3></td>
-					<td><h3>VALOR</h3></td>
-					<td><h3>PORCENTAGEM</h3></td>
-					<td><h3>VALOR KG</h3></td>
-					<td><h3>VALOR VOLUME</h3></td>
+					<th><h3>CIDADE</h3></th>
+					<th><h3>VALOR</h3></th>
+					<th><h3>PORCENTAGEM</h3></th>
+					<th><h3>VALOR KG</h3></th>
+					<th><h3>VALOR VOLUME</h3></th>
 				</tr>
                 <tr>
 <?php
     if(isset($_POST['opc'])){
-        $cod_dis=$_POST['cod_dis'];
         if($cod_dis==1){
             $sql = mysqli_query($conn,"SELECT DISTINCT `cidade_cliente` FROM $tab_nfs WHERE `cod_distribuidora`='$cod_dis' AND `emissao`='$dat_rel' ORDER BY `cidade_cliente`");
             $sql2 = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cod_distribuidora`='$cod_dis' AND `emissao`='$dat_rel'");

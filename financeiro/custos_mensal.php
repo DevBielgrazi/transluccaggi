@@ -15,7 +15,7 @@ if(!isset($_SESSION["system_control"])){
             $des_cus = trim($_POST['des_cus']);
             $val_cus = trim($_POST['val_cus']);
 
-            $des_cus = strtolower($des_cus);
+            $des_cus = strtoupper($des_cus);
 
             require('../connect.php');
             $sql = mysqli_query($conn,"SELECT * FROM $tab_cus WHERE `mes` = '$dat_cus2' AND `descricao` = '$des_cus'");
@@ -94,17 +94,19 @@ $ano_cus = trim($_POST['ano_rel']);
 $mes_cus = trim($_POST['mes_rel']);
 $dat_cus2 = $ano_cus."-".$mes_cus."-01";
 ?>
-		<pag3>
-			<table border=1>
+		<pag4>
+			<table class="tableb" border=1>
 				<tr>
-					<td><h3>MÊS:</h3></td>
-                    <td><h4><nobr><?php echo date( 'm/Y' , strtotime($dat_cus2));   ?></nobr></h4></td>
+					<th><h3>MÊS:</h3></th>
+                    <th><h4><nobr><?php echo date( 'm/Y' , strtotime($dat_cus2));   ?></nobr></h4></th>
+                    <th><h4></h4></th>
+                    <th><h4></h4></th>
                 </tr>
                 <tr>
-					<td><h3>DESCRIÇÃO</h3></td>
-                    <td><h3>CUSTO</h3></td>
-                    <td><h3>EXCLUIR</h3></td>
-                    <td><h3>EDITAR</h3></td>
+					<th><h3>DESCRIÇÃO</h3></th>
+                    <th><h3>CUSTO</h3></th>
+                    <th><h3>EXCLUIR</h3></th>
+                    <th><h3>EDITAR</h3></th>
 				</tr>
 <?php
     require('../connect.php');
@@ -140,15 +142,13 @@ $dat_cus2 = $ano_cus."-".$mes_cus."-01";
     }
 ?>
                 <tr>
-					<td><h3>CUSTO TOTAL:</h3></td>
-                    <td><h4><nobr><?php echo $cus_men;   ?></nobr></h4></td>
+					<th><h3>CUSTO TOTAL:</h3></th>
+                    <th><h4><nobr><?php echo $cus_men;   ?></nobr></h4></th>
+                    <th></th>
+                    <th></th>
                 </tr>
 			</table>
-            <form method="post" action="..\graficos/grafico_custos.php" target="_blank">
-            <input autocomplete="off" type="hidden" name="dat_cus" value="<?php echo $dat_cus2;?>">
-            <td><nobr><input autocomplete="off" width="80" type="image" src="..\imagem/grafico.jpg" alt="submit"></td>
-        </form>
-        </pag3>
+        </pag4>
         <pag>
 			<h1>CUSTOS MENSAL</h1><p>
             <form method="post" action="relatorio_mensal.php">
@@ -181,6 +181,63 @@ $dat_cus2 = $ano_cus."-".$mes_cus."-01";
                 </tr>
             </table>
 		</pag>
+<?php
+    function custos($dat_rel){
+        require('../connect.php');
+        $sql = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_cus WHERE `mes` = '$dat_rel'");
+        $sql = mysqli_fetch_array($sql);
+        $val_cus = (float) $sql['val'];
+        $val_cus = number_format(($val_cus), 2, '.', '');
+        return $val_cus;
+    }
+
+
+    $custo = [];
+    $mes_cus = [
+        1 => "Jan",
+        2 => "Fev",
+        3 => "Mar",
+        4 => "Abr",
+        5 => "Mai",
+        6 => "Jun",
+        7 => "Jul",
+        8 => "Ago",
+        9 => "Set",
+        10 => "Out",
+        11 => "Nov",
+        12 => "Dez",
+        ];
+
+    for($i=1;$i<=12;$i++){        
+        $custo[] = custos($ano_cus."-".$i."-01");
+    }
+
+    $custo = json_encode($custo);
+
+?>      
+        <gra4>
+            <h1>CUSTOS DE <?php echo $ano_cus; ?></h1>
+        </gra4>
+        <gra3>
+            <canvas width=700 height=350 id="grafico" style="background-color:white;"></canvas>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
+            <script type="text/javascript">
+                var ctx = document.getElementById('grafico').getContext('2d');
+                var chartGraph = new Chart(ctx,
+                {
+                    type: "line",
+                    data: {
+                        labels: ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"],
+                        datasets: [{
+                            label:"CUSTO",
+                            data: <?php echo $custo; ?>,
+                            borderColor: "blue"
+                        }]
+                    }
+                }
+                )
+            </script>
+        </gra3>
 	</body>
 </html>
 <?php

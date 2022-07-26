@@ -114,15 +114,15 @@ $sal_men = $fre_disg - $cus_men;
 $sal_men = number_format(($sal_men), 2, '.', '');
 
 ?>
-		<rf>
-			<table border=1>
+		<rd>
+			<table class="tableb" border=1>
 				<h1>RELATÓRIO ANUAL</h1>
 				<tr>
-					<td><h3>ANO</h3></td>
-					<td><h3>VALOR FRETES</h3></td>
-					<td><h3>CUSTOS</h3></td>
-					<td><h3>SALDO</h3></td>
-					<td><h3>STATUS</h3></td>
+					<th><h3>ANO</h3></th>
+					<th><h3>VALOR FRETES</h3></th>
+					<th><h3>CUSTOS</h3></th>
+					<th><h3>SALDO</h3></th>
+					<th><h3>STATUS</h3></th>
 				</tr>
                 <tr>
 					<td><h4><nobr><?php echo $ano_rel;   ?><nobr></h4></td>
@@ -134,11 +134,7 @@ $sal_men = number_format(($sal_men), 2, '.', '');
         }?>
 				</tr>
 			</table>
-        <form method="post" action="..\graficos/grafico_geral.php" target="_blank">
-            <input autocomplete="off" type="hidden" name="dat_rel" value="<?php echo $dat_rel;?>">
-            <td><nobr><input autocomplete="off" width="80" type="image" src="..\imagem/grafico.jpg" alt="submit"></td>
-        </form>
-</rf>
+</rd>
 <fdc2>
             <h1>FILTROS POR CIDADE</h1><p>
 			<table>
@@ -180,14 +176,14 @@ $sal_men = number_format(($sal_men), 2, '.', '');
 			</table>
         </fdc2>
         <rdc>
-			<table border=1>
+			<table class="tableb" border=1>
 				<h1>RELATÓRIO POR CIDADE</h1>
 				<tr>
-					<td><h3>CIDADE</h3></td>
-					<td><h3>VALOR</h3></td>
-					<td><h3>PORCENTAGEM</h3></td>
-					<td><h3>VALOR KG</h3></td>
-					<td><h3>VALOR VOLUME</h3></td>
+					<th><h3>CIDADE</h3></th>
+					<th><h3>VALOR</h3></th>
+					<th><h3>PORCENTAGEM</h3></th>
+					<th><h3>VALOR KG</h3></th>
+					<th><h3>VALOR VOLUME</h3></th>
 				</tr>
                 <tr>
 <?php
@@ -273,6 +269,115 @@ $sal_men = number_format(($sal_men), 2, '.', '');
 ?>
             </table>
         </rdc>
+<?php
+    function frete($dat_rel,$dat_rel2){
+        require('../connect.php');
+        $sql = mysqli_query($conn,"SELECT * FROM $tab_dis");
+        $n = mysqli_num_rows($sql);
+    
+        $fre_disg = 0;
+        for($i=1; $i<$n; $i++){
+            $sql = mysqli_query($conn,"SELECT `porcentagem` as 'por' FROM $tab_dis WHERE `codigo` = '$i'");
+            $sql = mysqli_fetch_array($sql);
+            $por = (float) $sql['por'];
+            if($i==1){
+                $sql = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cod_distribuidora` = '$i' AND `emissao` >= '$dat_rel' AND `emissao` <= '$dat_rel2'");
+            }
+            else{
+                $sql = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cod_distribuidora` = '$i' AND `entrada` >= '$dat_rel' AND `entrada` <= '$dat_rel2'");
+            }
+            $sql = mysqli_fetch_array($sql);
+            $val_mer = (float) $sql['val'];
+            $fre_dis = ($por * $val_mer)/100;
+            $fre_disg = $fre_disg+$fre_dis;
+        }
+        $fre_disg = number_format(($fre_disg), 2, '.', '');
+        return $fre_disg;
+    }
+    
+    function custo($dat_rel,$dat_rel2){
+        require('../connect.php');
+        $sql = mysqli_query($conn,"SELECT SUM(`valor`) as 'fre' FROM $tab_fre WHERE `data` >= '$dat_rel' AND `data` <= '$dat_rel2'");
+        $sql = mysqli_fetch_array($sql);
+        $fre_mot = number_format(($sql['fre']), 2, '.', '');
+        $sql = mysqli_query($conn,"SELECT SUM(`valor`) as 'cus' FROM $tab_cus WHERE `mes` >= '$dat_rel' AND `mes` <= '$dat_rel2'");
+        $sql = mysqli_fetch_array($sql);
+        $cus_men = number_format(($sql['cus']), 2, '.', '');
+        $cus_men = $cus_men+$fre_mot;
+        return $cus_men;
+    }
+    
+    function saldo($fre_disg,$cus_men){
+        $sal_men = $fre_disg - $cus_men;
+        $sal_men = number_format(($sal_men), 2, '.', '');
+    
+        return $sal_men;
+    }
+
+    $frete = [];
+    $custo = [];
+    $saldo = [];
+    $ano = [];
+    $ano_fre = $ano_rel-9;
+    $ano_cus = $ano_rel-9;
+    $ano_sal = $ano_rel-9;
+
+    for($i=9;$i>-1;$i--){        
+        $anos[] = (int) $ano_rel-$i;
+    }
+
+    for($i=0;$i<10;$i++){        
+        $frete[] = (float) frete($ano_fre."-01-01",$ano_fre."-12-31");
+        $ano_fre = $ano_fre+1;
+    }
+
+    for($i=0;$i<10;$i++){        
+        $custo[] = (float) custo($ano_cus."-01-01",$ano_cus."-12-31");
+        $ano_cus = $ano_cus+1;
+    }
+
+    for($i=0;$i<10;$i++){        
+        $saldo[] = (float) saldo(frete($ano_sal."-01-01",$ano_sal."-12-31"),custo($ano_sal."-01-01",$ano_sal."-12-31"));
+        $ano_sal = $ano_sal+1;
+    }
+
+    $anos = json_encode($anos);
+    $frete = json_encode($frete);
+    $custo = json_encode($custo);
+    $saldo = json_encode($saldo);
+
+?>      
+        <gra2>
+            <h1>ÚLTIMOS 10 ANOS</h1>
+        </gra2>
+        <gra>
+            <canvas width=700 height=350 id="grafico" style="background-color:white;"></canvas>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
+            <script type="text/javascript">
+                var ctx = document.getElementById('grafico').getContext('2d');
+                var chartGraph = new Chart(ctx,
+                {
+                    type: "line",
+                    data: {
+                        labels: <?php echo $anos; ?>,
+                        datasets: [{
+                            label:"FRETE",
+                            data: <?php echo $frete; ?>,
+                            borderColor: "green"
+                        },{
+                            label:"CUSTO",
+                            data: <?php echo $custo; ?>,
+                            borderColor: "red"
+                        },{
+                            label:"SALDO",
+                            data: <?php echo $saldo; ?>,
+                            borderColor: "blue"
+                        }]
+                    }
+                }
+                )
+            </script>
+        </gra>
 	</body>
 </html>
 <?php
