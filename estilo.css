@@ -3,31 +3,31 @@ body{
 }
 h1{
     color: blue;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 100%;
+    font-family: 'Calibri';
+    font-size: 75%;
 }
 h3{
     color:rgb(78, 78, 78);
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 75%;
+    font-family: 'Calibri';
+    font-size: 57%;
 }
 h4{
     color:darkblue;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 75%;
+    font-family: 'Calibri';
+    font-size: 57%;
 }
 h6{
     color:red;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family:'Calibri';
 }
 h7{
     color:green;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family:'Calibri';
 }
 h2{
     color: black;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 80%;
+    font-family: 'Calibri';
+    font-size: 60%;
 }
 .buttonc{
     background-color:dodgerblue;
@@ -39,7 +39,7 @@ h2{
 .buttond{
     background-color:blue;
     color:gray;
-    font-size: 80%;
+    font-size: 60%;
     border-radius: 20%;
     border-color: gray;
 }
@@ -176,26 +176,26 @@ input, select{
     border-color: gray;
     background-color: white;
     color:black;
-    font-size: 80%;
+    font-size: 60%;
 }
 .inputb{
     background-color:dodgerblue;
     color:black;
-    font-size: 80%;
+    font-size: 60%;
     border-radius: 20%;
     border-color: black;
 }
 .inputc{
     background-color:gray;
     color:red;
-    font-size: 100%;
+    font-size: 75%;
     border-radius: 20%;
     border-color: black;
 }
 .inputd{
     background-color:gray;
     color:black;
-    font-size: 80%;
+    font-size: 60%;
     border-radius: 15%;
     border-color:gray;
 }
