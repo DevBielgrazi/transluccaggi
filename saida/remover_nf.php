@@ -23,9 +23,9 @@ if(!isset($_SESSION["system_control"])){
 #IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
 #VARIÁVEL HIDDEN DO BANCO
-	$id = trim($_POST['id']);
-	$mot_sai = trim($_POST['mot_sai']);
-	$dat_sai = trim($_POST['dat_sai']);
+	$id = strtoupper($_POST['id']);
+	$mot_sai = strtoupper($_POST['mot_sai']);
+	$dat_sai = strtoupper($_POST['dat_sai']);
     $sql = mysqli_query($conn,"UPDATE $tab_nfs SET `motorista`='',`saida`='0000-00-00',`status`='DISPONIVEL',`tentativas`= `tentativas` - 1  WHERE `id`='$id'");
 ?>
         <script>

@@ -77,9 +77,9 @@ if(!isset($_SESSION["system_control"])){
 #IMPORTANDO CONEXÃO DO BANCO
 	require('..\connect.php');
 #VARIÁVEL HIDDEN DO FORMULÁRIO
-    $dat_cus = trim($_POST['dat_cus']);
-    $des_cus = trim($_POST['des_cus']);
-    $val_cus = trim($_POST['val_cus']);
+    $dat_cus = strtoupper($_POST['dat_cus']);
+    $des_cus = strtoupper($_POST['des_cus']);
+    $val_cus = strtoupper($_POST['val_cus']);
 #ADQUIRINDO DADOS DO BANCO
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_cus WHERE `mes` = '$dat_cus' AND `descricao` = '$des_cus' AND `valor` = '$val_cus'");
 #CADASTROS POR COLUNA

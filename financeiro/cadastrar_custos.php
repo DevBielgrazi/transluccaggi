@@ -72,9 +72,9 @@ if(!isset($_SESSION["system_control"])){
 		</exit>
 <?php
 #VARIÁVEIS DO FORMULÁRIO
-$dat_cus = trim($_POST['dat_cus']);
-$des_cus = trim($_POST['des_cus']);
-$val_cus = trim($_POST['val_cus']);
+$dat_cus = strtoupper($_POST['dat_cus']);
+$des_cus = strtoupper($_POST['des_cus']);
+$val_cus = strtoupper($_POST['val_cus']);
 
 $des_cus = strtolower($des_cus);
 

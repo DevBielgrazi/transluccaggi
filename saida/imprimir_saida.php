@@ -11,8 +11,8 @@
 #IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
 #VARIÁVEIS DO FOMRULÁRIO
-    $mot_sai = trim($_POST['mot_sai']);
-	$dat_sai = trim($_POST['dat_sai']);
+    $mot_sai = strtoupper($_POST['mot_sai']);
+	$dat_sai = strtoupper($_POST['dat_sai']);
 #ADQUIRINDO DADOS DO BANCO
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `nome` = '$mot_sai'");
 #TRANSFORMANDO O RESULTADO EM NÚMEROS

@@ -13,19 +13,19 @@
 				<tr>
 					<td>
 <?php
-    $login = $_POST["login"];
-    $senha = $_POST["senha"];
+    $login = strtoupper($_POST["login"]);
+    $senha = strtoupper($_POST["senha"]);
     
     if(!isset($_POST['log_adm'])) {
         $log_adm = "null";
     }else{
-        $log_adm = $_POST["log_adm"];
+        $log_adm = strtoupper($_POST["log_adm"]);
     }
 
     if(!isset($_POST['sen_adm'])) {
         $sen_adm = "null";
     }else{
-        $sen_adm = $_POST["sen_adm"];
+        $sen_adm = strtoupper($_POST["sen_adm"]);
     }
     
     require("connect.php");

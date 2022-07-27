@@ -114,7 +114,7 @@ if(!isset($_SESSION["system_control"])){
         #IMPORTANDO CONEXÃO COM O BANCO
             require('../connect.php');
         #VARIÁVEIS DO FORMULÁRIO
-            $age_nf = trim($_POST['age_nf']);
+            $age_nf = strtoupper($_POST['age_nf']);
             $age_dat = "AGENDADA PARA DIA:".date( 'd/m/Y' , strtotime( $_POST['age_dat']));
         
         #ADQUIRINDO DADOS DO BANCO

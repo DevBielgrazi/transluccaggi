@@ -23,7 +23,7 @@ if(!isset($_SESSION["system_control"])){
 #IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
 #VARIÁVEL HIDDEN DO BANCO
-	$id = trim($_POST['id']);
+	$id = strtoupper($_POST['id']);
 #EXCLUINDO REGISTRO DO BANCO
     $sql = mysqli_query($conn,"UPDATE $tab_dev SET `status`='LIBERADA' WHERE `id` = '$id'");
 ?>

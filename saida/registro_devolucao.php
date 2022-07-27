@@ -117,14 +117,14 @@ if(!isset($_SESSION["system_control"])){
 #ADQUIRINDO INFORMAÇÕES DO BANCO
 if(isset($_POST['not_dev'])){	
 #VARIÁVEIS DO FORMULÁRIO
-	$not_dev = trim($_POST['not_dev']);
-	$val_dev = trim($_POST['val_dev']);
-	$vol_dev = trim($_POST['vol_dev']);
-	$mot_dev = trim($_POST['mot_dev']);
+	$not_dev = strtoupper($_POST['not_dev']);
+	$val_dev = strtoupper($_POST['val_dev']);
+	$vol_dev = strtoupper($_POST['vol_dev']);
+	$mot_dev = strtoupper($_POST['mot_dev']);
     if(!isset($_POST['par_dev'])){
         $par_dev = "xxx";
     }else{
-        $par_dev = $_POST['par_dev'];
+        $par_dev = strtoupper($_POST['par_dev']);
     }
     $sql2 = mysqli_query($conn,"SELECT * FROM $tab_dev WHERE `nota` = '$not_dev' ORDER BY `id` DESC");
     $n = mysqli_num_rows($sql2);
@@ -132,7 +132,7 @@ if(isset($_POST['not_dev'])){
         $v = mysqli_fetch_array($sql2);
         $status = $v['status'];
         if($status=='AGUARDANDO'){
-	        $pro_dev = trim($_POST['pro_dev']);
+	        $pro_dev = strtoupper($_POST['pro_dev']);
             $sql3 = mysqli_query($conn,"UPDATE $tab_dev SET `status`='LIBERAR', `protocolo`='$pro_dev' WHERE `nota` = '$not_dev'");
             ?>
                 <script>alert("NOTA AGUARDANDO LIBERAÇÃO");</script>

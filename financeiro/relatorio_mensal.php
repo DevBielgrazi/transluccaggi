@@ -75,8 +75,8 @@ if(!isset($_SESSION["system_control"])){
 		</exit>
 <?php
 #VARIÁVEIS DO FORMULÁRIO
-$ano_rel = trim($_POST['ano_rel']);
-$mes_rel = trim($_POST['mes_rel']);
+$ano_rel = strtoupper($_POST['ano_rel']);
+$mes_rel = strtoupper($_POST['mes_rel']);
 
 $dat_rel = $ano_rel."-".$mes_rel."-01";
 $dat_rel2 = $ano_rel."-".$mes_rel."-31";

@@ -21,9 +21,9 @@
 #IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
 #VARIÁVEIS DO FORMULÁRIO
-    $dat = trim($_POST['dat']);
-    $dat2 = trim($_POST['dat2']);
-    $dis = trim($_POST['dis']);
+    $dat = strtoupper($_POST['dat']);
+    $dat2 = strtoupper($_POST['dat2']);
+    $dis = strtoupper($_POST['dis']);
 #ADQUIRINDO INFORMAÇÕES DO BANCO
     $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `cod_distribuidora` = '$dis' and `entrada` >= '$dat' and `entrada` <= '$dat2'");
 #TRANSFORMANDO RESULTADO EM NÚMEROS

@@ -77,8 +77,8 @@ if(!isset($_SESSION["system_control"])){
 #IMPORTANDO CONEXÃO COM O BANCO
 	require('..\connect.php');
 #VARIÁVEIS DO FORMULÁRIO
-	$dat_fre = trim($_POST['dat_fre']);
-    $mot_fre = trim($_POST['mot_fre']);
+	$dat_fre = strtoupper($_POST['dat_fre']);
+    $mot_fre = strtoupper($_POST['mot_fre']);
 #ADQUIRINDO INFORMAÇÕES DO BANCO
     $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `motorista` = '$mot_fre' and `saida` = '$dat_fre'");
 #TRANSFORMANDO RESULTADO EM NÚMEROS

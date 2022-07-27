@@ -12,8 +12,8 @@ if(!isset($_SESSION["system_control"])){
 #IMPORTANDO CONEXÃO COM O BANCO
 require('../connect.php');
 #VARIÁVEIS DO FORMULÁRIO
-	$mot_sai = trim($_POST['mot_sai']);
-	$dat_sai = trim($_POST['dat_sai']);
+	$mot_sai = strtoupper($_POST['mot_sai']);
+	$dat_sai = strtoupper($_POST['dat_sai']);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -148,7 +148,7 @@ require('../connect.php');
 	if(!isset($_POST['not_sai'])) {
         $not_sai = null;
     }else{
-        $not_sai = trim($_POST['not_sai']);
+        $not_sai = strtoupper($_POST['not_sai']);
     }
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$not_sai' ORDER BY `id` DESC LIMIT 1");
 	$v = mysqli_fetch_array($sql);

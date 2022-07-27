@@ -23,7 +23,7 @@ if(!isset($_SESSION["system_control"])){
 #IMPORTANDO CONEXÃO DO BANCO
 	require('../connect.php');
 #VARIÁVEL HIDDEN DO FORMULÁRIO
-	$cod_dis = trim($_POST['cod_dis']);
+	$cod_dis = strtoupper($_POST['cod_dis']);
 #EXCLUINDO REGISTRO DO BANCO
     $sql = mysqli_query($conn,"DELETE FROM $tab_dis WHERE `codigo` = '$cod_dis'");
     $sql2 = mysqli_query($conn,"UPDATE $tab_nfs SET `cod_distribuidora` = 'nulo' WHERE `cod_distribuidora` = '$cod_dis'");

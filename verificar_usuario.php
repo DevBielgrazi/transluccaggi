@@ -11,9 +11,9 @@
 #IMPORTANDO CONEXÃO DO BANCO
 	require('connect.php');
 #VARIÁVEIS DO FORMULÁRIO
-    $login = trim($_POST['login']);
-    $senha = trim($_POST['senha']);
-    $senha2 = trim($_POST['senha2']);
+    $login = strtoupper($_POST['login']);
+    $senha = strtoupper($_POST['senha']);
+    $senha2 = strtoupper($_POST['senha2']);
 #ADQUIRINDO INFORMAÇÕES DO BANCO
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_usu WHERE `login` = '$login'");
 #TRANSFORMANDO RESULTADO EM NUMEROS

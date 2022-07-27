@@ -76,9 +76,9 @@ if(!isset($_SESSION["system_control"])){
         <rn>
 <?php
 #VARIÁVEIS DO FORMULÁRIO
-$dat = trim($_POST['dat']);
-$dat2 = trim($_POST['dat2']);
-$dis = trim($_POST['dis']);
+$dat = strtoupper($_POST['dat']);
+$dat2 = strtoupper($_POST['dat2']);
+$dis = strtoupper($_POST['dis']);
 ?>
             <form method="post" action="imprimir_romaneio.php" target="_blank">
                 <input autocomplete="off" type="hidden" name="dat" value="<?php echo $sat;  ?>">

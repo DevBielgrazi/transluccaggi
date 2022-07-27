@@ -208,19 +208,19 @@ if(!isset($_SESSION["system_control"])){
 	</pag>
 <?php
 #VARIÁVEIS DO FORMULÁRIO
-	$cod_cli = trim($_POST['cod_cli']);
-    $nom_cli = trim($_POST['nom_cli']);
-    $cad_cli = trim($_POST['cad_cli']);
-    $rot_cli = trim($_POST['rot_cli']);
-    $cid_cli = trim($_POST['cid_cli']);
-    $bai_cli = trim($_POST['bai_cli']);
-	$end_cli = trim($_POST['end_cli']);
-    $cod_dis = trim($_POST['cod_dis']);
+	$cod_cli = strtoupper($_POST['cod_cli']);
+    $nom_cli = strtoupper($_POST['nom_cli']);
+    $cad_cli = strtoupper($_POST['cad_cli']);
+    $rot_cli = strtoupper($_POST['rot_cli']);
+    $cid_cli = strtoupper($_POST['cid_cli']);
+    $bai_cli = strtoupper($_POST['bai_cli']);
+	$end_cli = strtoupper($_POST['end_cli']);
+    $cod_dis = strtoupper($_POST['cod_dis']);
 #VERIFICANDO INPUT
 	if(!isset($_POST['age'])){
         $age = "NAO";
     }else{
-        $age = $_POST['age'];
+        $age = strtoupper($_POST['age']);
     }
 #ADQUIRINDO INFORMAÇÕES DO BANCO
 	$sql = mysqli_query($conn, "SELECT * FROM $tab_cli WHERE `codigo` = '$cod_cli'");

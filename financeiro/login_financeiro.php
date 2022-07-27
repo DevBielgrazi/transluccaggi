@@ -13,8 +13,8 @@
 				<tr>
 					<td>
 <?php
-    $log_adm = $_POST["log_adm"];
-    $sen_adm = $_POST["sen_adm"];
+    $log_adm = strtoupper($_POST["log_adm"]);
+    $sen_adm = strtoupper($_POST["sen_adm"]);
     $sen_adm = md5($sen_adm);
     require('../connect.php');
     $sql = mysqli_query($conn,"SELECT * FROM $tab_usu WHERE `id` = '1' AND `login` = '$log_adm' AND `senha` = '$sen_adm'");

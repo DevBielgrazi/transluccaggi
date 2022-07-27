@@ -175,14 +175,14 @@ if(!isset($_SESSION["system_control"])){
 		</pag>
 <?php
 #VARIÁVEIS DO FORMULÁRIO
-	$num_nf = trim($_POST['num_nf']);
-    $ser_nf = trim($_POST['ser_nf']);
-    $emi_nf = trim($_POST['emi_nf']);
-    $ent_nf = trim($_POST['ent_nf']);
-    $vol_nf = trim($_POST['vol_nf']);
-    $val_nf = trim($_POST['val_nf']);
-    $pes_nf = trim($_POST['pes_nf']);
-    $cod_cli = trim($_POST['cod_cli']);
+	$num_nf = strtoupper($_POST['num_nf']);
+    $ser_nf = strtoupper($_POST['ser_nf']);
+    $emi_nf = strtoupper($_POST['emi_nf']);
+    $ent_nf = strtoupper($_POST['ent_nf']);
+    $vol_nf = strtoupper($_POST['vol_nf']);
+    $val_nf = strtoupper($_POST['val_nf']);
+    $pes_nf = strtoupper($_POST['pes_nf']);
+    $cod_cli = strtoupper($_POST['cod_cli']);
 #ADQUIRINDO INFORMAÇÕES DA TABELA
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `codigo` = '$cod_cli'");
 #CADASTROS POR COLUNA
