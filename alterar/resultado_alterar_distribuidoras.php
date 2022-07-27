@@ -20,7 +20,7 @@ if(!isset($_SESSION["system_control"])){
     </head>
     <body>
 		<bar>
-			<canvas width="1365" height="70" style="background-color:gray"></canvas>
+			<canvas width="1365" height="70" style="background-color:rgb(42, 129, 187)"></canvas>
 		</bar>
 			<div class="dropdown">
         <img onclick="myFunction()"class="dropbtn" src="..\imagem/bars.png" width="2%"></img>
