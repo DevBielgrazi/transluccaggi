@@ -75,9 +75,9 @@ if(!isset($_SESSION["system_control"])){
         <rn>
 <?php
 #VARIÁVEIS DO FORMULÁRIO
-$ano_fec = trim($_POST['ano_fec']);
-$mes_fec= trim($_POST['mes_fec']);
-$dis_fec= trim($_POST['dis_fec']);
+$ano_fec = strtoupper($_POST['ano_fec']);
+$mes_fec= strtoupper($_POST['mes_fec']);
+$dis_fec= strtoupper($_POST['dis_fec']);
 
 $dat_fec = $ano_fec."-".$mes_fec."-01";
 $dat_fec2 = $ano_fec."-".$mes_fec."-31";

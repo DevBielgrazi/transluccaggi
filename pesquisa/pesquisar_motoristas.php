@@ -89,20 +89,20 @@ if(!isset($_SESSION["system_control"])){
 #IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
 #VARIÁVEIS DO FORMULÁRIO
-	$cad_mot = trim($_POST['cad_mot']);
-	$cad_mot2 = trim($_POST['cad_mot2']);
-	$nom_mot = trim($_POST['nom_mot']);
-	$vei_mot = trim($_POST['vei_mot']);
-	$pla_mot = trim($_POST['pla_mot']);
-	$tel_mot = trim($_POST['tel_mot']);
-	$end_mot = trim($_POST['end_mot']);
+	$cad_mot = strtoupper($_POST['cad_mot']);
+	$cad_mot2 = strtoupper($_POST['cad_mot2']);
+	$nom_mot = strtoupper($_POST['nom_mot']);
+	$vei_mot = strtoupper($_POST['vei_mot']);
+	$pla_mot = strtoupper($_POST['pla_mot']);
+	$tel_mot = strtoupper($_POST['tel_mot']);
+	$end_mot = strtoupper($_POST['end_mot']);
 #VERIFICANDO EXISTÊNCIA DO INPUT
     if(!isset($_POST['opc'])){
         $fil_mot = "nul";
     }
     else
     {
-        $fil_mot = $_POST['opc'];
+        $fil_mot = strtoupper($_POST['opc']);
     }
 #VERIFICANDO INPUT SELECIONADO
     switch ($fil_mot){

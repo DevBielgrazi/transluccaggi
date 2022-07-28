@@ -86,15 +86,15 @@ if(!isset($_SESSION["system_control"])){
 #IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
 #VARIÁVEIS DO FORMULÁRIO
-	$cod_dis = trim($_POST['cod_dis']);
-	$nom_dis = trim($_POST['nom_dis']);
-	$cad_dis = trim($_POST['cad_dis']);
-	$cad_dis2 = trim($_POST['cad_dis2']);
+	$cod_dis = strtoupper($_POST['cod_dis']);
+	$nom_dis = strtoupper($_POST['nom_dis']);
+	$cad_dis = strtoupper($_POST['cad_dis']);
+	$cad_dis2 = strtoupper($_POST['cad_dis2']);
 #VERIFICANDO EXISTÊNCIA DO INPUT
     if(!isset($_POST['opc'])){
         $fil_dis = "nul";
     }else{
-        $fil_dis = $_POST['opc'];
+        $fil_dis = strtoupper($_POST['opc']);
     }
 #VERIFICANDO INPUT SELECIONADO
     switch ($fil_dis){

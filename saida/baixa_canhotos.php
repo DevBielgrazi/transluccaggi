@@ -150,8 +150,8 @@ if(isset($_POST['dat_bai'])) {
 	#IMPORTANDO CONEXÃO COM O BANCO
 		require('../connect.php');
 	#VARIÁVEIS DO FORMULÁRIO
-		$dat_bai = trim($_POST['dat_bai']);
-		$mot_bai = trim($_POST['mot_bai']);
+		$dat_bai = strtoupper($_POST['dat_bai']);
+		$mot_bai = strtoupper($_POST['mot_bai']);
 	
 #ADQUIRINDO DADOS DO BANCO
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `saida` = '$dat_bai' AND `motorista` = '$mot_bai'");
@@ -172,14 +172,14 @@ if(isset($_POST['num_nf'])) {
 #IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
 #VARIÁVEIS DO FORMULÁRIO
-    $num_nf = trim($_POST['num_nf']);
-    $obs_nf = trim($_POST['obs_nf']);
+    $num_nf = strtoupper($_POST['num_nf']);
+    $obs_nf = strtoupper($_POST['obs_nf']);
 
 #VERIFICANDO EXISTÊNCIA DO INPUT
 	if(!isset($_POST['opc'])) {
         $ver_ent = "nul";
     }else{
-        $ver_ent = $_POST['opc'];
+        $ver_ent = strtoupper($_POST['opc']);
     }
 #ADQUIRINDO DADOS DO BANCO
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$num_nf' AND `status` = 'ROTA' ORDER BY `id` DESC LIMIT 1");

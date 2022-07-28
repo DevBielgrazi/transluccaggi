@@ -98,25 +98,25 @@ if(!isset($_SESSION["system_control"])){
 #IMPORTANDO CONEXÃO DO BANCO
 	require('../connect.php');
 #VARIÁVEIS DO FORMULÁRIO
-	$num_nf = trim($_POST['num_nf']);
-    $emi_nf = trim($_POST['emi_nf']);
-    $emi_nf2 = trim($_POST['emi_nf2']);
-    $ent_nf = trim($_POST['ent_nf']);
-    $ent_nf2 = trim($_POST['ent_nf2']);
-    $sai_nf = trim($_POST['sai_nf']);
-    $sai_nf2 = trim($_POST['sai_nf2']);
-    $rot_nf = trim($_POST['rot_nf']);
-    $cid_cli = trim($_POST['cid_cli']);
-    $cod_cli = trim($_POST['cod_cli']);
-    $nom_cli = trim($_POST['nom_cli']);
-    $cod_dis = trim($_POST['cod_dis']);
-    $mot_nf = trim($_POST['mot_nf']);
-    $sta_nf = trim($_POST['sta_nf']);
+	$num_nf = strtoupper($_POST['num_nf']);
+    $emi_nf = strtoupper($_POST['emi_nf']);
+    $emi_nf2 = strtoupper($_POST['emi_nf2']);
+    $ent_nf = strtoupper($_POST['ent_nf']);
+    $ent_nf2 = strtoupper($_POST['ent_nf2']);
+    $sai_nf = strtoupper($_POST['sai_nf']);
+    $sai_nf2 = strtoupper($_POST['sai_nf2']);
+    $rot_nf = strtoupper($_POST['rot_nf']);
+    $cid_cli = strtoupper($_POST['cid_cli']);
+    $cod_cli = strtoupper($_POST['cod_cli']);
+    $nom_cli = strtoupper($_POST['nom_cli']);
+    $cod_dis = strtoupper($_POST['cod_dis']);
+    $mot_nf = strtoupper($_POST['mot_nf']);
+    $sta_nf = strtoupper($_POST['sta_nf']);
 #VERIFICANDO EXISTÊNCIA DO INPUT
     if(!isset($_POST['opc'])){
         $fil_nf = "nul";
     }else{
-        $fil_nf = $_POST['opc'];
+        $fil_nf = strtoupper($_POST['opc']);
     }
 #VERIFICANDO  INPUT SELECIONADO
     switch ($fil_nf){

@@ -76,42 +76,42 @@ if(!isset($_SESSION["system_control"])){
 #IMPORTANDO CONEXÃO DO BANCO
 	require('../connect.php');
 #VARIÁVEIS DO FORMULÁRIO
-	$cad_mot = trim($_POST['cad_mot']);
-	$nom_mot = trim($_POST['nom_mot']);
-	$vei_mot = trim($_POST['vei_mot']);
-	$pla_mot = trim($_POST['pla_mot']);
-	$tel_mot = trim($_POST['tel_mot']);
-	$end_mot = trim($_POST['end_mot']);
-    $cpf_mot = trim($_POST['cpf_mot']);
-	$rg_mot = trim($_POST['rg_mot']);
-	$nas_mot = trim($_POST['nas_mot']);
-	$nat_mot = trim($_POST['nat_mot']);
-	$cnh_mot = trim($_POST['cnh_mot']);
-	$val_mot = trim($_POST['val_mot']);
-	$cat_mot = trim($_POST['cat_mot']);
-	$cep_mot = trim($_POST['cep_mot']);
-	$ban_mot = trim($_POST['ban_mot']);
-	$cod_mot = trim($_POST['cod_mot']);
-	$age_mot = trim($_POST['age_mot']);
-	$con_mot = trim($_POST['con_mot']);
-	$ano_mot = trim($_POST['ano_mot']);
-	$cor_mot = trim($_POST['cor_mot']);
-	$ren_mot = trim($_POST['ren_mot']);
-	$num_mot = trim($_POST['num_mot']);
-	$ant_mot = trim($_POST['ant_mot']);
-	$caa_mot = trim($_POST['caa_mot']);
-	$vaa_mot = trim($_POST['vaa_mot']);
-	$id = trim($_POST['id']);
+	$cad_mot = strtoupper($_POST['cad_mot']);
+	$nom_mot = strtoupper($_POST['nom_mot']);
+	$vei_mot = strtoupper($_POST['vei_mot']);
+	$pla_mot = strtoupper($_POST['pla_mot']);
+	$tel_mot = strtoupper($_POST['tel_mot']);
+	$end_mot = strtoupper($_POST['end_mot']);
+    $cpf_mot = strtoupper($_POST['cpf_mot']);
+	$rg_mot = strtoupper($_POST['rg_mot']);
+	$nas_mot = strtoupper($_POST['nas_mot']);
+	$nat_mot = strtoupper($_POST['nat_mot']);
+	$cnh_mot = strtoupper($_POST['cnh_mot']);
+	$val_mot = strtoupper($_POST['val_mot']);
+	$cat_mot = strtoupper($_POST['cat_mot']);
+	$cep_mot = strtoupper($_POST['cep_mot']);
+	$ban_mot = strtoupper($_POST['ban_mot']);
+	$cod_mot = strtoupper($_POST['cod_mot']);
+	$age_mot = strtoupper($_POST['age_mot']);
+	$con_mot = strtoupper($_POST['con_mot']);
+	$ano_mot = strtoupper($_POST['ano_mot']);
+	$cor_mot = strtoupper($_POST['cor_mot']);
+	$ren_mot = strtoupper($_POST['ren_mot']);
+	$num_mot = strtoupper($_POST['num_mot']);
+	$ant_mot = strtoupper($_POST['ant_mot']);
+	$caa_mot = strtoupper($_POST['caa_mot']);
+	$vaa_mot = strtoupper($_POST['vaa_mot']);
+	$id = strtoupper($_POST['id']);
 #VERIFICANDO EXISTÊNCIA DO INPUT
     if(!isset($_POST['opc'])){
         $fil_mot = "nul";
     }else{
-        $fil_mot = $_POST['opc'];
+        $fil_mot = strtoupper($_POST['opc']);
     }
 #ADQUIRINDO INFORMAÇÕES DO  BANCO
     $sql = mysqli_query($conn,"SELECT * FROM $tab_mot WHERE `id` = '$id'");
-    $nom_mota = trim($_POST['nom_mot']);
-	$pla_mota = trim($_POST['pla_mot']);
+    $nom_mota = strtoupper($_POST['nom_mot']);
+	$pla_mota = strtoupper($_POST['pla_mot']);
 #VERIFICANDO INPUT SELECIONADO
     switch($fil_mot){
         case "cad":

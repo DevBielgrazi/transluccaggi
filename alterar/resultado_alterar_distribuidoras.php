@@ -76,7 +76,7 @@ if(!isset($_SESSION["system_control"])){
 #IMPORTANDO CONEXÃO COM O BANCO
 	require('..\connect.php');
 #VARIÁVEL HIDDEN DO FORMULÁRIO
-	$cod_dis = $_POST['cod_dis'];
+	$cod_dis = strtoupper($_POST['cod_dis']);
 #ADQUIRINDO INFORMAÇÕES DO BANCO
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `codigo` = '$cod_dis'");
 #CADASTROS POR COLUNA

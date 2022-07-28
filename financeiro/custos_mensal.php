@@ -11,9 +11,9 @@ if(!isset($_SESSION["system_control"])){
 	if($system_control == 2){
         if(isset($_POST['des_cus'])){
             #VARIÁVEIS DO FORMULÁRIO
-            $dat_cus2 = trim($_POST['dat_cus']);
-            $des_cus = trim($_POST['des_cus']);
-            $val_cus = trim($_POST['val_cus']);
+            $dat_cus2 = strtoupper($_POST['dat_cus']);
+            $des_cus = strtoupper($_POST['des_cus']);
+            $val_cus = strtoupper($_POST['val_cus']);
 
             $des_cus = strtoupper($des_cus);
 
@@ -92,8 +92,8 @@ if(!isset($_SESSION["system_control"])){
 		</div>
 <?php
 #VARIÁVEIS DO FORMULÁRIO
-$ano_cus = trim($_POST['ano_rel']);
-$mes_cus = trim($_POST['mes_rel']);
+$ano_cus = strtoupper($_POST['ano_rel']);
+$mes_cus = strtoupper($_POST['mes_rel']);
 $dat_cus2 = $ano_cus."-".$mes_cus."-01";
 ?>
 		<pag4>

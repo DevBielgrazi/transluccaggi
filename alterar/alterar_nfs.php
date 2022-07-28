@@ -76,21 +76,21 @@ if(!isset($_SESSION["system_control"])){
 #IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
 #VARIÁVEIS DO FORMULÁRIO
-	$num_nf = trim($_POST['num_nf']);
-    $ser_nf = trim($_POST['ser_nf']);
-    $emi_nf = trim($_POST['emi_nf']);
-    $ent_nf = trim($_POST['ent_nf']);
-    $sai_nf = trim($_POST['sai_nf']);
-    $val_nf = trim($_POST['val_nf']);
-    $pes_nf = trim($_POST['pes_nf']);
-    $cod_cli = trim($_POST['cod_cli']);
-    $mot_nf = trim($_POST['mot_nf']);
-    $id = $_POST['id'];
+	$num_nf = strtoupper($_POST['num_nf']);
+    $ser_nf = strtoupper($_POST['ser_nf']);
+    $emi_nf = strtoupper($_POST['emi_nf']);
+    $ent_nf = strtoupper($_POST['ent_nf']);
+    $sai_nf = strtoupper($_POST['sai_nf']);
+    $val_nf = strtoupper($_POST['val_nf']);
+    $pes_nf = strtoupper($_POST['pes_nf']);
+    $cod_cli = strtoupper($_POST['cod_cli']);
+    $mot_nf = strtoupper($_POST['mot_nf']);
+    $id = strtoupper($_POST['id']);
 #VERIFICANDO EXISTÊNCIA DO INPUT
     if(!isset($_POST['opc'])){
         $fil_nf = "nul";
     }else{
-        $fil_nf = $_POST['opc'];
+        $fil_nf = strtoupper($_POST['opc']);
     }
 #ADQUIRINDO INFORMAÇÕES DO BANCO
     $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `id` = '$id'");

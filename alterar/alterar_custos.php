@@ -76,16 +76,16 @@ if(!isset($_SESSION["system_control"])){
 #IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
 #VARIÁVEIS DO FORMULÁRIO
-	$dat_cus = trim($_POST['dat_cus']);
-	$des_cus = trim($_POST['des_cus']);
-	$val_cus = trim($_POST['val_cus']);
-	$des_cusn = trim($_POST['des_cusn']);
-	$val_cusn = trim($_POST['val_cusn']);
+	$dat_cus = strtoupper($_POST['dat_cus']);
+	$des_cus = strtoupper($_POST['des_cus']);
+	$val_cus = strtoupper($_POST['val_cus']);
+	$des_cusn = strtoupper($_POST['des_cusn']);
+	$val_cusn = strtoupper($_POST['val_cusn']);
 #VERIFICANDO EXISTÊNCIA DO INPUT
     if(!isset($_POST['opc'])){
         $fil_nf = "nul";
     }else{
-        $fil_nf = $_POST['opc'];
+        $fil_nf = strtoupper($_POST['opc']);
     }
 #VERIFICANDO INPUT SELECIONADO
     switch($fil_nf){

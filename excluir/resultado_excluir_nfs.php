@@ -76,7 +76,7 @@ if(!isset($_SESSION["system_control"])){
 #IMPORTANDO CONEXÃO DO BANCO
 	require('..\connect.php');
 #VARIÁVEL HIDDEN DO FORMULÁRIO
-	$id = $_POST['id'];
+	$id = strtoupper($_POST['id']);
 #ADQUIRINDO DADOS DO BANCO
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `id` = '$id'");
 #CADASTROS POR COLUNA

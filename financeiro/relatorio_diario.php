@@ -74,7 +74,7 @@ if(!isset($_SESSION["system_control"])){
 		</div>
 <?php
 #VARIÁVEIS DO FORMULÁRIO
-$dat_rel = trim($_POST['dat_rel']);
+$dat_rel = strtoupper($_POST['dat_rel']);
 
 require('../connect.php');
 #ADQUIRINDO INFORMAÇÕES DO BANCO
@@ -363,7 +363,7 @@ $sal_men = number_format(($sal_men), 2, '.', '');
         12 => "DEZEMBRO",
         ];
         
-    $m = ltrim($m, "0");
+    $m = lstrtoupper($m, "0");
     $frete = json_encode($frete);
     $custo = json_encode($custo);
     $saldo = json_encode($saldo);
