@@ -25,9 +25,7 @@ require('../connect.php');
 		<title>Matriz Principal</title>
 	</head>
 	<body>
-		<bar>
-			<canvas width="1365" height="70" style="background-color:gray"></canvas>
-		</bar>
+		<div class="bar">
 			<div class="dropdown">
         <img onclick="myFunction()"class="dropbtn" src="..\imagem/bars.png" width="2%"></img>
             <div id="myDropdown" class="dropdown-content">
@@ -79,6 +77,7 @@ require('../connect.php');
 		<exit>
         	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
 		</exit>
+		</div>
 		<pag>
 			<table>
 				<tr>
