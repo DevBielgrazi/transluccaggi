@@ -12,8 +12,8 @@ if(!isset($_SESSION["system_control"])){
 #IMPORTANDO CONEXÃO COM O BANCO
 require('../connect.php');
 #VARIÁVEIS DO FORMULÁRIO
-	$mot_sai = strtoupper($_POST['mot_sai']);
-	$dat_sai = strtoupper($_POST['dat_sai']);
+	$mot_sai = trim($_POST['mot_sai']);
+	$dat_sai = trim($_POST['dat_sai']);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -25,9 +25,11 @@ require('../connect.php');
 		<title>Matriz Principal</title>
 	</head>
 	<body>
-		<div class="bar">
+		<bar>
+			<canvas width="1365" height="70" style="background-color:gray"></canvas>
+		</bar>
 			<div class="dropdown">
-        <bars><img onclick="myFunction()"class="dropbtn" src="..\imagem/bars.png" width="15%"></img>
+        <img onclick="myFunction()"class="dropbtn" src="..\imagem/bars.png" width="2%"></img>
             <div id="myDropdown" class="dropdown-content">
                 <a href="form_saida_motorista.php">>SAÍDA DE MOTORISTAS</a>
                 <a href="baixa_canhotos.php">>BAIXA DE CANHOTOS</a>
@@ -49,8 +51,8 @@ require('../connect.php');
                 <a href="..\financeiro/form_fechamento_distribuidoras.php">>FECHAMENTO DISTRIBUIDORAS</a>
                 <a href="..\financeiro/form_fechamento_motoristas.php">>FECHAMENTO MOTORISTAS</a>
             </div>
-		</div></bars>
-		<script>
+        </div>
+        <script>
             function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");
             }
@@ -77,7 +79,6 @@ require('../connect.php');
 		<exit>
         	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
 		</exit>
-		</div>
 		<pag>
 			<table>
 				<tr>
@@ -147,7 +148,7 @@ require('../connect.php');
 	if(!isset($_POST['not_sai'])) {
         $not_sai = null;
     }else{
-        $not_sai = strtoupper($_POST['not_sai']);
+        $not_sai = trim($_POST['not_sai']);
     }
 	$sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `numero` = '$not_sai' ORDER BY `id` DESC LIMIT 1");
 	$v = mysqli_fetch_array($sql);

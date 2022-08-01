@@ -20,9 +20,11 @@ if(!isset($_SESSION["system_control"])){
 		<title>Matriz Principal</title>
 	</head>
 	<body>
-		<div class="bar">
+		<bar>
+			<canvas width="1365" height="70" style="background-color:gray"></canvas>
+		</bar>
 			<div class="dropdown">
-        <bars><img onclick="myFunction()"class="dropbtn" src="..\imagem/bars.png" width="15%"></img>
+        <img onclick="myFunction()"class="dropbtn" src="..\imagem/bars.png" width="2%"></img>
             <div id="myDropdown" class="dropdown-content">
                 <a href="form_saida_motorista.php">>SAÍDA DE MOTORISTAS</a>
                 <a href="baixa_canhotos.php">>BAIXA DE CANHOTOS</a>
@@ -44,8 +46,8 @@ if(!isset($_SESSION["system_control"])){
                 <a href="..\financeiro/form_fechamento_distribuidoras.php">>FECHAMENTO DISTRIBUIDORAS</a>
                 <a href="..\financeiro/form_fechamento_motoristas.php">>FECHAMENTO MOTORISTAS</a>
             </div>
-		</div></bars>
-		<script>
+        </div>
+        <script>
             function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");
             }
@@ -69,7 +71,6 @@ if(!isset($_SESSION["system_control"])){
 		<exit>
         	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
 		</exit>
-		</div>
         <pag>
 			<h1>REGISTRO DE DEVOLUÇÕES</h1><p>
 			<table>
@@ -116,14 +117,14 @@ if(!isset($_SESSION["system_control"])){
 #ADQUIRINDO INFORMAÇÕES DO BANCO
 if(isset($_POST['not_dev'])){	
 #VARIÁVEIS DO FORMULÁRIO
-	$not_dev = strtoupper($_POST['not_dev']);
-	$val_dev = strtoupper($_POST['val_dev']);
-	$vol_dev = strtoupper($_POST['vol_dev']);
-	$mot_dev = strtoupper($_POST['mot_dev']);
+	$not_dev = trim($_POST['not_dev']);
+	$val_dev = trim($_POST['val_dev']);
+	$vol_dev = trim($_POST['vol_dev']);
+	$mot_dev = trim($_POST['mot_dev']);
     if(!isset($_POST['par_dev'])){
         $par_dev = "xxx";
     }else{
-        $par_dev = strtoupper($_POST['par_dev']);
+        $par_dev = $_POST['par_dev'];
     }
     $sql2 = mysqli_query($conn,"SELECT * FROM $tab_dev WHERE `nota` = '$not_dev' ORDER BY `id` DESC");
     $n = mysqli_num_rows($sql2);
@@ -131,7 +132,7 @@ if(isset($_POST['not_dev'])){
         $v = mysqli_fetch_array($sql2);
         $status = $v['status'];
         if($status=='AGUARDANDO'){
-	        $pro_dev = strtoupper($_POST['pro_dev']);
+	        $pro_dev = trim($_POST['pro_dev']);
             $sql3 = mysqli_query($conn,"UPDATE $tab_dev SET `status`='LIBERAR', `protocolo`='$pro_dev' WHERE `nota` = '$not_dev'");
             ?>
                 <script>alert("NOTA AGUARDANDO LIBERAÇÃO");</script>

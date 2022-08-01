@@ -20,9 +20,11 @@ if(!isset($_SESSION["system_control"])){
 		<title>Matriz Principal</title>
 	</head>
 	<body>
-		<div class="bar">
+		<bar>
+			<canvas width="1365" height="70" style="background-color:gray"></canvas>
+		</bar>
 			<div class="dropdown">
-        <bars><img onclick="myFunction()"class="dropbtn" src="..\imagem/bars.png" width="15%"></img>
+        <img onclick="myFunction()"class="dropbtn" src="..\imagem/bars.png" width="2%"></img>
             <div id="myDropdown" class="dropdown-content">
                 <a href="..\saida/form_saida_motorista.php">>SAÍDA DE MOTORISTAS</a>
                 <a href="..\saida/baixa_canhotos.php">>BAIXA DE CANHOTOS</a>
@@ -44,8 +46,8 @@ if(!isset($_SESSION["system_control"])){
                 <a href="form_fechamento_distribuidoras.php">>FECHAMENTO DISTRIBUIDORAS</a>
                 <a href="form_fechamento_motoristas.php">>FECHAMENTO MOTORISTAS</a>
             </div>
-		</div></bars>
-		<script>
+        </div>
+        <script>
             function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");
             }
@@ -71,13 +73,12 @@ if(!isset($_SESSION["system_control"])){
 		<exit>
         	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
 		</exit>
-		</div>
 <?php
 #IMPORTANDO CONEXÃO COM O BANCO
 	require('..\connect.php');
 #VARIÁVEIS DO FORMULÁRIO
-	$dat_fre = strtoupper($_POST['dat_fre']);
-    $mot_fre = strtoupper($_POST['mot_fre']);
+	$dat_fre = trim($_POST['dat_fre']);
+    $mot_fre = trim($_POST['mot_fre']);
 #ADQUIRINDO INFORMAÇÕES DO BANCO
     $sql = mysqli_query($conn,"SELECT * FROM $tab_nfs WHERE `motorista` = '$mot_fre' and `saida` = '$dat_fre'");
 #TRANSFORMANDO RESULTADO EM NÚMEROS

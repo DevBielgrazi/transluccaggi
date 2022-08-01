@@ -19,9 +19,11 @@ if(!isset($_SESSION["system_control"])){
 		<title>Matriz Principal</title>
 	</head>
 	<body>
-		<div class="bar">
+		<bar>
+			<canvas width="1365" height="70" style="background-color:gray"></canvas>
+		</bar>
 			<div class="dropdown">
-        <bars><img onclick="myFunction()"class="dropbtn" src="..\imagem/bars.png" width="15%"></img>
+        <img onclick="myFunction()"class="dropbtn" src="..\imagem/bars.png" width="2%"></img>
             <div id="myDropdown" class="dropdown-content">
                 <a href="form_saida_motorista.php">>SAÍDA DE MOTORISTAS</a>
                 <a href="baixa_canhotos.php">>BAIXA DE CANHOTOS</a>
@@ -43,8 +45,8 @@ if(!isset($_SESSION["system_control"])){
                 <a href="..\financeiro/form_fechamento_distribuidoras.php">>FECHAMENTO DISTRIBUIDORAS</a>
                 <a href="..\financeiro/form_fechamento_motoristas.php">>FECHAMENTO MOTORISTAS</a>
             </div>
-		</div></bars>
-		<script>
+        </div>
+        <script>
             function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");
             }
@@ -71,13 +73,12 @@ if(!isset($_SESSION["system_control"])){
 		<exit>
         	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
 		</exit>
-		</div>
         <rn>
 <?php
 #VARIÁVEIS DO FORMULÁRIO
-$dat = strtoupper($_POST['dat']);
-$dat2 = strtoupper($_POST['dat2']);
-$dis = strtoupper($_POST['dis']);
+$dat = trim($_POST['dat']);
+$dat2 = trim($_POST['dat2']);
+$dis = trim($_POST['dis']);
 ?>
             <form method="post" action="imprimir_romaneio.php" target="_blank">
                 <input autocomplete="off" type="hidden" name="dat" value="<?php echo $sat;  ?>">

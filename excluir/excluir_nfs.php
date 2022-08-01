@@ -23,7 +23,7 @@ if(!isset($_SESSION["system_control"])){
 #IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
 #VARIÁVEL HIDDEN DO BANCO
-	$id = strtoupper($_POST['id']);
+	$id = trim($_POST['id']);
 #EXCLUINDO REGISTRO DO BANCO
     $sql = mysqli_query($conn,"DELETE FROM $tab_nfs WHERE `id` = '$id'");
 ?>

@@ -19,9 +19,11 @@ if(!isset($_SESSION["system_control"])){
 		<title>Matriz Principal</title>
 	</head>
 	<body>
-		<div class="bar">
+		<bar>
+			<canvas width="1365" height="70" style="background-color:gray"></canvas>
+		</bar>
 			<div class="dropdown">
-        <bars><img onclick="myFunction()"class="dropbtn" src="..\imagem/bars.png" width="15%"></img>
+        <img onclick="myFunction()"class="dropbtn" src="..\imagem/bars.png" width="2%"></img>
             <div id="myDropdown" class="dropdown-content">
                 <a href="..\saida/form_saida_motorista.php">>SAÍDA DE MOTORISTAS</a>
                 <a href="..\saida/baixa_canhotos.php">>BAIXA DE CANHOTOS</a>
@@ -43,8 +45,8 @@ if(!isset($_SESSION["system_control"])){
                 <a href="..\financeiro/form_fechamento_distribuidoras.php">>FECHAMENTO DISTRIBUIDORAS</a>
                 <a href="..\financeiro/form_fechamento_motoristas.php">>FECHAMENTO MOTORISTAS</a>
             </div>
-		</div></bars>
-		<script>
+        </div>
+        <script>
             function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");
             }
@@ -71,7 +73,6 @@ if(!isset($_SESSION["system_control"])){
 		<exit>
         	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
 		</exit>
-		</div>
         <rn>
             <table class="tableb" border=1>
                 <h3>MOTORISTAS CADASTRADOS</h3>
@@ -89,20 +90,20 @@ if(!isset($_SESSION["system_control"])){
 #IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
 #VARIÁVEIS DO FORMULÁRIO
-	$cad_mot = strtoupper($_POST['cad_mot']);
-	$cad_mot2 = strtoupper($_POST['cad_mot2']);
-	$nom_mot = strtoupper($_POST['nom_mot']);
-	$vei_mot = strtoupper($_POST['vei_mot']);
-	$pla_mot = strtoupper($_POST['pla_mot']);
-	$tel_mot = strtoupper($_POST['tel_mot']);
-	$end_mot = strtoupper($_POST['end_mot']);
+	$cad_mot = trim($_POST['cad_mot']);
+	$cad_mot2 = trim($_POST['cad_mot2']);
+	$nom_mot = trim($_POST['nom_mot']);
+	$vei_mot = trim($_POST['vei_mot']);
+	$pla_mot = trim($_POST['pla_mot']);
+	$tel_mot = trim($_POST['tel_mot']);
+	$end_mot = trim($_POST['end_mot']);
 #VERIFICANDO EXISTÊNCIA DO INPUT
     if(!isset($_POST['opc'])){
         $fil_mot = "nul";
     }
     else
     {
-        $fil_mot = strtoupper($_POST['opc']);
+        $fil_mot = $_POST['opc'];
     }
 #VERIFICANDO INPUT SELECIONADO
     switch ($fil_mot){

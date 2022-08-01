@@ -19,9 +19,11 @@ if(!isset($_SESSION["system_control"])){
 		<title>Matriz Principal</title>
 	</head>
 	<body>
-		<div class="bar">
+		<bar>
+			<canvas width="1365" height="70" style="background-color:gray"></canvas>
+		</bar>
 			<div class="dropdown">
-        <bars><img onclick="myFunction()"class="dropbtn" src="..\imagem/bars.png" width="15%"></img>
+        <img onclick="myFunction()"class="dropbtn" src="..\imagem/bars.png" width="2%"></img>
             <div id="myDropdown" class="dropdown-content">
                 <a href="..\saida/form_saida_motorista.php">>SAÍDA DE MOTORISTAS</a>
                 <a href="..\saida/baixa_canhotos.php">>BAIXA DE CANHOTOS</a>
@@ -43,8 +45,8 @@ if(!isset($_SESSION["system_control"])){
                 <a href="..\financeiro/form_fechamento_distribuidoras.php">>FECHAMENTO DISTRIBUIDORAS</a>
                 <a href="..\financeiro/form_fechamento_motoristas.php">>FECHAMENTO MOTORISTAS</a>
             </div>
-		</div></bars>
-		<script>
+        </div>
+        <script>
             function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");
             }
@@ -71,21 +73,20 @@ if(!isset($_SESSION["system_control"])){
 		<exit>
         	<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
 		</exit>
-		</div>
 <?php
 #IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
 #VARIÁVEIS DO FORMULÁRIO
-	$dat_cus = strtoupper($_POST['dat_cus']);
-	$des_cus = strtoupper($_POST['des_cus']);
-	$val_cus = strtoupper($_POST['val_cus']);
-	$des_cusn = strtoupper($_POST['des_cusn']);
-	$val_cusn = strtoupper($_POST['val_cusn']);
+	$dat_cus = trim($_POST['dat_cus']);
+	$des_cus = trim($_POST['des_cus']);
+	$val_cus = trim($_POST['val_cus']);
+	$des_cusn = trim($_POST['des_cusn']);
+	$val_cusn = trim($_POST['val_cusn']);
 #VERIFICANDO EXISTÊNCIA DO INPUT
     if(!isset($_POST['opc'])){
         $fil_nf = "nul";
     }else{
-        $fil_nf = strtoupper($_POST['opc']);
+        $fil_nf = $_POST['opc'];
     }
 #VERIFICANDO INPUT SELECIONADO
     switch($fil_nf){

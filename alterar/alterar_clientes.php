@@ -19,9 +19,11 @@ if(!isset($_SESSION["system_control"])){
 		<title>Matriz Principal</title>
 	</head>
 	<body>
-		<div class="bar">
+		<bar>
+			<canvas width="1365" height="70" style="background-color:gray"></canvas>
+		</bar>
 			<div class="dropdown">
-        <bars><img onclick="myFunction()"class="dropbtn" src="..\imagem/bars.png" width="15%"></img>
+        <img onclick="myFunction()"class="dropbtn" src="..\imagem/bars.png" width="2%"></img>
             <div id="myDropdown" class="dropdown-content">
                 <a href="..\saida/form_saida_motorista.php">>SAÍDA DE MOTORISTAS</a>
                 <a href="..\saida/baixa_canhotos.php">>BAIXA DE CANHOTOS</a>
@@ -43,8 +45,8 @@ if(!isset($_SESSION["system_control"])){
                 <a href="..\financeiro/form_fechamento_distribuidoras.php">>FECHAMENTO DISTRIBUIDORAS</a>
                 <a href="..\financeiro/form_fechamento_motoristas.php">>FECHAMENTO MOTORISTAS</a>
             </div>
-		</div></bars>
-		<script>
+        </div>
+        <script>
             function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");
             }
@@ -71,26 +73,25 @@ if(!isset($_SESSION["system_control"])){
         <exit>
             <a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
         </exit>
-		</div>
 <?php
 #IMPORTANDO CONEXÃO COM O BANCO
 	require('../connect.php');
 #VARIÁVEIS DO FORMULÁRIO
-	$cod_cli = strtoupper($_POST['cod_cli']);
-	$nom_cli = strtoupper($_POST['nom_cli']);
-	$age_cli = strtoupper($_POST['age_cli']);
-	$cad_cli = strtoupper($_POST['cad_cli']);
-	$rot_cli = strtoupper($_POST['rot_cli']);
-	$cid_cli = strtoupper($_POST['cid_cli']);
-	$bai_cli = strtoupper($_POST['bai_cli']);
-	$end_cli = strtoupper($_POST['end_cli']);
-	$cod_dis = strtoupper($_POST['cod_dis']);
-    $id = strtoupper($_POST['id']);
+	$cod_cli = trim($_POST['cod_cli']);
+	$nom_cli = trim($_POST['nom_cli']);
+	$age_cli = trim($_POST['age_cli']);
+	$cad_cli = trim($_POST['cad_cli']);
+	$rot_cli = trim($_POST['rot_cli']);
+	$cid_cli = trim($_POST['cid_cli']);
+	$bai_cli = trim($_POST['bai_cli']);
+	$end_cli = trim($_POST['end_cli']);
+	$cod_dis = trim($_POST['cod_dis']);
+    $id = $_POST['id'];
 #VERIFICANDO EXISTÊNCIA DO INPUT
     if(!isset($_POST['opc'])){
         $fil_cli = "nul";
     }else{
-        $fil_cli = strtoupper($_POST['opc']);
+        $fil_cli = $_POST['opc'];
     }
 #ADQUIRINDO INFORMAÇÕES DO BANCO
     $sql = mysqli_query($conn,"SELECT * FROM $tab_cli WHERE `id` = '$id'");

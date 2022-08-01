@@ -8,8 +8,8 @@
 	</head>
 	<body>
 <?php
-    $login = strtoupper($_POST["login"]);
-    $senha = strtoupper($_POST["senha"]);
+    $login = $_POST["login"];
+    $senha = $_POST["senha"];
     require("connect.php");
     $sql = mysqli_query($conn,"SELECT * FROM $tab_usu WHERE `login` = '$login'");
     $n = mysqli_num_rows($sql);
