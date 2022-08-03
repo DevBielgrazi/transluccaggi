@@ -120,7 +120,7 @@ require('../connect.php');
 				<th><form method="post" action="imprimir_saida.php" target="_blank">
 					<input autocomplete="off" type="hidden" name="mot_sai" value="<?php echo $mot_sai;  ?>">
 					<input autocomplete="off" type="hidden" name="dat_sai" value="<?php echo $dat_sai;  ?>">
-					<input autocomplete="off" class="inpute" type=image width=5% height=5% src="..\imagem/imprimir.png" alt=submit>
+					<input autocomplete="off" class="inpute" type=image width=5% src="..\imagem/imprimir.png" alt=submit>
 				</form></th>
 				<th><h3>DATA:<?php  echo date( 'd/m/Y' , strtotime($dat_sai)); ?></h3></th>
 				<th><h3>MOTORISTA:<?php  echo $nom_mot; ?></h3></th>

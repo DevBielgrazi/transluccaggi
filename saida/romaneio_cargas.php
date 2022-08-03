@@ -79,14 +79,14 @@ $dat = trim($_POST['dat']);
 $dat2 = trim($_POST['dat2']);
 $dis = trim($_POST['dis']);
 ?>
+            <h3>NOTAS FISCAIS</h3>
             <form method="post" action="imprimir_romaneio.php" target="_blank">
                 <input autocomplete="off" type="hidden" name="dat" value="<?php echo $sat;  ?>">
                 <input autocomplete="off" type="hidden" name="dat2" value="<?php echo $dat2;  ?>">
                 <input autocomplete="off" type="hidden" name="dis" value="<?php echo $dis;  ?>">
-                <input autocomplete="off" class="inpute" type=image width=10% height=10% src="..\imagem/imprimir.png" alt=submit>
+                <input autocomplete="off" class="inpute" type=image width=5% src="..\imagem/imprimir.png" alt=submit>
             </form>
             <table class="tableb" border=2>
-                <tr><h3>NOTAS FISCAIS</h3></tr>
                 <tr>
                     <th><h3>ENTRADA</h3></th>
                     <th><h3>NÚMERO</h3></th>

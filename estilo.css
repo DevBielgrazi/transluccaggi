@@ -66,6 +66,7 @@ logo img{
 exit{
     position: absolute;
     left: 95%;
+    top: 5%;
 }
 back{
     position: absolute;
@@ -75,6 +76,7 @@ back{
     border: none;
     cursor: pointer;
     position: relative;
+    left: 1%;
 }
 .dropdown {
     position: absolute;
