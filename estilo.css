@@ -117,7 +117,7 @@ fdc2{
 rdc{
     position:absolute;
     top:10%;
-    left:60%;
+    left:55%;
 }
 login{
     position:absolute;
@@ -271,4 +271,24 @@ gra4{
     position: absolute;
     top: 15%;
     left: 60%;
+}
+gra5{
+    position: absolute;
+    top: 65%;
+    left: 60%;
+}
+gra6{
+    position: absolute;
+    top: 60%;
+    left: 70%;
+}
+gra7{
+    position: absolute;
+    top: 25%;
+    left: 35%;
+}
+gra8{
+    position: absolute;
+    top: 20%;
+    left: 55%;
 }

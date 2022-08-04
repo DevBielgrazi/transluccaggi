@@ -3,12 +3,12 @@ session_start();
 if(!isset($_SESSION["system_control"])){
 ?>
 	<script>
-		document.location.href="http://localhost/transluccaggi/index.html";
+		document.location.href="http://localhost/transluccaggi/index_financeiro.html";
 	</script>
 <?php
 }else{
 	$system_control = $_SESSION["system_control"];
-	if($system_control == 1 || $system_control == 2){
+	if($system_control == 2){
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -31,18 +31,18 @@ if(!isset($_SESSION["system_control"])){
                 <a href="..\cadastro/cadastrar_nfs.php">>CADASTRO NOTAS</a>
                 <a href="..\cadastro/cadastrar_clientes.php">>CADASTRO CLIENTES</a>
                 <a href="..\cadastro/cadastrar_distribuidoras.php">>CADASTRO DISTRIBUIDORAS</a>
-                <a href="form_pesquisar_nfs.php">>PESQUISAR NOTAS</a>
-                <a href="form_pesquisar_clientes.php">>PESQUISAR CLIENTES</a>
-                <a href="form_pesquisar_distribuidoras.php">>PESQUISAR DISTRIBUIDORAS</a>
+                <a href="..\pesquisa/form_pesquisar_nfs.php">>PESQUISAR NOTAS</a>
+                <a href="..\pesquisa/form_pesquisar_clientes.php">>PESQUISAR CLIENTES</a>
+                <a href="..\pesquisa/form_pesquisar_distribuidoras.php">>PESQUISAR DISTRIBUIDORAS</a>
                 <a href="..\cadastro/cadastrar_motoristas.php">>CADASTRAR MOTORISTA</a>
-                <a href="form_pesquisar_motoristas.php">>PESQUISAR MOTORISTA</a>
-                <a href="..\financeiro/form_relatorio_diario.php">>RELATÓRIO DIÁRIO</a>
-                <a href="..\financeiro/form_relatorio_diario_cidades.php">>RELATÓRIO DIÁRIO CIDADES</a>
-                <a href="..\financeiro/form_relatorio_mensal.php">>RELATÓRIO MENSAL</a>
-                <a href="..\financeiro/form_relatorio_anual.php">>RELATÓRIO ANUAL</a>
-                <a href="..\financeiro/form_frete_motoristas.php">>FRETE MOTORISTAS</a>
-                <a href="..\financeiro/form_fechamento_distribuidoras.php">>FECHAMENTO DISTRIBUIDORAS</a>
-                <a href="..\financeiro/form_fechamento_motoristas.php">>FECHAMENTO MOTORISTAS</a>
+                <a href="..\pesquisa/form_pesquisar_motoristas.php">>PESQUISAR MOTORISTA</a>
+                <a href="form_relatorio_diario.php">>RELATÓRIO DIÁRIO</a>
+                <a href="form_relatorio_diario_cidades.php">>RELATÓRIO DIÁRIO CIDADES</a>
+                <a href="form_relatorio_mensal.php">>RELATÓRIO MENSAL</a>
+                <a href="form_relatorio_anual.php">>RELATÓRIO ANUAL</a>
+                <a href="form_frete_motoristas.php">>FRETE MOTORISTAS</a>
+                <a href="form_fechamento_distribuidoras.php">>FECHAMENTO DISTRIBUIDORAS</a>
+                <a href="form_fechamento_motoristas.php">>FECHAMENTO MOTORISTAS</a>
             </div>
         </div>
         <script>
@@ -71,32 +71,19 @@ if(!isset($_SESSION["system_control"])){
 		</exit>
 		</div>
 		<pag>
-			<h1>PESQUISAR DISTRIBUIDORAS</h1><p>
+			<h1>RELATÓRIO DIÁRIO CIDADES</h1><p>
 			<table>
 				<tr>
 					<td>
-						<form method="post" action="pesquisar_distribuidoras.php">
+						<form method="post" action="relatorio_diario_cidades.php">
 							<table>
                                 <tr>
-									<td><h4>TODOS<input type="radio" name="opc" value="tod"></h4></td>
-								</tr>
-								<tr>
-									<td><h4>CÓDIGO:<input type="radio" name="opc" value="cod"></h4></td>
-									<td><input autocomplete="off" name="cod_dis" type=text size=16 maxlength=16 ></td>
-								</tr>
-                                <tr>
-									<td><h4>NOME:<input type="radio" name="opc" value="nom"></h4></td>
-									<td><input autocomplete="off" name="nom_dis" type=text size=16 maxlength=32 ></td>
-								</tr>
-								<tr>
-									<td><h4>CADASTRO:<input type="radio" name="opc" value="cad"></h4></td>
-									<td><input autocomplete="off" name="cad_dis" type=date ></td>
-									<td><h4>ATÉ</h4></td>
-									<td><input autocomplete="off" name="cad_dis2" type=date ></td>
-								</tr>
-							</table>
+                                    <td><h4>DATA:</h4></td>
+									<td><input autocomplete="off" name="dat_rel" type=date required></td>
+                                </tr>
+                            </table>
                             <tr>
-                                <td><input autocomplete="off" class="inputb" type=submit value=PESQUISAR></td>
+                                <td><input autocomplete="off" class="inputb" type=submit value=VISUALIZAR></td>
                             </tr>
 						</form>
 					</td>
@@ -105,6 +92,14 @@ if(!isset($_SESSION["system_control"])){
 		</pag>
 	</body>
 </html>
+<?php
+    }
+    else
+    {
+?>
+	<script>
+		document.location.href="http://localhost/transluccaggi/financeiro/index_financeiro.html";
+	</script>
 <?php
     }
 }
