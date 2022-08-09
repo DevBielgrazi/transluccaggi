@@ -39,6 +39,7 @@ if(!isset($_SESSION["system_control"])){
                 <a href="form_relatorio_diario.php">>RELATÓRIO DIÁRIO</a>
                 <a href="form_relatorio_diario_cidades.php">>RELATÓRIO DIÁRIO CIDADES</a>
                 <a href="form_relatorio_mensal.php">>RELATÓRIO MENSAL</a>
+                <a href="form_relatorio_mensal_cidades.php">>RELATÓRIO MENSAL CIDADES</a>
                 <a href="form_relatorio_anual.php">>RELATÓRIO ANUAL</a>
                 <a href="form_frete_motoristas.php">>FRETE MOTORISTAS</a>
                 <a href="form_fechamento_distribuidoras.php">>FECHAMENTO DISTRIBUIDORAS</a>
@@ -159,7 +160,11 @@ $sal_men = number_format(($sal_men), 2, '.', '');
         $val_dis = number_format(($vn['val']), 2, '.', '');
         $por_fre = $v['porcentagem']/100;
         $fre_dis = number_format(($por_fre*$val_dis), 2, '.', '');
-        $por_dis = number_format((($fre_dis/$fre_disg)*100), 2, '.', '');
+        if($fre_disg>0){
+            $por_dis = number_format((($fre_dis/$fre_disg)*100), 2, '.', '');
+        }else{
+            $por_dis = 0;
+        }
     ?>
                     <td><h4><nobr><?php echo $cod_dis;    ?><nobr></h4></td>
                     <td><h4><nobr><?php echo $nom_dis;    ?><nobr></h4></td>
@@ -300,7 +305,7 @@ $sal_men = number_format(($sal_men), 2, '.', '');
             </script>
         </gra>
         <gra6>
-            <h1>GRÁFICO DE <?php echo $mes_rel[$m]; ?></h1>
+            <h1>GRÁFICO DE <?php echo date( 'd/m/Y' , strtotime($dat_rel)); ?></h1>
         </gra6>
         <gra5>
             <canvas width=400 height=200 id="grafico2" style="background-color:white;"></canvas>
@@ -313,7 +318,7 @@ $sal_men = number_format(($sal_men), 2, '.', '');
                     data: {
                         labels: <?php echo $dad_nom; ?>,
                         datasets: [{
-            label: 'FRETE',
+            label: 'VALOR FRETE',
             data: <?php echo $dad_dis; ?>,
             backgroundColor: [
                 'green'

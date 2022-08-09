@@ -39,6 +39,7 @@ if(!isset($_SESSION["system_control"])){
                 <a href="..\financeiro/form_relatorio_diario.php">>RELATÓRIO DIÁRIO</a>
                 <a href="..\financeiro/form_relatorio_diario_cidades.php">>RELATÓRIO DIÁRIO CIDADES</a>
                 <a href="..\financeiro/form_relatorio_mensal.php">>RELATÓRIO MENSAL</a>
+                <a href="..\financeiro/form_relatorio_mensal_cidades.php">>RELATÓRIO MENSAL CIDADES</a>
                 <a href="..\financeiro/form_relatorio_anual.php">>RELATÓRIO ANUAL</a>
                 <a href="..\financeiro/form_frete_motoristas.php">>FRETE MOTORISTAS</a>
                 <a href="..\financeiro/form_fechamento_distribuidoras.php">>FECHAMENTO DISTRIBUIDORAS</a>

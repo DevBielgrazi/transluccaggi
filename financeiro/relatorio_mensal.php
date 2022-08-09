@@ -39,6 +39,7 @@ if(!isset($_SESSION["system_control"])){
                 <a href="form_relatorio_diario.php">>RELATÓRIO DIÁRIO</a>
                 <a href="form_relatorio_diario_cidades.php">>RELATÓRIO DIÁRIO CIDADES</a>
                 <a href="form_relatorio_mensal.php">>RELATÓRIO MENSAL</a>
+                <a href="form_relatorio_mensal_cidades.php">>RELATÓRIO MENSAL CIDADES</a>
                 <a href="form_relatorio_anual.php">>RELATÓRIO ANUAL</a>
                 <a href="form_frete_motoristas.php">>FRETE MOTORISTAS</a>
                 <a href="form_fechamento_distribuidoras.php">>FECHAMENTO DISTRIBUIDORAS</a>
@@ -64,7 +65,7 @@ if(!isset($_SESSION["system_control"])){
             }
         </script>
         <back>
-        	<a href="form_relatorio_mensal.php"><img src="..\imagem/back.png" width=20%></a>
+        	<a href="form_relatorio_diario.php"><img src="..\imagem/back.png" width=20%></a>
         </back>
         <logo>
         	<a href="..\menu.php"><img src="..\imagem/logo.png" width=25%></a>
@@ -109,7 +110,7 @@ $sql = mysqli_query($conn,"SELECT SUM(`valor`) as 'fre' FROM $tab_fre WHERE `dat
 $sql = mysqli_fetch_array($sql);
 $fre_mot = number_format(($sql['fre']), 2, '.', '');
 
-$sql = mysqli_query($conn,"SELECT SUM(`valor`) as 'cus' FROM $tab_cus WHERE `mes` = '$dat_rel'");
+$sql = mysqli_query($conn,"SELECT SUM(`valor`) as 'cus' FROM $tab_cus WHERE `mes` >= '$dat_rel' AND `mes` <= '$dat_rel2'");
 $sql = mysqli_fetch_array($sql);
 $cus_men = number_format(($sql['cus']), 2, '.', '');
 $cus_men = $cus_men+$fre_mot;
@@ -119,7 +120,7 @@ $sal_men = number_format(($sal_men), 2, '.', '');
 
 ?>
 		<rd>
-			<table class="tableb" border=1>
+        <table class="tableb" border=1>
 				<h1>RELATÓRIO MENSAL</h1>
 				<tr>
 					<th><h3>MÊS</h3></th>
@@ -144,143 +145,57 @@ $sal_men = number_format(($sal_men), 2, '.', '');
         }?>
 				</tr>
 			</table>
-</rd>
-<fdc2>
-            <h1>FILTROS POR CIDADE</h1><p>
-			<table>
-				<tr>
-					<td>
-						<form method="post" action="relatorio_mensal.php">
-                            <input autocomplete="off" type="hidden" name="ano_rel" value="<?php echo $ano_rel;?>">
-                            <input autocomplete="off" type="hidden" name="mes_rel" value="<?php echo $mes_rel;?>">
-							<table>
-                                <tr>
-									<td><h4>DISTRIBUIDORA:<input type="radio" name="opc" value="dis"></h4></td>
-									<td><select name="cod_dis">
-<?php
-#IMPORTANDO CONEXÃO DO BANCO
-	require('../connect.php');
-#ADQUIRINDO INFORMAÇÕES DO BANCO
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_dis");
-#TRANSFORMANDO RESULTADO EM NÚMEROS
-	$n = mysqli_num_rows($sql);
-#INICIANDO CONTADOR
-	$i=0;
-#APRESENTANDO REGISTROS DO BANCO
-	while($i!=$n){
-#CADASTROS POR COLUNA
-		$v = mysqli_fetch_array($sql);
-		?><option value=<?php	echo $v['codigo']	?>><?php	echo	$v['nome']	?></option><?php
-#SOMANDO AO CONTADOR
-		$i=$i+1;
-	}
-?>
-                                        </select></td>
-                                </tr>
-							</table>
-                            <tr>
-                                <td><input autocomplete="off" class="inputb" type=submit value=VISUALIZAR></td>
-                            </tr>
-						</form>
-					</td>
-				</tr>
-			</table>
-        </fdc2>
+        </rd>
         <rdc>
 			<table class="tableb" border=1>
-				<h1>RELATÓRIO POR CIDADE</h1>
+				<h1>RELATÓRIO POR DISTRIBUIDORA</h1>
 				<tr>
-					<th><h3>CIDADE</h3></th>
+					<th><h3>CÓDIGO</h3></th>
+					<th><h3>DISTRIBUIDORA</h3></th>
 					<th><h3>VALOR</h3></th>
+					<th><h3>VALOR FRETES</h3></th>
 					<th><h3>PORCENTAGEM</h3></th>
-					<th><h3>VALOR KG</h3></th>
-					<th><h3>VALOR VOLUME</h3></th>
 				</tr>
                 <tr>
 <?php
-    if(isset($_POST['opc'])){
-        $cod_dis=$_POST['cod_dis'];
-        if($cod_dis==1){
-            $sql = mysqli_query($conn,"SELECT DISTINCT `cidade_cliente` FROM $tab_nfs WHERE `cod_distribuidora`='$cod_dis' AND `emissao` >= '$dat_rel' AND `emissao` <= '$dat_rel2' ORDER BY `cidade_cliente`");
-            $sql2 = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cod_distribuidora`='$cod_dis' AND `emissao` >= '$dat_rel' AND `emissao` <= '$dat_rel2'");
+    $sql = mysqli_query($conn,"SELECT * FROM $tab_dis");
+    $n = mysqli_num_rows($sql);
+    $dad_dis = [];
+    $dad_nom = [];
+    for($i=1;$i<=$n;$i++){
+        $sql = mysqli_query($conn,"SELECT * FROM $tab_dis WHERE `codigo` = '$i'");
+        $v = mysqli_fetch_array($sql);
+        $nom_dis = $v['nome'];
+        $cod_dis = $v['codigo'];
+        if($i==1){
+            $sql2 = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cod_distribuidora` = '$i' AND `emissao` >= '$dat_rel' AND `emissao` <= '$dat_rel2'");
         }else{
-            $sql = mysqli_query($conn,"SELECT DISTINCT `cidade_cliente` FROM $tab_nfs WHERE `cod_distribuidora`='$cod_dis' AND `entrada` >= '$dat_rel' AND `entrada` <= '$dat_rel2' ORDER BY `cidade_cliente`");
-            $sql2 = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cod_distribuidora`='$cod_dis' AND `entrada` >= '$dat_rel' AND `entrada` <= '$dat_rel2'"); 
+            $sql2 = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cod_distribuidora` = '$i' AND `entrada` >= '$dat_rel' AND `entrada` <= '$dat_rel2'");
         }
-    }else{
-        $sql = mysqli_query($conn,"SELECT DISTINCT `cidade_cliente` FROM $tab_nfs WHERE `cod_distribuidora`!=1 AND `entrada` >= '$dat_rel' AND `entrada` <= '$dat_rel2' OR `cod_distribuidora`=1 AND `emissao` >= '$dat_rel' AND `emissao` <= '$dat_rel2' ORDER BY `cidade_cliente`");
-        $sql2 = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cod_distribuidora`!=1 AND `entrada` >= '$dat_rel' AND `entrada` <= '$dat_rel2' OR `cod_distribuidora`=1 AND `emissao` >= '$dat_rel' AND `emissao` <= '$dat_rel2'");
-    }
-        $sql2 = mysqli_fetch_array($sql2);
-        $val_tot = number_format(($sql2['val']), 2, '.', '');
-        #TRANSFORMANDO RESULTADO EM NÚMEROS
-        $n = mysqli_num_rows($sql);
-        #INICIANDO CONTADOR
-        $i=0;
-        #APRESENTANDO REGISTROS DO BANCO
-        while($i!=$n){
-        #CADASTROS POR COLUNA
-            $v = mysqli_fetch_array($sql);
-            $cid_nf = $v['cidade_cliente'];
-            if(isset($_POST['opc'])){
-                if($cod_dis==1){
-                    $sql3 = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`='$cod_dis' AND `emissao` >= '$dat_rel' AND `emissao` <= '$dat_rel2'");  
-                }else{
-                    $sql3 = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`='$cod_dis' AND `entrada` >= '$dat_rel' AND `entrada` <= '$dat_rel2'");  
-                }
-            }else{
-                $sql3 = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`!=1 AND `entrada` >= '$dat_rel' AND `entrada` <= '$dat_rel2' OR `cidade_cliente`='$cid_nf' AND `cod_distribuidora`=1 AND `emissao` >= '$dat_rel' AND `emissao` <= '$dat_rel2'");
-            }
-            $sql3 = mysqli_fetch_array($sql3);
-            $val_cid = number_format(($sql3['val']), 2, '.', '');
-            $por_val = ($val_cid/$val_tot)*100;
-            $por_val = number_format(($por_val), 2, '.', '');
-
-            if(isset($_POST['opc'])){
-                if($cod_dis==1){
-                    $sql4 = mysqli_query($conn,"SELECT SUM(`peso`) as 'pes' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`='$cod_dis' AND `emissao` >= '$dat_rel' AND `emissao` <= '$dat_rel2'");  
-                }else{
-                    $sql4 = mysqli_query($conn,"SELECT SUM(`peso`) as 'pes' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`='$cod_dis' AND `entrada` >= '$dat_rel' AND `entrada` <= '$dat_rel2'");  
-                }
-            }else{
-                $sql4 = mysqli_query($conn,"SELECT SUM(`peso`) as 'pes' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`!=1 AND `entrada` >= '$dat_rel' AND `entrada` <= '$dat_rel2' OR `cidade_cliente`='$cid_nf' AND `cod_distribuidora`=1 AND `emissao` >= '$dat_rel' AND `emissao` <= '$dat_rel2'");
-            }
-            $sql4 = mysqli_fetch_array($sql4);
-            if($sql4['pes']<=0){
-                $val_pes = $val_cid;
-            }else{
-                $pes_cid = number_format(($sql4['pes']), 2, '.', '');
-                $val_pes = $val_cid/$pes_cid;
-            }
-            $val_pes = number_format(($val_pes), 2, '.', '');
-
-            if(isset($_POST['opc'])){
-                if($cod_dis==1){
-                    $sql5 = mysqli_query($conn,"SELECT SUM(`volumes`) as 'vol' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`='$cod_dis' AND `emissao` >= '$dat_rel' AND `emissao` <= '$dat_rel2'");  
-                }else{
-                    $sql5 = mysqli_query($conn,"SELECT SUM(`volumes`) as 'vol' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`='$cod_dis' AND `entrada` >= '$dat_rel' AND `entrada` <= '$dat_rel2'");  
-                }
-            }else{
-                $sql5 = mysqli_query($conn,"SELECT SUM(`volumes`) as 'vol' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`!=1 AND `entrada` >= '$dat_rel' AND `entrada` <= '$dat_rel2' OR `cidade_cliente`='$cid_nf' AND `cod_distribuidora`=1 AND `emissao` >= '$dat_rel' AND `emissao` <= '$dat_rel2'");
-            }
-            $sql5 = mysqli_fetch_array($sql5);
-            $vol_cid = $sql5['vol'];
-            $val_vol = $val_cid/$vol_cid;
-            $val_vol = number_format(($val_vol), 2, '.', '');
+        $vn = mysqli_fetch_array($sql2);
+        $val_dis = number_format(($vn['val']), 2, '.', '');
+        $por_fre = $v['porcentagem']/100;
+        $fre_dis = number_format(($por_fre*$val_dis), 2, '.', '');
+        if($fre_disg>0){
+            $por_dis = number_format((($fre_dis/$fre_disg)*100), 2, '.', '');
+        }else{
+            $por_dis = 0;
+        }
     ?>
-                    <td><h4><nobr><?php echo $cid_nf;    ?><nobr></h4></td>
-                    <td><h4><nobr><?php echo "R$".$val_cid;    ?><nobr></h4></td>
-                    <td><h4><nobr><?php echo $por_val."%";    ?><nobr></h4></td>
-                    <td><h4><nobr><?php echo "R$".$val_pes;    ?><nobr></h4></td>
-                    <td><h4><nobr><?php echo "R$".$val_vol;    ?><nobr></h4></td>
+                    <td><h4><nobr><?php echo $cod_dis;    ?><nobr></h4></td>
+                    <td><h4><nobr><?php echo $nom_dis;    ?><nobr></h4></td>
+                    <td><h4><nobr><?php echo "R$".$val_dis;    ?><nobr></h4></td>
+                    <td><h4><nobr><?php echo "R$".$fre_dis;    ?><nobr></h4></td>
+                    <td><h4><nobr><?php echo $por_dis."%";    ?><nobr></h4></td>
                 </tr>
 <?php
-            $i++;
-        }
+        $dad_dis[]= (float) $fre_dis;
+        $dad_nom[]= (string) $cod_dis;
+    }
 ?>
             </table>
         </rdc>
-<?php
+        <?php
     function frete($dat_rel,$dat_rel2){
         require('../connect.php');
         $sql = mysqli_query($conn,"SELECT * FROM $tab_dis");
@@ -330,19 +245,20 @@ $sal_men = number_format(($sal_men), 2, '.', '');
     $custo = [];
     $saldo = [];
     $ano_rel = date('Y', strtotime( $dat_rel));
+    $m = ltrim($mes_rel, '0');
     $mes_rel = [
-        1 => "Jan",
-        2 => "Fev",
-        3 => "Mar",
-        4 => "Abr",
-        5 => "Mai",
-        6 => "Jun",
-        7 => "Jul",
-        8 => "Ago",
-        9 => "Set",
-        10 => "Out",
-        11 => "Nov",
-        12 => "Dez",
+        1 => "JANEIRO",
+        2 => "FEVEREIRO",
+        3 => "MARÇO",
+        4 => "ABRIL",
+        5 => "MAIO",
+        6 => "JUNHO",
+        7 => "JULHO",
+        8 => "AGOSTO",
+        9 => "SETEMBRO",
+        10 => "OUTUBRO",
+        11 => "NOVEMBRO",
+        12 => "DEZEMBRO",
         ];
 
     for($i=1;$i<=12;$i++){        
@@ -360,6 +276,8 @@ $sal_men = number_format(($sal_men), 2, '.', '');
     $frete = json_encode($frete);
     $custo = json_encode($custo);
     $saldo = json_encode($saldo);
+    $dad_dis = json_encode($dad_dis);
+    $dad_nom = json_encode($dad_nom);
 
 ?>      
         <gra2>
@@ -393,7 +311,36 @@ $sal_men = number_format(($sal_men), 2, '.', '');
                 )
             </script>
         </gra>
-	</body>
+        <gra6>
+            <h1>GRÁFICO DE <?php echo $mes_rel[$m]; ?></h1>
+        </gra6>
+        <gra5>
+            <canvas width=400 height=200 id="grafico2" style="background-color:white;"></canvas>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
+            <script type="text/javascript">
+                var ctx = document.getElementById('grafico2').getContext('2d');
+                var chartGraph = new Chart(ctx,
+                {
+                    type: "bar",
+                    data: {
+                        labels: <?php echo $dad_nom; ?>,
+                        datasets: [{
+            label: 'VALOR FRETE',
+            data: <?php echo $dad_dis; ?>,
+            backgroundColor: [
+                'green'
+            ],
+            borderColor: [
+                'black'
+            ],
+            borderWidth: 1
+        }]
+                    }
+                }
+                )
+            </script>
+        </gra5>
+    </body>
 </html>
 <?php
     }

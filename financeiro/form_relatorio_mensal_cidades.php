@@ -3,7 +3,7 @@ session_start();
 if(!isset($_SESSION["system_control"])){
 ?>
 	<script>
-		document.location.href="http://localhost/transluccaggi/financeiro/index_financeiro.html";
+		document.location.href="http://localhost/transluccaggi/index_financeiro.html";
 	</script>
 <?php
 }else{
@@ -72,43 +72,42 @@ if(!isset($_SESSION["system_control"])){
 		</exit>
 		</div>
 		<pag>
-			<h1>FRETE POR MOTORISTAS</h1><p>
+        <h1>RELATÓRIO MENSAL CIDADES</h1><p>
 			<table>
 				<tr>
 					<td>
-						<form method="post" action="resultado_frete_motoristas.php">
+						<form method="post" action="relatorio_mensal_cidades.php">
 							<table>
 								<tr>
-									<td><h4>DATA:</h4></td>
-									<td><input autocomplete="off" name="dat_fre" type=date></td>
-								</tr>
-								<tr>
-									<td><h4>MOTORISTA:</h4></td>
-									<td><select name="mot_fre">
-										<option value="" selected>...</option>
+                                <tr>
+									<td><h4>ANO:</h4></td>
+									<td><select name="ano_rel">
 <?php
-#IMPORTANDO CONEXÃO DO BANCO
-	require('..\connect.php');
-#ADQUIRINDO INFORMAÇÕES DO BANCO
-	$sql = mysqli_query($conn,"SELECT * FROM $tab_mot");
-#TRANSFORMANDO RESULTADOS NÚMEROS
-	$n = mysqli_num_rows($sql);
-#INICIANDO CONTADOR
-	$i=0;
-#APRESENTANDO DADOS DO BANCO
-	while($i!=$n){
-#CADASTROS POR COLUNA
-		$v = mysqli_fetch_array($sql);
-		?><option value="<?php	echo $v['nome']	?>"><?php	echo	$v['nome']	?></option><?php
-#SOMANDO AO CONTADOR
-		$i=$i+1;
-}
+$ano = date('Y');
+$ano_a = $ano-1;
+?>
+                                        <option value="<?php echo $ano ?>" selected><?php echo $ano ?></option>
+                                        <option value="<?php echo $ano_a ?>"><?php echo $ano_a ?></option>
 ?>
 									</select></td>
 								</tr>
-							</table>
-                            <tr>
-                                <td><input autocomplete="off" class="inputb" type=submit value=PESQUISAR></td>
+                                <tr>
+									<td><h4>MÊS:</h4></td>
+									<td><select name="mes_rel">
+										<option value="01" selected>JANEIRO</option>
+										<option value="02">FEVEREIRO</option>
+										<option value="03">MARÇO</option>
+										<option value="04">ABRIL</option>
+										<option value="05">MAIO</option>
+										<option value="06">JUNHO</option>
+										<option value="07">JULHO</option>
+										<option value="08">AGOSTO</option>
+										<option value="09">SETEMBRO</option>
+										<option value="10">OUTUBRO</option>
+										<option value="11">NOVEMBRO</option>
+										<option value="12">DEZEMBRO</option>
+									</select></td>
+                                <td><input autocomplete="off" class="inputb" type=submit value=VISUALIZAR></td>
                             </tr>
 						</form>
 					</td>
