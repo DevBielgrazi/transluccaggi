@@ -65,7 +65,7 @@ if(!isset($_SESSION["system_control"])){
             }
         </script>
         <back>
-        	<a href="form_relatorio_diario_cidades.php"><img src="..\imagem/back.png" width=20%></a>
+        	<a href="form_relatorio_anual_cidades.php"><img src="..\imagem/back.png" width=20%></a>
         </back>
         <logo>
         	<a href="..\menu.php"><img src="..\imagem/logo.png" width=25%></a>
@@ -76,7 +76,10 @@ if(!isset($_SESSION["system_control"])){
 		</div>
 <?php
 #VARIÁVEIS DO FORMULÁRIO
-$dat_rel = trim($_POST['dat_rel']);
+$ano_rel = trim($_POST['ano_rel']);
+
+$dat_rel = $ano_rel."-01-01";
+$dat_rel2 = $ano_rel."-12-31";
 
 require('../connect.php');
 ?>
@@ -85,9 +88,9 @@ require('../connect.php');
 			<table>
 				<tr>
 					<td>
-						<form method="post" action="relatorio_diario_cidades.php">
-                            <input autocomplete="off" type="hidden" name="dat_rel" value="<?php echo $dat_rel;?>">
-							<table>
+						<form method="post" action="relatorio_anual_cidades.php">
+                            <input autocomplete="off" type="hidden" name="ano_rel" value="<?php echo $ano_rel;?>">
+                            <table>
                                 <tr>
 									<td><h4>DISTRIBUIDORA:<input type="radio" name="opc" value="dis" checked></h4></td>
 									<td><select name="cod_dis">
@@ -116,7 +119,7 @@ require('../connect.php');
                                 <td><input autocomplete="off" class="inputb" type=submit value=VISUALIZAR></td>
                             </tr>
 						</form>
-                        <form method="post" action="relatorio_diario_cidades.php">
+                        <form method="post" action="relatorio_anual_cidades.php">
                             <input autocomplete="off" type="hidden" name="dat_rel" value="<?php echo $dat_rel;?>">
                             <tr>
                                 <td><input autocomplete="off" class="inputb" type=submit value="VISUALIZAR DE TODAS AS DISTRIBUIDORAS"></td>
@@ -135,7 +138,7 @@ require('../connect.php');
                     $distribuidora = "TOTAL";
                 }
                     echo $distribuidora;
-                ?>) - <?php echo date( 'd/m/Y' , strtotime($dat_rel));    ?></h1>
+                ?>) - <?php echo $ano_rel;    ?></h1>
 				<tr>
 					<th><h3>CIDADE</h3></th>
 					<th><h3>VALOR</h3></th>
@@ -145,17 +148,17 @@ require('../connect.php');
 				</tr>
                 <tr>
 <?php
-    if(isset($_POST['cod_dis'])){
+    if(isset($_POST['opc'])){
         if($cod_dis==1){
-            $sql = mysqli_query($conn,"SELECT DISTINCT `cidade_cliente` FROM $tab_nfs WHERE `cod_distribuidora`='$cod_dis' AND `emissao`='$dat_rel' ORDER BY `cidade_cliente`");
-            $sql2 = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cod_distribuidora`='$cod_dis' AND `emissao`='$dat_rel'");
+            $sql = mysqli_query($conn,"SELECT DISTINCT `cidade_cliente` FROM $tab_nfs WHERE `cod_distribuidora`='$cod_dis' AND `emissao`>='$dat_rel' AND `emissao`<='$dat_rel2' ORDER BY `cidade_cliente`");
+            $sql2 = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cod_distribuidora`='$cod_dis' AND `emissao`>='$dat_rel' AND `emissao`<='$dat_rel2'");
         }else{
-            $sql = mysqli_query($conn,"SELECT DISTINCT `cidade_cliente` FROM $tab_nfs WHERE `cod_distribuidora`='$cod_dis' AND `entrada`='$dat_rel' ORDER BY `cidade_cliente`");
-            $sql2 = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cod_distribuidora`='$cod_dis' AND `entrada`='$dat_rel'"); 
+            $sql = mysqli_query($conn,"SELECT DISTINCT `cidade_cliente` FROM $tab_nfs WHERE `cod_distribuidora`='$cod_dis' AND `entrada`>='$dat_rel' AND `entrada`<='$dat_rel2' ORDER BY `cidade_cliente`");
+            $sql2 = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cod_distribuidora`='$cod_dis' AND `entrada`>='$dat_rel' AND `entrada`<='$dat_rel2'"); 
         }
     }else{
-        $sql = mysqli_query($conn,"SELECT DISTINCT `cidade_cliente` FROM $tab_nfs WHERE `cod_distribuidora`!=1 AND `entrada`='$dat_rel' OR `cod_distribuidora`=1 AND `emissao`='$dat_rel' ORDER BY `cidade_cliente`");
-        $sql2 = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cod_distribuidora`!=1 AND `entrada`='$dat_rel' OR `cod_distribuidora`=1 AND `emissao`='$dat_rel'");
+        $sql = mysqli_query($conn,"SELECT DISTINCT `cidade_cliente` FROM $tab_nfs WHERE `cod_distribuidora`!=1 AND `entrada`>='$dat_rel' AND `entrada`<='$dat_rel2' OR `cod_distribuidora`=1 AND `emissao`>='$dat_rel' AND `emissao`<='$dat_rel2' ORDER BY `cidade_cliente`");
+        $sql2 = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cod_distribuidora`!=1 AND `entrada`>='$dat_rel' AND `entrada`<='$dat_rel2' OR `cod_distribuidora`=1 AND `emissao`>='$dat_rel' AND `emissao`<='$dat_rel2'");
     }
         $sql2 = mysqli_fetch_array($sql2);
         $val_tot = number_format(($sql2['val']), 2, '.', '');
@@ -170,28 +173,32 @@ require('../connect.php');
         #CADASTROS POR COLUNA
             $v = mysqli_fetch_array($sql);
             $cid_nf = $v['cidade_cliente'];
-            if(isset($_POST['cod_dis'])){
+            if(isset($_POST['opc'])){
                 if($cod_dis==1){
-                    $sql3 = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`='$cod_dis' AND `emissao`='$dat_rel'");  
+                    $sql3 = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`='$cod_dis' AND `emissao`>='$dat_rel' AND `emissao`<='$dat_rel2'");  
                 }else{
-                    $sql3 = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`='$cod_dis' AND `entrada`='$dat_rel'");  
+                    $sql3 = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`='$cod_dis' AND `entrada`>='$dat_rel' AND `entrada`<='$dat_rel2'");  
                 }
             }else{
-                $sql3 = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`!=1 AND `entrada`='$dat_rel' OR `cidade_cliente`='$cid_nf' AND `cod_distribuidora`=1 AND `emissao`='$dat_rel'");
+                $sql3 = mysqli_query($conn,"SELECT SUM(`valor`) as 'val' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`!=1 AND `entrada`>='$dat_rel' AND `entrada`<='$dat_rel2' OR `cidade_cliente`='$cid_nf' AND `cod_distribuidora`=1 AND `emissao`>='$dat_rel' AND `emissao`<='$dat_rel2'");
             }
             $sql3 = mysqli_fetch_array($sql3);
-            $val_cid = number_format(($sql3['val']), 2, '.', '');
-            $por_val = ($val_cid/$val_tot)*100;
+            if($sql3['val']<=0){
+                $por_val = 0;
+            }else{
+                $val_cid = number_format(($sql3['val']), 2, '.', '');
+                $por_val = ($val_cid/$val_tot)*100;
+            }            
             $por_val = number_format(($por_val), 2, '.', '');
 
-            if(isset($_POST['cod_dis'])){
+            if(isset($_POST['opc'])){
                 if($cod_dis==1){
-                    $sql4 = mysqli_query($conn,"SELECT SUM(`peso`) as 'pes' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`='$cod_dis' AND `emissao`='$dat_rel'");  
+                    $sql4 = mysqli_query($conn,"SELECT SUM(`peso`) as 'pes' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`='$cod_dis' AND `emissao`>='$dat_rel' AND `emissao`<='$dat_rel2'");  
                 }else{
-                    $sql4 = mysqli_query($conn,"SELECT SUM(`peso`) as 'pes' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`='$cod_dis' AND `entrada`='$dat_rel'");  
+                    $sql4 = mysqli_query($conn,"SELECT SUM(`peso`) as 'pes' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`='$cod_dis' AND `entrada`>='$dat_rel' AND `entrada`<='$dat_rel2'");  
                 }
             }else{
-                $sql4 = mysqli_query($conn,"SELECT SUM(`peso`) as 'pes' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`!=1 AND `entrada`='$dat_rel' OR `cidade_cliente`='$cid_nf' AND `cod_distribuidora`=1 AND `emissao`='$dat_rel'");
+                $sql4 = mysqli_query($conn,"SELECT SUM(`peso`) as 'pes' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`!=1 AND `entrada`>='$dat_rel' AND `entrada`<='$dat_rel2' OR `cidade_cliente`='$cid_nf' AND `cod_distribuidora`=1 AND `emissao`>='$dat_rel' AND `emissao`<='$dat_rel2'");
             }
             $sql4 = mysqli_fetch_array($sql4);
             if($sql4['pes']<=0){
@@ -202,14 +209,14 @@ require('../connect.php');
             }
             $val_pes = number_format(($val_pes), 2, '.', '');
 
-            if(isset($_POST['cod_dis'])){
+            if(isset($_POST['opc'])){
                 if($cod_dis==1){
-                    $sql5 = mysqli_query($conn,"SELECT SUM(`volumes`) as 'vol' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`='$cod_dis' AND `emissao`='$dat_rel'");  
+                    $sql5 = mysqli_query($conn,"SELECT SUM(`volumes`) as 'vol' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`='$cod_dis' AND `emissao`>='$dat_rel' AND `emissao`<='$dat_rel2'");  
                 }else{
-                    $sql5 = mysqli_query($conn,"SELECT SUM(`volumes`) as 'vol' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`='$cod_dis' AND `entrada`='$dat_rel'");  
+                    $sql5 = mysqli_query($conn,"SELECT SUM(`volumes`) as 'vol' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`='$cod_dis' AND `entrada`>='$dat_rel' AND `entrada`<='$dat_rel2'");  
                 }
             }else{
-                $sql5 = mysqli_query($conn,"SELECT SUM(`volumes`) as 'vol' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`!=1 AND `entrada`='$dat_rel' OR `cidade_cliente`='$cid_nf' AND `cod_distribuidora`=1 AND `emissao`='$dat_rel'");
+                $sql5 = mysqli_query($conn,"SELECT SUM(`volumes`) as 'vol' FROM $tab_nfs WHERE `cidade_cliente`='$cid_nf' AND `cod_distribuidora`!=1 AND `entrada`>='$dat_rel' AND `entrada`<='$dat_rel2' OR `cidade_cliente`='$cid_nf' AND `cod_distribuidora`=1 AND `emissao`>='$dat_rel' AND `emissao`<='$dat_rel2'");
             }
             $sql5 = mysqli_fetch_array($sql5);
             $vol_cid = $sql5['vol'];
@@ -243,7 +250,7 @@ require('../connect.php');
                     $distribuidora = "TOTAL";
                 }
                     echo $distribuidora;
-                ?> - <?php echo date( 'd/m/Y' , strtotime($dat_rel));    ?></h1>
+                ?> - <?php echo $ano_rel;    ?></h1>
     </gra8>
     <gra7>
         <canvas width=800 height=400 id="grafico" style="background-color:white;"></canvas>
