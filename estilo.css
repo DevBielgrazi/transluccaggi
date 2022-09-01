@@ -90,14 +90,14 @@ back{
     border-radius: 5%;
     border-style:groove;
     border-color: rgb(70, 69, 69);
-    background-color: rgb(70, 69, 69);
+    background-color: lightgray;
 }
 .dropdown-content a {
-    color: white;
+    color: rgb(22, 89, 155);
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 90%;
     border-style:solid;
-    border-color: rgb(70, 69, 69);
+    border-color: lightgray;
     text-decoration: none;
     display: block;
 }
