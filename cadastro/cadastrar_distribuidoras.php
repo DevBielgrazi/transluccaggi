@@ -73,69 +73,36 @@ if(!isset($_SESSION["system_control"])){
 				<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
 			</exit>
 		</div>
+		<pag>
+			<h1>CADASTRAR DISTRIBUIDORAS</h1><p>
+			<table>
+					<tr>
+						<td>
+							<form method="post" action="cadastrar_distribuidoras.php">
+								<table>
+									<tr>
+										<td><h4>NOME:</h4></td>
+										<td><input autocomplete="off" name="nom_dis" type=text size=32 maxlength=64 required></td>
+									</tr>
+									<tr>
+										<td><h4>PORCENTAGEM:</h4></td>
+										<td><input autocomplete="off" name="por_dis" type=float size=32 maxlength=64 required></td>
+									</tr>
+									<tr>
+										<td><h4>CADASTRO:</h4></td>
+										<td><input autocomplete="off" name="cad_dis" type=date required></td>
+									</tr>																									 
+								</table>
+								<tr>
+									<td><input autocomplete="off" class="inputb" type=submit value=CADASTRAR></td>									
+								</tr>
+							</form>
+						</td>	
+					</tr>
+				</table>
+		</pag>
 <?php
 	if(!isset($_POST['nom_dis'])){
-?>
-		<pag>
-			<h1>CADASTRAR DISTRIBUIDORAS</h1><p>
-			<table>
-					<tr>
-						<td>
-							<form method="post" action="cadastrar_distribuidoras.php">
-								<table>
-									<tr>
-										<td><h4>NOME:</h4></td>
-										<td><input autocomplete="off" name="nom_dis" type=text size=32 maxlength=64 required></td>
-									</tr>
-									<tr>
-										<td><h4>PORCENTAGEM:</h4></td>
-										<td><input autocomplete="off" name="por_dis" type=float size=32 maxlength=64 required></td>
-									</tr>
-									<tr>
-										<td><h4>CADASTRO:</h4></td>
-										<td><input autocomplete="off" name="cad_dis" type=date required></td>
-									</tr>																									 
-								</table>
-								<tr>
-									<td><input autocomplete="off" class="inputb" type=submit value=CADASTRAR></td>									
-								</tr>
-							</form>
-						</td>	
-					</tr>
-				</table>
-		</pag>
-<?php
-	}else{
-		?>
-		<pag>
-			<h1>CADASTRAR DISTRIBUIDORAS</h1><p>
-			<table>
-					<tr>
-						<td>
-							<form method="post" action="cadastrar_distribuidoras.php">
-								<table>
-									<tr>
-										<td><h4>NOME:</h4></td>
-										<td><input autocomplete="off" name="nom_dis" type=text size=32 maxlength=64 required></td>
-									</tr>
-									<tr>
-										<td><h4>PORCENTAGEM:</h4></td>
-										<td><input autocomplete="off" name="por_dis" type=float size=32 maxlength=64 required></td>
-									</tr>
-									<tr>
-										<td><h4>CADASTRO:</h4></td>
-										<td><input autocomplete="off" name="cad_dis" type=date required></td>
-									</tr>																									 
-								</table>
-								<tr>
-									<td><input autocomplete="off" class="inputb" type=submit value=CADASTRAR></td>									
-								</tr>
-							</form>
-						</td>	
-					</tr>
-				</table>
-		</pag>
-<?php
 #VARIÁVEIS DO FORMULÁRIO
     $nom_dis = trim($_POST['nom_dis']);
     $por_dis = trim($_POST['por_dis']);

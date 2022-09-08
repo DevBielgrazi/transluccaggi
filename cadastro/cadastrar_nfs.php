@@ -73,9 +73,6 @@ if(!isset($_SESSION["system_control"])){
 				<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
 			</exit>
 		</div>
-<?php
-	if(!isset($_POST['num_nf'])){
-?>
 		<pag>
 			<h1>CADASTRAR NOTAS FISCAIS</h1><p>
 			<table>
@@ -125,57 +122,7 @@ if(!isset($_SESSION["system_control"])){
 			</table>
 		</pag>
 <?php
-	}else{
-		?>
-		<pag>
-			<h1>CADASTRAR NOTAS FISCAIS</h1><p>
-			<table>
-				<tr>
-					<td>
-						<form method="post" action="cadastrar_nfs.php">
-							<table>
-								<tr>
-									<td><h4>NÚMERO:</h4></td>
-									<td><input autocomplete="off" name="num_nf" type=int size=16 maxlength=16 required></td>
-								</tr>
-								<tr>
-									<td><h4>SÉRIE:</h4></td>
-									<td><input autocomplete="off" name="ser_nf" type=int size=16 maxlength=8 required></td>
-								</tr>
-								<tr>
-									<td><h4>EMISSÃO:</h4></td>
-									<td><input autocomplete="off" name="emi_nf" type=date required></td>
-								</tr>
-								<tr>
-									<td><h4>ENTRADA:</h4></td>
-									<td><input autocomplete="off" name="ent_nf" type=date required></td>
-								</tr>
-								<tr>
-									<td><h4>VOLUMES:</h4></td>
-									<td><input autocomplete="off" name="vol_nf" type=int size=16 maxlength=16 required></td>
-								</tr>
-								<tr>
-									<td><h4>VALOR:</h4></td>
-									<td><input autocomplete="off" name="val_nf" type=float size=16 maxlength=16 required></td>
-								</tr>
-								<tr>
-									<td><h4>PESO:</h4></td>
-									<td><input autocomplete="off" name="pes_nf" type=float size=16 maxlength=16 required></td>
-								</tr>
-								<tr>
-									<td><h4>CÓDIGO CLIENTE:</h4></td>
-									<td><input autocomplete="off" name="cod_cli" type=int size=16 maxlength=16 required></td>
-								</tr>
-							</table>
-							<tr>
-								<td><input autocomplete="off" class="inputb" type=submit value=CADASTRAR></td>
-							</tr>
-						</form>
-					</td>
-				</tr>
-			</table>
-		</pag>
-<?php
+	if(isset($_POST['num_nf'])){
 #VARIÁVEIS DO FORMULÁRIO
 	$num_nf = trim($_POST['num_nf']);
     $ser_nf = trim($_POST['ser_nf']);

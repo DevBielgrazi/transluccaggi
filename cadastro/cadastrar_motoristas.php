@@ -73,10 +73,7 @@ if(!isset($_SESSION["system_control"])){
 				<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
 			</exit>
 		</div>
-<?php
-	if(!isset($_POST['cad_mot'])){
-?>
-	<pag>
+		<pag>
 			<h1>CADASTRAR MOTORISTAS</h1><p>
 			<table>
 				<tr>
@@ -193,125 +190,7 @@ if(!isset($_SESSION["system_control"])){
 			</table>
 		</pag>
 <?php
-	}else{
-?>
-		<pag>
-		<h1>CADASTRAR MOTORISTAS</h1><p>
-		<table>
-			<tr>
-				<td>
-					<form method="post" action="cadastrar_motoristas.php">
-						<table>
-							<tr>
-								<td><h4>CADASTRO:</h4></td>
-								<td><input autocomplete="off" name="cad_mot" type=date required></td>
-							</tr>
-							<tr>
-								<td><h4>NOME:</h4></td>
-								<td><input autocomplete="off" name="nom_mot" type=text size=16 maxlength=32 required></td>
-							</tr>
-							<tr>
-								<td><h4>VEÍCULO:</h4></td>
-								<td><input autocomplete="off" name="vei_mot" type=text size=16 maxlength=16 required></td>
-							</tr>
-							<tr>
-								<td><h4>PLACA:</h4></td>
-								<td><input autocomplete="off" name="pla_mot" type=text size=16 maxlength=8 required></td>
-							</tr>
-							<tr>
-								<td><h4>TELEFONE:</h4></td>
-								<td><input autocomplete="off" name="tel_mot" type=int size=16 maxlength=16 required></td>
-							</tr>
-							<tr>
-								<td><h4>ENDEREÇO:</h4></td>
-								<td><input autocomplete="off" name="end_mot" type=text size=16 maxlength=64 required></td>
-							</tr>
-							<tr>
-								<td><h4>CPF:</h4></td>
-								<td><input autocomplete="off" name="cpf_mot" type=text size=16 maxlength=16 required></td>
-							</tr>
-							<tr>
-								<td><h4>RG:</h4></td>
-								<td><input autocomplete="off" name="rg_mot" type=text size=16 maxlength=16 required></td>
-							</tr>
-							<tr>
-								<td><h4>NASCIMENTO:</h4></td>
-								<td><input autocomplete="off" name="nas_mot" type=date required></td>
-							</tr>
-							<tr>
-								<td><h4>NATURALIDADE:</h4></td>
-								<td><input autocomplete="off" name="nat_mot" type=text size=16 maxlength=32 required></td>
-							</tr>
-							<tr>
-								<td><h4>CNH:</h4></td>
-								<td><input autocomplete="off" name="cnh_mot" type=text size=16 maxlength=16 required></td>
-							</tr>
-							<tr>
-								<td><h4>VALIDADE(CNH):</h4></td>
-								<td><input autocomplete="off" name="val_mot" type=date required></td>
-							</tr>
-							<tr>
-								<td><h4>CATEGORIA(CNH):</h4></td>
-								<td><input autocomplete="off" name="cat_mot" type=text size=16 maxlength=4 required></td>
-							</tr>
-							<tr>
-								<td><h4>CEP:</h4></td>
-								<td><input autocomplete="off" name="cep_mot" type=text size=16 maxlength=16 required></td>
-							</tr>
-							<tr>
-								<td><h4>BANCO:</h4></td>
-								<td><input autocomplete="off" name="ban_mot" type=text size=16 maxlength=16 required></td>
-							</tr>
-							<tr>
-								<td><h4>CÓDIGO BANCO:</h4></td>
-								<td><input autocomplete="off" name="cod_mot" type=text size=16 maxlength=16 required></td>
-							</tr>
-							<tr>
-								<td><h4>AGÊNCIA BANCO:</h4></td>
-								<td><input autocomplete="off" name="age_mot" type=text size=16 maxlength=16 required></td>
-							</tr>
-							<tr>
-								<td><h4>CONTA BANCO:</h4></td>
-								<td><input autocomplete="off" name="con_mot" type=text size=16 maxlength=16 required></td>
-							</tr>
-							<tr>
-								<td><h4>ANO VEÍCULO:</h4></td>
-								<td><input autocomplete="off" name="ano_mot" type=text size=16 maxlength=16 required></td>
-							</tr>
-							<tr>
-								<td><h4>COR VEÍCULO:</h4></td>
-								<td><input autocomplete="off" name="cor_mot" type=text size=16 maxlength=16 required></td>
-							</tr>
-							<tr>
-								<td><h4>RENAVAM:</h4></td>
-								<td><input autocomplete="off" name="ren_mot" type=text size=16 maxlength=16 required></td>
-							</tr>
-							<tr>
-								<td><h4>NÚMERO CHASSI:</h4></td>
-								<td><input autocomplete="off" name="num_mot" type=text size=16 maxlength=16 required></td>
-							</tr>
-							<tr>
-								<td><h4>ANTT:</h4></td>
-								<td><input autocomplete="off" name="ant_mot" type=text size=16 maxlength=16></td>
-							</tr>
-							<tr>
-								<td><h4>CATEGORIA ANTT:</h4></td>
-								<td><input autocomplete="off" name="caa_mot" type=text size=16 maxlength=16></td>
-							</tr>
-							<tr>
-								<td><h4>VALIDADE ANTT:</h4></td>
-								<td><input autocomplete="off" name="vaa_mot" type=date></td>
-							</tr>
-						</table>
-						<tr>
-							<td><input autocomplete="off" class="inputb" type=submit value=CADASTRAR></td>
-						</tr>
-					</form>
-				</td>	
-			</tr>																				 
-		</table>
-	</pag>
-<?php
+	if(isset($_POST['cad_mot'])){
 #VARIÁVEIS DO FORMULÁRIO
 	$cad_mot = trim($_POST['cad_mot']);
 	$nom_mot = trim($_POST['nom_mot']);

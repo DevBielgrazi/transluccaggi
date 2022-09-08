@@ -73,9 +73,6 @@ if(!isset($_SESSION["system_control"])){
 				<a href="..\logout.php"><img src="..\imagem/exit.png" width=50%></a>
 			</exit>
 		</div>
-<?php
-	if(!isset($_POST['cod_cli'])){
-?>
 		<pag>
 			<h1>CADASTRAR CLIENTES</h1><p>
 			<table>
@@ -142,73 +139,7 @@ if(!isset($_SESSION["system_control"])){
 			</table>
 		</pag>
 <?php
-	}else{
-		?><pag>
-		<h1>CADASTRAR CLIENTES</h1><p>
-		<table>
-			<tr>
-				<td>
-					<form method="post" action="cadastrar_clientes.php">
-						<table>
-							<tr>
-								<td><h4>CÓDIGO:</h4></td>
-								<td><input autocomplete="off" name="cod_cli" type=text size=32 maxlength=16 required></td>
-							</tr>
-							<tr>
-								<td><h4>NOME:</h4></td>
-								<td><input autocomplete="off" name="nom_cli" type=int size=32 maxlength=64 required></td>
-							</tr>
-							<tr>
-								<td><h4>CADASTRO:</h4></td>
-								<td><input autocomplete="off" name="cad_cli" type=date required></td>
-							</tr>
-							<tr>
-								<td><h4>ROTA:</h4></td>
-								<td><select name="rot_cli">
-									<option value="VP00" selected>VP00</option>
-									<option value="VP01">VP01</option>
-									<option value="VP02">VP02</option>
-									<option value="VP03">VP03</option>
-									<option value="VP04">VP04</option>
-									<option value="VP05">VP05</option>
-									<option value="VP06">VP06</option>
-									<option value="VP07">VP07</option>
-									<option value="VP08">VP08</option>
-									<option value="VP09">VP09</option>
-									<option value="VP10">VP10</option>
-									<option value="VP11">VP11</option>
-									<option value="VP12">VP12</option>
-								</select></td>
-							</tr>
-							<tr>
-								<td><h4>CIDADE:</h4></td>
-								<td><input autocomplete="off" name="cid_cli" type=text size=32 maxlength=32 required></td>
-							</tr>
-							<tr>
-								<td><h4>BAIRRO:</h4></td>
-								<td><input autocomplete="off" name="bai_cli" type=text size=32 maxlength=32 required></td>
-							</tr>
-							<tr>
-								<td><h4>ENDEREÇO:</h4></td>
-								<td><input autocomplete="off" name="end_cli" type=text size=32 maxlength=64 required></td>
-							</tr>
-							<tr>
-								<td><h4>CÓDIGO DISTRIBUIDORA:</h4></td>
-								<td><input autocomplete="off" name="cod_dis" type=int size=32 maxlength=16 required></td>
-							</tr>
-							<tr>
-								<td><h4>AGENDAR:<input autocomplete="off" type=checkbox name="age" value="SIM"></h4></td>
-							</tr>
-						</table>
-						<tr>
-							<td><input autocomplete="off" class="inputb" type=submit value=CADASTRAR></td>
-						</tr>
-					</form>
-				</td>
-			</tr>
-		</table>
-	</pag>
-<?php
+	if(isset($_POST['cod_cli'])){
 #VARIÁVEIS DO FORMULÁRIO
 	$cod_cli = trim($_POST['cod_cli']);
     $nom_cli = trim($_POST['nom_cli']);
